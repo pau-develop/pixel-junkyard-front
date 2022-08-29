@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const HeaderStyled = styled.header`
   background-color: ${(props) => props.theme.primaryColor};
-  height: 50px;
+  height: 5%;
   display: flex;
   align-items: center;
   padding: 0 5%;
