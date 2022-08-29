@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const HeaderStyled = styled.header`
   background-color: ${(props) => props.theme.primaryColor};
-  height: 80px;
+  height: 50px;
   display: flex;
   align-items: center;
   padding: 0 5%;
@@ -12,6 +12,7 @@ const HeaderStyled = styled.header`
       padding: 0;
       color: ${(props) => props.theme.secondaryColor};
       text-transform: uppercase;
+      font-size: 1.5rem;
     }
   }
 `;
