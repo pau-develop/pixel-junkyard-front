@@ -1,8 +1,8 @@
 import React from "react";
-import "./App.css";
+import AppStyled from "./AppStyled";
 
-function App() {
-  return <div className="app-container"></div>;
-}
+const App = () => {
+  return <AppStyled className="app-container"></AppStyled>;
+};
 
 export default App;
