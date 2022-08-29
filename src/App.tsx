@@ -1,8 +1,13 @@
 import React from "react";
-import "./App.css";
+import AppStyled from "./AppStyled";
+import Header from "./components/Header/Header";
 
-function App() {
-  return <div className="app-container"></div>;
-}
+const App = (): JSX.Element => {
+  return (
+    <AppStyled className="app-container">
+      <Header />
+    </AppStyled>
+  );
+};
 
 export default App;
