@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const GuestPageStyled = styled.section`
+const GuestPageStyled = styled.div`
   width: 100%;
   height: 100%;
   .guest-page {
