@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const GuestPageStyled = styled.div`
   width: 100%;
-  height: 95%;
+  height: 93%;
   .guest-page {
     &__menu-container {
       width: 200px;
