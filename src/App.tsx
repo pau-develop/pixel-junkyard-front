@@ -7,7 +7,6 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 
 const App = (): JSX.Element => {
   const ui = useSelector<RootState>((state) => state.ui);
-  console.log(ui);
 
   return (
     <AppStyled className="app-container">
