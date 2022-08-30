@@ -19,12 +19,6 @@ const RegisterForm = (): JSX.Element => {
 
   const handleInputObject = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newUser = {
-      userName: input.userName,
-      password: input.password,
-      email: input.email,
-    };
-    console.log(newUser);
   };
 
   return (
@@ -36,6 +30,7 @@ const RegisterForm = (): JSX.Element => {
       >
         <label htmlFor="name">User name</label>
         <input
+          data-testid="name"
           required
           id="name"
           autoComplete="off"
@@ -47,8 +42,8 @@ const RegisterForm = (): JSX.Element => {
         ></input>
         <label htmlFor="password">Password</label>
         <input
-          required
           data-testid="password"
+          required
           id="password"
           autoComplete="off"
           type="text"
@@ -59,8 +54,8 @@ const RegisterForm = (): JSX.Element => {
         ></input>
         <label htmlFor="email">Email</label>
         <input
-          required
           data-testid="email"
+          required
           id="email"
           autoComplete="off"
           type="text"
