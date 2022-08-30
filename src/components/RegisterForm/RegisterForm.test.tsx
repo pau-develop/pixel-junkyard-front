@@ -27,9 +27,11 @@ describe("Given a RegisterForm component", () => {
   describe("When text is entered in the input field", () => {
     test("It should update the value property of input", () => {
       render(<RegisterForm />);
-      const inputName = screen.getByTestId("name") as HTMLInputElement;
-      const inputPassword = screen.getByTestId("password") as HTMLInputElement;
-      const inputEmail = screen.getByTestId("email") as HTMLInputElement;
+      const inputName = screen.getByLabelText("User name") as HTMLInputElement;
+      const inputPassword = screen.getByLabelText(
+        "Password"
+      ) as HTMLInputElement;
+      const inputEmail = screen.getByLabelText("Email") as HTMLInputElement;
 
       fireEvent.change(inputName, {
         target: { value: "a" },
