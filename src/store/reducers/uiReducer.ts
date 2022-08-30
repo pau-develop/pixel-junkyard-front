@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 
 import actionTypes from "../actionTypes/actionTypes";
-import { IUIModalDisplay, IUIModalHide } from "../types/actionTypes";
+import { IUIAction } from "../types/actionTypes";
 import { IUIModal } from "../types/interfaces";
 
 const initialState = {
@@ -12,11 +12,11 @@ const initialState = {
 const uiReducer = createReducer<IUIModal>(initialState, (builder) => {
   builder.addCase(
     actionTypes.displayUI,
-    (state: IUIModal, action: IUIModalDisplay) => action.payload
+    (state: IUIModal, action: IUIAction) => action.payload
   );
   builder.addCase(
     actionTypes.hideUI,
-    (state: IUIModal, action: IUIModalHide) => action.payload
+    (state: IUIModal, action: IUIAction) => action.payload
   );
 
   builder.addDefaultCase((state: IUIModal) => state);
