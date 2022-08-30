@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import useUsers from "../../hooks/useUsers";
 import Button from "../Button/Button";
 import RegisterFormStyled from "./RegisterFormStyled";
 
@@ -15,10 +16,17 @@ const inputField = {
 };
 
 const RegisterForm = (): JSX.Element => {
+  const { registerUser } = useUsers();
   const [input, setInput] = useState<Input>(inputField);
 
   const handleInputObject = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const newUser = {
+      userName: input.userName,
+      password: input.password,
+      email: input.email,
+    };
+    registerUser(newUser);
   };
 
   return (
