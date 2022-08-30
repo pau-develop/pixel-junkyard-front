@@ -1,10 +1,8 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { RootState, store } from "../app/store";
+import { store } from "../app/store";
 import { UserData } from "../store/types/interfaces";
 import useUsers from "./useUsers";
-import { useSelector } from "react-redux";
-import { useReducer } from "react";
 
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
