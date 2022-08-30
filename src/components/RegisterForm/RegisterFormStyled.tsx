@@ -36,6 +36,9 @@ const RegisterFormStyled = styled.div`
         border-radius: 15px;
         color: ${(props) => props.theme.primaryColor};
         font-size: 1.5rem;
+        -webkit-box-shadow: inset 0 10px 10px #0000009e;
+        -moz-box-shadow: inset 0 10px 10px #0000009e;
+        box-shadow: inset 0 10px 10px #0000009e;
       }
       input:focus {
         outline: none;
