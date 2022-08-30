@@ -1,4 +1,4 @@
-import UserData from "../interfaces/interface";
+import { UserData } from "../store/types/interfaces";
 
 const useUsers = () => {
   const registerUser = async (userData: UserData) => {

@@ -1,5 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
-import UserData from "../interfaces/interface";
+import { UserData } from "../store/types/interfaces";
+
 import useUsers from "./useUsers";
 
 describe("Given a useUsers hook", () => {

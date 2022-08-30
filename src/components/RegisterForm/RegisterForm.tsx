@@ -38,7 +38,6 @@ const RegisterForm = (): JSX.Element => {
       >
         <label htmlFor="name">User name</label>
         <input
-          data-testid="name"
           required
           id="name"
           autoComplete="off"
@@ -50,7 +49,6 @@ const RegisterForm = (): JSX.Element => {
         ></input>
         <label htmlFor="password">Password</label>
         <input
-          data-testid="password"
           required
           id="password"
           autoComplete="off"
@@ -62,7 +60,6 @@ const RegisterForm = (): JSX.Element => {
         ></input>
         <label htmlFor="email">Email</label>
         <input
-          data-testid="email"
           required
           id="email"
           autoComplete="off"
