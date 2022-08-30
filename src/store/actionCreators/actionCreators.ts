@@ -1,8 +1,9 @@
 import { createAction } from "@reduxjs/toolkit";
 
 import actionTypes from "../actionTypes/actionTypes";
-import { IUIModalDisplay, IUIModalHide } from "../types/actionTypes";
 
-export const openModal = createAction<IUIModalDisplay>(actionTypes.displayUI);
+import { IUIModal } from "../types/interfaces";
 
-export const closeModal = createAction<IUIModalHide>(actionTypes.hideUI);
+export const openModalActionNew = createAction<IUIModal>(actionTypes.displayUI);
+
+export const closeModalActionNew = createAction<IUIModal>(actionTypes.hideUI);
