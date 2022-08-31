@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Button from "../components/Button/Button";
+import Button from "../../components/Button/Button";
 import GuestPageStyled from "./GuestPageStyled";
 
 const GuestPage = (): JSX.Element => {

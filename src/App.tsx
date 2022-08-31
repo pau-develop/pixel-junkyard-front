@@ -6,7 +6,8 @@ import AppStyled from "./AppStyled";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
-import GuestPage from "./pages/GuestPage";
+import GuestPage from "./pages/GuestPage/GuestPage";
+import UnknownPage from "./pages/UnknownPage/UnknownPage";
 import { IUIModal } from "./store/types/interfaces";
 
 const App = (): JSX.Element => {
@@ -20,6 +21,7 @@ const App = (): JSX.Element => {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<GuestPage />} />
           <Route path="/register" element={<RegisterForm />} />
+          <Route path="*" element={<UnknownPage />} />
         </Routes>
       </main>
     </AppStyled>
