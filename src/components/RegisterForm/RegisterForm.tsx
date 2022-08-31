@@ -31,7 +31,6 @@ const RegisterForm = (): JSX.Element => {
 
   return (
     <RegisterFormStyled className="register">
-      <h1 className="register__title">Register</h1>
       <form
         className="register__form"
         onSubmit={(event) => handleInputObject(event)}
