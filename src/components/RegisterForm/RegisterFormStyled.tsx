@@ -1,17 +1,7 @@
 import styled from "styled-components";
 
 const RegisterFormStyled = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
   .register {
-    &__title {
-      color: ${(props) => props.theme.secondaryColor};
-      text-transform: uppercase;
-      font-size: 1.5rem;
-    }
     &__form {
       border-radius: 50px;
       background: linear-gradient(
