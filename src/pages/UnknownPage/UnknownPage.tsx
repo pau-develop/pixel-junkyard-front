@@ -10,7 +10,7 @@ const UnknownPage = (): JSX.Element => {
       timer -= 1;
       if (timer <= 0) {
         clearInterval(interval);
-        navigate(-1);
+        navigate("/home");
       }
     }, 1000);
   };
@@ -22,7 +22,7 @@ const UnknownPage = (): JSX.Element => {
       <div className="unknown-path__box">
         <h2>ERROR 404</h2>
         <h3>Page not found</h3>
-        <p>Redirecting to previous page...</p>
+        <p>Redirecting to home page...</p>
       </div>
     </UnknownPageStyled>
   );
