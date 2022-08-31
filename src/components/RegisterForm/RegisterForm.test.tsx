@@ -13,14 +13,14 @@ jest.mock("../../hooks/useUsers", () => ({
 
 describe("Given a RegisterForm component", () => {
   describe("When instantiated", () => {
-    test("It should show a heading with the text 'Register'", () => {
+    test("It should show a bunch of inputs with labels 'Register'", () => {
       render(<RegisterForm />);
 
-      const headingText = "Register";
+      const labelText = "User name";
 
-      const headingElement = screen.getByRole("heading", { name: headingText });
+      const labelElement = screen.getByLabelText(labelText);
 
-      expect(headingElement).not.toBeNull();
+      expect(labelElement).not.toBeNull();
     });
   });
 
