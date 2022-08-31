@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { store } from "./app/store";
 
@@ -11,7 +12,11 @@ let Wrapper: ({ children }: WrapperProps) => JSX.Element;
 
 beforeEach(() => {
   Wrapper = ({ children }: WrapperProps): JSX.Element => {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <Provider store={store}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </Provider>
+    );
   };
 });
 
