@@ -4,6 +4,7 @@ const AppStyled = styled.div`
   position: relative;
   min-height: 100vh;
   width: 100vw;
+  min-width: 400px;
   background-color: ${(props) => props.theme.thirdColor};
   .app-container {
     &__main {
