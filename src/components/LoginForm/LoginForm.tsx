@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import Input from "../../interfaces/interfaces";
 import Button from "../Button/Button";
-import RegisterFormStyled from "../RegisterForm/RegisterFormStyled";
+import LoginFormStyled from "./LoginFormStyled";
 
 const inputField = {
   userName: "",
@@ -21,7 +21,7 @@ const LoginForm = (): JSX.Element => {
     console.log(newUser);
   };
   return (
-    <RegisterFormStyled className="register">
+    <LoginFormStyled className="register">
       <form
         className="register__form"
         onSubmit={(event) => handleInputObject(event)}
@@ -53,7 +53,7 @@ const LoginForm = (): JSX.Element => {
           <Button text="Accept" />
         </div>
       </form>
-    </RegisterFormStyled>
+    </LoginFormStyled>
   );
 };
 

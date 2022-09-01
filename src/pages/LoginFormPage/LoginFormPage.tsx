@@ -1,5 +1,4 @@
 import LoginForm from "../../components/LoginForm/LoginForm";
-import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import PageStyled from "../PageStyled";
 
 const LoginFormPage = (): JSX.Element => {
