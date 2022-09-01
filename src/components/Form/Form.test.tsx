@@ -5,6 +5,13 @@ import Form from "./Form";
 const mockRegisterUser = jest.fn();
 const mockLoginUser = jest.fn();
 
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUseNavigate,
+}));
+
 jest.mock("../../hooks/useUsers", () => ({
   __esModule: true,
   ...jest.requireActual("../../hooks/useUsers"),
@@ -88,6 +95,21 @@ describe("Given a RegisterForm component", () => {
       fireEvent.click(buttonElement);
 
       expect(mockLoginUser).toHaveBeenCalled();
+    });
+
+    test("If cancel button is press, user should be taken to /home path", () => {
+      render(
+        <BrowserRouter>
+          <Form formType={"login"} />
+        </BrowserRouter>
+      );
+      const buttonText = "Cancel";
+
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      fireEvent.click(buttonElement);
+
+      expect(mockUseNavigate).toHaveBeenCalled();
     });
   });
 });
