@@ -17,5 +17,18 @@ describe("Given a Header component", () => {
 
       expect(headingElement).not.toBeNull();
     });
+
+    test("If the currentUser received via props has a userName property, a button should be shown", () => {
+      const user: IUser = {
+        userName: "testUser",
+        token: "123456",
+      };
+      render(<Header currentUser={user} />);
+
+      const buttonText = user.userName;
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      expect(buttonElement).not.toBeNull();
+    });
   });
 });
