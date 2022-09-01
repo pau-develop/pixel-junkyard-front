@@ -2,7 +2,11 @@ import { FormEvent, useState } from "react";
 import useUsers from "../../hooks/useUsers";
 import Input from "../../interfaces/interfaces";
 import Button from "../Button/Button";
-import RegisterFormStyled from "./RegisterFormStyled";
+import FormStyled from "./FormStyled";
+
+interface FormProps {
+  formType: string;
+}
 
 const inputField = {
   userName: "",
@@ -10,7 +14,7 @@ const inputField = {
   email: "",
 };
 
-const RegisterForm = (): JSX.Element => {
+const Form = ({ formType }: FormProps): JSX.Element => {
   const { registerUser } = useUsers();
   const [input, setInput] = useState<Input>(inputField);
 
@@ -25,7 +29,7 @@ const RegisterForm = (): JSX.Element => {
   };
 
   return (
-    <RegisterFormStyled className="register">
+    <FormStyled className="register">
       <form
         className="register__form"
         onSubmit={(event) => handleInputObject(event)}
@@ -52,24 +56,28 @@ const RegisterForm = (): JSX.Element => {
             setInput({ ...input, password: event.target.value })
           }
         ></input>
-        <label htmlFor="email">Email</label>
-        <input
-          required
-          id="email"
-          autoComplete="off"
-          type="text"
-          value={input.email}
-          onChange={(event) =>
-            setInput({ ...input, email: event.target.value })
-          }
-        ></input>
+        {formType === "register" ? (
+          <>
+            <label htmlFor="email">Email</label>
+            <input
+              required
+              id="email"
+              autoComplete="off"
+              type="text"
+              value={input.email}
+              onChange={(event) =>
+                setInput({ ...input, email: event.target.value })
+              }
+            ></input>
+          </>
+        ) : null}
         <div className="register__button-wrap">
           <Button text="Cancel" type="button" />
           <Button text="Accept" />
         </div>
       </form>
-    </RegisterFormStyled>
+    </FormStyled>
   );
 };
 
-export default RegisterForm;
+export default Form;
