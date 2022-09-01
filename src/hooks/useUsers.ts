@@ -4,6 +4,7 @@ import {
   openModalActionNew,
 } from "../store/actionCreators/actionCreators";
 import { IUserLoginData, IUserRegisterData } from "../store/types/interfaces";
+import { fetchToken } from "../utils/auth";
 
 const useUsers = () => {
   const dispatch = useDispatch();
@@ -35,9 +36,11 @@ const useUsers = () => {
         "Content-Type": "application/json",
       },
     });
-    const response = await data.json();
-    //decode that shit!!!!
-    dispatch(loginUserActionNew(response));
+    const {
+      user: { token },
+    } = await data.json();
+    const user = fetchToken(token);
+    dispatch(loginUserActionNew(user));
   };
 
   return { registerUser, loginUser };
