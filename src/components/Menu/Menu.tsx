@@ -19,7 +19,7 @@ const Menu = ({ action }: MenuProps): JSX.Element => {
       <Button text="PROFILE" action={() => handleClick("/profile")} />
       <Button text="COMMUNITY" action={() => handleClick("/community")} />
       <Button text="GALLERY" action={() => handleClick("/gallery")} />
-      <Button text="DRAW" action={() => handleClick("/draw")} />
+      <Button text="DRAW" action={() => handleClick("/gallery")} />
     </MenuStyled>
   );
 };
