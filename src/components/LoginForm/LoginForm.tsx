@@ -1,8 +1,7 @@
 import { FormEvent, useState } from "react";
-import useUsers from "../../hooks/useUsers";
 import Input from "../../interfaces/interfaces";
 import Button from "../Button/Button";
-import RegisterFormStyled from "./RegisterFormStyled";
+import RegisterFormStyled from "../RegisterForm/RegisterFormStyled";
 
 const inputField = {
   userName: "",
@@ -10,8 +9,7 @@ const inputField = {
   email: "",
 };
 
-const RegisterForm = (): JSX.Element => {
-  const { registerUser } = useUsers();
+const LoginForm = (): JSX.Element => {
   const [input, setInput] = useState<Input>(inputField);
 
   const handleInputObject = (event: FormEvent<HTMLFormElement>) => {
@@ -19,11 +17,9 @@ const RegisterForm = (): JSX.Element => {
     const newUser = {
       userName: input.userName,
       password: input.password,
-      email: input.email,
     };
-    registerUser(newUser);
+    console.log(newUser);
   };
-
   return (
     <RegisterFormStyled className="register">
       <form
@@ -52,17 +48,6 @@ const RegisterForm = (): JSX.Element => {
             setInput({ ...input, password: event.target.value })
           }
         ></input>
-        <label htmlFor="email">Email</label>
-        <input
-          required
-          id="email"
-          autoComplete="off"
-          type="text"
-          value={input.email}
-          onChange={(event) =>
-            setInput({ ...input, email: event.target.value })
-          }
-        ></input>
         <div className="register__button-wrap">
           <Button text="Cancel" type="button" />
           <Button text="Accept" />
@@ -72,4 +57,4 @@ const RegisterForm = (): JSX.Element => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
