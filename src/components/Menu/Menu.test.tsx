@@ -1,5 +1,4 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import Menu from "./Menu";
 
@@ -41,7 +40,7 @@ describe("Given a Menu component", () => {
       expect(drawButton).not.toBeNull();
     });
 
-    test("When clicking a button, it should bring the user to the path linked to it", async () => {
+    test("When clicking on  profile button, it should send the user to the path /profile", async () => {
       render(
         <BrowserRouter>
           <Menu action={() => null} />
@@ -55,6 +54,60 @@ describe("Given a Menu component", () => {
       });
 
       fireEvent.click(profileButton);
+
+      expect(mockUseNavigate).toHaveBeenCalled();
+    });
+
+    test("When clicking on community button, it should send the user to the path /community", async () => {
+      render(
+        <BrowserRouter>
+          <Menu action={() => null} />
+        </BrowserRouter>
+      );
+
+      const communityButtonText = "COMMUNITY";
+
+      const communityButton = screen.getByRole("button", {
+        name: communityButtonText,
+      });
+
+      fireEvent.click(communityButton);
+
+      expect(mockUseNavigate).toHaveBeenCalled();
+    });
+
+    test("When clicking on draw button, it should send the user to the path /draw", async () => {
+      render(
+        <BrowserRouter>
+          <Menu action={() => null} />
+        </BrowserRouter>
+      );
+
+      const drawButtonText = "DRAW";
+
+      const drawButton = screen.getByRole("button", {
+        name: drawButtonText,
+      });
+
+      fireEvent.click(drawButton);
+
+      expect(mockUseNavigate).toHaveBeenCalled();
+    });
+
+    test("When clicking on gallery button, it should send the user to the path /draw", async () => {
+      render(
+        <BrowserRouter>
+          <Menu action={() => null} />
+        </BrowserRouter>
+      );
+
+      const galleryButtonText = "GALLERY";
+
+      const galleryButton = screen.getByRole("button", {
+        name: galleryButtonText,
+      });
+
+      fireEvent.click(galleryButton);
 
       expect(mockUseNavigate).toHaveBeenCalled();
     });
