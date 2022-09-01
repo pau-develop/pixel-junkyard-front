@@ -1,6 +1,10 @@
-interface Input {
+export interface Input {
   userName: string;
   password: string;
   email: string;
 }
-export default Input;
+
+export interface IUser {
+  userName: string;
+  token: string;
+}

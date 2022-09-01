@@ -1,4 +1,9 @@
-import { closeModalActionNew, openModalActionNew } from "./actionCreators";
+import { IUser } from "../../interfaces/interfaces";
+import {
+  closeModalActionNew,
+  loginUserActionNew,
+  openModalActionNew,
+} from "./actionCreators";
 
 describe("Given a openModal function", () => {
   describe("When called", () => {
@@ -34,6 +39,26 @@ describe("Given a closeModal function", () => {
       };
 
       const result = closeModalActionNew(ui);
+
+      expect(result).toEqual(expectedResult);
+    });
+  });
+});
+
+describe("Given a loginUser function", () => {
+  describe("When called", () => {
+    test("It should return an object with the action 'loginUser' and a payload of type IUser", () => {
+      const user: IUser = {
+        userName: "pau",
+        token: "123456",
+      };
+
+      const expectedResult = {
+        type: "user@login",
+        payload: user,
+      };
+
+      const result = loginUserActionNew(user);
 
       expect(result).toEqual(expectedResult);
     });
