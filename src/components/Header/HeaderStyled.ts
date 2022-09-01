@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const HeaderStyled = styled.header`
+  position: relative;
   background-color: ${(props) => props.theme.primaryColor};
   height: 7%;
   display: flex;

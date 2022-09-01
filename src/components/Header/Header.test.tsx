@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import { IUser } from "../../interfaces/interfaces";
 import Header from "./Header";
 
@@ -18,7 +19,7 @@ describe("Given a Header component", () => {
       expect(headingElement).not.toBeNull();
     });
 
-    test("If the currentUser received via props has a userName property, a button should be shown", () => {
+    test("If the currentUser received via props has a userName property, a button with the userName should be shown", () => {
       const user: IUser = {
         userName: "testUser",
         token: "123456",
@@ -29,6 +30,52 @@ describe("Given a Header component", () => {
       const buttonElement = screen.getByRole("button", { name: buttonText });
 
       expect(buttonElement).not.toBeNull();
+    });
+
+    test("If user clicks on userName button, a menu should appear with four naviation buttons", () => {
+      const user: IUser = {
+        userName: "testUser",
+        token: "123456",
+      };
+      render(
+        <BrowserRouter>
+          <Header currentUser={user} />
+        </BrowserRouter>
+      );
+      const buttonText = user.userName;
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      fireEvent.click(buttonElement);
+
+      const profileButtonElement = screen.getByRole("button", {
+        name: "PROFILE",
+      });
+
+      expect(profileButtonElement).not.toBeNull();
+    });
+
+    test("If any of the four navigation buttons are pressed, the menu and the buttons should disappear", () => {
+      const user: IUser = {
+        userName: "testUser",
+        token: "123456",
+      };
+      render(
+        <BrowserRouter>
+          <Header currentUser={user} />
+        </BrowserRouter>
+      );
+      const buttonText = user.userName;
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      fireEvent.click(buttonElement);
+
+      const profileButtonElement = screen.getByRole("button", {
+        name: "PROFILE",
+      });
+
+      fireEvent.click(profileButtonElement);
+
+      expect(profileButtonElement).not.toBeInTheDocument();
     });
   });
 });
