@@ -5,6 +5,7 @@ const HeaderStyled = styled.header`
   height: 7%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 5%;
   .header {
     &__title {

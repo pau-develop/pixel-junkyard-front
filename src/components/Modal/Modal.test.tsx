@@ -34,13 +34,11 @@ describe("Given a Modal component", () => {
       fireEvent.click(buttonElement);
 
       const newState = {
-        ui: {
-          isOpen: false,
-          message: "",
-        },
+        isOpen: false,
+        message: "",
       };
       const result = store.getState();
-      expect(result).toEqual(newState);
+      expect(result.ui).toEqual(newState);
     });
   });
 });

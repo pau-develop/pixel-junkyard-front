@@ -1,11 +1,16 @@
 import { useDispatch } from "react-redux";
-import { openModalActionNew } from "../store/actionCreators/actionCreators";
-import { UserData } from "../store/types/interfaces";
+import {
+  loginUserActionNew,
+  openModalActionNew,
+} from "../store/actionCreators/actionCreators";
+import { IUserLoginData, IUserRegisterData } from "../store/types/interfaces";
+import { fetchToken } from "../utils/auth";
 
 const useUsers = () => {
   const dispatch = useDispatch();
-  const registerUser = async (userData: UserData) => {
-    const url = process.env.REACT_APP_API_URL;
+  const url = process.env.REACT_APP_API_URL;
+
+  const registerUser = async (userData: IUserRegisterData) => {
     const data = await fetch(`${url}users/register`, {
       method: "POST",
       body: JSON.stringify(userData),
@@ -23,7 +28,22 @@ const useUsers = () => {
     }
   };
 
-  return { registerUser };
+  const loginUser = async (userData: IUserLoginData) => {
+    const data = await fetch(`${url}users/login`, {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const {
+      user: { token },
+    } = await data.json();
+    const user = fetchToken(token);
+    dispatch(loginUserActionNew(user));
+  };
+
+  return { registerUser, loginUser };
 };
 
 export default useUsers;
