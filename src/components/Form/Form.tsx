@@ -20,12 +20,19 @@ const Form = ({ formType }: FormProps): JSX.Element => {
 
   const handleInputObject = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newUser = {
+    if (formType === "register") {
+      const newUser = {
+        userName: input.userName,
+        password: input.password,
+        email: input.email,
+      };
+      registerUser(newUser);
+      return;
+    }
+    const loginUser = {
       userName: input.userName,
       password: input.password,
-      email: input.email,
     };
-    registerUser(newUser);
   };
 
   return (
