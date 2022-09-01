@@ -22,6 +22,7 @@ const Modal = ({ message }: ModalProps): JSX.Element => {
   return (
     <ModalStyled className="modal">
       <div className="modal__box">
+        <h2>ERROR</h2>
         <p>{message}</p>
         <Button text="OK" action={handleClick} />
       </div>
