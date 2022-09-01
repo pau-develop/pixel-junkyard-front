@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useUsers from "../../hooks/useUsers";
 import { Input } from "../../interfaces/interfaces";
 import { IUserLoginData } from "../../store/types/interfaces";
@@ -16,6 +17,7 @@ const inputField = {
 };
 
 const Form = ({ formType }: FormProps): JSX.Element => {
+  const navigate = useNavigate();
   const { registerUser } = useUsers();
   const { loginUser } = useUsers();
   const [input, setInput] = useState<Input>(inputField);
@@ -36,6 +38,10 @@ const Form = ({ formType }: FormProps): JSX.Element => {
       password: input.password,
     };
     loginUser(logUser);
+  };
+
+  const handleCancelButton = () => {
+    navigate("/home");
   };
 
   return (
@@ -82,7 +88,7 @@ const Form = ({ formType }: FormProps): JSX.Element => {
           </>
         ) : null}
         <div className="register__button-wrap">
-          <Button text="Cancel" type="button" />
+          <Button text="Cancel" type="button" action={handleCancelButton} />
           <Button text="Accept" />
         </div>
       </form>
