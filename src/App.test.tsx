@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { store } from "./app/store";
+import mockStore from "./mocks/mockStore";
 
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
@@ -29,6 +30,22 @@ describe("Given an App component", () => {
 
       const headingElement = screen.getByRole("heading", { name: textContent });
 
+      expect(headingElement).not.toBeNull();
+    });
+
+    test("If ui.state is set to isOpen, a modal with a heading 'Error 404' should be shown", () => {
+      Wrapper = ({ children }: WrapperProps): JSX.Element => {
+        return (
+          <Provider store={mockStore}>
+            <BrowserRouter>{children}</BrowserRouter>
+          </Provider>
+        );
+      };
+      render(<App />, { wrapper: Wrapper });
+      const headingText = "ERROR";
+      const headingElement = screen.getByRole("heading", {
+        name: headingText,
+      });
       expect(headingElement).not.toBeNull();
     });
   });
