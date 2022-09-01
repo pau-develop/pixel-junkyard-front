@@ -60,7 +60,7 @@ const Form = ({ formType }: FormProps): JSX.Element => {
           required
           id="password"
           autoComplete="off"
-          type="text"
+          type="password"
           value={input.password}
           onChange={(event) =>
             setInput({ ...input, password: event.target.value })
