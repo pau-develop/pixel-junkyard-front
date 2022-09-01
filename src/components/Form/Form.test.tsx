@@ -2,12 +2,14 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import Form from "./Form";
 
 const mockRegisterUser = jest.fn();
+const mockLoginUser = jest.fn();
 
 jest.mock("../../hooks/useUsers", () => ({
   __esModule: true,
   ...jest.requireActual("../../hooks/useUsers"),
   default: () => ({
     registerUser: () => mockRegisterUser(),
+    loginUser: () => mockLoginUser(),
   }),
 }));
 
@@ -49,7 +51,7 @@ describe("Given a RegisterForm component", () => {
   });
 
   describe("When accept button is clicked", () => {
-    test("the function registerUser from hook should be called", () => {
+    test("If the current Form is the register form, the function registerUser from hook should be called", () => {
       render(<Form formType={"register"} />);
       const buttonText = "Accept";
 
@@ -58,6 +60,17 @@ describe("Given a RegisterForm component", () => {
       fireEvent.click(buttonElement);
 
       expect(mockRegisterUser).toHaveBeenCalled();
+    });
+
+    test("If the current Form is the login form, the function loginUser from hook should be called", () => {
+      render(<Form formType={"login"} />);
+      const buttonText = "Accept";
+
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      fireEvent.click(buttonElement);
+
+      expect(mockLoginUser).toHaveBeenCalled();
     });
   });
 });
