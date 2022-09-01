@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const LoginFormStyled = styled.div`
-  .register {
+  .login {
     &__form {
       border-radius: 50px;
       background: linear-gradient(
