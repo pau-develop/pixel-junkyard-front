@@ -5,6 +5,7 @@ import { RootState } from "./app/store";
 import AppStyled from "./AppStyled";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
+import { IUser } from "./interfaces/interfaces";
 import GuestPage from "./pages/GuestPage/GuestPage";
 import LoginFormPage from "./pages/LoginFormPage/LoginFormPage";
 import RegisterFormPage from "./pages/RegisterFormPage/RegisterFormPage";
@@ -13,12 +14,12 @@ import { IUIModal } from "./store/types/interfaces";
 
 const App = (): JSX.Element => {
   const ui = useSelector<RootState>((state) => state.ui) as IUIModal;
-  const user = useSelector<RootState>((state) => state.user);
+  const user = useSelector<RootState>((state) => state.user) as IUser;
   console.log(user);
   return (
     <AppStyled className="app-container">
       {ui.isOpen ? <Modal message={ui.message} /> : null}
-      <Header />
+      <Header currentUser={user} />
       <main className="app-container__main">
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
