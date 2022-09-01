@@ -1,4 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
+import { IUser } from "../../interfaces/interfaces";
 
 import actionTypes from "../actionTypes/actionTypes";
 
