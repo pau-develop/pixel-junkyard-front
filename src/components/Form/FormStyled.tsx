@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const FormStyled = styled.div`
+  padding-bottom: 10%;
   .register {
     &__form {
       border-radius: 50px;
