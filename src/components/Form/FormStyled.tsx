@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const RegisterFormStyled = styled.div`
+const FormStyled = styled.div`
   .register {
     &__form {
       border-radius: 50px;
@@ -10,7 +10,7 @@ const RegisterFormStyled = styled.div`
         ${(props) => props.theme.primaryColor} 100%
       );
       width: 400px;
-      height: 600px;
+
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -34,6 +34,7 @@ const RegisterFormStyled = styled.div`
         outline: none;
       }
     }
+
     &__button-wrap {
       display: flex;
       justify-content: space-between;
@@ -43,4 +44,4 @@ const RegisterFormStyled = styled.div`
   }
 `;
 
-export default RegisterFormStyled;
+export default FormStyled;

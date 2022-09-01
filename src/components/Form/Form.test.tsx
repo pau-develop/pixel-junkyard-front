@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import RegisterForm from "./RegisterForm";
+import Form from "./Form";
 
 const mockRegisterUser = jest.fn();
 
@@ -14,7 +14,7 @@ jest.mock("../../hooks/useUsers", () => ({
 describe("Given a RegisterForm component", () => {
   describe("When instantiated", () => {
     test("It should show a bunch of inputs with labels 'Register'", () => {
-      render(<RegisterForm />);
+      render(<Form formType={"register"} />);
 
       const labelText = "User name";
 
@@ -26,7 +26,7 @@ describe("Given a RegisterForm component", () => {
 
   describe("When text is entered in the input field", () => {
     test("It should update the value property of input", () => {
-      render(<RegisterForm />);
+      render(<Form formType={"register"} />);
       const inputName = screen.getByLabelText("User name") as HTMLInputElement;
       const inputPassword = screen.getByLabelText(
         "Password"
@@ -50,7 +50,7 @@ describe("Given a RegisterForm component", () => {
 
   describe("When accept button is clicked", () => {
     test("the function registerUser from hook should be called", () => {
-      render(<RegisterForm />);
+      render(<Form formType={"register"} />);
       const buttonText = "Accept";
 
       const buttonElement = screen.getByRole("button", { name: buttonText });
