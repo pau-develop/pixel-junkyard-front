@@ -17,13 +17,17 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
     setMenu(!menu);
   };
 
+  const handleMenuClick = () => {
+    setMenu(false);
+  };
+
   return (
     <HeaderStyled className="header">
       <h1 className="header__title">Pixel Junkyard</h1>
       {currentUser.userName === "" ? null : (
         <Button text={currentUser.userName} action={handleClick} />
       )}
-      {menu && <Menu />}
+      {menu && <Menu action={handleMenuClick} />}
     </HeaderStyled>
   );
 };
