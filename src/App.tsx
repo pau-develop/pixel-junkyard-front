@@ -13,6 +13,8 @@ import { IUIModal } from "./store/types/interfaces";
 
 const App = (): JSX.Element => {
   const ui = useSelector<RootState>((state) => state.ui) as IUIModal;
+  const user = useSelector<RootState>((state) => state.user);
+  console.log(user);
   return (
     <AppStyled className="app-container">
       {ui.isOpen ? <Modal message={ui.message} /> : null}

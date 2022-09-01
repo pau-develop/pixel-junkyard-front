@@ -1,6 +1,11 @@
+import { IUser } from "../../interfaces/interfaces";
 import HeaderStyled from "./HeaderStyled";
 
-const Header = (): JSX.Element => {
+interface HeaderProps {
+  currentUser: IUser;
+}
+
+const Header = ({ currentUser }: HeaderProps): JSX.Element => {
   return (
     <HeaderStyled className="header">
       <h1 className="header__title">Pixel Junkyard</h1>

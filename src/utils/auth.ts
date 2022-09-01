@@ -6,7 +6,7 @@ export const fetchToken = (token: string) => {
   } = jwt(token);
 
   return {
-    token: token,
     userName: payloadToken.userName,
+    token: token,
   };
 };
