@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import Form from "./Form";
 
 const mockRegisterUser = jest.fn();
@@ -16,7 +17,11 @@ jest.mock("../../hooks/useUsers", () => ({
 describe("Given a RegisterForm component", () => {
   describe("When instantiated", () => {
     test("It should show a bunch of inputs with labels 'Register'", () => {
-      render(<Form formType={"register"} />);
+      render(
+        <BrowserRouter>
+          <Form formType={"register"} />
+        </BrowserRouter>
+      );
 
       const labelText = "User name";
 
@@ -28,7 +33,11 @@ describe("Given a RegisterForm component", () => {
 
   describe("When text is entered in the input field", () => {
     test("It should update the value property of input", () => {
-      render(<Form formType={"register"} />);
+      render(
+        <BrowserRouter>
+          <Form formType={"register"} />
+        </BrowserRouter>
+      );
       const inputName = screen.getByLabelText("User name") as HTMLInputElement;
       const inputPassword = screen.getByLabelText(
         "Password"
@@ -52,7 +61,11 @@ describe("Given a RegisterForm component", () => {
 
   describe("When accept button is clicked", () => {
     test("If the current Form is the register form, the function registerUser from hook should be called", () => {
-      render(<Form formType={"register"} />);
+      render(
+        <BrowserRouter>
+          <Form formType={"register"} />
+        </BrowserRouter>
+      );
       const buttonText = "Accept";
 
       const buttonElement = screen.getByRole("button", { name: buttonText });
@@ -63,7 +76,11 @@ describe("Given a RegisterForm component", () => {
     });
 
     test("If the current Form is the login form, the function loginUser from hook should be called", () => {
-      render(<Form formType={"login"} />);
+      render(
+        <BrowserRouter>
+          <Form formType={"login"} />
+        </BrowserRouter>
+      );
       const buttonText = "Accept";
 
       const buttonElement = screen.getByRole("button", { name: buttonText });
