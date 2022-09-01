@@ -1,7 +1,12 @@
-export interface UserData {
+export interface IUserRegisterData {
   userName: string;
   password: string;
   email: string;
+}
+
+export interface IUserLoginData {
+  userName: string;
+  password: string;
 }
 
 export interface IUIModal {

@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
-import { UserData } from "../store/types/interfaces";
+import { IUserRegisterData } from "../store/types/interfaces";
 import useUsers from "./useUsers";
 
 interface WrapperProps {
@@ -19,7 +19,7 @@ beforeEach(() => {
 describe("Given a useUsers hook", () => {
   describe("When its function registerUser is called", () => {
     test("It should send the user info passed as arguments to the DB", async () => {
-      const mockUser: UserData = {
+      const mockUser: IUserRegisterData = {
         userName: "mock",
         password: "123",
         email: "mock@mock.com",
@@ -45,7 +45,7 @@ describe("Given a useUsers hook", () => {
     });
 
     test("If there is an error, the state.ui should be updated", async () => {
-      const mockUser: UserData = {
+      const mockUser: IUserRegisterData = {
         userName: "mock",
         password: "123",
         email: "mock@mock.com",
@@ -66,13 +66,11 @@ describe("Given a useUsers hook", () => {
       });
 
       const newState = {
-        ui: {
-          isOpen: true,
-          message: "ERROR! Username already taken",
-        },
+        isOpen: true,
+        message: "ERROR! Username already taken",
       };
       const result = store.getState();
-      expect(result).toEqual(newState);
+      expect(result.ui).toEqual(newState);
     });
   });
 });
