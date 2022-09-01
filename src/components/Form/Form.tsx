@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import useUsers from "../../hooks/useUsers";
-import Input from "../../interfaces/interfaces";
+import { Input } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
 
