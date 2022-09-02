@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import useUser from "../../hooks/useUser";
 import Button from "../Button/Button";
 import LogoutMenuStyled from "./LogoutMenuStyled";
