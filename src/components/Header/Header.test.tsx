@@ -1,7 +1,25 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "../../app/store";
 import { IUser } from "../../interfaces/interfaces";
 import Header from "./Header";
+
+interface WrapperProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+let Wrapper: ({ children }: WrapperProps) => JSX.Element;
+
+beforeEach(() => {
+  Wrapper = ({ children }: WrapperProps): JSX.Element => {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </Provider>
+    );
+  };
+});
 
 describe("Given a Header component", () => {
   describe("When instantiated", () => {
@@ -114,11 +132,7 @@ describe("Given a Header component", () => {
         userName: "testUser",
         token: "123456",
       };
-      render(
-        <BrowserRouter>
-          <Header currentUser={user} />
-        </BrowserRouter>
-      );
+      render(<Header currentUser={user} />, { wrapper: Wrapper });
       const iconElement = screen.getByTestId("off-icon");
 
       fireEvent.click(iconElement);

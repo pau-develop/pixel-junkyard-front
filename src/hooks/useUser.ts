@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
+import { IUser } from "../interfaces/interfaces";
 import {
   loginUserActionNew,
+  logoutUserActionNew,
   openModalActionNew,
 } from "../store/actionCreators/actionCreators";
 import { IUserLoginData, IUserRegisterData } from "../store/types/interfaces";
@@ -61,7 +63,23 @@ const useUser = () => {
     dispatch(openModalActionNew(ui));
   };
 
-  return { registerUser, loginUser };
+  const logoutUser = () => {
+    const user: IUser = {
+      userName: "",
+      token: "",
+    };
+    dispatch(logoutUserActionNew(user));
+    const ui = {
+      isOpen: true,
+      message: "You logged out",
+      type: "",
+      redirect: "/home",
+    };
+    localStorage.removeItem("token");
+    dispatch(openModalActionNew(ui));
+  };
+
+  return { registerUser, loginUser, logoutUser };
 };
 
 export default useUser;
