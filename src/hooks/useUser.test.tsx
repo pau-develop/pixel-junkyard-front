@@ -115,4 +115,28 @@ describe("Given a useUsers hook", () => {
       expect(global.fetch).toHaveBeenCalled();
     });
   });
+
+  describe("When its function logoutUser is called", () => {
+    test("It should remove the current user from the localStorage", async () => {
+      const mockToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzEwODYxYzk5MGM3MDlhNmNlYjk0NWQiLCJ1c2VyTmFtZSI6InRlc3RpbmciLCJpYXQiOjE2NjIxMzk1Mzd9.EKxxxoIKOLRRPDR4Uuh-_QmFM8khGF4_-mxbIxjrOpE";
+      window.localStorage.setItem("token", mockToken);
+
+      expect(window.localStorage.length).toBe(1);
+
+      const {
+        result: {
+          current: { logoutUser },
+        },
+      } = renderHook(useUser, {
+        wrapper: Wrapper,
+      });
+
+      await waitFor(() => {
+        logoutUser();
+      });
+
+      expect(window.localStorage.length).toBe(0);
+    });
+  });
 });
