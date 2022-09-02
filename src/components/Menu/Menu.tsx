@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import MenuStyled from "./MenuStyled";
@@ -8,6 +10,7 @@ interface MenuProps {
 }
 
 const Menu = ({ action, menuClass }: MenuProps): JSX.Element => {
+  const logoutIcon = <FontAwesomeIcon icon={faPowerOff} />;
   const navigate = useNavigate();
 
   const handleClick = (path: string) => {
@@ -37,6 +40,7 @@ const Menu = ({ action, menuClass }: MenuProps): JSX.Element => {
         action={() => handleClick("/gallery")}
         buttonClass={"button-navigation"}
       />
+      <i>{logoutIcon}</i>
     </MenuStyled>
   );
 };

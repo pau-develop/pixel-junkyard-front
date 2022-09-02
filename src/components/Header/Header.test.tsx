@@ -31,7 +31,7 @@ describe("Given a Header component", () => {
         </BrowserRouter>
       );
 
-      const iconElement = screen.getByTestId("icon-element");
+      const iconElement = screen.getByTestId("hamburger-icon");
 
       expect(iconElement).not.toBeNull();
     });
@@ -47,7 +47,7 @@ describe("Given a Header component", () => {
           <Header currentUser={user} />
         </BrowserRouter>
       );
-      const iconElement = screen.getByTestId("icon-element");
+      const iconElement = screen.getByTestId("hamburger-icon");
 
       fireEvent.click(iconElement);
 
@@ -69,7 +69,7 @@ describe("Given a Header component", () => {
           <Header currentUser={user} />
         </BrowserRouter>
       );
-      const iconElement = screen.getByTestId("icon-element");
+      const iconElement = screen.getByTestId("hamburger-icon");
 
       fireEvent.click(iconElement);
 
@@ -93,7 +93,7 @@ describe("Given a Header component", () => {
           <Header currentUser={user} />
         </BrowserRouter>
       );
-      const iconElement = screen.getByTestId("icon-element");
+      const iconElement = screen.getByTestId("hamburger-icon");
 
       fireEvent.click(iconElement);
 
