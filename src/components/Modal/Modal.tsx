@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { closeModalActionNew } from "../../store/actionCreators/actionCreators";
 import Button from "../Button/Button";
 import ModalStyled from "./ModalStyled";
@@ -10,6 +11,24 @@ interface ModalProps {
 }
 
 const Modal = ({ message, type, redirect }: ModalProps): JSX.Element => {
+  const navigate = useNavigate();
+
+  if (redirect !== "") {
+    let timer = 3;
+    const counter = () => {
+      const interval = setInterval(() => {
+        timer -= 1;
+        if (timer <= 0) {
+          clearInterval(interval);
+          dispatch(closeModalActionNew(ui));
+          navigate(redirect);
+        }
+      }, 1000);
+    };
+
+    counter();
+  }
+
   const dispatch = useDispatch();
 
   const ui = {
@@ -24,9 +43,8 @@ const Modal = ({ message, type, redirect }: ModalProps): JSX.Element => {
   };
 
   return (
-    <ModalStyled className="modal">
+    <ModalStyled className="modal" data-testid="modal-element">
       <div className="modal__box">
-        <h2>ERROR</h2>
         <p>{message}</p>
         {type === "confirm" ? <Button text="OK" action={handleClick} /> : null}
       </div>

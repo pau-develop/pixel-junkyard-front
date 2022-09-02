@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import { store } from "../../app/store";
 import Modal from "./Modal";
 
@@ -17,10 +18,15 @@ beforeEach(() => {
 
 describe("Given a Modal component", () => {
   describe("When instantiated", () => {
-    test("It should show a paragraph with an error passed via props", () => {
-      render(<Modal message="test paragraph" redirect="" />, {
-        wrapper: Wrapper,
-      });
+    test("It should show a paragraph text passed via props", () => {
+      render(
+        <BrowserRouter>
+          <Modal message="test paragraph" redirect="" />
+        </BrowserRouter>,
+        {
+          wrapper: Wrapper,
+        }
+      );
 
       const paragraphText = "test paragraph";
       const paragraphElement = screen.getByText(paragraphText);
@@ -29,9 +35,14 @@ describe("Given a Modal component", () => {
     });
 
     test("It should show an 'OK' button and when clicked it should change the store state.ui", () => {
-      render(<Modal message="test paragraph" type="confirm" redirect="" />, {
-        wrapper: Wrapper,
-      });
+      render(
+        <BrowserRouter>
+          <Modal message="test paragraph" type="confirm" redirect="" />
+        </BrowserRouter>,
+        {
+          wrapper: Wrapper,
+        }
+      );
       const buttonText = "OK";
       const buttonElement = screen.getByRole("button", { name: buttonText });
 
@@ -45,6 +56,19 @@ describe("Given a Modal component", () => {
       };
       const result = store.getState();
       expect(result.ui).toEqual(newState);
+    });
+
+    test("if the Modal has a redirect, it should run a counter function", () => {
+      jest.useFakeTimers();
+      jest.spyOn(global, "setInterval");
+      render(
+        <BrowserRouter>
+          <Modal message="test paragraph" type="confirm" redirect="/home" />
+        </BrowserRouter>,
+        { wrapper: Wrapper }
+      );
+      jest.advanceTimersByTime(3000);
+      expect(setInterval).toHaveBeenCalled();
     });
   });
 });

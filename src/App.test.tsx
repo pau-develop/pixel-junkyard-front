@@ -33,7 +33,7 @@ describe("Given an App component", () => {
       expect(headingElement).not.toBeNull();
     });
 
-    test("If ui.state is set to isOpen, a modal with a heading 'Error 404' should be shown", () => {
+    test("If ui.state is set to isOpen, a modal should be shown", () => {
       Wrapper = ({ children }: WrapperProps): JSX.Element => {
         return (
           <Provider store={mockStore}>
@@ -42,11 +42,9 @@ describe("Given an App component", () => {
         );
       };
       render(<App />, { wrapper: Wrapper });
-      const headingText = "ERROR";
-      const headingElement = screen.getByRole("heading", {
-        name: headingText,
-      });
-      expect(headingElement).not.toBeNull();
+
+      const modalElement = screen.getByTestId("modal-element");
+      expect(modalElement).not.toBeNull();
     });
   });
 });

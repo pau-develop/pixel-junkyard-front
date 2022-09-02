@@ -27,7 +27,15 @@ const useUsers = () => {
         redirect: "",
       };
       dispatch(openModalActionNew(ui));
+      return;
     }
+    const ui = {
+      isOpen: true,
+      message: "User registered!",
+      type: "",
+      redirect: "/login",
+    };
+    dispatch(openModalActionNew(ui));
   };
 
   const loginUser = async (userData: IUserLoginData) => {
