@@ -17,7 +17,7 @@ const App = (): JSX.Element => {
   const user = useSelector<RootState>((state) => state.user) as IUser;
   return (
     <AppStyled className="app-container">
-      {ui.isOpen ? <Modal message={ui.message} /> : null}
+      {ui.isOpen ? <Modal message={ui.message} type={ui.type} /> : null}
       <Header currentUser={user} />
       <main className="app-container__main">
         <Routes>

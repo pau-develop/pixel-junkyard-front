@@ -12,4 +12,5 @@ export interface IUserLoginData {
 export interface IUIModal {
   isOpen: boolean;
   message: string;
+  type: string;
 }

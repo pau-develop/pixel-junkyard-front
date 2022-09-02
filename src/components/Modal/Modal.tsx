@@ -5,14 +5,16 @@ import ModalStyled from "./ModalStyled";
 
 interface ModalProps {
   message: string;
+  type?: string;
 }
 
-const Modal = ({ message }: ModalProps): JSX.Element => {
+const Modal = ({ message, type }: ModalProps): JSX.Element => {
   const dispatch = useDispatch();
 
   const ui = {
     isOpen: false,
     message: "",
+    type: "confirm",
   };
 
   const handleClick = () => {
@@ -24,7 +26,7 @@ const Modal = ({ message }: ModalProps): JSX.Element => {
       <div className="modal__box">
         <h2>ERROR</h2>
         <p>{message}</p>
-        <Button text="OK" action={handleClick} />
+        {type === "confirm" ? <Button text="OK" action={handleClick} /> : null}
       </div>
     </ModalStyled>
   );

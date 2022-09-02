@@ -27,7 +27,9 @@ describe("Given a Modal component", () => {
     });
 
     test("It should show an 'OK' button and when clicked it should change the store state.ui", () => {
-      render(<Modal message="test paragraph" />, { wrapper: Wrapper });
+      render(<Modal message="test paragraph" type="confirm" />, {
+        wrapper: Wrapper,
+      });
       const buttonText = "OK";
       const buttonElement = screen.getByRole("button", { name: buttonText });
 
@@ -36,6 +38,7 @@ describe("Given a Modal component", () => {
       const newState = {
         isOpen: false,
         message: "",
+        type: "confirm",
       };
       const result = store.getState();
       expect(result.ui).toEqual(newState);
