@@ -57,6 +57,7 @@ const useUser = () => {
       type: "",
       redirect: "/home",
     };
+    localStorage.setItem("token", token);
     dispatch(openModalActionNew(ui));
   };
 
