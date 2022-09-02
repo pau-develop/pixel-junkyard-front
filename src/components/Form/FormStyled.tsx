@@ -46,6 +46,10 @@ const FormStyled = styled.div`
       width: 70%;
     }
   }
+
+  @media (min-width: 1000px) {
+    max-width: 800px;
+  }
 `;
 
 export default FormStyled;
