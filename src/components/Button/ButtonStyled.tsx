@@ -10,18 +10,23 @@ const ButtonStyled = styled.button`
     height: 60px;
     width: 120px;
     cursor: pointer;
+    @media (max-width: 599px) {
+      height: 40px;
+      width: 110px;
+    }
   }
   &.button-navigation {
     border: none;
-
     background-color: ${(props) => props.theme.primaryColor};
     padding: 0;
     color: ${(props) => props.theme.secondaryColor};
-    font-size: 1.5rem;
     height: 40px;
     width: 120px;
     font-size: 1rem;
     cursor: pointer;
+    @media (min-width: 600px) {
+      font-size: 1.5rem;
+    }
   }
 `;
 
