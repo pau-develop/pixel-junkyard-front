@@ -23,9 +23,19 @@ const useUsers = () => {
       const ui = {
         isOpen: true,
         message: response.error,
+        type: "",
+        redirect: "",
       };
       dispatch(openModalActionNew(ui));
+      return;
     }
+    const ui = {
+      isOpen: true,
+      message: "User registered!",
+      type: "",
+      redirect: "/login",
+    };
+    dispatch(openModalActionNew(ui));
   };
 
   const loginUser = async (userData: IUserLoginData) => {
@@ -41,6 +51,13 @@ const useUsers = () => {
     } = await data.json();
     const user = fetchToken(token);
     dispatch(loginUserActionNew(user));
+    const ui = {
+      isOpen: true,
+      message: "You are logged in!",
+      type: "",
+      redirect: "/home",
+    };
+    dispatch(openModalActionNew(ui));
   };
 
   return { registerUser, loginUser };

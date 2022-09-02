@@ -11,6 +11,8 @@ describe("Given a openModal function", () => {
       const ui = {
         isOpen: true,
         message: "showing modal",
+        type: "",
+        redirect: "",
       };
 
       const expectedResult = {
@@ -31,6 +33,8 @@ describe("Given a closeModal function", () => {
       const ui = {
         isOpen: false,
         message: "",
+        type: "",
+        redirect: "",
       };
 
       const expectedResult = {

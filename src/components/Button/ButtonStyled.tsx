@@ -12,6 +12,7 @@ const ButtonStyled = styled.button`
     cursor: pointer;
   }
   &.button-navigation {
+    border: none;
     border-right: 2px solid ${(props) => props.theme.primaryColor};
     background-color: ${(props) => props.theme.thirdColor};
     padding: 0;

@@ -10,7 +10,7 @@ const FormStyled = styled.div`
         ${(props) => props.theme.thirdColor} 0%,
         ${(props) => props.theme.primaryColor} 100%
       );
-      width: 400px;
+      width: 320px;
 
       display: flex;
       flex-direction: column;
