@@ -10,14 +10,13 @@ interface HeaderProps {
   currentUser: IUser;
 }
 
-const initialNavMenuState = false;
-const initialLogoutMenuState = false;
+const initialMenuState = false;
 
 const Header = ({ currentUser }: HeaderProps): JSX.Element => {
   const hamburguerIcon = <FontAwesomeIcon icon={faBars} />;
   const logoutIcon = <FontAwesomeIcon icon={faPowerOff} />;
-  const [navMenu, setNavMenu] = useState<boolean>(initialNavMenuState);
-  const [logoutMenu, setLogoutMenu] = useState<boolean>(initialNavMenuState);
+  const [navMenu, setNavMenu] = useState<boolean>(initialMenuState);
+  const [logoutMenu, setLogoutMenu] = useState<boolean>(initialMenuState);
 
   const handleOpenNavMenuClick = () => {
     setNavMenu(!navMenu);
