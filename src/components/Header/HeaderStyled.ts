@@ -20,7 +20,10 @@ const HeaderStyled = styled.header`
     &__icon-wrap {
       display: flex;
       width: 20%;
-      justify-content: space-evenly;
+      justify-content: flex-end;
+      i:first-child {
+        margin-right: 20%;
+      }
     }
   }
   i {

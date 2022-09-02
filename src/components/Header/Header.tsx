@@ -4,6 +4,7 @@ import { useState } from "react";
 import { IUser } from "../../interfaces/interfaces";
 import Menu from "../Menu/Menu";
 import HeaderStyled from "./HeaderStyled";
+import LogoutMenu from "../LogoutMenu/LogoutMenu";
 
 interface HeaderProps {
   currentUser: IUser;
@@ -20,6 +21,7 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
 
   const handleOpenNavMenuClick = () => {
     setNavMenu(!navMenu);
+    setLogoutMenu(false);
   };
 
   const handleCloseNavMenuClick = () => {
@@ -28,7 +30,9 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
 
   const handleOpenLogoutMenuClick = () => {
     setLogoutMenu(!logoutMenu);
+    setNavMenu(false);
   };
+  console.log(logoutMenu);
 
   return (
     <HeaderStyled className="header">
@@ -49,6 +53,7 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
       {navMenu && (
         <Menu action={handleCloseNavMenuClick} menuClass="phone-menu" />
       )}
+      {logoutMenu && <LogoutMenu menuClass="phone-logout-menu" />}
     </HeaderStyled>
   );
 };
