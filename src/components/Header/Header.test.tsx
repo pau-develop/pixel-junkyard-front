@@ -19,7 +19,7 @@ describe("Given a Header component", () => {
       expect(headingElement).not.toBeNull();
     });
 
-    test("If a user is logged in and we are on mobile, a hamburguer icon should appear", () => {
+    test("If a user is logged in and we are on mobile, a hamburguer and an 'off 'icon should appear", () => {
       window.innerWidth = 300;
       const user: IUser = {
         userName: "testUser",
@@ -31,9 +31,11 @@ describe("Given a Header component", () => {
         </BrowserRouter>
       );
 
-      const iconElement = screen.getByTestId("hamburger-icon");
+      const hamburguerIconElement = screen.getByTestId("hamburger-icon");
+      const offIconElement = screen.getByTestId("off-icon");
 
-      expect(iconElement).not.toBeNull();
+      expect(hamburguerIconElement).not.toBeNull();
+      expect(offIconElement).not.toBeNull();
     });
 
     test("If user clicks on the hamburguer button, a menu should appear with four naviation buttons", () => {
@@ -104,6 +106,28 @@ describe("Given a Header component", () => {
       fireEvent.click(profileButtonElement[1]);
 
       expect(profileButtonElement[1]).toBeInTheDocument();
+    });
+
+    test("If user clicks on the 'off' button, a menu should appear with a 'Do you want to log out?' text", () => {
+      window.innerWidth = 300;
+      const user: IUser = {
+        userName: "testUser",
+        token: "123456",
+      };
+      render(
+        <BrowserRouter>
+          <Header currentUser={user} />
+        </BrowserRouter>
+      );
+      const iconElement = screen.getByTestId("off-icon");
+
+      fireEvent.click(iconElement);
+
+      const okButtonElement = screen.getAllByRole("button", {
+        name: "OK",
+      });
+
+      expect(okButtonElement).not.toBeNull();
     });
   });
 });
