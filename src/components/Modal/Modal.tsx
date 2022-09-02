@@ -6,15 +6,17 @@ import ModalStyled from "./ModalStyled";
 interface ModalProps {
   message: string;
   type?: string;
+  redirect: string;
 }
 
-const Modal = ({ message, type }: ModalProps): JSX.Element => {
+const Modal = ({ message, type, redirect }: ModalProps): JSX.Element => {
   const dispatch = useDispatch();
 
   const ui = {
     isOpen: false,
     message: "",
     type: "confirm",
+    redirect: "",
   };
 
   const handleClick = () => {

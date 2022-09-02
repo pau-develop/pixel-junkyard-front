@@ -18,7 +18,9 @@ beforeEach(() => {
 describe("Given a Modal component", () => {
   describe("When instantiated", () => {
     test("It should show a paragraph with an error passed via props", () => {
-      render(<Modal message="test paragraph" />, { wrapper: Wrapper });
+      render(<Modal message="test paragraph" redirect="" />, {
+        wrapper: Wrapper,
+      });
 
       const paragraphText = "test paragraph";
       const paragraphElement = screen.getByText(paragraphText);
@@ -27,7 +29,7 @@ describe("Given a Modal component", () => {
     });
 
     test("It should show an 'OK' button and when clicked it should change the store state.ui", () => {
-      render(<Modal message="test paragraph" type="confirm" />, {
+      render(<Modal message="test paragraph" type="confirm" redirect="" />, {
         wrapper: Wrapper,
       });
       const buttonText = "OK";
@@ -39,6 +41,7 @@ describe("Given a Modal component", () => {
         isOpen: false,
         message: "",
         type: "confirm",
+        redirect: "",
       };
       const result = store.getState();
       expect(result.ui).toEqual(newState);

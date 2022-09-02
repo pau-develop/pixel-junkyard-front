@@ -7,7 +7,8 @@ import { IUIModal } from "../types/interfaces";
 const initialState = {
   isOpen: false,
   message: "",
-  type: "confirm",
+  type: "",
+  redirect: "",
 };
 
 const uiReducer = createReducer<IUIModal>(initialState, (builder) => {

@@ -23,6 +23,8 @@ const useUsers = () => {
       const ui = {
         isOpen: true,
         message: response.error,
+        type: "",
+        redirect: "",
       };
       dispatch(openModalActionNew(ui));
     }

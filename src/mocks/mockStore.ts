@@ -5,6 +5,8 @@ import { IUIModal } from "../store/types/interfaces";
 const initialUiState = {
   isOpen: true,
   message: "",
+  type: "",
+  redirect: "",
 };
 
 const initialUserState = {

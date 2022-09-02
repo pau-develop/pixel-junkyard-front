@@ -13,4 +13,5 @@ export interface IUIModal {
   isOpen: boolean;
   message: string;
   type: string;
+  redirect: string;
 }

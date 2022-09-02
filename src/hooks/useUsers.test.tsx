@@ -73,6 +73,8 @@ describe("Given a useUsers hook", () => {
       const newState = {
         isOpen: true,
         message: "ERROR! Username already taken",
+        type: "",
+        redirect: "",
       };
       const result = store.getState();
       expect(result.ui).toEqual(newState);
