@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const AppStyled = styled.div`
   position: relative;
+  height: 100vh;
   min-height: 100vh;
   width: 100vw;
   min-width: 400px;

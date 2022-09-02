@@ -25,7 +25,11 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
     <HeaderStyled className="header">
       <h1 className="header__title">Pixel Junkyard</h1>
       {currentUser.userName === "" ? null : (
-        <Button text={currentUser.userName} action={handleClick} />
+        <Button
+          text={currentUser.userName}
+          action={handleClick}
+          buttonClass={"header-button"}
+        />
       )}
       {menu && <Menu action={handleMenuClick} />}
     </HeaderStyled>
