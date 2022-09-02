@@ -13,13 +13,14 @@ const ButtonStyled = styled.button`
   }
   &.button-navigation {
     border: none;
-    border-right: 2px solid ${(props) => props.theme.primaryColor};
-    background-color: ${(props) => props.theme.thirdColor};
+
+    background-color: ${(props) => props.theme.primaryColor};
     padding: 0;
     color: ${(props) => props.theme.secondaryColor};
     font-size: 1.5rem;
     height: 40px;
     width: 120px;
+    font-size: 1rem;
     cursor: pointer;
   }
 `;
