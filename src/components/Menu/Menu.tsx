@@ -4,9 +4,10 @@ import MenuStyled from "./MenuStyled";
 
 interface MenuProps {
   action: () => void;
+  menuClass?: string;
 }
 
-const Menu = ({ action }: MenuProps): JSX.Element => {
+const Menu = ({ action, menuClass }: MenuProps): JSX.Element => {
   const navigate = useNavigate();
 
   const handleClick = (path: string) => {
@@ -15,11 +16,27 @@ const Menu = ({ action }: MenuProps): JSX.Element => {
   };
 
   return (
-    <MenuStyled className="phone-menu">
-      <Button text="PROFILE" action={() => handleClick("/profile")} />
-      <Button text="COMMUNITY" action={() => handleClick("/community")} />
-      <Button text="GALLERY" action={() => handleClick("/gallery")} />
-      <Button text="DRAW" action={() => handleClick("/gallery")} />
+    <MenuStyled className={menuClass}>
+      <Button
+        text="PROFILE"
+        action={() => handleClick("/profile")}
+        buttonClass={"button-navigation"}
+      />
+      <Button
+        text="COMMUNITY"
+        action={() => handleClick("/community")}
+        buttonClass={"button-navigation"}
+      />
+      <Button
+        text="GALLERY"
+        action={() => handleClick("/gallery")}
+        buttonClass={"button-navigation"}
+      />
+      <Button
+        text="DRAW"
+        action={() => handleClick("/gallery")}
+        buttonClass={"button-navigation"}
+      />
     </MenuStyled>
   );
 };

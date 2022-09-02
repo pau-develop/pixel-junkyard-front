@@ -1,14 +1,24 @@
 import ButtonStyled from "./ButtonStyled";
 
 interface ButtonProps {
-  text: string;
+  text?: string;
   action?: () => void;
   type?: "button" | "submit";
+  buttonClass?: string;
 }
 
-const Button = ({ text, action, type }: ButtonProps): JSX.Element => {
+const Button = ({
+  text,
+  action,
+  type,
+  buttonClass,
+}: ButtonProps): JSX.Element => {
   return (
-    <ButtonStyled className="button" onClick={action} type={type}>
+    <ButtonStyled
+      className={buttonClass ? buttonClass : "button"}
+      onClick={action}
+      type={type}
+    >
       {text}
     </ButtonStyled>
   );
