@@ -9,11 +9,6 @@ const ButtonStyled = styled.button`
   height: 60px;
   width: 120px;
   cursor: pointer;
-  &.header-button {
-    @media (min-width: 600px) {
-      display: none;
-    }
-  }
 `;
 
 export default ButtonStyled;

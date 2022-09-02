@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { IUser } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
@@ -11,6 +13,7 @@ interface HeaderProps {
 const initialMenuState = false;
 
 const Header = ({ currentUser }: HeaderProps): JSX.Element => {
+  const hamburguer = <FontAwesomeIcon icon={faBars} />;
   const [menu, setMenu] = useState<boolean>(initialMenuState);
 
   const handleClick = () => {
@@ -25,11 +28,9 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
     <HeaderStyled className="header">
       <h1 className="header__title">Pixel Junkyard</h1>
       {currentUser.userName === "" ? null : (
-        <Button
-          text={currentUser.userName}
-          action={handleClick}
-          buttonClass={"header-button"}
-        />
+        <i data-testid="icon-element" onClick={handleClick}>
+          {hamburguer}
+        </i>
       )}
       {menu && <Menu action={handleMenuClick} />}
     </HeaderStyled>

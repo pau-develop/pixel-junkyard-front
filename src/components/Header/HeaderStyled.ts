@@ -17,6 +17,15 @@ const HeaderStyled = styled.header`
       font-size: 1.5rem;
     }
   }
+  i {
+    color: ${(props) => props.theme.secondaryColor};
+    transform: scale(2);
+  }
+  @media (max-width: 599px) {
+    i {
+      display: none;
+    }
+  }
 `;
 
 export default HeaderStyled;

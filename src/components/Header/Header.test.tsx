@@ -26,10 +26,9 @@ describe("Given a Header component", () => {
       };
       render(<Header currentUser={user} />);
 
-      const buttonText = user.userName;
-      const buttonElement = screen.getByRole("button", { name: buttonText });
+      const iconElement = screen.getByTestId("icon-element");
 
-      expect(buttonElement).not.toBeNull();
+      expect(iconElement).not.toBeNull();
     });
 
     test("If user clicks on userName button, a menu should appear with four naviation buttons", () => {
@@ -42,10 +41,9 @@ describe("Given a Header component", () => {
           <Header currentUser={user} />
         </BrowserRouter>
       );
-      const buttonText = user.userName;
-      const buttonElement = screen.getByRole("button", { name: buttonText });
+      const iconElement = screen.getByTestId("icon-element");
 
-      fireEvent.click(buttonElement);
+      fireEvent.click(iconElement);
 
       const profileButtonElement = screen.getByRole("button", {
         name: "PROFILE",
@@ -64,10 +62,9 @@ describe("Given a Header component", () => {
           <Header currentUser={user} />
         </BrowserRouter>
       );
-      const buttonText = user.userName;
-      const buttonElement = screen.getByRole("button", { name: buttonText });
+      const iconElement = screen.getByTestId("icon-element");
 
-      fireEvent.click(buttonElement);
+      fireEvent.click(iconElement);
 
       const profileButtonElement = screen.getByRole("button", {
         name: "PROFILE",
