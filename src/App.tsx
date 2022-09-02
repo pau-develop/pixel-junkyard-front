@@ -18,7 +18,6 @@ const App = (): JSX.Element => {
   const dispatch = useDispatch();
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       const localUser = fetchToken(token);
       dispatch(loginUserActionNew(localUser));
@@ -27,7 +26,7 @@ const App = (): JSX.Element => {
 
   const ui = useSelector<RootState>((state) => state.ui) as IUIModal;
   const user = useSelector<RootState>((state) => state.user) as IUser;
-  console.log(user);
+
   return (
     <AppStyled className="app-container">
       {ui.isOpen ? (
