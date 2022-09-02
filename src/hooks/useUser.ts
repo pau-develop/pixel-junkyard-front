@@ -6,7 +6,7 @@ import {
 import { IUserLoginData, IUserRegisterData } from "../store/types/interfaces";
 import { fetchToken } from "../utils/auth";
 
-const useUsers = () => {
+const useUser = () => {
   const dispatch = useDispatch();
   const url = process.env.REACT_APP_API_URL;
 
@@ -63,4 +63,4 @@ const useUsers = () => {
   return { registerUser, loginUser };
 };
 
-export default useUsers;
+export default useUser;
