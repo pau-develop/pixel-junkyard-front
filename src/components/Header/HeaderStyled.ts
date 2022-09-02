@@ -17,13 +17,24 @@ const HeaderStyled = styled.header`
       text-transform: uppercase;
       font-size: 1.5rem;
     }
+    &__icon-wrap {
+      display: flex;
+      width: 20%;
+      justify-content: flex-end;
+      i:first-child {
+        margin-right: 20%;
+      }
+    }
   }
   i {
     color: ${(props) => props.theme.secondaryColor};
+    cursor: pointer;
   }
   @media (min-width: 599px) {
-    i {
-      display: none;
+    .header {
+      &__icon-wrap {
+        display: none;
+      }
     }
   }
 `;

@@ -30,8 +30,10 @@ const MenuStyled = styled.div`
     button:nth-child(4) {
       text-align: right;
     }
-    @media (min-width: 599px) {
+    i {
       display: none;
+    }
+    @media (min-width: 599px) {
     }
   }
   &.desk-menu {
@@ -42,6 +44,9 @@ const MenuStyled = styled.div`
     position: static;
     display: flex;
     align-items: center;
+    i {
+      cursor: pointer;
+    }
 
     button {
       flex: 1;
