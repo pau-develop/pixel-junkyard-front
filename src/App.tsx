@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { RootState } from "./app/store";
 import AppStyled from "./AppStyled";
@@ -10,11 +10,24 @@ import GuestPage from "./pages/GuestPage/GuestPage";
 import LoginFormPage from "./pages/LoginFormPage/LoginFormPage";
 import RegisterFormPage from "./pages/RegisterFormPage/RegisterFormPage";
 import UnknownPage from "./pages/UnknownPage/UnknownPage";
+import { loginUserActionNew } from "./store/actionCreators/actionCreators";
 import { IUIModal } from "./store/types/interfaces";
+import { fetchToken } from "./utils/auth";
 
 const App = (): JSX.Element => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const localUser = fetchToken(token);
+      dispatch(loginUserActionNew(localUser));
+    }
+  }, [dispatch]);
+
   const ui = useSelector<RootState>((state) => state.ui) as IUIModal;
   const user = useSelector<RootState>((state) => state.user) as IUser;
+  console.log(user);
   return (
     <AppStyled className="app-container">
       {ui.isOpen ? (
