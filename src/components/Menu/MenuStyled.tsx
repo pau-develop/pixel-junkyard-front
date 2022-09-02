@@ -45,9 +45,14 @@ const MenuStyled = styled.div`
 
     button {
       flex: 1;
+      font-size: 1rem;
     }
     @media (max-width: 599px) {
       display: none;
+      width: 50%;
+    }
+    @media (min-width: 1000px) {
+      width: 30%;
     }
   }
 `;
