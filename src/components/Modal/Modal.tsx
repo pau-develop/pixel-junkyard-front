@@ -14,7 +14,7 @@ const Modal = ({ message, type, redirect }: ModalProps): JSX.Element => {
   const navigate = useNavigate();
 
   if (redirect !== "") {
-    let timer = 3;
+    let timer = 2;
     const counter = () => {
       const interval = setInterval(() => {
         timer -= 1;

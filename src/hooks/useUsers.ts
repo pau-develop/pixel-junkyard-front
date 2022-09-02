@@ -51,6 +51,13 @@ const useUsers = () => {
     } = await data.json();
     const user = fetchToken(token);
     dispatch(loginUserActionNew(user));
+    const ui = {
+      isOpen: true,
+      message: "You are logged in!",
+      type: "",
+      redirect: "/home",
+    };
+    dispatch(openModalActionNew(ui));
   };
 
   return { registerUser, loginUser };
