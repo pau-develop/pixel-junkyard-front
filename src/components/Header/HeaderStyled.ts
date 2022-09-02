@@ -21,7 +21,7 @@ const HeaderStyled = styled.header`
     color: ${(props) => props.theme.secondaryColor};
     transform: scale(2);
   }
-  @media (max-width: 599px) {
+  @media (min-width: 599px) {
     i {
       display: none;
     }

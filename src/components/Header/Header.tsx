@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { IUser } from "../../interfaces/interfaces";
-import Button from "../Button/Button";
 import Menu from "../Menu/Menu";
 import HeaderStyled from "./HeaderStyled";
 
@@ -21,18 +20,21 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
   };
 
   const handleMenuClick = () => {
-    setMenu(false);
+    if (window.innerWidth < 600) setMenu(false);
   };
 
   return (
     <HeaderStyled className="header">
       <h1 className="header__title">Pixel Junkyard</h1>
       {currentUser.userName === "" ? null : (
-        <i data-testid="icon-element" onClick={handleClick}>
-          {hamburguer}
-        </i>
+        <>
+          <i data-testid="icon-element" onClick={handleClick}>
+            {hamburguer}
+          </i>
+          <Menu action={handleMenuClick} menuClass="desk-menu" />
+        </>
       )}
-      {menu && <Menu action={handleMenuClick} />}
+      {menu && <Menu action={handleMenuClick} menuClass="phone-menu" />}
     </HeaderStyled>
   );
 };

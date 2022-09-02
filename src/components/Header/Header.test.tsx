@@ -19,19 +19,25 @@ describe("Given a Header component", () => {
       expect(headingElement).not.toBeNull();
     });
 
-    test("If the currentUser received via props has a userName property, a button with the userName should be shown", () => {
+    test("If a user is logged in and we are on mobile, a hamburguer icon should appear", () => {
+      window.innerWidth = 300;
       const user: IUser = {
         userName: "testUser",
         token: "123456",
       };
-      render(<Header currentUser={user} />);
+      render(
+        <BrowserRouter>
+          <Header currentUser={user} />
+        </BrowserRouter>
+      );
 
       const iconElement = screen.getByTestId("icon-element");
 
       expect(iconElement).not.toBeNull();
     });
 
-    test("If user clicks on userName button, a menu should appear with four naviation buttons", () => {
+    test("If user clicks on the hamburguer button, a menu should appear with four naviation buttons", () => {
+      window.innerWidth = 300;
       const user: IUser = {
         userName: "testUser",
         token: "123456",
@@ -45,7 +51,7 @@ describe("Given a Header component", () => {
 
       fireEvent.click(iconElement);
 
-      const profileButtonElement = screen.getByRole("button", {
+      const profileButtonElement = screen.getAllByRole("button", {
         name: "PROFILE",
       });
 
@@ -53,6 +59,7 @@ describe("Given a Header component", () => {
     });
 
     test("If any of the four navigation buttons are pressed, the menu and the buttons should disappear", () => {
+      window.innerWidth = 599;
       const user: IUser = {
         userName: "testUser",
         token: "123456",
@@ -66,13 +73,37 @@ describe("Given a Header component", () => {
 
       fireEvent.click(iconElement);
 
-      const profileButtonElement = screen.getByRole("button", {
+      const profileButtonElement = screen.getAllByRole("button", {
         name: "PROFILE",
       });
 
-      fireEvent.click(profileButtonElement);
+      fireEvent.click(profileButtonElement[1]);
 
-      expect(profileButtonElement).not.toBeInTheDocument();
+      expect(profileButtonElement[1]).not.toBeInTheDocument();
+    });
+
+    test("But only if window width is less than", () => {
+      window.innerWidth = 600;
+      const user: IUser = {
+        userName: "testUser",
+        token: "123456",
+      };
+      render(
+        <BrowserRouter>
+          <Header currentUser={user} />
+        </BrowserRouter>
+      );
+      const iconElement = screen.getByTestId("icon-element");
+
+      fireEvent.click(iconElement);
+
+      const profileButtonElement = screen.getAllByRole("button", {
+        name: "PROFILE",
+      });
+
+      fireEvent.click(profileButtonElement[1]);
+
+      expect(profileButtonElement[1]).toBeInTheDocument();
     });
   });
 });
