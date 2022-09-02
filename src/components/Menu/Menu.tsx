@@ -7,9 +7,10 @@ import MenuStyled from "./MenuStyled";
 interface MenuProps {
   action: () => void;
   menuClass?: string;
+  logAction?: () => void;
 }
 
-const Menu = ({ action, menuClass }: MenuProps): JSX.Element => {
+const Menu = ({ action, menuClass, logAction }: MenuProps): JSX.Element => {
   const logoutIcon = <FontAwesomeIcon icon={faPowerOff} />;
   const navigate = useNavigate();
 
@@ -40,7 +41,7 @@ const Menu = ({ action, menuClass }: MenuProps): JSX.Element => {
         action={() => handleClick("/gallery")}
         buttonClass={"button-navigation"}
       />
-      <i>{logoutIcon}</i>
+      <i onClick={logAction}>{logoutIcon}</i>
     </MenuStyled>
   );
 };

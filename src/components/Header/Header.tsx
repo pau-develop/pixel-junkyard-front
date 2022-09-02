@@ -26,6 +26,7 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
 
   const handleCloseNavMenuClick = () => {
     if (window.innerWidth < 600) setNavMenu(false);
+    setLogoutMenu(false);
   };
 
   const handleOpenLogoutMenuClick = () => {
@@ -39,7 +40,11 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
       <h1 className="header__title">Pixel Junkyard</h1>
       {currentUser.userName === "" ? null : (
         <>
-          <Menu action={handleCloseNavMenuClick} menuClass="desk-menu" />
+          <Menu
+            action={handleCloseNavMenuClick}
+            logAction={handleOpenLogoutMenuClick}
+            menuClass="desk-menu"
+          />
           <div className="header__icon-wrap">
             <i data-testid="hamburger-icon" onClick={handleOpenNavMenuClick}>
               {hamburguerIcon}
