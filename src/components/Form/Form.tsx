@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useUsers from "../../hooks/useUsers";
+import useUser from "../../hooks/useUser";
 import { Input } from "../../interfaces/interfaces";
 import { IUserLoginData } from "../../store/types/interfaces";
 import Button from "../Button/Button";
@@ -18,8 +18,8 @@ const inputField = {
 
 const Form = ({ formType }: FormProps): JSX.Element => {
   const navigate = useNavigate();
-  const { registerUser } = useUsers();
-  const { loginUser } = useUsers();
+  const { registerUser } = useUser();
+  const { loginUser } = useUser();
   const [input, setInput] = useState<Input>(inputField);
 
   const handleInputObject = (event: FormEvent<HTMLFormElement>) => {

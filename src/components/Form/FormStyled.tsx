@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 const FormStyled = styled.div`
-  padding-bottom: 10%;
+  padding: 0 5%;
+
+  width: 100%;
+  max-width: 500px;
   .register {
     &__form {
       border-radius: 50px;
@@ -10,7 +13,7 @@ const FormStyled = styled.div`
         ${(props) => props.theme.thirdColor} 0%,
         ${(props) => props.theme.primaryColor} 100%
       );
-      width: 320px;
+      width: 100%;
 
       display: flex;
       flex-direction: column;
@@ -42,6 +45,10 @@ const FormStyled = styled.div`
       padding-top: 10%;
       width: 70%;
     }
+  }
+
+  @media (min-width: 1000px) {
+    max-width: 650px;
   }
 `;
 
