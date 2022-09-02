@@ -2,6 +2,7 @@ import { IUser } from "../../interfaces/interfaces";
 import {
   closeModalActionNew,
   loginUserActionNew,
+  logoutUserActionNew,
   openModalActionNew,
 } from "./actionCreators";
 
@@ -63,6 +64,26 @@ describe("Given a loginUser function", () => {
       };
 
       const result = loginUserActionNew(user);
+
+      expect(result).toEqual(expectedResult);
+    });
+  });
+});
+
+describe("Given a logoutUser function", () => {
+  describe("When called", () => {
+    test("It should return an object with the action 'loginUser' and a payload of type IUser", () => {
+      const user: IUser = {
+        userName: "",
+        token: "",
+      };
+
+      const expectedResult = {
+        type: "user@logout",
+        payload: user,
+      };
+
+      const result = logoutUserActionNew(user);
 
       expect(result).toEqual(expectedResult);
     });
