@@ -6,7 +6,7 @@ const GuestPageStyled = styled.div`
   .guest-page {
     &__menu-container {
       width: 50%;
-      height: 50%;
+      height: 30%;
       position: absolute;
       top: 50%;
       left: 50%;

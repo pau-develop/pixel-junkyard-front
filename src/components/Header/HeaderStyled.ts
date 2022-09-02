@@ -8,6 +8,7 @@ const HeaderStyled = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0 5%;
+  flex-wrap: wrap;
   .header {
     &__title {
       margin: 0;

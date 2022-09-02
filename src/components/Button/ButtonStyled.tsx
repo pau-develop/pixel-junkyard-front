@@ -20,8 +20,7 @@ const ButtonStyled = styled.button`
     background-color: ${(props) => props.theme.primaryColor};
     padding: 0;
     color: ${(props) => props.theme.secondaryColor};
-    height: 40px;
-    width: 120px;
+    width: 100%;
     font-size: 1rem;
     cursor: pointer;
     @media (min-width: 600px) {

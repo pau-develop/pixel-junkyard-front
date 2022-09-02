@@ -12,9 +12,9 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
-jest.mock("../../hooks/useUsers", () => ({
+jest.mock("../../hooks/useUser", () => ({
   __esModule: true,
-  ...jest.requireActual("../../hooks/useUsers"),
+  ...jest.requireActual("../../hooks/useUser"),
   default: () => ({
     registerUser: () => mockRegisterUser(),
     loginUser: () => mockLoginUser(),
