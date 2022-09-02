@@ -11,6 +11,7 @@ const PageStyled = styled.div`
       color: ${(props) => props.theme.secondaryColor};
       text-transform: uppercase;
       font-size: 1.5rem;
+      padding: 0;
     }
   }
 `;

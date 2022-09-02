@@ -19,7 +19,6 @@ const HeaderStyled = styled.header`
   }
   i {
     color: ${(props) => props.theme.secondaryColor};
-    transform: scale(2);
   }
   @media (min-width: 599px) {
     i {

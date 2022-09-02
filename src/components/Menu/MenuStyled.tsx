@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const MenuStyled = styled.div`
   &.phone-menu {
+    padding: 0 5%;
     background-color: ${(props) => props.theme.primaryColor};
     border-top: 2px solid ${(props) => props.theme.thirdColor};
     height: 100%;
