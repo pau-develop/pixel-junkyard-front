@@ -1,6 +1,7 @@
-import { IUser } from "../../interfaces/interfaces";
+import { IUser, IUserVisible } from "../../interfaces/interfaces";
 import {
   closeModalActionNew,
+  getAllUsersActionNew,
   loginUserActionNew,
   logoutUserActionNew,
   openModalActionNew,
@@ -84,6 +85,27 @@ describe("Given a logoutUser function", () => {
       };
 
       const result = logoutUserActionNew(user);
+
+      expect(result).toEqual(expectedResult);
+    });
+  });
+});
+
+describe("Given a getAllUsers action", () => {
+  describe("When called", () => {
+    test("It should return an object with the action 'loginUser' and a payload of type IUser", () => {
+      const users: IUserVisible[] = [
+        {
+          userName: "",
+        },
+      ];
+
+      const expectedResult = {
+        type: "users@all",
+        payload: users,
+      };
+
+      const result = getAllUsersActionNew(users);
 
       expect(result).toEqual(expectedResult);
     });
