@@ -10,7 +10,7 @@ const Community = (): JSX.Element => {
   const users = useSelector<RootState>(
     (state) => state.users
   ) as IUserVisible[];
-
+  console.log(users);
   const { getAllUsers } = useUsers();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Community = (): JSX.Element => {
     <CommunityStyled>
       <ul>
         {users.map((user, index) => (
-          <li>
+          <li key={user.userName}>
             <UserCard user={user} />
           </li>
         ))}
