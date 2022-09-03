@@ -2,6 +2,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
 import { IUserVisible } from "../interfaces/interfaces";
+import mockUser from "../mocks/mockUser";
 import mockUsers from "../mocks/mockUsers";
 import useUsers from "./useUsers";
 
@@ -26,7 +27,7 @@ beforeEach(() => {
 
 describe("Given a useUsers hook", () => {
   describe("When its function getAllUsers is called", () => {
-    test("It should add all robots from the DB to the store state", async () => {
+    test("It should add all users from the DB to the store state", async () => {
       const users: IUserVisible[] = mockUsers;
       global.fetch = jest.fn().mockReturnValue({
         json: jest.fn().mockReturnValue(users),
@@ -43,6 +44,30 @@ describe("Given a useUsers hook", () => {
       });
 
       const expectedAction = { payload: undefined, type: "users@all" };
+      expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
+    });
+  });
+
+  describe("When its function getUserById is called", () => {
+    test("It should add a single user from the DB to the store state", async () => {
+      const user: IUserVisible[] = [mockUser];
+      global.fetch = jest.fn().mockReturnValue({
+        json: jest.fn().mockReturnValue(user),
+      });
+
+      const {
+        result: {
+          current: { getUserById },
+        },
+      } = renderHook(useUsers, { wrapper: Wrapper });
+
+      const id = "12345";
+
+      await waitFor(() => {
+        getUserById(id);
+      });
+
+      const expectedAction = { payload: undefined, type: "users@id" };
       expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
     });
   });
