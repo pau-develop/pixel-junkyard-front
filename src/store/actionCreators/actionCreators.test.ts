@@ -3,6 +3,7 @@ import mockUsers from "../../mocks/mockUsers";
 import {
   closeModalActionNew,
   getAllUsersActionNew,
+  getUserByIdActionNew,
   loginUserActionNew,
   logoutUserActionNew,
   openModalActionNew,
@@ -103,6 +104,28 @@ describe("Given a getAllUsers action", () => {
       };
 
       const result = getAllUsersActionNew(users);
+
+      expect(result).toEqual(expectedResult);
+    });
+  });
+});
+
+describe("Given a getUserById action", () => {
+  describe("When called", () => {
+    test("It should return an object with the action 'getUserById' and a payload of type IUser", () => {
+      const user: IUserVisible = {
+        _id: "",
+        userName: "",
+        password: "",
+        email: "",
+      };
+
+      const expectedResult = {
+        type: "users@id",
+        payload: user,
+      };
+
+      const result = getUserByIdActionNew(user);
 
       expect(result).toEqual(expectedResult);
     });

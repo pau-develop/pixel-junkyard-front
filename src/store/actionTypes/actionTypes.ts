@@ -4,5 +4,6 @@ const actionTypes = {
   loginUser: "user@login",
   logoutUser: "user@logout",
   getAllUsers: "users@all",
+  getUserById: "users@id",
 };
 export default actionTypes;
