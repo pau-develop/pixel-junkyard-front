@@ -1,6 +1,9 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsersActionNew } from "../store/actionCreators/actionCreators";
+import {
+  getAllUsersActionNew,
+  getUserByIdActionNew,
+} from "../store/actionCreators/actionCreators";
 import { IUser } from "../interfaces/interfaces";
 import { RootState } from "../app/store";
 
@@ -35,7 +38,7 @@ const useUsers = () => {
       const response = await usersData.json();
       const { users } = response;
 
-      dispatch(getAllUsersActionNew(users));
+      dispatch(getUserByIdActionNew(users));
     },
     [dispatch, url, user.token]
   );
