@@ -1,6 +1,7 @@
 import { configureStore, createReducer } from "@reduxjs/toolkit";
-import { IUser } from "../interfaces/interfaces";
+import { IUser, IUserVisible } from "../interfaces/interfaces";
 import { IUIModal } from "../store/types/interfaces";
+import mockUsers from "./mockUsers";
 
 const initialUiState = {
   isOpen: true,
@@ -14,6 +15,8 @@ const initialUserState = {
   token: "",
 };
 
+const initialUsersState = mockUsers;
+
 const mockUiReducer = createReducer<IUIModal>(initialUiState, (builder) => {
   builder.addDefaultCase((state: IUIModal) => state);
 });
@@ -22,10 +25,18 @@ const mockUserReducer = createReducer<IUser>(initialUserState, (builder) => {
   builder.addDefaultCase((state: IUser) => state);
 });
 
+const mockUsersReducer = createReducer<IUserVisible[]>(
+  initialUsersState,
+  (builder) => {
+    builder.addDefaultCase((state: IUserVisible[]) => state);
+  }
+);
+
 const mockStore = configureStore({
   reducer: {
     ui: mockUiReducer,
     user: mockUserReducer,
+    users: mockUsersReducer,
   },
 });
 
