@@ -13,6 +13,6 @@ export const loginUserActionNew = createAction<IUser>(actionTypes.loginUser);
 
 export const logoutUserActionNew = createAction<IUser>(actionTypes.logoutUser);
 
-export const getAllUsersActionNew = createAction<IUserVisible>(
+export const getAllUsersActionNew = createAction<IUserVisible[]>(
   actionTypes.getAllUsers
 );
