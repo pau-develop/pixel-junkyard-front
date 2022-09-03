@@ -10,7 +10,6 @@ const Community = (): JSX.Element => {
   const users = useSelector<RootState>(
     (state) => state.users
   ) as IUserVisible[];
-  console.log(users);
   const { getAllUsers } = useUsers();
 
   useEffect(() => {

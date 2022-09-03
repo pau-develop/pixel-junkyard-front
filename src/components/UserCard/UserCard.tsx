@@ -1,4 +1,5 @@
 import { IUserVisible } from "../../interfaces/interfaces";
+import UserCardStyled from "./UserCardStyled";
 
 interface UserCardProps {
   user: IUserVisible;
@@ -6,10 +7,13 @@ interface UserCardProps {
 
 const UserCard = ({ user }: UserCardProps): JSX.Element => {
   return (
-    <article>
-      <h2>{user.userName}</h2>
-      <span>{user.email}</span>
-    </article>
+    <UserCardStyled>
+      <img src="/img/demo-avatar.png" alt={user.userName} />
+      <div>
+        <h2>{user.userName}</h2>
+        <span>{user.email}</span>
+      </div>
+    </UserCardStyled>
   );
 };
 
