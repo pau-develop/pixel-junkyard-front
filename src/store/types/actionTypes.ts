@@ -1,4 +1,4 @@
-import { IUser } from "../../interfaces/interfaces";
+import { IUser, IUserVisible } from "../../interfaces/interfaces";
 import { IUIModal } from "./interfaces";
 
 export interface Action {
@@ -10,4 +10,8 @@ export interface IUIAction extends Action {
 
 export interface IUserAction extends Action {
   payload: IUser;
+}
+
+export interface IUserVisibleAction extends Action {
+  payload: IUserVisible[];
 }
