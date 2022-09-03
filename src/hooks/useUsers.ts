@@ -1,14 +1,11 @@
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   getAllUsersActionNew,
   getUserByIdActionNew,
 } from "../store/actionCreators/actionCreators";
-import { IUser } from "../interfaces/interfaces";
-import { RootState } from "../app/store";
 
 const useUsers = () => {
-  const user = useSelector<RootState>((state) => state.user) as IUser;
   const dispatch = useDispatch();
   const url = process.env.REACT_APP_API_URL;
 
@@ -17,14 +14,14 @@ const useUsers = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
+        Authorization: `Bearer ${localStorage.token}`,
       },
     });
     const response = await usersData.json();
     const { users } = response;
 
     dispatch(getAllUsersActionNew(users));
-  }, [dispatch, url, user.token]);
+  }, [dispatch, url]);
 
   const getUserById = useCallback(
     async (id: string) => {
@@ -32,7 +29,7 @@ const useUsers = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `Bearer ${localStorage.token}`,
         },
       });
       const response = await usersData.json();
@@ -40,7 +37,7 @@ const useUsers = () => {
 
       dispatch(getUserByIdActionNew(users));
     },
-    [dispatch, url, user.token]
+    [dispatch, url]
   );
 
   return { getAllUsers, getUserById };
