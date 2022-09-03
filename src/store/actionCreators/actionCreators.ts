@@ -17,6 +17,6 @@ export const getAllUsersActionNew = createAction<IUserVisible[]>(
   actionTypes.getAllUsers
 );
 
-export const getUserByIdActionNew = createAction<IUserVisible>(
+export const getUserByIdActionNew = createAction<IUserVisible[]>(
   actionTypes.getUserById
 );

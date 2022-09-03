@@ -113,12 +113,14 @@ describe("Given a getAllUsers action", () => {
 describe("Given a getUserById action", () => {
   describe("When called", () => {
     test("It should return an object with the action 'getUserById' and a payload of type IUser", () => {
-      const user: IUserVisible = {
-        _id: "",
-        userName: "",
-        password: "",
-        email: "",
-      };
+      const user: IUserVisible[] = [
+        {
+          _id: "",
+          userName: "",
+          password: "",
+          email: "",
+        },
+      ];
 
       const expectedResult = {
         type: "users@id",

@@ -10,6 +10,10 @@ const usersReducer = createReducer<IUserVisible[]>(initialState, (builder) => {
     actionTypes.getAllUsers,
     (state: IUserVisible[], action: IUserVisibleAction) => [...action.payload]
   );
+  builder.addCase(
+    actionTypes.getUserById,
+    (state: IUserVisible[], action: IUserVisibleAction) => [...action.payload]
+  );
 
   builder.addDefaultCase((state: IUserVisible[]) => state);
 });

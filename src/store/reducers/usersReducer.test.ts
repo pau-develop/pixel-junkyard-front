@@ -1,10 +1,14 @@
 import { IUserVisible } from "../../interfaces/interfaces";
+import mockUser from "../../mocks/mockUser";
 import mockUsers from "../../mocks/mockUsers";
-import { getAllUsersActionNew } from "../actionCreators/actionCreators";
+import {
+  getAllUsersActionNew,
+  getUserByIdActionNew,
+} from "../actionCreators/actionCreators";
 import usersReducer from "./usersReducer";
 
 describe("Given a uiReducer", () => {
-  describe("When its called with a loginUserActionNew", () => {
+  describe("When its called with a getAllUsersActionNew", () => {
     test("It should update the store state with the user received as arguments", () => {
       const users: IUserVisible[] = mockUsers;
 
@@ -29,6 +33,35 @@ describe("Given a uiReducer", () => {
         const newResult = usersReducer(users, unknownAction);
 
         expect(newResult).toStrictEqual(users);
+      });
+    });
+  });
+
+  describe("When its called with a getUserById action", () => {
+    test("It should update the store state with the user received as arguments", () => {
+      const user: IUserVisible[] = [mockUser];
+
+      const action = getUserByIdActionNew(user);
+      const result = usersReducer(user, action);
+
+      expect(result).toStrictEqual(user);
+    });
+
+    describe("When its called with an unknown action", () => {
+      test("It should return its current state", () => {
+        const user: IUserVisible[] = [mockUser];
+
+        const action = getUserByIdActionNew(user);
+        const result = usersReducer(user, action);
+
+        expect(result).toStrictEqual(user);
+
+        const unknownAction = {
+          type: "unknown",
+        };
+        const newResult = usersReducer(user, unknownAction);
+
+        expect(newResult).toStrictEqual(user);
       });
     });
   });
