@@ -23,7 +23,24 @@ const useUsers = () => {
     dispatch(getAllUsersActionNew(users));
   }, [dispatch, url, user.token]);
 
-  return { getAllUsers };
+  const getUserById = useCallback(
+    async (id: string) => {
+      const usersData = await fetch(`${url}users/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const response = await usersData.json();
+      const { users } = response;
+
+      dispatch(getAllUsersActionNew(users));
+    },
+    [dispatch, url, user.token]
+  );
+
+  return { getAllUsers, getUserById };
 };
 
 export default useUsers;
