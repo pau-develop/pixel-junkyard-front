@@ -48,6 +48,15 @@ const useUser = () => {
         "Content-Type": "application/json",
       },
     });
+    if (data.status !== 200 && data.status !== 201) {
+      const ui = {
+        isOpen: true,
+        message: "Incorrect user name or password",
+        type: "confirm",
+        redirect: "/login",
+      };
+      dispatch(openModalActionNew(ui));
+    }
     const {
       user: { token },
     } = await data.json();
