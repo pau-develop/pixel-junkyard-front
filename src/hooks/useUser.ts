@@ -13,7 +13,7 @@ const useUser = () => {
   const url = process.env.REACT_APP_API_URL;
 
   const registerUser = async (userData: IUserRegisterData) => {
-    const data = await fetch(`${url}users/register`, {
+    const data = await fetch(`${url}user/register`, {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {
@@ -41,7 +41,7 @@ const useUser = () => {
   };
 
   const loginUser = async (userData: IUserLoginData) => {
-    const data = await fetch(`${url}users/login`, {
+    const data = await fetch(`${url}user/login`, {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {
