@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useUsers from "../../hooks/useUsers";
 import { IUserVisible } from "../../interfaces/interfaces";
+import UserCard from "../UserCard/UserCard";
 import CommunityStyled from "./CommunityStyled";
 
 const Community = (): JSX.Element => {
@@ -18,7 +19,13 @@ const Community = (): JSX.Element => {
 
   return (
     <CommunityStyled>
-      <ul></ul>
+      <ul>
+        {users.map((user, index) => (
+          <li>
+            <UserCard user={user} />
+          </li>
+        ))}
+      </ul>
     </CommunityStyled>
   );
 };
