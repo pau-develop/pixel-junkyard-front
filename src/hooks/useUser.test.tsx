@@ -8,6 +8,13 @@ import useUser from "./useUser";
 const token = "12345";
 jest.mock("jwt-decode", () => jest.fn());
 
+const mockDispatch = jest.fn();
+
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
+}));
+
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
 }
@@ -70,14 +77,17 @@ describe("Given a useUsers hook", () => {
         registerUser(mockUser);
       });
 
-      const newState = {
-        isOpen: true,
-        message: "ERROR! Username already taken",
-        type: "",
-        redirect: "",
+      const actionToDispatch = {
+        payload: {
+          isOpen: true,
+          message: "ERROR! Username already taken",
+          redirect: "",
+          type: "",
+        },
+        type: "ui@display",
       };
-      const result = store.getState();
-      expect(result.ui).toEqual(newState);
+
+      expect(mockDispatch).toBeCalledWith(actionToDispatch);
     });
   });
 
@@ -87,7 +97,6 @@ describe("Given a useUsers hook", () => {
         userName: "mock",
         password: "123",
       };
-
       const mockToken = "12345";
 
       const mockResponse = {
@@ -95,6 +104,7 @@ describe("Given a useUsers hook", () => {
       };
 
       global.fetch = jest.fn().mockReturnValue({
+        status: 200,
         json: jest.fn().mockReturnValue(mockResponse),
       });
 
@@ -107,12 +117,53 @@ describe("Given a useUsers hook", () => {
       } = renderHook(useUser, {
         wrapper: Wrapper,
       });
-
       await waitFor(() => {
         loginUser(mockUser);
       });
 
-      expect(global.fetch).toHaveBeenCalled();
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+
+    test("And if the user info was wrong, it should show a modal with an error", async () => {
+      const mockUser: IUserLoginData = {
+        userName: "mock",
+        password: "123",
+      };
+      const mockToken = "12345";
+
+      const mockResponse = {
+        user: { token: mockToken },
+      };
+
+      global.fetch = jest.fn().mockReturnValue({
+        status: 404,
+        json: jest.fn().mockReturnValue(mockResponse),
+      });
+
+      (jwt_decode as jest.Mock).mockImplementationOnce(() => ({ token }));
+
+      const {
+        result: {
+          current: { loginUser },
+        },
+      } = renderHook(useUser, {
+        wrapper: Wrapper,
+      });
+      await waitFor(() => {
+        loginUser(mockUser);
+      });
+
+      const actionToDispatch = {
+        payload: {
+          isOpen: true,
+          message: "Incorrect user name or password",
+          redirect: "/login",
+          type: "confirm",
+        },
+        type: "ui@display",
+      };
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
   });
 
