@@ -32,7 +32,6 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
     setLogoutMenu(!logoutMenu);
     setNavMenu(false);
   };
-  console.log(logoutMenu);
 
   return (
     <HeaderStyled className="header">

@@ -9,8 +9,9 @@ const useUsers = () => {
   const getAllUsers = useCallback(async () => {
     const usersData = await fetch(`${url}users/all`);
     const response = await usersData.json();
+    const { users } = response;
 
-    dispatch(getAllUsersActionNew(response));
+    dispatch(getAllUsersActionNew(users));
   }, [dispatch, url]);
 
   return { getAllUsers };

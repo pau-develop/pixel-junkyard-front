@@ -1,4 +1,5 @@
 import { IUser, IUserVisible } from "../../interfaces/interfaces";
+import mockUsers from "../../mocks/mockUsers";
 import {
   closeModalActionNew,
   getAllUsersActionNew,
@@ -94,11 +95,7 @@ describe("Given a logoutUser function", () => {
 describe("Given a getAllUsers action", () => {
   describe("When called", () => {
     test("It should return an object with the action 'loginUser' and a payload of type IUser", () => {
-      const users: IUserVisible[] = [
-        {
-          userName: "",
-        },
-      ];
+      const users: IUserVisible[] = mockUsers;
 
       const expectedResult = {
         type: "users@all",
