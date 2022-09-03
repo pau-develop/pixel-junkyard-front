@@ -3,5 +3,6 @@ const actionTypes = {
   hideUI: "ui@hide",
   loginUser: "user@login",
   logoutUser: "user@logout",
+  getAllUsers: "users@all",
 };
 export default actionTypes;

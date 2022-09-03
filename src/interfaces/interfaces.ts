@@ -8,3 +8,7 @@ export interface IUser {
   userName: string;
   token: string;
 }
+
+export interface IUserVisible {
+  userName: string;
+}
