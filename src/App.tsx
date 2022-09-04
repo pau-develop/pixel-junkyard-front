@@ -9,6 +9,7 @@ import { IUser } from "./interfaces/interfaces";
 import CommunityPage from "./pages/CommunityPage/CommunityPage";
 import GuestPage from "./pages/GuestPage/GuestPage";
 import LoginFormPage from "./pages/LoginFormPage/LoginFormPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RegisterFormPage from "./pages/RegisterFormPage/RegisterFormPage";
 import UnknownPage from "./pages/UnknownPage/UnknownPage";
 import { loginUserActionNew } from "./store/actionCreators/actionCreators";
@@ -41,6 +42,7 @@ const App = (): JSX.Element => {
           <Route path="/register" element={<RegisterFormPage />} />
           <Route path="/login" element={<LoginFormPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route path="/community/:id" element={<ProfilePage />} />
           <Route path="*" element={<UnknownPage />} />
         </Routes>
       </main>
