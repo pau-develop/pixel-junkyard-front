@@ -8,14 +8,13 @@ import Button from "../Button/Button";
 import ProfileStyled from "./ProfileStyled";
 
 const Profile = (): JSX.Element => {
-  const location = useLocation();
-  const isProfile = location.pathname.includes("profile");
+  const isProfile = useLocation().pathname.includes("profile");
+
   const { getUserById } = useUsers();
   const { id } = useParams();
 
   useEffect(() => {
     getUserById(id as string);
-    console.log("running...");
   }, [getUserById, id]);
 
   const user = useSelector<RootState>(
@@ -39,15 +38,20 @@ const Profile = (): JSX.Element => {
                 <li>2 comments</li>
               </ul>
             </div>
-            <div className="profile__settings-desktop">
+            {isProfile && (
+              <div className="profile__settings-desktop">
+                <Button text="Edit avatar" />
+                <Button text="Delete account" />
+              </div>
+            )}
+          </section>
+          {isProfile && (
+            <section className="profile__settings-mobile">
               <Button text="Edit avatar" />
               <Button text="Delete account" />
-            </div>
-          </section>
-          <section className="profile__settings-mobile">
-            <Button text="Edit avatar" />
-            <Button text="Delete account" />
-          </section>
+            </section>
+          )}
+
           <section className="profile__gallery">
             <h3>{`${user.userName}'s Gallery`}</h3>
             <div className="profile__gallery-display"></div>

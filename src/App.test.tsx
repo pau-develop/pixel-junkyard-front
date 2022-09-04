@@ -6,13 +6,6 @@ import { store } from "./app/store";
 import mockStore from "./mocks/mockStore";
 import * as utils from "./utils/auth";
 
-// const mockFetchToken = jest.fn();
-
-// jest.mock("./utils/auth", () => ({
-//   ...jest.requireActual("./utils/auth"),
-//   fetchToken: () => mockFetchToken,
-// }));
-
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
 }
