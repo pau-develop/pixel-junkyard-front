@@ -91,7 +91,36 @@ const useUser = () => {
     dispatch(openModalActionNew(ui));
   };
 
-  return { registerUser, loginUser, logoutUser };
+  const deleteAccount = async (id: string) => {
+    const data = await fetch(`${url}users/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    const response = await data.json();
+    if (response.error) {
+      const ui = {
+        isOpen: true,
+        message: response.error,
+        type: "",
+        redirect: "",
+      };
+      dispatch(openModalActionNew(ui));
+      return;
+    }
+    const ui = {
+      isOpen: true,
+      message: "Your account has been deleted",
+      type: "",
+      redirect: "/home",
+    };
+    localStorage.removeItem("token");
+    dispatch(openModalActionNew(ui));
+  };
+
+  return { registerUser, loginUser, logoutUser, deleteAccount };
 };
 
 export default useUser;
