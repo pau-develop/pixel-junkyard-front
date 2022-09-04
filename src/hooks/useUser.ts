@@ -99,12 +99,12 @@ const useUser = () => {
         Authorization: `Bearer ${localStorage.token}`,
       },
     });
-    const response = await data.json();
-    if (response.error) {
+
+    if (data.status !== 200) {
       const ui = {
         isOpen: true,
-        message: response.error,
-        type: "",
+        message: "Something went wrong, please try again",
+        type: "confirm",
         redirect: "",
       };
       dispatch(openModalActionNew(ui));

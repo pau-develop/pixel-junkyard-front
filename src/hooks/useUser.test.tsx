@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "../app/store";
 import { IUserLoginData, IUserRegisterData } from "../store/types/interfaces";
 import useUser from "./useUser";
+import mockUser from "../mocks/mockUser";
 
 const token = "12345";
 jest.mock("jwt-decode", () => jest.fn());
@@ -188,6 +189,66 @@ describe("Given a useUsers hook", () => {
       });
 
       expect(window.localStorage.length).toBe(0);
+    });
+  });
+
+  describe("When its function deleteAccount is called", () => {
+    test("It should remove the token from the localStorage", async () => {
+      const mockToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzEwODYxYzk5MGM3MDlhNmNlYjk0NWQiLCJ1c2VyTmFtZSI6InRlc3RpbmciLCJpYXQiOjE2NjIxMzk1Mzd9.EKxxxoIKOLRRPDR4Uuh-_QmFM8khGF4_-mxbIxjrOpE";
+      window.localStorage.setItem("token", mockToken);
+
+      expect(window.localStorage.length).toBe(1);
+
+      global.fetch = jest.fn().mockReturnValue({
+        status: 200,
+        json: jest.fn().mockReturnValue(mockUser),
+      });
+
+      const {
+        result: {
+          current: { deleteAccount },
+        },
+      } = renderHook(useUser, {
+        wrapper: Wrapper,
+      });
+
+      await waitFor(() => {
+        deleteAccount(mockUser._id);
+      });
+
+      expect(window.localStorage.length).toBe(0);
+    });
+
+    test("And if something went wrong, the error Modal should be shown with a 'Something went wrong, please try again' error", async () => {
+      global.fetch = jest.fn().mockReturnValue({
+        status: 404,
+        json: jest.fn().mockReturnValue(new Error("")),
+      });
+
+      const {
+        result: {
+          current: { deleteAccount },
+        },
+      } = renderHook(useUser, {
+        wrapper: Wrapper,
+      });
+
+      await waitFor(() => {
+        deleteAccount(mockUser._id);
+      });
+
+      const expectedAction = {
+        payload: {
+          isOpen: true,
+          message: "Something went wrong, please try again",
+          redirect: "",
+          type: "confirm",
+        },
+        type: "ui@display",
+      };
+
+      expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
     });
   });
 });
