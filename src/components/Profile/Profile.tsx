@@ -1,12 +1,15 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { RootState } from "../../app/store";
 import useUsers from "../../hooks/useUsers";
 import { IUserVisible } from "../../interfaces/interfaces";
+import Button from "../Button/Button";
 import ProfileStyled from "./ProfileStyled";
 
 const Profile = (): JSX.Element => {
+  const location = useLocation();
+  const isProfile = location.pathname.includes("profile");
   const { getUserById } = useUsers();
   const { id } = useParams();
 
@@ -36,6 +39,14 @@ const Profile = (): JSX.Element => {
                 <li>2 comments</li>
               </ul>
             </div>
+            <div className="profile__settings-desktop">
+              <Button text="Edit avatar" />
+              <Button text="Delete account" />
+            </div>
+          </section>
+          <section className="profile__settings-mobile">
+            <Button text="Edit avatar" />
+            <Button text="Delete account" />
           </section>
           <section className="profile__gallery">
             <h3>{`${user.userName}'s Gallery`}</h3>
