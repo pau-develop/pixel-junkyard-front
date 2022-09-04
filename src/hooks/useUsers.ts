@@ -34,6 +34,7 @@ const useUsers = () => {
       });
       const response = await usersData.json();
       const { user } = response;
+
       dispatch(getUserByIdActionNew([user]));
     },
     [dispatch, url]
