@@ -41,6 +41,7 @@ const App = (): JSX.Element => {
           <Route path="/register" element={<RegisterFormPage />} />
           <Route path="/login" element={<LoginFormPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route path="/community/:id" element={<CommunityPage />} />
           <Route path="*" element={<UnknownPage />} />
         </Routes>
       </main>
