@@ -33,7 +33,10 @@ const Profile = (): JSX.Element => {
           </ul>
         </div>
       </section>
-      <section className="profile__gallery"></section>
+      <section className="profile__gallery">
+        <h3>{`${user.userName}'s Gallery`}</h3>
+        <div className="profile__gallery-display"></div>
+      </section>
     </ProfileStyled>
   );
 };
