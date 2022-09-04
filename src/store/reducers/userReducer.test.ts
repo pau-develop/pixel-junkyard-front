@@ -1,4 +1,4 @@
-import { IUser } from "../../interfaces/interfaces";
+import mockUser from "../../mocks/mockUser";
 import {
   loginUserActionNew,
   logoutUserActionNew,
@@ -8,10 +8,7 @@ import userReducer from "./userReducer";
 describe("Given a uiReducer", () => {
   describe("When its called with a loginUserActionNew", () => {
     test("It should update the store state with the user received as arguments", () => {
-      const user: IUser = {
-        userName: "pau",
-        token: "123456",
-      };
+      const user = mockUser;
 
       const action = loginUserActionNew(user);
       const result = userReducer(user, action);
@@ -22,10 +19,7 @@ describe("Given a uiReducer", () => {
 
   describe("When its called with a logoutUserActionNew", () => {
     test("It should update the store state with the user received as arguments", () => {
-      const user: IUser = {
-        userName: "",
-        token: "",
-      };
+      const user = mockUser;
 
       const action = logoutUserActionNew(user);
       const result = userReducer(user, action);
@@ -36,10 +30,7 @@ describe("Given a uiReducer", () => {
 
   describe("When its called with an unknown action", () => {
     test("It should return its current state", () => {
-      const user: IUser = {
-        userName: "pau",
-        token: "123456",
-      };
+      const user = mockUser;
 
       const action = loginUserActionNew(user);
       const result = userReducer(user, action);

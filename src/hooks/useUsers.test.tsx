@@ -2,7 +2,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
 import { IUserVisible } from "../interfaces/interfaces";
-import mockUser from "../mocks/mockUser";
+import mockUserVisible from "../mocks/mockUserVisible";
 import mockUsers from "../mocks/mockUsers";
 import useUsers from "./useUsers";
 
@@ -50,7 +50,7 @@ describe("Given a useUsers hook", () => {
 
   describe("When its function getUserById is called", () => {
     test("It should add a single user from the DB to the store state", async () => {
-      const user: IUserVisible[] = [mockUser];
+      const user: IUserVisible[] = [mockUserVisible];
       global.fetch = jest.fn().mockReturnValue({
         json: jest.fn().mockReturnValue(user),
       });

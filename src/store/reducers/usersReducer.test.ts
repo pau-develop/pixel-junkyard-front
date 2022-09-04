@@ -1,5 +1,5 @@
 import { IUserVisible } from "../../interfaces/interfaces";
-import mockUser from "../../mocks/mockUser";
+import mockUserVisible from "../../mocks/mockUserVisible";
 import mockUsers from "../../mocks/mockUsers";
 import {
   getAllUsersActionNew,
@@ -39,7 +39,7 @@ describe("Given a uiReducer", () => {
 
   describe("When its called with a getUserById action", () => {
     test("It should update the store state with the user received as arguments", () => {
-      const user: IUserVisible[] = [mockUser];
+      const user: IUserVisible[] = [mockUserVisible];
 
       const action = getUserByIdActionNew(user);
       const result = usersReducer(user, action);
@@ -49,7 +49,7 @@ describe("Given a uiReducer", () => {
 
     describe("When its called with an unknown action", () => {
       test("It should return its current state", () => {
-        const user: IUserVisible[] = [mockUser];
+        const user: IUserVisible[] = [mockUserVisible];
 
         const action = getUserByIdActionNew(user);
         const result = usersReducer(user, action);

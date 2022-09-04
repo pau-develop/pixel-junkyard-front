@@ -12,7 +12,7 @@ const Profile = (): JSX.Element => {
   ) as IUserVisible;
   const { getUserById } = useUsers();
   const { id } = useParams();
-  console.log(user);
+
   useEffect(() => {
     getUserById(id as string);
   }, [getUserById, id]);

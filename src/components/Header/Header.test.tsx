@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../app/store";
-import { IUser } from "../../interfaces/interfaces";
+import mockUser from "../../mocks/mockUser";
 import Header from "./Header";
 
 interface WrapperProps {
@@ -24,11 +24,12 @@ beforeEach(() => {
 describe("Given a Header component", () => {
   describe("When instantiated", () => {
     test("It should show a heading with the text 'Pixel Junkyard'", () => {
-      const user: IUser = {
-        userName: "",
-        token: "",
-      };
-      render(<Header currentUser={user} />);
+      const user = mockUser;
+      render(
+        <BrowserRouter>
+          <Header currentUser={user} />
+        </BrowserRouter>
+      );
 
       const textContent = "Pixel Junkyard";
 
@@ -39,10 +40,7 @@ describe("Given a Header component", () => {
 
     test("If a user is logged in and we are on mobile, a hamburguer and an 'off 'icon should appear", () => {
       window.innerWidth = 300;
-      const user: IUser = {
-        userName: "testUser",
-        token: "123456",
-      };
+      const user = mockUser;
       render(
         <BrowserRouter>
           <Header currentUser={user} />
@@ -58,10 +56,7 @@ describe("Given a Header component", () => {
 
     test("If user clicks on the hamburguer button, a menu should appear with four naviation buttons", () => {
       window.innerWidth = 300;
-      const user: IUser = {
-        userName: "testUser",
-        token: "123456",
-      };
+      const user = mockUser;
       render(
         <BrowserRouter>
           <Header currentUser={user} />
@@ -80,10 +75,7 @@ describe("Given a Header component", () => {
 
     test("If any of the four navigation buttons are pressed, the menu and the buttons should disappear", () => {
       window.innerWidth = 599;
-      const user: IUser = {
-        userName: "testUser",
-        token: "123456",
-      };
+      const user = mockUser;
       render(
         <BrowserRouter>
           <Header currentUser={user} />
@@ -104,10 +96,7 @@ describe("Given a Header component", () => {
 
     test("But only if window width is less than", () => {
       window.innerWidth = 600;
-      const user: IUser = {
-        userName: "testUser",
-        token: "123456",
-      };
+      const user = mockUser;
       render(
         <BrowserRouter>
           <Header currentUser={user} />
@@ -128,10 +117,7 @@ describe("Given a Header component", () => {
 
     test("If user clicks on the 'off' button, a menu should appear with a 'Do you want to log out?' text", () => {
       window.innerWidth = 300;
-      const user: IUser = {
-        userName: "testUser",
-        token: "123456",
-      };
+      const user = mockUser;
       render(<Header currentUser={user} />, { wrapper: Wrapper });
       const iconElement = screen.getByTestId("off-icon");
 

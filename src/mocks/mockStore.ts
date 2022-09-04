@@ -13,6 +13,7 @@ const initialUiState = {
 const initialUserState = {
   userName: "",
   token: "",
+  _id: "",
 };
 
 const initialUsersState = mockUsers;

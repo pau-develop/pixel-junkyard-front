@@ -78,6 +78,7 @@ const useUser = () => {
     const user: IUser = {
       userName: "",
       token: "",
+      _id: "",
     };
     dispatch(logoutUserActionNew(user));
     const ui = {

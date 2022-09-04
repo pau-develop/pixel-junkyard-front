@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import mockUser from "../../mocks/mockUser";
+import mockUserVisible from "../../mocks/mockUserVisible";
 import UserCard from "./UserCard";
 
 const mockUseNavigate = jest.fn();
@@ -15,7 +15,7 @@ describe("Given a UserCard component", () => {
     test("It should show a heading with the name of the user received via props", () => {
       render(
         <BrowserRouter>
-          <UserCard user={mockUser} />
+          <UserCard user={mockUserVisible} />
         </BrowserRouter>
       );
 
@@ -28,7 +28,7 @@ describe("Given a UserCard component", () => {
     test("Upon clicking a card, user should be redirected to Profile page", () => {
       render(
         <BrowserRouter>
-          <UserCard user={mockUser} />
+          <UserCard user={mockUserVisible} />
         </BrowserRouter>
       );
       const cardElement = screen.getByRole("article");
