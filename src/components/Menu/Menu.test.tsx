@@ -1,5 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "../../app/store";
 import Menu from "./Menu";
 
 const mockUseNavigate = jest.fn();
@@ -9,14 +11,26 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
+interface WrapperProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+let Wrapper: ({ children }: WrapperProps) => JSX.Element;
+
+beforeEach(() => {
+  Wrapper = ({ children }: WrapperProps): JSX.Element => {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </Provider>
+    );
+  };
+});
+
 describe("Given a Menu component", () => {
   describe("When instantiated", () => {
     test("It should show four navigation buttons", () => {
-      render(
-        <BrowserRouter>
-          <Menu action={() => null} />
-        </BrowserRouter>
-      );
+      render(<Menu action={() => null} />, { wrapper: Wrapper });
 
       const profileButtonText = "PROFILE";
       const communityButtonText = "COMMUNITY";
@@ -41,11 +55,7 @@ describe("Given a Menu component", () => {
     });
 
     test("When clicking on  profile button, it should send the user to the path /profile", async () => {
-      render(
-        <BrowserRouter>
-          <Menu action={() => null} />
-        </BrowserRouter>
-      );
+      render(<Menu action={() => null} />, { wrapper: Wrapper });
 
       const profileButtonText = "PROFILE";
 
@@ -59,11 +69,7 @@ describe("Given a Menu component", () => {
     });
 
     test("When clicking on community button, it should send the user to the path /community", async () => {
-      render(
-        <BrowserRouter>
-          <Menu action={() => null} />
-        </BrowserRouter>
-      );
+      render(<Menu action={() => null} />, { wrapper: Wrapper });
 
       const communityButtonText = "COMMUNITY";
 
@@ -77,11 +83,7 @@ describe("Given a Menu component", () => {
     });
 
     test("When clicking on draw button, it should send the user to the path /draw", async () => {
-      render(
-        <BrowserRouter>
-          <Menu action={() => null} />
-        </BrowserRouter>
-      );
+      render(<Menu action={() => null} />, { wrapper: Wrapper });
 
       const drawButtonText = "DRAW";
 
@@ -95,11 +97,7 @@ describe("Given a Menu component", () => {
     });
 
     test("When clicking on gallery button, it should send the user to the path /draw", async () => {
-      render(
-        <BrowserRouter>
-          <Menu action={() => null} />
-        </BrowserRouter>
-      );
+      render(<Menu action={() => null} />, { wrapper: Wrapper });
 
       const galleryButtonText = "GALLERY";
 

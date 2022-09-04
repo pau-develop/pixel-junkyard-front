@@ -15,11 +15,13 @@ const Profile = (): JSX.Element => {
     console.log("running...");
   }, [getUserById, id]);
 
-  const user = useSelector<RootState>((state) => state.users) as IUserVisible;
+  const user = useSelector<RootState>(
+    (state) => state.users[0]
+  ) as IUserVisible;
 
   return (
     <ProfileStyled className="profile">
-      {user !== null && (
+      {user !== undefined && (
         <>
           <section className="profile__info">
             <div className="profile__info-avatar">

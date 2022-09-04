@@ -3,6 +3,9 @@ import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import MenuStyled from "./MenuStyled";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { IUser } from "../../interfaces/interfaces";
 
 interface MenuProps {
   action: () => void;
@@ -11,6 +14,7 @@ interface MenuProps {
 }
 
 const Menu = ({ action, menuClass, logAction }: MenuProps): JSX.Element => {
+  const currentUser = useSelector<RootState>((state) => state.user) as IUser;
   const logoutIcon = <FontAwesomeIcon icon={faPowerOff} />;
   const navigate = useNavigate();
 
@@ -23,7 +27,7 @@ const Menu = ({ action, menuClass, logAction }: MenuProps): JSX.Element => {
     <MenuStyled className={menuClass}>
       <Button
         text="PROFILE"
-        action={() => handleClick("/profile")}
+        action={() => handleClick(`/profile/${currentUser._id}`)}
         buttonClass={"button-navigation"}
       />
       <Button
