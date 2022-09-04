@@ -53,6 +53,7 @@ describe("Given a Modal component", () => {
         message: "",
         type: "confirm",
         redirect: "",
+        id: "",
       };
       const result = store.getState();
       expect(result.ui).toEqual(newState);

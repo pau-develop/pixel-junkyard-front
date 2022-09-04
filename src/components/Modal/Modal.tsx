@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useUser from "../../hooks/useUser";
 import { closeModalActionNew } from "../../store/actionCreators/actionCreators";
 import Button from "../Button/Button";
 import ModalStyled from "./ModalStyled";
@@ -8,10 +9,13 @@ interface ModalProps {
   message: string;
   type?: string;
   redirect: string;
+  id?: string;
 }
 
-const Modal = ({ message, type, redirect }: ModalProps): JSX.Element => {
+const Modal = ({ message, type, redirect, id }: ModalProps): JSX.Element => {
+  console.log(id as string, message, type);
   const navigate = useNavigate();
+  const { deleteAccount } = useUser();
 
   if (redirect !== "") {
     let timer = 2;
@@ -36,17 +40,28 @@ const Modal = ({ message, type, redirect }: ModalProps): JSX.Element => {
     message: "",
     type: "confirm",
     redirect: "",
+    id: "",
   };
 
   const handleClick = () => {
     dispatch(closeModalActionNew(ui));
+  };
+  const handleDeleteAccount = () => {
+    console.log(id);
+    deleteAccount(id as string);
   };
 
   return (
     <ModalStyled className="modal" data-testid="modal-element">
       <div className="modal__box">
         <p>{message}</p>
-        {type === "confirm" ? <Button text="OK" action={handleClick} /> : null}
+        {type === "confirm" && <Button text="OK" action={handleClick} />}
+        {type === "delete" && (
+          <>
+            <Button text="Cancel" action={handleClick} />
+            <Button text="Accept" action={handleDeleteAccount} />
+          </>
+        )}
       </div>
     </ModalStyled>
   );

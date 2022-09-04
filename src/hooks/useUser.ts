@@ -25,8 +25,9 @@ const useUser = () => {
       const ui = {
         isOpen: true,
         message: response.error,
-        type: "",
+        type: "confirm",
         redirect: "",
+        id: "",
       };
       dispatch(openModalActionNew(ui));
       return;
@@ -36,6 +37,7 @@ const useUser = () => {
       message: "User registered!",
       type: "",
       redirect: "/login",
+      id: "",
     };
     dispatch(openModalActionNew(ui));
   };
@@ -55,6 +57,7 @@ const useUser = () => {
         message: "Incorrect user name or password",
         type: "confirm",
         redirect: "/login",
+        id: "",
       };
       dispatch(openModalActionNew(ui));
       return;
@@ -69,6 +72,7 @@ const useUser = () => {
       message: "You are logged in!",
       type: "",
       redirect: "/home",
+      id: "",
     };
     localStorage.setItem("token", token);
     dispatch(openModalActionNew(ui));
@@ -86,6 +90,7 @@ const useUser = () => {
       message: "You logged out",
       type: "",
       redirect: "/home",
+      id: "",
     };
     localStorage.removeItem("token");
     dispatch(openModalActionNew(ui));
@@ -106,6 +111,7 @@ const useUser = () => {
         message: "Something went wrong, please try again",
         type: "confirm",
         redirect: "",
+        id: "",
       };
       dispatch(openModalActionNew(ui));
       return;
@@ -115,8 +121,15 @@ const useUser = () => {
       message: "Your account has been deleted",
       type: "",
       redirect: "/home",
+      id: "",
     };
     localStorage.removeItem("token");
+    const user: IUser = {
+      userName: "",
+      token: "",
+      _id: "",
+    };
+    dispatch(logoutUserActionNew(user));
     dispatch(openModalActionNew(ui));
   };
 

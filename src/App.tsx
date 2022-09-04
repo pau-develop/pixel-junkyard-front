@@ -32,7 +32,12 @@ const App = (): JSX.Element => {
   return (
     <AppStyled className="app-container">
       {ui.isOpen ? (
-        <Modal message={ui.message} type={ui.type} redirect={ui.redirect} />
+        <Modal
+          message={ui.message}
+          type={ui.type}
+          redirect={ui.redirect}
+          id={ui.id}
+        />
       ) : null}
       <Header currentUser={user} />
       <main className="app-container__main">

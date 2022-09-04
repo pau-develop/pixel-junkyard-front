@@ -8,6 +8,7 @@ const initialUiState = {
   message: "",
   type: "",
   redirect: "",
+  id: "",
 };
 
 const initialUserState = {

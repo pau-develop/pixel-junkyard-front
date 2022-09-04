@@ -9,6 +9,7 @@ const initialState = {
   message: "",
   type: "",
   redirect: "",
+  id: "",
 };
 
 const uiReducer = createReducer<IUIModal>(initialState, (builder) => {

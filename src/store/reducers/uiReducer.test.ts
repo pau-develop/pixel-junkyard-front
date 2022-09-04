@@ -12,6 +12,7 @@ describe("Given a uiReducer", () => {
         message: "modal is open",
         type: "",
         redirect: "",
+        id: "",
       };
 
       const action = openModalActionNew(ui);
@@ -28,6 +29,7 @@ describe("Given a uiReducer", () => {
         message: "modal is closed",
         type: "",
         redirect: "",
+        id: "",
       };
 
       const action = closeModalActionNew(ui);
@@ -44,6 +46,7 @@ describe("Given a uiReducer", () => {
         message: "modal is closed",
         type: "",
         redirect: "",
+        id: "",
       };
 
       const action = closeModalActionNew(ui);

@@ -14,4 +14,5 @@ export interface IUIModal {
   message: string;
   type: string;
   redirect: string;
+  id: string;
 }

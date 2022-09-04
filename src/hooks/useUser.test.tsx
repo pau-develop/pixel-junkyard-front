@@ -84,6 +84,7 @@ describe("Given a useUsers hook", () => {
           message: "ERROR! Username already taken",
           redirect: "",
           type: "",
+          id: "",
         },
         type: "ui@display",
       };
@@ -160,6 +161,7 @@ describe("Given a useUsers hook", () => {
           message: "Incorrect user name or password",
           redirect: "/login",
           type: "confirm",
+          id: "",
         },
         type: "ui@display",
       };
@@ -244,6 +246,7 @@ describe("Given a useUsers hook", () => {
           message: "Something went wrong, please try again",
           redirect: "",
           type: "confirm",
+          id: "",
         },
         type: "ui@display",
       };
