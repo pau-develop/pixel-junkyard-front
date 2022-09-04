@@ -83,7 +83,7 @@ describe("Given a useUsers hook", () => {
           isOpen: true,
           message: "ERROR! Username already taken",
           redirect: "",
-          type: "",
+          type: "confirm",
           id: "",
         },
         type: "ui@display",
