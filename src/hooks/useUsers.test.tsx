@@ -67,7 +67,7 @@ describe("Given a useUsers hook", () => {
         getUserById(id);
       });
 
-      const expectedAction = { payload: undefined, type: "users@id" };
+      const expectedAction = { payload: [undefined], type: "users@id" };
       expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
     });
   });

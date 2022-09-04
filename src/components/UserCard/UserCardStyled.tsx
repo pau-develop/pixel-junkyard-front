@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const UserCardStyled = styled.article`
+  cursor: pointer;
   display: flex;
   border-radius: 10px;
   background: linear-gradient(
