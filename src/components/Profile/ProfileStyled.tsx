@@ -57,6 +57,36 @@ const ProfileStyled = styled.article`
         padding: 0;
       }
     }
+    &__settings-mobile {
+      margin: 0 5%;
+      background-color: ${(props) => props.theme.thirdColor};
+      border-radius: 40px;
+      width: 90%;
+      height: 10%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-top: 5%;
+      justify-content: space-around;
+      button {
+        font-size: 1rem;
+        margin: 6% 0;
+        width: 100%;
+        height: 70%;
+      }
+      button:first-child {
+        margin-left: 6%;
+        margin-right: 3%;
+      }
+      button:last-child {
+        margin-right: 6%;
+        margin-left: 3%;
+      }
+    }
+    &__settings-desktop {
+      display: none;
+    }
     &__gallery {
       margin: 0 5%;
       background-color: ${(props) => props.theme.thirdColor};
@@ -121,6 +151,19 @@ const ProfileStyled = styled.article`
           li {
             margin-top: 5%;
           }
+        }
+      }
+      &__settings-mobile {
+        display: none;
+      }
+      &__settings-desktop {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: column;
+        button {
+          width: 90%;
+          margin: 5%;
         }
       }
       &__gallery {

@@ -1,25 +1,29 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { RootState } from "../../app/store";
 import useUsers from "../../hooks/useUsers";
 import { IUserVisible } from "../../interfaces/interfaces";
+import Button from "../Button/Button";
 import ProfileStyled from "./ProfileStyled";
 
 const Profile = (): JSX.Element => {
+  const isProfile = useLocation().pathname.includes("profile");
+
   const { getUserById } = useUsers();
   const { id } = useParams();
 
   useEffect(() => {
     getUserById(id as string);
-    console.log("running...");
   }, [getUserById, id]);
 
-  const user = useSelector<RootState>((state) => state.users) as IUserVisible;
+  const user = useSelector<RootState>(
+    (state) => state.users[0]
+  ) as IUserVisible;
 
   return (
     <ProfileStyled className="profile">
-      {user !== null && (
+      {user !== undefined && (
         <>
           <section className="profile__info">
             <div className="profile__info-avatar">
@@ -34,7 +38,20 @@ const Profile = (): JSX.Element => {
                 <li>2 comments</li>
               </ul>
             </div>
+            {isProfile && (
+              <div className="profile__settings-desktop">
+                <Button text="Edit avatar" />
+                <Button text="Delete account" />
+              </div>
+            )}
           </section>
+          {isProfile && (
+            <section className="profile__settings-mobile">
+              <Button text="Edit avatar" />
+              <Button text="Delete account" />
+            </section>
+          )}
+
           <section className="profile__gallery">
             <h3>{`${user.userName}'s Gallery`}</h3>
             <div className="profile__gallery-display"></div>

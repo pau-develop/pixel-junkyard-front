@@ -43,6 +43,7 @@ const App = (): JSX.Element => {
           <Route path="/login" element={<LoginFormPage />} />
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/community/:id" element={<ProfilePage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="*" element={<UnknownPage />} />
         </Routes>
       </main>
