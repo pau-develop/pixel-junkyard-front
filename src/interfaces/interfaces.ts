@@ -5,6 +5,7 @@ export interface Input {
 }
 
 export interface IUser {
+  _id: string;
   userName: string;
   token: string;
 }

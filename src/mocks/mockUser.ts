@@ -1,8 +1,9 @@
-const mockUser = {
+import { IUser } from "../interfaces/interfaces";
+
+const mockUser: IUser = {
   _id: "12345",
   userName: "fakeName",
-  password: "12345",
-  email: "fake@fake.com",
+  token: "fake@fake.com",
 };
 
 export default mockUser;

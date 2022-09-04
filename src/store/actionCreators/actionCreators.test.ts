@@ -1,4 +1,5 @@
-import { IUser, IUserVisible } from "../../interfaces/interfaces";
+import { IUserVisible } from "../../interfaces/interfaces";
+import mockUser from "../../mocks/mockUser";
 import mockUsers from "../../mocks/mockUsers";
 import {
   closeModalActionNew,
@@ -56,10 +57,7 @@ describe("Given a closeModal function", () => {
 describe("Given a loginUser function", () => {
   describe("When called", () => {
     test("It should return an object with the action 'loginUser' and a payload of type IUser", () => {
-      const user: IUser = {
-        userName: "pau",
-        token: "123456",
-      };
+      const user = mockUser;
 
       const expectedResult = {
         type: "user@login",
@@ -76,10 +74,7 @@ describe("Given a loginUser function", () => {
 describe("Given a logoutUser function", () => {
   describe("When called", () => {
     test("It should return an object with the action 'loginUser' and a payload of type IUser", () => {
-      const user: IUser = {
-        userName: "",
-        token: "",
-      };
+      const user = mockUser;
 
       const expectedResult = {
         type: "user@logout",
