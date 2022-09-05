@@ -1,8 +1,9 @@
-import { IUserVisible } from "../../interfaces/interfaces";
+import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
 import mockUser from "../../mocks/mockUser";
 import mockUsers from "../../mocks/mockUsers";
 import {
   closeModalActionNew,
+  getAllDrawingsActionNew,
   getAllUsersActionNew,
   getUserByIdActionNew,
   loginUserActionNew,
@@ -125,6 +126,23 @@ describe("Given a getUserById action", () => {
       };
 
       const result = getUserByIdActionNew(user);
+
+      expect(result).toEqual(expectedResult);
+    });
+  });
+});
+
+describe("Given a getAllDrawings action", () => {
+  describe("When called", () => {
+    test("It should return an object with the action 'getAllDrawings' and a payload of type IDrawing", () => {
+      const drawings: IDrawing[] = [];
+
+      const expectedResult = {
+        type: "drawings@all",
+        payload: drawings,
+      };
+
+      const result = getAllDrawingsActionNew(drawings);
 
       expect(result).toEqual(expectedResult);
     });
