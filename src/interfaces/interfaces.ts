@@ -16,3 +16,12 @@ export interface IUserVisible {
   password: string;
   email: string;
 }
+
+export interface IDrawing {
+  _id: string;
+  name: string;
+  description: string;
+  image: string;
+  artist: string;
+  resolution: string;
+}

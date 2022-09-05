@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { IUser, IUserVisible } from "../../interfaces/interfaces";
+import { IDrawing, IUser, IUserVisible } from "../../interfaces/interfaces";
 
 import actionTypes from "../actionTypes/actionTypes";
 
@@ -19,4 +19,8 @@ export const getAllUsersActionNew = createAction<IUserVisible[]>(
 
 export const getUserByIdActionNew = createAction<IUserVisible[]>(
   actionTypes.getUserById
+);
+
+export const getAllDrawingsActionNew = createAction<IDrawing[]>(
+  actionTypes.getAllDrawings
 );
