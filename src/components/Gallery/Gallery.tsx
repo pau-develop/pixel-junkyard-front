@@ -19,7 +19,7 @@ const Gallery = (): JSX.Element => {
   console.log(drawings);
 
   return (
-    <GalleryStyled>
+    <GalleryStyled className="gallery">
       <ul>
         {drawings.map((drawing, index) => (
           <li key={drawing._id}>

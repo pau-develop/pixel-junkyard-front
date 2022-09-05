@@ -7,8 +7,10 @@ interface DrawingCardProps {
 
 const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
   return (
-    <DrawingCardStyled>
-      <img src={draw.image} alt={draw.name} />
+    <DrawingCardStyled className="draw-card">
+      <span className="draw-card__title">{draw.name}</span>
+      <img className="draw-card__image" src={draw.image} alt={draw.name} />
+      <span className="draw-card__footer">{draw.artist}</span>
     </DrawingCardStyled>
   );
 };
