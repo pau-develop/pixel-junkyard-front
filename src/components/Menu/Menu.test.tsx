@@ -35,7 +35,7 @@ describe("Given a Menu component", () => {
       const profileButtonText = "PROFILE";
       const communityButtonText = "COMMUNITY";
       const galleryButtonText = "GALLERY";
-      const drawButtonText = "DRAW";
+      const drawButtonText = "CANVAS";
 
       const profileButton = screen.getByRole("button", {
         name: profileButtonText,
@@ -85,7 +85,7 @@ describe("Given a Menu component", () => {
     test("When clicking on draw button, it should send the user to the path /draw", async () => {
       render(<Menu action={() => null} />, { wrapper: Wrapper });
 
-      const drawButtonText = "DRAW";
+      const drawButtonText = "CANVAS";
 
       const drawButton = screen.getByRole("button", {
         name: drawButtonText,

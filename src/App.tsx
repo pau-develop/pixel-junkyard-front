@@ -6,6 +6,7 @@ import AppStyled from "./AppStyled";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 import { IUser } from "./interfaces/interfaces";
+import CanvasPage from "./pages/CanvasPage/CanvasPage";
 import CommunityPage from "./pages/CommunityPage/CommunityPage";
 import GuestPage from "./pages/GuestPage/GuestPage";
 import LoginFormPage from "./pages/LoginFormPage/LoginFormPage";
@@ -49,6 +50,7 @@ const App = (): JSX.Element => {
           <Route path="/community" element={<CommunityPage />} />
           <Route path="/community/:id" element={<ProfilePage />} />
           <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/canvas" element={<CanvasPage />} />
           <Route path="*" element={<UnknownPage />} />
         </Routes>
       </main>
