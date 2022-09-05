@@ -41,8 +41,8 @@ const Menu = ({ action, menuClass, logAction }: MenuProps): JSX.Element => {
         buttonClass={"button-navigation"}
       />
       <Button
-        text="DRAW"
-        action={() => handleClick("/gallery")}
+        text="CANVAS"
+        action={() => handleClick("/canvas")}
         buttonClass={"button-navigation"}
       />
       <i onClick={logAction}>{logoutIcon}</i>
