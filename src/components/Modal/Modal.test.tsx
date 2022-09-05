@@ -1,8 +1,21 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+
 import { store } from "../../app/store";
 import Modal from "./Modal";
+
+const mockDeleteAccount = jest.fn();
+
+jest.mock("../../hooks/useUser", () => () => {
+  // Require the original module to not be mocked...
+  const originalModule = jest.requireActual("../../hooks/useUser");
+  return {
+    __esModule: true, // Use it when dealing with esModules
+    ...originalModule,
+    deleteAccount: () => mockDeleteAccount(),
+  };
+});
 
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
@@ -70,6 +83,57 @@ describe("Given a Modal component", () => {
       );
       jest.advanceTimersByTime(3000);
       expect(setInterval).toHaveBeenCalled();
+    });
+
+    test("if the Modal has the type 'delete', it should the buttons cancel & accep'", () => {
+      render(
+        <BrowserRouter>
+          <Modal
+            message="test paragraph"
+            type="delete"
+            redirect="/home"
+            id="1"
+          />
+        </BrowserRouter>,
+        { wrapper: Wrapper }
+      );
+
+      const buttonCancelText = "Cancel";
+      const buttonAcceptText = "Accept";
+
+      const buttonCancelElement = screen.getByRole("button", {
+        name: buttonCancelText,
+      });
+      const buttonAcceptElement = screen.getByRole("button", {
+        name: buttonAcceptText,
+      });
+
+      expect(buttonCancelElement).not.toBeNull();
+      expect(buttonAcceptElement).not.toBeNull();
+    });
+
+    test("And upon clicking accept button, deleteAccount function should be called", async () => {
+      render(
+        <BrowserRouter>
+          <Modal
+            message="test paragraph"
+            type="delete"
+            redirect="/home"
+            id="1"
+          />
+        </BrowserRouter>,
+        { wrapper: Wrapper }
+      );
+
+      const buttonAcceptText = "Accept";
+
+      const buttonAcceptElement = screen.getByRole("button", {
+        name: buttonAcceptText,
+      });
+
+      await fireEvent.click(buttonAcceptElement);
+
+      expect(mockDeleteAccount).toHaveBeenCalled();
     });
   });
 });
