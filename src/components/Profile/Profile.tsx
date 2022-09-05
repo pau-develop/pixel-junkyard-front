@@ -1,21 +1,36 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { RootState } from "../../app/store";
 import useUsers from "../../hooks/useUsers";
 import { IUserVisible } from "../../interfaces/interfaces";
+import { openModalActionNew } from "../../store/actionCreators/actionCreators";
+import { IUIModal } from "../../store/types/interfaces";
 import Button from "../Button/Button";
 import ProfileStyled from "./ProfileStyled";
 
 const Profile = (): JSX.Element => {
   const isProfile = useLocation().pathname.includes("profile");
-
+  const dispatch = useDispatch();
   const { getUserById } = useUsers();
+
   const { id } = useParams();
 
   useEffect(() => {
     getUserById(id as string);
   }, [getUserById, id]);
+
+  const handleDeleteAccount = () => {
+    const ui = {
+      isOpen: true,
+      message: "Permanently delete account?",
+      type: "delete",
+      redirect: "",
+      id: id as string,
+    } as IUIModal;
+    console.log(ui.id);
+    dispatch(openModalActionNew(ui));
+  };
 
   const user = useSelector<RootState>(
     (state) => state.users[0]
@@ -41,14 +56,14 @@ const Profile = (): JSX.Element => {
             {isProfile && (
               <div className="profile__settings-desktop">
                 <Button text="Edit avatar" />
-                <Button text="Delete account" />
+                <Button text="Delete account" action={handleDeleteAccount} />
               </div>
             )}
           </section>
           {isProfile && (
             <section className="profile__settings-mobile">
               <Button text="Edit avatar" />
-              <Button text="Delete account" />
+              <Button text="Delete account" action={handleDeleteAccount} />
             </section>
           )}
 

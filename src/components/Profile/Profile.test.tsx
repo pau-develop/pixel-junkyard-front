@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import Profile from "./Profile";
 import { BrowserRouter } from "react-router-dom";
@@ -10,6 +10,13 @@ jest.mock("react-router-dom", () => ({
   useLocation: () => ({
     pathname: "/profile/6310861c990c709a6ceb945d",
   }),
+}));
+
+const mockDispatch = jest.fn();
+
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: () => mockDispatch,
 }));
 
 let Wrapper: ({ children }: WrapperProps) => JSX.Element;
@@ -34,6 +41,17 @@ describe("Given a Profile component", () => {
       const buttonElement = screen.getByRole("button", { name: buttonText });
 
       expect(buttonElement).not.toBeNull();
+    });
+
+    test("When clicking on delete account button, a new ui should be dispatched", async () => {
+      await render(<Profile />, { wrapper: Wrapper });
+
+      const buttonText = "Delete account";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      fireEvent.click(buttonElement);
+
+      expect(mockDispatch).toHaveBeenCalled();
     });
   });
 });

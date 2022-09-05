@@ -107,11 +107,12 @@ const ProfileStyled = styled.article`
   @media (min-width: 1100px) {
     max-width: 100%;
     flex-direction: row;
-    height: 80%;
+    height: 90%;
     .profile {
       &__info {
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
         width: 40%;
         max-width: 300px;
         margin: 3%;
@@ -119,8 +120,8 @@ const ProfileStyled = styled.article`
         height: 90%;
       }
       &__info-avatar {
-        height: 50%;
-        width: 100%;
+        height: 40%;
+        width: 90%;
         display: flex;
         justify-content: space-around;
         img {
@@ -131,7 +132,7 @@ const ProfileStyled = styled.article`
         }
       }
       &__info-props {
-        height: 90%;
+        height: 40%;
         width: 100%;
         padding: 0;
         font-size: 1.3rem;
@@ -139,17 +140,17 @@ const ProfileStyled = styled.article`
           font-size: 1rem;
         }
         h2 {
-          margin-top: 15%;
+          margin-top: 5%;
           text-align: center;
         }
         ul {
           list-style: none;
           padding: 0;
           margin: 0;
-          margin-top: 10%;
+          margin-top: 5%;
           text-align: center;
           li {
-            margin-top: 5%;
+            margin-top: 2%;
           }
         }
       }

@@ -18,6 +18,7 @@ describe("Given a openModal function", () => {
         message: "showing modal",
         type: "",
         redirect: "",
+        id: "",
       };
 
       const expectedResult = {
@@ -40,6 +41,7 @@ describe("Given a closeModal function", () => {
         message: "",
         type: "",
         redirect: "",
+        id: "",
       };
 
       const expectedResult = {
