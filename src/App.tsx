@@ -8,6 +8,7 @@ import Modal from "./components/Modal/Modal";
 import { IUser } from "./interfaces/interfaces";
 import CanvasPage from "./pages/CanvasPage/CanvasPage";
 import CommunityPage from "./pages/CommunityPage/CommunityPage";
+import DrawingDetailPage from "./pages/DrawingDetailPage/DrawingDetailPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
 import GuestPage from "./pages/GuestPage/GuestPage";
 import LoginFormPage from "./pages/LoginFormPage/LoginFormPage";
@@ -52,6 +53,7 @@ const App = (): JSX.Element => {
           <Route path="/community/:id" element={<ProfilePage />} />
           <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/gallery/:id" element={<DrawingDetailPage />} />
           <Route path="/canvas" element={<CanvasPage />} />
           <Route path="*" element={<UnknownPage />} />
         </Routes>

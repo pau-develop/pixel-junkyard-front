@@ -22,8 +22,6 @@ const GalleryStyled = styled.section`
     align-items: center;
     justify-content: center;
     li {
-      width: 100%;
-      height: 100%;
       border-radius: 10px;
       margin-top: 5%;
       display: flex;
@@ -49,6 +47,13 @@ const GalleryStyled = styled.section`
       display: grid;
       grid-template-columns: 22% 22% 22% 22%;
       grid-gap: 3%;
+    }
+  }
+  @media (min-width: 1600px) {
+    ul {
+      display: grid;
+      grid-template-columns: 19% 19% 19% 19% 19%;
+      gap: 1%;
     }
   }
 `;

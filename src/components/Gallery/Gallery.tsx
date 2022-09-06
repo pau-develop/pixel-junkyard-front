@@ -20,8 +20,8 @@ const Gallery = (): JSX.Element => {
     <GalleryStyled className="gallery">
       <ul>
         {drawings.map((drawing) => (
-          <li>
-            <DrawingCard draw={drawing} key={drawing._id} />
+          <li key={drawing._id}>
+            <DrawingCard draw={drawing} />
           </li>
         ))}
       </ul>
