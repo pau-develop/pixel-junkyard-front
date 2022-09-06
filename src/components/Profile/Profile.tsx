@@ -28,7 +28,6 @@ const Profile = (): JSX.Element => {
       redirect: "",
       id: id as string,
     } as IUIModal;
-    console.log(ui.id);
     dispatch(openModalActionNew(ui));
   };
 
