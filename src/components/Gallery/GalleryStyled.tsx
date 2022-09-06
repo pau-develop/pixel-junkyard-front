@@ -49,6 +49,13 @@ const GalleryStyled = styled.section`
       grid-gap: 3%;
     }
   }
+  @media (min-width: 1600px) {
+    ul {
+      display: grid;
+      grid-template-columns: 19% 19% 19% 19% 19%;
+      gap: 1%;
+    }
+  }
 `;
 
 export default GalleryStyled;

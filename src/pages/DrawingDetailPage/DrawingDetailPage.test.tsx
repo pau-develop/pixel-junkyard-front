@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../app/store";
+import mockStore from "../../mocks/mockStore";
 import DrawingDetailPage from "./DrawingDetailPage";
 
 interface WrapperProps {
@@ -13,7 +14,7 @@ let Wrapper: ({ children }: WrapperProps) => JSX.Element;
 beforeEach(() => {
   Wrapper = ({ children }: WrapperProps): JSX.Element => {
     return (
-      <Provider store={store}>
+      <Provider store={mockStore}>
         <BrowserRouter>{children}</BrowserRouter>
       </Provider>
     );
