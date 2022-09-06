@@ -6,7 +6,7 @@ import {
   closeModalActionNew,
   getAllDrawingsActionNew,
   getAllUsersActionNew,
-  getDrawingById,
+  getDrawingByIdActionNew,
   getUserByIdActionNew,
   loginUserActionNew,
   logoutUserActionNew,
@@ -161,7 +161,7 @@ describe("Given a getDrawingById action", () => {
         payload: drawing,
       };
 
-      const result = getDrawingById(drawing);
+      const result = getDrawingByIdActionNew(drawing);
 
       expect(result).toEqual(expectedResult);
     });

@@ -1,6 +1,9 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { getAllDrawingsActionNew } from "../store/actionCreators/actionCreators";
+import {
+  getAllDrawingsActionNew,
+  getDrawingByIdActionNew,
+} from "../store/actionCreators/actionCreators";
 
 const useDrawings = () => {
   const dispatch = useDispatch();
@@ -20,7 +23,24 @@ const useDrawings = () => {
     dispatch(getAllDrawingsActionNew(drawings));
   }, [dispatch, url]);
 
-  return { getAllDrawings };
+  const getDrawingById = useCallback(
+    async (id: string) => {
+      const usersData = await fetch(`${url}drawings/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`,
+        },
+      });
+      const response = await usersData.json();
+      const { drawing } = response;
+
+      dispatch(getDrawingByIdActionNew([drawing]));
+    },
+    [dispatch, url]
+  );
+
+  return { getAllDrawings, getDrawingById };
 };
 
 export default useDrawings;

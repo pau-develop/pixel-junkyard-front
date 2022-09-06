@@ -25,6 +25,6 @@ export const getAllDrawingsActionNew = createAction<IDrawing[]>(
   actionTypes.getAllDrawings
 );
 
-export const getDrawingById = createAction<IDrawing[]>(
+export const getDrawingByIdActionNew = createAction<IDrawing[]>(
   actionTypes.getDrawingById
 );

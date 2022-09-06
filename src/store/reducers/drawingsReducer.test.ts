@@ -2,7 +2,7 @@ import { IDrawing } from "../../interfaces/interfaces";
 import mockDrawings from "../../mocks/mockDrawings";
 import {
   getAllDrawingsActionNew,
-  getDrawingById,
+  getDrawingByIdActionNew,
 } from "../actionCreators/actionCreators";
 import drawingsReducer from "./drawingsReducer";
 
@@ -40,7 +40,7 @@ describe("Given a drawingsReducer", () => {
     test("It should update the store state with the drawing received as arguments", () => {
       const drawings: IDrawing[] = mockDrawings;
 
-      const action = getDrawingById(drawings);
+      const action = getDrawingByIdActionNew(drawings);
       const result = drawingsReducer(drawings, action);
 
       expect(result).toStrictEqual(drawings);
@@ -50,7 +50,7 @@ describe("Given a drawingsReducer", () => {
     test("It should return its current state", () => {
       const drawings: IDrawing[] = mockDrawings;
 
-      const action = getDrawingById(drawings);
+      const action = getDrawingByIdActionNew(drawings);
       const result = drawingsReducer(drawings, action);
 
       expect(result).toStrictEqual(drawings);
