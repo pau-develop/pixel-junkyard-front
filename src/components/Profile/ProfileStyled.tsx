@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 const ProfileStyled = styled.article`
   border-style: border-box;
-  margin-top: 5%;
+
   height: 90%;
   width: 90%;
   max-width: 500px;
-  margin: 0 5%;
+  margin: 5%;
   display: flex;
   flex-direction: column;
   border-radius: 50px;

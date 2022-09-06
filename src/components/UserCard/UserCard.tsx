@@ -9,7 +9,7 @@ interface UserCardProps {
 const UserCard = ({ user }: UserCardProps): JSX.Element => {
   const navigate = useNavigate();
   const handleClick = (id: string) => {
-    navigate(id);
+    navigate(`/community/${id}`);
   };
 
   return (
