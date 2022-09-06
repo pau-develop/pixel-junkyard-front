@@ -11,6 +11,11 @@ const drawingsReducer = createReducer<IDrawing[]>(initialState, (builder) => {
     (state: IDrawing[], action: IDrawingAction) => [...action.payload]
   );
 
+  builder.addCase(
+    actionTypes.getDrawingById,
+    (state: IDrawing[], action: IDrawingAction) => [...action.payload]
+  );
+
   builder.addDefaultCase((state: IDrawing[]) => state);
 });
 

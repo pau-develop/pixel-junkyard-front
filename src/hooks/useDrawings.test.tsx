@@ -46,4 +46,28 @@ describe("Given a useDrawings hook", () => {
       expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
     });
   });
+
+  describe("When its function getDrawingById is called", () => {
+    test("It should add a single drawing from the DB to the store state", async () => {
+      const drawing: IDrawing[] = mockDrawings;
+      global.fetch = jest.fn().mockReturnValue({
+        json: jest.fn().mockReturnValue(drawing),
+      });
+
+      const {
+        result: {
+          current: { getDrawingById },
+        },
+      } = renderHook(useDrawings, { wrapper: Wrapper });
+
+      const id = "12345";
+
+      await waitFor(() => {
+        getDrawingById(id);
+      });
+
+      const expectedAction = { payload: [undefined], type: "drawings@id" };
+      expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
+    });
+  });
 });
