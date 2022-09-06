@@ -24,3 +24,7 @@ export const getUserByIdActionNew = createAction<IUserVisible[]>(
 export const getAllDrawingsActionNew = createAction<IDrawing[]>(
   actionTypes.getAllDrawings
 );
+
+export const getDrawingById = createAction<IDrawing[]>(
+  actionTypes.getDrawingById
+);
