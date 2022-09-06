@@ -10,7 +10,10 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
     <DrawingCardStyled className="draw-card">
       <span className="draw-card__title">{draw.name}</span>
       <img className="draw-card__image" src={draw.image} alt={draw.name} />
-      <span className="draw-card__footer">{draw.artist}</span>
+      <div className="draw-card__footer">
+        <span>date</span>
+        <span>{draw.artist}</span>
+      </div>
     </DrawingCardStyled>
   );
 };

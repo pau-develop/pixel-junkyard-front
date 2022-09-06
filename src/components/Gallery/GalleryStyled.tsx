@@ -10,23 +10,45 @@ const GalleryStyled = styled.section`
   margin: 0 5%;
   display: flex;
   flex-direction: column;
-  border-radius: 50px;
+
   color: ${(props) => props.theme.secondaryColor};
 
   ul {
     list-style: none;
     padding: 0;
     color: ${(props) => props.theme.secondaryColor};
-    display: grid;
-    grid-template-columns: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     li {
       width: 100%;
+      height: 100%;
       border-radius: 10px;
       margin-top: 5%;
       display: flex;
       justify-content: center;
+    }
+  }
+  @media (min-width: 600px) {
+    ul {
+      display: grid;
+      grid-template-columns: 48% 48%;
+      grid-gap: 4%;
+    }
+  }
+  @media (min-width: 1000px) {
+    ul {
+      display: grid;
+      grid-template-columns: 30% 30% 30%;
+      grid-gap: 5%;
+    }
+  }
+  @media (min-width: 1400px) {
+    ul {
+      display: grid;
+      grid-template-columns: 22% 22% 22% 22%;
+      grid-gap: 3%;
     }
   }
 `;
