@@ -4,10 +4,6 @@ const DrawingCardStyled = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
   background-color: ${(props) => props.theme.primaryColor};
   border-radius: 10px;
   .draw-card {
