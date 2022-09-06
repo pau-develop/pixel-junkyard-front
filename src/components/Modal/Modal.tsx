@@ -13,7 +13,6 @@ interface ModalProps {
 }
 
 const Modal = ({ message, type, redirect, id }: ModalProps): JSX.Element => {
-  console.log(id as string, message, type);
   const navigate = useNavigate();
   const { deleteAccount } = useUser();
 
@@ -47,7 +46,6 @@ const Modal = ({ message, type, redirect, id }: ModalProps): JSX.Element => {
     dispatch(closeModalActionNew(ui));
   };
   const handleDeleteAccount = () => {
-    console.log(id);
     deleteAccount(id as string);
   };
 

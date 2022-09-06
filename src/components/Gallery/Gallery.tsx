@@ -16,14 +16,12 @@ const Gallery = (): JSX.Element => {
     getAllDrawings();
   }, [getAllDrawings]);
 
-  console.log(drawings);
-
   return (
     <GalleryStyled className="gallery">
       <ul>
-        {drawings.map((drawing, index) => (
-          <li key={drawing._id}>
-            <DrawingCard draw={drawing} />
+        {drawings.map((drawing) => (
+          <li>
+            <DrawingCard draw={drawing} key={drawing._id} />
           </li>
         ))}
       </ul>
