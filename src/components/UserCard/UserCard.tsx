@@ -14,7 +14,9 @@ const UserCard = ({ user }: UserCardProps): JSX.Element => {
 
   return (
     <UserCardStyled onClick={() => handleClick(user._id)}>
-      <img src="/img/demo-avatar.png" alt={user.userName} />
+      <div className="image-container">
+        <img src="/img/demo-avatar.png" alt={user.userName} />
+      </div>
       <div>
         <h2>{user.userName}</h2>
         <span>{user.email}</span>
