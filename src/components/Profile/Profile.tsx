@@ -49,9 +49,7 @@ const Profile = (): JSX.Element => {
     });
   };
 
-  if (drawings !== null) {
-    drawings = filterDrawingById(drawings);
-  }
+  drawings = filterDrawingById(drawings);
 
   return (
     <ProfileStyled className="profile">
