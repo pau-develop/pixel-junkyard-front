@@ -4,7 +4,9 @@ import PageStyled from "../PageStyled";
 const ProfilePage = (): JSX.Element => {
   return (
     <PageStyled className="page">
-      <h1 className="page__title">Profile</h1>
+      <div className="page__title-container">
+        <h1 className="page__title-heading">Profile</h1>
+      </div>
       <Profile />
     </PageStyled>
   );

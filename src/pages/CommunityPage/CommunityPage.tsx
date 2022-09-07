@@ -4,7 +4,9 @@ import PageStyled from "../PageStyled";
 const CommunityPage = (): JSX.Element => {
   return (
     <PageStyled className="page">
-      <h1 className="page__title">Community</h1>
+      <div className="page__title-container">
+        <h1 className="page__title-heading">Community</h1>
+      </div>
       <Community />
     </PageStyled>
   );

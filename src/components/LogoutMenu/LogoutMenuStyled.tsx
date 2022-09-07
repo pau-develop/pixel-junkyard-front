@@ -30,7 +30,7 @@ const LogoutMenuStyled = styled.div`
       justify-content: flex-end;
       background: linear-gradient(
         90deg,
-        ${(props) => props.theme.thirdColor} 0%,
+        transparent 0%,
         ${(props) => props.theme.primaryColor} 100%
       );
       button {
