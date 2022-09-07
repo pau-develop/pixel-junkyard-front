@@ -2,23 +2,27 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { RootState } from "../../app/store";
+import useDrawings from "../../hooks/useDrawings";
 import useUsers from "../../hooks/useUsers";
-import { IUserVisible } from "../../interfaces/interfaces";
+import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
 import { openModalActionNew } from "../../store/actionCreators/actionCreators";
 import { IUIModal } from "../../store/types/interfaces";
 import Button from "../Button/Button";
+import DrawingCard from "../DrawingCard/DrawingCard";
 import ProfileStyled from "./ProfileStyled";
 
 const Profile = (): JSX.Element => {
   const isProfile = useLocation().pathname.includes("profile");
   const dispatch = useDispatch();
   const { getUserById } = useUsers();
+  const { getAllDrawings } = useDrawings();
 
   const { id } = useParams();
 
   useEffect(() => {
     getUserById(id as string);
-  }, [getUserById, id]);
+    getAllDrawings();
+  }, [getUserById, getAllDrawings, id]);
 
   const handleDeleteAccount = () => {
     const ui = {
@@ -34,6 +38,18 @@ const Profile = (): JSX.Element => {
   const user = useSelector<RootState>(
     (state) => state.users[0]
   ) as IUserVisible;
+
+  let drawings = useSelector<RootState>(
+    (state) => state.drawings
+  ) as IDrawing[];
+
+  const filterDrawingById = (drawings: IDrawing[]) => {
+    return drawings.filter((drawing) => {
+      return drawing.userId === user._id;
+    });
+  };
+
+  drawings = filterDrawingById(drawings);
 
   return (
     <ProfileStyled className="profile">
@@ -68,7 +84,15 @@ const Profile = (): JSX.Element => {
 
           <section className="profile__gallery">
             <h3>{`${user.userName}'s Gallery`}</h3>
-            <div className="profile__gallery-display"></div>
+            <div className="profile__gallery-display">
+              <ul>
+                {drawings.map((drawing) => (
+                  <li key={drawing._id}>
+                    <DrawingCard draw={drawing} />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </section>
         </>
       )}

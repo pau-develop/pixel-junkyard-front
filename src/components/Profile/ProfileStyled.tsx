@@ -6,16 +6,11 @@ const ProfileStyled = styled.article`
   height: 90%;
   width: 90%;
   max-width: 500px;
-  margin: 5%;
   display: flex;
   flex-direction: column;
   border-radius: 50px;
   color: ${(props) => props.theme.secondaryColor};
-  background: linear-gradient(
-    0deg,
-    ${(props) => props.theme.thirdColor} 0%,
-    ${(props) => props.theme.primaryColor} 100%
-  );
+  background: ${(props) => props.theme.primaryColor};
   .profile {
     &__info {
       margin: 0 5%;
@@ -53,6 +48,7 @@ const ProfileStyled = styled.article`
         margin: 0;
       }
       ul {
+        height: 100%;
         list-style: none;
         padding: 0;
       }
@@ -88,20 +84,65 @@ const ProfileStyled = styled.article`
       display: none;
     }
     &__gallery {
-      margin: 0 5%;
+      margin: 5% 5%;
       background-color: ${(props) => props.theme.thirdColor};
       border-radius: 40px;
       width: 90%;
-      height: 60%;
+      height: 67%;
+      @media (min-width: 450px) {
+        height: 57%;
+      }
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-top: 5%;
+      h3 {
+        margin-top: 1%;
+      }
     }
     &__gallery-display {
-      width: 100%;
-      height: 80%;
+      justify-content: flex-start;
+      overflow: scroll;
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      height: 90%;
+      width: 90%;
+      margin: 0 5%;
+      display: flex;
+      flex-direction: column;
+
+      color: ${(props) => props.theme.secondaryColor};
+
+      ul {
+        justify-content: flex-start;
+        height: 100%;
+        list-style: none;
+        padding: 0;
+        color: ${(props) => props.theme.secondaryColor};
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        li {
+          border-radius: 10px;
+          margin-top: 5%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  @media (min-width: 700px) {
+    .profile {
+      &__gallery-display {
+        height: 100%;
+        ul {
+          justify-content: flex-start;
+          display: grid;
+          grid-template-columns: 48% 48%;
+          grid-gap: 2%;
+        }
+      }
     }
   }
   @media (min-width: 1100px) {
@@ -144,6 +185,7 @@ const ProfileStyled = styled.article`
           text-align: center;
         }
         ul {
+          justify-content: flex-start;
           list-style: none;
           padding: 0;
           margin: 0;
@@ -182,8 +224,12 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery-display {
-        width: 100%;
-        height: 80%;
+        ul {
+          height: 100%;
+          display: grid;
+          grid-template-columns: 30% 30% 30%;
+          grid-gap: 5%;
+        }
       }
     }
   }

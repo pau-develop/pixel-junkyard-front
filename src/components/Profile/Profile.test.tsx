@@ -10,6 +10,7 @@ jest.mock("react-router-dom", () => ({
   useLocation: () => ({
     pathname: "/profile/6310861c990c709a6ceb945d",
   }),
+  useParams: () => jest.fn().mockReturnValue("12345"),
 }));
 
 const mockDispatch = jest.fn();
@@ -52,6 +53,14 @@ describe("Given a Profile component", () => {
       fireEvent.click(buttonElement);
 
       expect(mockDispatch).toHaveBeenCalled();
+    });
+
+    test("It should render a listitems for each element in drawings array", async () => {
+      await render(<Profile />, { wrapper: Wrapper });
+
+      const drawElement = screen.getByText("mockDraw");
+
+      expect(drawElement).toBeInTheDocument();
     });
   });
 });
