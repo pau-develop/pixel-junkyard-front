@@ -5,6 +5,7 @@ const GuestPageStyled = styled.div`
   height: 100%;
   .guest-page {
     &__menu-container {
+      color: ${(props) => props.theme.secondaryColor};
       width: 50%;
       height: 30%;
       position: absolute;

@@ -11,6 +11,7 @@ const HeaderStyled = styled.header`
   flex-wrap: wrap;
   .header {
     &__title {
+      cursor: pointer;
       margin: 0;
       padding: 0;
       color: ${(props) => props.theme.secondaryColor};

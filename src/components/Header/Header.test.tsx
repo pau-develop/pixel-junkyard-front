@@ -5,6 +5,13 @@ import { store } from "../../app/store";
 import mockUser from "../../mocks/mockUser";
 import Header from "./Header";
 
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUseNavigate,
+}));
+
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
 }
@@ -109,6 +116,19 @@ describe("Given a Header component", () => {
       });
 
       expect(okButtonElement).not.toBeNull();
+    });
+
+    test("If Header title is clicked, it should redirect the user to /home", () => {
+      const user = mockUser;
+      render(<Header currentUser={user} />, { wrapper: Wrapper });
+
+      const textContent = "Pixel Junkyard";
+
+      const headingElement = screen.getByRole("heading", { name: textContent });
+
+      fireEvent.click(headingElement);
+
+      expect(mockUseNavigate).toHaveBeenCalled();
     });
   });
 });
