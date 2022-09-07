@@ -96,6 +96,9 @@ const ProfileStyled = styled.article`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      h3 {
+        margin-top: 1%;
+      }
     }
     &__gallery-display {
       justify-content: flex-start;
