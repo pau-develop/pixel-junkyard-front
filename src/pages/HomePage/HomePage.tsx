@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import GuestPageStyled from "./GuestPageStyled";
+import HomePageStyled from "./HomePageStyled";
 
-const GuestPage = (): JSX.Element => {
+const HomePage = (): JSX.Element => {
   return (
-    <GuestPageStyled className="guest-page">
+    <HomePageStyled className="guest-page">
       <div className="guest-page__menu-container">
         <NavLink to="/login">
           <Button text="Log in" />
@@ -13,8 +13,8 @@ const GuestPage = (): JSX.Element => {
           <Button text="Register" />
         </NavLink>
       </div>
-    </GuestPageStyled>
+    </HomePageStyled>
   );
 };
 
-export default GuestPage;
+export default HomePage;

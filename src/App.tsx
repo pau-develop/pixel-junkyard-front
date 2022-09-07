@@ -10,7 +10,7 @@ import CanvasPage from "./pages/CanvasPage/CanvasPage";
 import CommunityPage from "./pages/CommunityPage/CommunityPage";
 import DrawingDetailPage from "./pages/DrawingDetailPage/DrawingDetailPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
-import GuestPage from "./pages/GuestPage/GuestPage";
+import HomePage from "./pages/HomePage/HomePage";
 import LoginFormPage from "./pages/LoginFormPage/LoginFormPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RegisterFormPage from "./pages/RegisterFormPage/RegisterFormPage";
@@ -46,7 +46,7 @@ const App = (): JSX.Element => {
       <main className="app-container__main">
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<GuestPage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/register" element={<RegisterFormPage />} />
           <Route path="/login" element={<LoginFormPage />} />
           <Route path="/community" element={<CommunityPage />} />
