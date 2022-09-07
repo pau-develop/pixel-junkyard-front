@@ -4,10 +4,9 @@ const DrawingCardStyled = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => props.theme.primaryColor};
-  border-radius: 10px;
   .draw-card {
     &__title {
+      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
       padding: 2% 0;
       width: 90%;
       text-align: center;
@@ -15,11 +14,12 @@ const DrawingCardStyled = styled.section`
     }
     &__image {
       cursor: pointer;
-      width: 90%;
+      width: 100%;
       height: 100%;
     }
     &__footer {
-      width: 90%;
+      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+      width: 100%;
       padding: 2% 0;
       text-align: center;
       display: flex;

@@ -22,6 +22,7 @@ const GalleryStyled = styled.section`
     align-items: center;
     justify-content: center;
     li {
+      align-self: flex-end;
       border-radius: 10px;
       margin-top: 5%;
       display: flex;
