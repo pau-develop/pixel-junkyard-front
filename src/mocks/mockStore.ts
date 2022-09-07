@@ -2,6 +2,7 @@ import { configureStore, createReducer } from "@reduxjs/toolkit";
 import { IDrawing, IUser, IUserVisible } from "../interfaces/interfaces";
 import { IUIModal } from "../store/types/interfaces";
 import mockDrawings from "./mockDrawings";
+import mockUser from "./mockUser";
 import mockUsers from "./mockUsers";
 
 const initialUiState = {
@@ -12,12 +13,6 @@ const initialUiState = {
   id: "",
 };
 
-const initialUserState = {
-  userName: "",
-  token: "",
-  _id: "",
-};
-
 const initialUsersState = mockUsers;
 
 const initialDrawingsState = mockDrawings;
@@ -26,7 +21,7 @@ const mockUiReducer = createReducer<IUIModal>(initialUiState, (builder) => {
   builder.addDefaultCase((state: IUIModal) => state);
 });
 
-const mockUserReducer = createReducer<IUser>(initialUserState, (builder) => {
+const mockUserReducer = createReducer<IUser>(mockUser, (builder) => {
   builder.addDefaultCase((state: IUser) => state);
 });
 

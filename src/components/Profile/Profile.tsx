@@ -45,7 +45,7 @@ const Profile = (): JSX.Element => {
 
   const filterDrawingById = (drawings: IDrawing[]) => {
     return drawings.filter((drawing) => {
-      return drawing.userId === id;
+      return drawing.userId === user._id;
     });
   };
 

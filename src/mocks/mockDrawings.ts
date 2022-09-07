@@ -6,7 +6,7 @@ const mockDrawings = [
     image: "",
     artist: "",
     resolution: "",
-    userId: "",
+    userId: "12345",
   },
 ];
 
