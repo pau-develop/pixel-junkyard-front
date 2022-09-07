@@ -137,23 +137,19 @@ const ProfileStyled = styled.article`
   @media (min-width: 1100px) {
     max-width: 100%;
     flex-direction: row;
-    height: 90%;
     .profile {
-      &__gallery {
-        height: 90%;
-      }
       &__info {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         width: 40%;
-        max-width: 300px;
-        margin: 3%;
-        padding: 3%;
         height: 90%;
+        max-width: 300px;
+        margin: 40px;
+        margin-left: 5%;
       }
       &__info-avatar {
-        height: 40%;
+        height: 30%;
         width: 90%;
         display: flex;
         justify-content: space-around;
@@ -165,6 +161,9 @@ const ProfileStyled = styled.article`
         }
       }
       &__info-props {
+        display: flex;
+        flex-direction: column;
+
         height: 40%;
         width: 100%;
         padding: 0;
@@ -173,11 +172,13 @@ const ProfileStyled = styled.article`
           font-size: 1rem;
         }
         h2 {
-          margin-top: 5%;
+          margin-top: 10%;
           text-align: center;
         }
         ul {
-          justify-content: flex-start;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           list-style: none;
           padding: 0;
           margin: 0;
@@ -193,7 +194,7 @@ const ProfileStyled = styled.article`
       }
       &__settings-desktop {
         width: 100%;
-        height: 10%;
+        height: 20%;
         display: flex;
         flex-direction: column;
         button {
@@ -202,14 +203,15 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery {
-        margin: 3% 3% 3% 0;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        margin-right: 5%;
+        margin-left: 0;
         padding: 3%;
         background-color: ${(props) => props.theme.thirdColor};
-        border-radius: 40px;
         height: 90%;
         display: flex;
         flex-direction: column;
-
         justify-content: flex-start;
         h3 {
           margin: 0;
@@ -221,6 +223,9 @@ const ProfileStyled = styled.article`
           display: grid;
           grid-template-columns: 30% 30% 30%;
           grid-gap: 5%;
+          li {
+            width: 100%;
+          }
         }
       }
     }
