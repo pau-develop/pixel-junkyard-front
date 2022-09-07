@@ -135,6 +135,7 @@ const ProfileStyled = styled.article`
   }
 
   @media (min-width: 1100px) {
+    background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
     max-width: 100%;
     flex-direction: row;
     .profile {
