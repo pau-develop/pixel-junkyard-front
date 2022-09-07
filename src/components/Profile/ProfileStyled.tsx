@@ -6,7 +6,6 @@ const ProfileStyled = styled.article`
   height: 90%;
   width: 90%;
   max-width: 500px;
-  margin: 5%;
   display: flex;
   flex-direction: column;
   border-radius: 50px;
@@ -100,8 +99,44 @@ const ProfileStyled = styled.article`
       margin-top: 5%;
     }
     &__gallery-display {
-      width: 100%;
-      height: 80%;
+      overflow: scroll;
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      height: 90%;
+      width: 90%;
+      margin: 0 5%;
+      display: flex;
+      flex-direction: column;
+
+      color: ${(props) => props.theme.secondaryColor};
+
+      ul {
+        list-style: none;
+        padding: 0;
+        color: ${(props) => props.theme.secondaryColor};
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        li {
+          border-radius: 10px;
+          margin-top: 5%;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  @media (min-width: 700px) {
+    .profile {
+      &__gallery-display {
+        ul {
+          display: grid;
+          grid-template-columns: 48% 48%;
+          grid-gap: 2%;
+        }
+      }
     }
   }
   @media (min-width: 1100px) {
@@ -182,8 +217,11 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery-display {
-        width: 100%;
-        height: 80%;
+        ul {
+          display: grid;
+          grid-template-columns: 30% 30% 30%;
+          grid-gap: 5%;
+        }
       }
     }
   }
