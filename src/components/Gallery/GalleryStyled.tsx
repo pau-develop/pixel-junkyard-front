@@ -22,7 +22,6 @@ const GalleryStyled = styled.section`
     align-items: center;
     justify-content: center;
     li {
-      align-self: flex-end;
       border-radius: 10px;
       margin-top: 5%;
       display: flex;
@@ -34,6 +33,9 @@ const GalleryStyled = styled.section`
       display: grid;
       grid-template-columns: 48% 48%;
       grid-gap: 4%;
+      li {
+        align-self: flex-end;
+      }
     }
   }
   @media (min-width: 1000px) {
