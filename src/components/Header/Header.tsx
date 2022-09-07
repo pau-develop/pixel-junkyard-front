@@ -5,6 +5,7 @@ import { IUser } from "../../interfaces/interfaces";
 import Menu from "../Menu/Menu";
 import HeaderStyled from "./HeaderStyled";
 import LogoutMenu from "../LogoutMenu/LogoutMenu";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   currentUser: IUser;
@@ -13,6 +14,7 @@ interface HeaderProps {
 const initialMenuState = false;
 
 const Header = ({ currentUser }: HeaderProps): JSX.Element => {
+  const navigate = useNavigate();
   const hamburguerIcon = <FontAwesomeIcon icon={faBars} />;
   const logoutIcon = <FontAwesomeIcon icon={faPowerOff} />;
   const [navMenu, setNavMenu] = useState<boolean>(initialMenuState);
@@ -35,7 +37,9 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
 
   return (
     <HeaderStyled className="header">
-      <h1 className="header__title">Pixel Junkyard</h1>
+      <h1 className="header__title" onClick={() => navigate("/home")}>
+        Pixel Junkyard
+      </h1>
       {currentUser.userName === "" ? null : (
         <>
           <Menu
