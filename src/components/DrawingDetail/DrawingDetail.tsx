@@ -27,13 +27,21 @@ const DrawingDetail = (): JSX.Element => {
     <DrawingDetailStyled className="drawing-details">
       {drawing !== undefined && (
         <>
-          <div className="drawing-details__display">
+          <section className="drawing-details__display-mobile">
             <img src={drawing.image} alt={drawing.name} />
-            <div className="drawing-details__likes">
+            <div className="drawing-details__likes-mobile">
               <span>hola</span>
             </div>
-          </div>
-          <div className="drawing-details__info">
+          </section>
+          <section className="drawing-details__display-desktop">
+            <div className="drawing-details__display-desktop-container">
+              <img src={drawing.image} alt={drawing.name} />
+            </div>
+            <div className="drawing-details__likes-desktop">
+              <span>hola</span>
+            </div>
+          </section>
+          <section className="drawing-details__info">
             <h2>{drawing.name}</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
@@ -43,12 +51,16 @@ const DrawingDetail = (): JSX.Element => {
               repudiandae ullam? Placeat, ut.
             </p>
             <span>Resolution: {drawing.resolution}</span>
-          </div>
+            <section className="drawing-details__user-desktop">
+              <span>Made by</span>
+              {user !== undefined && <UserCard user={user} />}
+            </section>
+          </section>
 
-          <div className="drawing-details__user">
+          <section className="drawing-details__user-mobile">
             <span>Made by</span>
             {user !== undefined && <UserCard user={user} />}
-          </div>
+          </section>
         </>
       )}
     </DrawingDetailStyled>
