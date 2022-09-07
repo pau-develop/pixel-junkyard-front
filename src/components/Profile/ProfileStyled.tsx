@@ -88,15 +88,16 @@ const ProfileStyled = styled.article`
       background-color: ${(props) => props.theme.thirdColor};
       border-radius: 40px;
       width: 90%;
-      height: 67%;
+      height: 55%;
       @media (min-width: 450px) {
-        height: 57%;
+        height: 45%;
       }
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       h3 {
+        margin: 0;
         margin-top: 1%;
       }
     }
@@ -106,7 +107,7 @@ const ProfileStyled = styled.article`
       ::-webkit-scrollbar {
         display: none;
       }
-      height: 90%;
+      height: 95%;
       width: 90%;
       margin: 0 5%;
       display: flex;
@@ -150,6 +151,9 @@ const ProfileStyled = styled.article`
     flex-direction: row;
     height: 90%;
     .profile {
+      &__gallery {
+        height: 90%;
+      }
       &__info {
         display: flex;
         flex-direction: column;
