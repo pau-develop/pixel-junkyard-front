@@ -4,7 +4,9 @@ import PageStyled from "../PageStyled";
 const GalleryPage = (): JSX.Element => {
   return (
     <PageStyled className="page">
-      <h1 className="page__title">Gallery</h1>
+      <div className="page__title-container">
+        <h1 className="page__title-heading">Gallery</h1>
+      </div>
       <Gallery />
     </PageStyled>
   );

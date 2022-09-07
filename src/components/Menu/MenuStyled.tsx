@@ -5,6 +5,7 @@ const MenuStyled = styled.div`
     padding: 0 5%;
     background-color: ${(props) => props.theme.primaryColor};
     border-top: 2px solid ${(props) => props.theme.thirdColor};
+    border-bottom: 2px solid ${(props) => props.theme.thirdColor};
     height: 100%;
     width: 100%;
     position: absolute;

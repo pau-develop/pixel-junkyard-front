@@ -4,7 +4,9 @@ import PageStyled from "../PageStyled";
 const LoginFormPage = (): JSX.Element => {
   return (
     <PageStyled className="page">
-      <h1 className="page__title">Log in</h1>
+      <div className="page__title-container">
+        <h1 className="page__title-heading">Log in</h1>
+      </div>
       <Form formType={"login"} />
     </PageStyled>
   );
