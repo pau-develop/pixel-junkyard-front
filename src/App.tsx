@@ -46,7 +46,12 @@ const App = (): JSX.Element => {
       <main className="app-container__main">
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route
+            path="/home"
+            element={
+              <HomePage userLogged={user.userName === "" ? false : true} />
+            }
+          />
           <Route path="/register" element={<RegisterFormPage />} />
           <Route path="/login" element={<LoginFormPage />} />
           <Route path="/community" element={<CommunityPage />} />

@@ -7,7 +7,7 @@ describe("Given a GuestPage component", () => {
     test("It should show a couple buttons with the text 'Log in' and 'Register'", () => {
       render(
         <BrowserRouter>
-          <HomePage />
+          <HomePage userLogged={false} />
         </BrowserRouter>
       );
 
