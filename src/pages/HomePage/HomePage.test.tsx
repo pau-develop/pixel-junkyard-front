@@ -24,5 +24,18 @@ describe("Given a GuestPage component", () => {
       expect(registerButtonElement).not.toBeNull();
       expect(loginButtonElement).not.toBeNull();
     });
+
+    test("And if user is logged in it should show a heading with the text 'Welcome'", () => {
+      render(
+        <BrowserRouter>
+          <HomePage userLogged={true} />
+        </BrowserRouter>
+      );
+
+      const headingText = "Welcome";
+      const headingElement = screen.getByRole("heading", { name: headingText });
+
+      expect(headingElement).not.toBeNull();
+    });
   });
 });
