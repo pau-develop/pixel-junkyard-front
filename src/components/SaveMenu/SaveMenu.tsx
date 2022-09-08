@@ -17,9 +17,11 @@ const formInput: Partial<IDrawing> = {
 
 interface SaveMenuProps {
   action: () => void;
+  canvasData: string;
 }
 
-const SaveMenu = ({ action }: SaveMenuProps): JSX.Element => {
+const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
+  console.log(canvasData);
   const user = useSelector<RootState>((state) => state.user) as IUserVisible;
   const [input, setInput] = useState<Partial<IDrawing>>(formInput);
 
@@ -41,6 +43,7 @@ const SaveMenu = ({ action }: SaveMenuProps): JSX.Element => {
     <SaveMenuStyled className="save-menu">
       <div className="save-menu__box">
         <h2>SAVE CANVAS</h2>
+        <img src={canvasData} alt="drawing preview" />
         <form
           className="save-menu__form"
           onSubmit={(event) => handleInputObject(event)}

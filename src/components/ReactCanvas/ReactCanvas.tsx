@@ -111,7 +111,12 @@ const ReactCanvas = (): JSX.Element => {
     <ReactCanvasStyled className="react-canvas">
       <Button text={save ? "CANCEL" : "SAVE"} action={handleClick} />
       <div className="react-canvas__container">
-        {save && <SaveMenu action={handleClick} />}
+        {save && (
+          <SaveMenu
+            action={handleClick}
+            canvasData={canvasRef.current!.toDataURL()}
+          />
+        )}
         {window.innerWidth >= 600 ? (
           <canvas
             data-testid="canvas-desktop"

@@ -55,11 +55,6 @@ describe("Given a ReactCanvas component", () => {
     });
 
     test("And also when dragging mouse while clicking", () => {
-      const mockState = true;
-      const mockSetState = jest.fn();
-      const useStateMock: any = (useState: any) => [mockState, mockSetState];
-      jest.spyOn(React, "useState").mockImplementation(useStateMock);
-
       const spyGetFunction = jest.spyOn(
         canvasFunctions,
         "getCanvasScaledValue"
@@ -67,12 +62,18 @@ describe("Given a ReactCanvas component", () => {
 
       render(<ReactCanvas />, { wrapper: Wrapper });
       const canvasElement = screen.getByTestId("canvas-desktop");
-      const clickEvent = createEvent.mouseMove(canvasElement, {
+      const clickEventDown = createEvent.mouseDown(canvasElement, {
         clientX: 50,
         clientY: 50,
         buttons: 1,
       });
-      fireEvent(canvasElement, clickEvent);
+      const clickEventMove = createEvent.mouseMove(canvasElement, {
+        clientX: 60,
+        clientY: 60,
+        buttons: 1,
+      });
+      fireEvent(canvasElement, clickEventDown);
+      fireEvent(canvasElement, clickEventMove);
 
       expect(spyGetFunction).toHaveBeenCalled();
     });
@@ -165,11 +166,6 @@ describe("Given a ReactCanvas component", () => {
     });
 
     test("And also when dragging mouse while clicking", () => {
-      const mockState = true;
-      const mockSetState = jest.fn();
-      const useStateMock: any = (useState: any) => [mockState, mockSetState];
-      jest.spyOn(React, "useState").mockImplementation(useStateMock);
-
       const spyGetFunction = jest.spyOn(
         canvasFunctions,
         "getCanvasScaledValue"
