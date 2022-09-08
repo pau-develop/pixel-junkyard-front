@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { getCanvasScaledValue } from "../../utils/ReactCanvasFunctions";
+import {
+  checkDifference,
+  fillOnMissingCells,
+  getCanvasScaledValue,
+} from "../../utils/ReactCanvasFunctions";
 
 import ReactCanvasStyled from "./ReactCanvasStyled";
 
@@ -10,6 +14,8 @@ const ReactCanvas = (): JSX.Element => {
   const cellCountX = 60;
   const cellCountY = 90;
   let cellLength: number;
+  let lastX: number;
+  let lastY: number;
 
   //get ref and set styles
   useEffect(() => {
@@ -37,6 +43,26 @@ const ReactCanvas = (): JSX.Element => {
     ctxRef.current!.fillStyle = "black";
     ctxRef.current!.fillRect(newX, newY, cellLength, cellLength);
     ctxRef.current!.stroke();
+
+    let differenceX = Math.abs(lastX - newX);
+    let differenceY = Math.abs(lastY - newY);
+    let totalIterations = Math.max(differenceX, differenceY);
+
+    differenceX = checkDifference(lastX, newX, differenceX);
+    differenceY = checkDifference(lastY, newY, differenceY);
+
+    fillOnMissingCells(
+      ctxRef.current!,
+      differenceX,
+      differenceY,
+      lastX,
+      lastY,
+      totalIterations,
+      cellLength
+    );
+
+    lastX = newX;
+    lastY = newY;
   };
 
   // Function for starting the drawing
