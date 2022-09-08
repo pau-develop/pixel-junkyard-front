@@ -21,8 +21,6 @@ const DrawingDetail = (): JSX.Element => {
     getDrawingById(id as string);
   }, [getDrawingById, id]);
 
-  console.log(drawing);
-
   return (
     <DrawingDetailStyled className="drawing-details">
       {drawing !== undefined && (
