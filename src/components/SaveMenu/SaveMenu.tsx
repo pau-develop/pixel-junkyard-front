@@ -51,7 +51,7 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
           <label htmlFor="painting-name">Painting name</label>
           <input
             required
-            id="name"
+            id="painting-name"
             autoComplete="off"
             type="text"
             value={input.name}
@@ -61,6 +61,7 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
           ></input>
           <label htmlFor="painting-description">Painting description</label>
           <textarea
+            id="painting-description"
             autoComplete="off"
             maxLength={150}
             value={input.description}
