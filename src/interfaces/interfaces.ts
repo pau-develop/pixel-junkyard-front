@@ -25,4 +25,5 @@ export interface IDrawing {
   artist: string;
   resolution: string;
   userId: string;
+  creationDate: string;
 }

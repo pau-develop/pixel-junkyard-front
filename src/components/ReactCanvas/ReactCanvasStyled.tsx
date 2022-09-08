@@ -11,6 +11,7 @@ const ReactCanvasStyled = styled.section`
   align-items: center;
   .react-canvas {
     &__container {
+      position: relative;
       border: 2px solid ${(props) => props.theme.secondaryColor};
       width: 90%;
       height: 80%;
