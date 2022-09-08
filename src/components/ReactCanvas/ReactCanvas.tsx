@@ -4,10 +4,15 @@ import {
   fillOnMissingCells,
   getCanvasScaledValue,
 } from "../../utils/ReactCanvasFunctions";
+import Button from "../Button/Button";
+import SaveMenu from "../SaveMenu/SaveMenu";
 
 import ReactCanvasStyled from "./ReactCanvasStyled";
 
+const saveInitialState = false;
+
 const ReactCanvas = (): JSX.Element => {
+  const [save, setSave] = useState<boolean>(saveInitialState);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
@@ -98,9 +103,15 @@ const ReactCanvas = (): JSX.Element => {
     setIsDrawing(false);
   };
 
+  const handleClick = () => {
+    setSave(!save);
+  };
+
   return (
     <ReactCanvasStyled className="react-canvas">
+      <Button text={save ? "CANCEL" : "SAVE"} action={handleClick} />
       <div className="react-canvas__container">
+        {save && <SaveMenu action={handleClick} />}
         {window.innerWidth >= 600 ? (
           <canvas
             data-testid="canvas-desktop"

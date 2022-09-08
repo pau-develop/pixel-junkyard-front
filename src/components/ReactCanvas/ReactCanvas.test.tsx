@@ -3,6 +3,20 @@ import { createEvent, fireEvent, render, screen } from "@testing-library/react";
 import ReactCanvas from "./ReactCanvas";
 import React from "react";
 import * as canvasFunctions from "../../utils/ReactCanvasFunctions";
+import { Provider } from "react-redux";
+import { store } from "../../app/store";
+
+interface WrapperProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+let Wrapper: ({ children }: WrapperProps) => JSX.Element;
+
+beforeEach(() => {
+  Wrapper = ({ children }: WrapperProps): JSX.Element => {
+    return <Provider store={store}>{children}</Provider>;
+  };
+});
 
 afterEach(() => {
   jest.clearAllMocks();
@@ -51,7 +65,7 @@ describe("Given a ReactCanvas component", () => {
         "getCanvasScaledValue"
       );
 
-      render(<ReactCanvas />);
+      render(<ReactCanvas />, { wrapper: Wrapper });
       const canvasElement = screen.getByTestId("canvas-desktop");
       const clickEvent = createEvent.mouseMove(canvasElement, {
         clientX: 50,
@@ -161,7 +175,7 @@ describe("Given a ReactCanvas component", () => {
         "getCanvasScaledValue"
       );
 
-      render(<ReactCanvas />);
+      render(<ReactCanvas />, { wrapper: Wrapper });
       const canvasElement = screen.getByTestId("canvas-mobile");
       const touchEventStart = createEvent.touchStart(canvasElement, {
         targetTouches: [
