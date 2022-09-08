@@ -31,9 +31,9 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
     const newDrawing: Partial<IDrawing> = {
       name: input.name as string,
       description: input.description as string,
-      artist: user.userName as string,
+      artist: user.userName,
       image: canvasData,
-      userId: user._id as string,
+      userId: user._id,
       resolution: "60x90",
     };
     createDrawing(newDrawing);
