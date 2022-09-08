@@ -1,3 +1,4 @@
+import "jest-canvas-mock";
 import { render, screen } from "@testing-library/react";
 import CanvasPage from "./CanvasPage";
 
