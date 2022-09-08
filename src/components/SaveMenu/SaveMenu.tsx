@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import useDrawings from "../../hooks/useDrawings";
 import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
 import SaveMenuStyled from "./SaveMenuStyled";
@@ -21,7 +22,7 @@ interface SaveMenuProps {
 }
 
 const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
-  console.log(canvasData);
+  const { createDrawing } = useDrawings();
   const user = useSelector<RootState>((state) => state.user) as IUserVisible;
   const [input, setInput] = useState<Partial<IDrawing>>(formInput);
 
@@ -30,13 +31,12 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
     const newDrawing: Partial<IDrawing> = {
       name: input.name as string,
       description: input.description as string,
-      artist: user.userName,
-      image: "",
-      userId: user._id,
-      creationDate: "now",
+      artist: user.userName as string,
+      image: canvasData,
+      userId: user._id as string,
       resolution: "60x90",
     };
-    console.log(newDrawing);
+    createDrawing(newDrawing);
   };
 
   return (

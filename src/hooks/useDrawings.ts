@@ -1,8 +1,10 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
+import { IDrawing } from "../interfaces/interfaces";
 import {
   getAllDrawingsActionNew,
   getDrawingByIdActionNew,
+  openModalActionNew,
 } from "../store/actionCreators/actionCreators";
 
 const useDrawings = () => {
@@ -40,7 +42,38 @@ const useDrawings = () => {
     [dispatch, url]
   );
 
-  return { getAllDrawings, getDrawingById };
+  const createDrawing = async (userData: Partial<IDrawing>) => {
+    const data = await fetch(`${url}drawings/create`, {
+      method: "POST",
+      body: JSON.stringify(userData),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    });
+    const response = await data.json();
+    if (response.error) {
+      const ui = {
+        isOpen: true,
+        message: response.error,
+        type: "confirm",
+        redirect: "",
+        id: "",
+      };
+      dispatch(openModalActionNew(ui));
+      return;
+    }
+    const ui = {
+      isOpen: true,
+      message: "Drawing Uploaded!",
+      type: "",
+      redirect: "/home",
+      id: "",
+    };
+    dispatch(openModalActionNew(ui));
+  };
+
+  return { getAllDrawings, getDrawingById, createDrawing };
 };
 
 export default useDrawings;
