@@ -13,6 +13,7 @@ const saveInitialState = false;
 
 const ReactCanvas = (): JSX.Element => {
   const [save, setSave] = useState<boolean>(saveInitialState);
+  const [data, setData] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
@@ -86,11 +87,13 @@ const ReactCanvas = (): JSX.Element => {
   };
 
   const startDrawingPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
+    console.log(event);
     fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
     setIsDrawing(true);
   };
 
   const drawPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
+    console.log(event);
     if (!isDrawing) {
       return;
     }
@@ -104,6 +107,7 @@ const ReactCanvas = (): JSX.Element => {
   };
 
   const handleClick = () => {
+    setData(canvasRef.current!.toDataURL());
     setSave(!save);
   };
 
@@ -111,12 +115,7 @@ const ReactCanvas = (): JSX.Element => {
     <ReactCanvasStyled className="react-canvas">
       <Button text={save ? "CANCEL" : "SAVE"} action={handleClick} />
       <div className="react-canvas__container">
-        {save && (
-          <SaveMenu
-            action={handleClick}
-            canvasData={canvasRef.current!.toDataURL()}
-          />
-        )}
+        {save && <SaveMenu action={handleClick} canvasData={data} />}
         {window.innerWidth >= 600 ? (
           <canvas
             data-testid="canvas-desktop"

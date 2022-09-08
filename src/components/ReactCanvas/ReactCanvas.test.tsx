@@ -23,6 +23,21 @@ afterEach(() => {
 });
 
 describe("Given a ReactCanvas component", () => {
+  describe("When button 'SAVE' is pressed", () => {
+    test("A Menu with the heading 'SAVE CANVAS' should appear", () => {
+      render(<ReactCanvas />, { wrapper: Wrapper });
+
+      const buttonText = "SAVE";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      fireEvent.click(buttonElement);
+
+      const headingText = "SAVE CANVAS";
+      const headingElement = screen.getByRole("heading", { name: headingText });
+
+      expect(headingElement).not.toBeNull();
+    });
+  });
   describe("When instantiated on desktop", () => {
     test("It should show a desktop canvas", () => {
       window.innerWidth = 800;
@@ -166,50 +181,41 @@ describe("Given a ReactCanvas component", () => {
     });
 
     test("And also when dragging mouse while clicking", () => {
+      const mockState = true;
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: boolean) => [
+        mockState,
+        mockSetState,
+      ];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
       const spyGetFunction = jest.spyOn(
         canvasFunctions,
         "getCanvasScaledValue"
       );
 
       render(<ReactCanvas />, { wrapper: Wrapper });
+
       const canvasElement = screen.getByTestId("canvas-mobile");
-      const touchEventStart = createEvent.touchStart(canvasElement, {
-        targetTouches: [
-          {
-            clientX: 1073,
-            clientY: 268,
-            force: 1,
-            identifier: 0,
-            pageX: 1073,
-            pageY: 268,
-            radiusX: 12,
-            radiusY: 12,
-            rotationAngle: 0,
-            screenX: 2580,
-            screenY: 202,
-            target: canvasElement,
-          },
-        ],
-      });
+
       const touchEventMove = createEvent.touchMove(canvasElement, {
         targetTouches: [
           {
-            clientX: 800,
-            clientY: 300,
+            clientX: 237.80003356933594,
+            clientY: 253,
             force: 1,
             identifier: 0,
-            pageX: 800,
-            pageY: 300,
-            radiusX: 12,
-            radiusY: 12,
+            pageX: 237.80003356933594,
+            pageY: 253,
+            radiusX: 11.5,
+            radiusY: 11.5,
             rotationAngle: 0,
-            screenX: 2580,
-            screenY: 202,
+            screenX: 356.8000183105469,
+            screenY: 416,
             target: canvasElement,
           },
         ],
       });
-      fireEvent(canvasElement, touchEventStart);
+
       fireEvent(canvasElement, touchEventMove);
 
       expect(spyGetFunction).toHaveBeenCalled();
