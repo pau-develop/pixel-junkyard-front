@@ -21,9 +21,7 @@ const ReactCanvas = (): JSX.Element => {
     ctxRef.current = ctx;
   }, []);
 
-  const fillPixel = (
-    event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
-  ) => {
+  const fillPixel = (eventX: number, eventY: number) => {
     const cssScaleX = getCanvasScaledValue(
       canvasRef.current!.width,
       canvasRef.current!.offsetWidth
@@ -33,8 +31,8 @@ const ReactCanvas = (): JSX.Element => {
       canvasRef.current!.offsetHeight
     );
     const canvasRect = canvasRef.current!.getBoundingClientRect();
-    let newX = Math.floor((event.clientX - canvasRect.left) * cssScaleX);
-    let newY = Math.floor((event.clientY - canvasRect.top) * cssScaleY);
+    let newX = Math.floor((eventX - canvasRect.left) * cssScaleX);
+    let newY = Math.floor((eventY - canvasRect.top) * cssScaleY);
     cellLength = canvasRef.current!.width / cellCountX;
     ctxRef.current!.fillStyle = "black";
     ctxRef.current!.fillRect(newX, newY, cellLength, cellLength);
@@ -45,7 +43,7 @@ const ReactCanvas = (): JSX.Element => {
   const startDrawing = (
     event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
   ) => {
-    fillPixel(event);
+    fillPixel(event.clientX, event.clientY);
     setIsDrawing(true);
   };
 
@@ -53,7 +51,20 @@ const ReactCanvas = (): JSX.Element => {
     if (!isDrawing) {
       return;
     }
-    fillPixel(event);
+    fillPixel(event.clientX, event.clientY);
+  };
+
+  const startDrawingPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
+    fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
+    setIsDrawing(true);
+  };
+
+  const drawPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
+    if (!isDrawing) {
+      return;
+    }
+
+    fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
   };
 
   const endDrawing = () => {
@@ -64,16 +75,29 @@ const ReactCanvas = (): JSX.Element => {
   return (
     <ReactCanvasStyled className="react-canvas">
       <div className="react-canvas__container">
-        <canvas
-          data-testid="canvas-desktop"
-          className="react-canvas__canvas"
-          onMouseDown={startDrawing}
-          onMouseUp={endDrawing}
-          onMouseMove={draw}
-          ref={canvasRef}
-          width={`${cellCountX}px`}
-          height={`${cellCountY}px`}
-        />
+        {window.innerWidth >= 600 ? (
+          <canvas
+            data-testid="canvas-desktop"
+            className="react-canvas__canvas"
+            onMouseDown={startDrawing}
+            onMouseUp={endDrawing}
+            onMouseMove={draw}
+            ref={canvasRef}
+            width={`${cellCountX}px`}
+            height={`${cellCountY}px`}
+          />
+        ) : (
+          <canvas
+            data-testid="canvas-mobile"
+            className="react-canvas__canvas"
+            onTouchStart={startDrawingPhone}
+            onTouchMove={drawPhone}
+            onTouchEnd={endDrawing}
+            ref={canvasRef}
+            width={`${cellCountX}px`}
+            height={`${cellCountY}px`}
+          />
+        )}
       </div>
     </ReactCanvasStyled>
   );

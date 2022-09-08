@@ -7,7 +7,6 @@ interface HomePageProps {
 }
 
 const HomePage = ({ userLogged }: HomePageProps): JSX.Element => {
-  console.log(userLogged);
   return (
     <HomePageStyled className="guest-page">
       {!userLogged ? (
