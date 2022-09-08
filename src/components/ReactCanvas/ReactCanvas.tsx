@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  checkDifference,
   fillOnMissingCells,
   getCanvasScaledValue,
 } from "../../utils/ReactCanvasFunctions";
