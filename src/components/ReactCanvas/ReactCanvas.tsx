@@ -9,6 +9,9 @@ const ReactCanvas = (): JSX.Element => {
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const cellCountX = 60;
   const cellCountY = 90;
+  let canvasRect: DOMRect;
+  let cssScaleX: number;
+  let cssScaleY: number;
   let cellLength: number;
 
   //get ref and set styles
@@ -18,28 +21,34 @@ const ReactCanvas = (): JSX.Element => {
     ctx.lineCap = "square";
     ctx.lineJoin = "miter";
     ctx.strokeStyle = "black";
-    ctxRef.current = ctx as CanvasRenderingContext2D;
+    ctxRef.current = ctx;
   }, []);
 
-  // Function for starting the drawing
-  const startDrawing = (
+  const fillPixel = (
     event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
   ) => {
-    const cssScaleX = getCanvasScaledValue(
+    cssScaleX = getCanvasScaledValue(
       canvasRef.current!.width,
       canvasRef.current!.offsetWidth
     );
-    const cssScaleY = getCanvasScaledValue(
+    cssScaleY = getCanvasScaledValue(
       canvasRef.current!.height,
       canvasRef.current!.offsetHeight
     );
-    const canvasRect = canvasRef.current!.getBoundingClientRect();
+    canvasRect = canvasRef.current!.getBoundingClientRect();
     let newX = Math.floor((event.clientX - canvasRect.left) * cssScaleX);
     let newY = Math.floor((event.clientY - canvasRect.top) * cssScaleY);
     cellLength = canvasRef.current!.width / cellCountX;
     ctxRef.current!.fillStyle = "black";
     ctxRef.current!.fillRect(newX, newY, cellLength, cellLength);
     ctxRef.current!.stroke();
+  };
+
+  // Function for starting the drawing
+  const startDrawing = (
+    event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
+  ) => {
+    fillPixel(event);
     setIsDrawing(true);
   };
 
@@ -47,23 +56,7 @@ const ReactCanvas = (): JSX.Element => {
     if (!isDrawing) {
       return;
     }
-
-    const cssScaleX = getCanvasScaledValue(
-      canvasRef.current!.width,
-      canvasRef.current!.offsetWidth
-    );
-    const cssScaleY = getCanvasScaledValue(
-      canvasRef.current!.height,
-      canvasRef.current!.offsetHeight
-    );
-
-    const canvasRect = canvasRef.current!.getBoundingClientRect();
-    let newX = Math.floor((event.clientX - canvasRect.left) * cssScaleX);
-    let newY = Math.floor((event.clientY - canvasRect.top) * cssScaleY);
-    cellLength = canvasRef.current!.width / cellCountX;
-    ctxRef.current!.fillStyle = "black";
-    ctxRef.current!.fillRect(newX, newY, cellLength, cellLength);
-    ctxRef.current!.stroke();
+    fillPixel(event);
   };
 
   const endDrawing = () => {
