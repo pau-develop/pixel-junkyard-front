@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { getCanvasScaledValue } from "../../utils/ReactCanvasFunctions";
+
 import ReactCanvasStyled from "./ReactCanvasStyled";
 
 const ReactCanvas = (): JSX.Element => {
@@ -23,10 +25,14 @@ const ReactCanvas = (): JSX.Element => {
   const startDrawing = (
     event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
   ) => {
-    const cssScaleX = canvasRef.current!.width / canvasRef.current!.offsetWidth;
-
-    const cssScaleY =
-      canvasRef.current!.height / canvasRef.current!.offsetHeight;
+    const cssScaleX = getCanvasScaledValue(
+      canvasRef.current!.width,
+      canvasRef.current!.offsetWidth
+    );
+    const cssScaleY = getCanvasScaledValue(
+      canvasRef.current!.height,
+      canvasRef.current!.offsetHeight
+    );
     const canvasRect = canvasRef.current!.getBoundingClientRect();
     let newX = Math.floor((event.clientX - canvasRect.left) * cssScaleX);
     let newY = Math.floor((event.clientY - canvasRect.top) * cssScaleY);
@@ -42,10 +48,14 @@ const ReactCanvas = (): JSX.Element => {
       return;
     }
 
-    const cssScaleX = canvasRef.current!.width / canvasRef.current!.offsetWidth;
-
-    const cssScaleY =
-      canvasRef.current!.height / canvasRef.current!.offsetHeight;
+    const cssScaleX = getCanvasScaledValue(
+      canvasRef.current!.width,
+      canvasRef.current!.offsetWidth
+    );
+    const cssScaleY = getCanvasScaledValue(
+      canvasRef.current!.height,
+      canvasRef.current!.offsetHeight
+    );
 
     const canvasRect = canvasRef.current!.getBoundingClientRect();
     let newX = Math.floor((event.clientX - canvasRect.left) * cssScaleX);
