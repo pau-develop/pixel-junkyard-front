@@ -15,6 +15,7 @@ const ReactCanvas = (): JSX.Element => {
   const [save, setSave] = useState<boolean>(saveInitialState);
   const [data, setData] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasScaledRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const cellCountX = 60;
@@ -27,6 +28,7 @@ const ReactCanvas = (): JSX.Element => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d") as CanvasRenderingContext2D;
+    ctx.imageSmoothingEnabled = false;
     ctx.lineCap = "square";
     ctx.lineJoin = "miter";
     ctx.strokeStyle = "black";
@@ -104,7 +106,34 @@ const ReactCanvas = (): JSX.Element => {
     setIsDrawing(false);
   };
 
+  function scaleImage(imageData: ImageData, scale: 20) {
+    var scaled = ctxRef.current!.createImageData(
+      imageData.width * scale,
+      imageData.height * scale
+    );
+    var subLine = ctxRef.current!.createImageData(scale, 1).data;
+    for (var row = 0; row < imageData.height; row++) {
+      for (var col = 0; col < imageData.width; col++) {
+        var sourcePixel = imageData.data.subarray(
+          (row * imageData.width + col) * 4,
+          (row * imageData.width + col) * 4 + 4
+        );
+        for (var x = 0; x < scale; x++) subLine.set(sourcePixel, x * 4);
+        for (var y = 0; y < scale; y++) {
+          var destRow = row * scale + y;
+          var destCol = col * scale;
+          scaled.data.set(subLine, (destRow * scaled.width + destCol) * 4);
+        }
+      }
+    }
+    console.log(scaled, imageData);
+    canvasRef.current!.width = scaled.width;
+    canvasRef.current!.height = scaled.height;
+    ctxRef.current!.putImageData(scaled, 0, 0);
+  }
+
   const handleClick = () => {
+    scaleImage(ctxRef.current!.getImageData(0, 0, cellCountX, cellCountY), 20);
     setData(canvasRef.current!.toDataURL());
     setSave(!save);
   };

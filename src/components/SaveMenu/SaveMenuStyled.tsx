@@ -12,6 +12,15 @@ const SaveMenuStyled = styled.div`
   color: ${(props) => props.theme.secondaryColor};
   .save-menu {
     height: 100%;
+    &__image {
+      width: 50%;
+      height: 30%;
+      object-fit: contain;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
     &__box {
       display: flex;
       flex-direction: column;
