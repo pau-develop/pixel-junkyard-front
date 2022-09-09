@@ -15,7 +15,7 @@ export interface IUserVisible {
   userName: string;
   password: string;
   email: string;
-  drawings: string[];
+  drawings: IDrawing[];
 }
 
 export interface IDrawing {

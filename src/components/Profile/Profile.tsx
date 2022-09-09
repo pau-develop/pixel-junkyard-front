@@ -2,9 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { RootState } from "../../app/store";
-import useDrawings from "../../hooks/useDrawings";
 import useUsers from "../../hooks/useUsers";
-import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
+import { IUserVisible } from "../../interfaces/interfaces";
 import { openModalActionNew } from "../../store/actionCreators/actionCreators";
 import { IUIModal } from "../../store/types/interfaces";
 import Button from "../Button/Button";
@@ -15,14 +14,12 @@ const Profile = (): JSX.Element => {
   const isProfile = useLocation().pathname.includes("profile");
   const dispatch = useDispatch();
   const { getUserById } = useUsers();
-  const { getAllDrawings } = useDrawings();
 
   const { id } = useParams();
 
   useEffect(() => {
     getUserById(id as string);
-    getAllDrawings();
-  }, [getUserById, getAllDrawings, id]);
+  }, [getUserById, id]);
 
   const handleDeleteAccount = () => {
     const ui = {
@@ -38,11 +35,6 @@ const Profile = (): JSX.Element => {
   const user = useSelector<RootState>(
     (state) => state.users[0]
   ) as IUserVisible;
-
-  let drawings = useSelector<RootState>(
-    (state) => state.drawings
-  ) as IDrawing[];
-
   return (
     <ProfileStyled className="profile">
       {user !== undefined && (
@@ -78,7 +70,7 @@ const Profile = (): JSX.Element => {
             <h3>{`${user.userName}'s Gallery`}</h3>
             <div className="profile__gallery-display">
               <ul>
-                {drawings.map((drawing) => (
+                {user.drawings.map((drawing) => (
                   <li key={drawing._id}>
                     <DrawingCard draw={drawing} />
                   </li>
