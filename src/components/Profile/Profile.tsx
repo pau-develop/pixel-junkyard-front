@@ -43,14 +43,6 @@ const Profile = (): JSX.Element => {
     (state) => state.drawings
   ) as IDrawing[];
 
-  const filterDrawingById = (drawings: IDrawing[]) => {
-    return drawings.filter((drawing) => {
-      return drawing.userId === user._id;
-    });
-  };
-
-  drawings = filterDrawingById(drawings);
-
   return (
     <ProfileStyled className="profile">
       {user !== undefined && (

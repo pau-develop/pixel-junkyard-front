@@ -5,6 +5,7 @@ const mockUserVisible: IUserVisible = {
   userName: "fakeName",
   password: "12345",
   email: "fake@fake.com",
+  drawings: [""],
 };
 
 export default mockUserVisible;
