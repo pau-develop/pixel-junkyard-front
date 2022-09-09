@@ -58,7 +58,7 @@ describe("Given a Profile component", () => {
     test("It should render a listitems for each element in drawings array", async () => {
       await render(<Profile />, { wrapper: Wrapper });
 
-      const drawElement = screen.getByText("mockDraw");
+      const drawElement = screen.getByText("test1");
 
       expect(drawElement).toBeInTheDocument();
     });

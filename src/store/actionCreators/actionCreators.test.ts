@@ -119,6 +119,7 @@ describe("Given a getUserById action", () => {
           userName: "",
           password: "",
           email: "",
+          drawings: [],
         },
       ];
 

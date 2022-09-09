@@ -87,13 +87,11 @@ const ReactCanvas = (): JSX.Element => {
   };
 
   const startDrawingPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
-    console.log(event);
     fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
     setIsDrawing(true);
   };
 
   const drawPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
-    console.log(event);
     if (!isDrawing) {
       return;
     }
