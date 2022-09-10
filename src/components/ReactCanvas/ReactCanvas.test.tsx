@@ -38,6 +38,7 @@ describe("Given a ReactCanvas component", () => {
       expect(headingElement).not.toBeNull();
     });
   });
+
   describe("When instantiated on desktop", () => {
     test("It should show a desktop canvas", () => {
       window.innerWidth = 800;
@@ -244,6 +245,28 @@ describe("Given a ReactCanvas component", () => {
       fireEvent(canvasElement, touchEvent);
 
       expect(spyGetFunction).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("When color is changed it ReactCanvasTools component", () => {
+    test("The color state variable should change", () => {
+      const mockState = "";
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: boolean) => [
+        mockState,
+        mockSetState,
+      ];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(<ReactCanvas />, { wrapper: Wrapper });
+
+      const colorInputElement = screen.getByTestId("color-input");
+
+      fireEvent.change(colorInputElement, {
+        target: { value: "#666" },
+      });
+
+      expect(mockSetState).toHaveBeenCalled();
     });
   });
 });

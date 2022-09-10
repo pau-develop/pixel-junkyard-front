@@ -5,6 +5,7 @@ import {
   getCanvasScaledValue,
 } from "../../utils/ReactCanvasFunctions";
 import Button from "../Button/Button";
+import ReactCanvasTools from "../ReactCanvasTools/ReactCanvasTools";
 import SaveMenu from "../SaveMenu/SaveMenu";
 
 import ReactCanvasStyled from "./ReactCanvasStyled";
@@ -14,6 +15,7 @@ const saveInitialState = false;
 const ReactCanvas = (): JSX.Element => {
   const [save, setSave] = useState<boolean>(saveInitialState);
   const [data, setData] = useState<string>("");
+  const [color, setColor] = useState<string>("#000");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
@@ -37,6 +39,10 @@ const ReactCanvas = (): JSX.Element => {
     ctxRef.current!.stroke();
   }, []);
 
+  const changeColor = (color: string) => {
+    setColor(color);
+  };
+
   const fillPixel = (eventX: number, eventY: number) => {
     const cssScaleX = getCanvasScaledValue(
       canvasRef.current!.width,
@@ -50,7 +56,7 @@ const ReactCanvas = (): JSX.Element => {
     let newX = Math.floor((eventX - canvasRect.left) * cssScaleX);
     let newY = Math.floor((eventY - canvasRect.top) * cssScaleY);
     cellLength = canvasRef.current!.width / cellCountX;
-    ctxRef.current!.fillStyle = "black";
+    ctxRef.current!.fillStyle = color;
     ctxRef.current!.fillRect(newX, newY, cellLength, cellLength);
     ctxRef.current!.stroke();
 
@@ -108,7 +114,7 @@ const ReactCanvas = (): JSX.Element => {
     setIsDrawing(false);
   };
 
-  function scaleImage(imageData: ImageData, scale: 20) {
+  function scaleImage(imageData: ImageData, scale: 10) {
     var scaled = ctxRef.current!.createImageData(
       imageData.width * scale,
       imageData.height * scale
@@ -134,7 +140,7 @@ const ReactCanvas = (): JSX.Element => {
   }
 
   const handleClick = () => {
-    scaleImage(ctxRef.current!.getImageData(0, 0, cellCountX, cellCountY), 20);
+    scaleImage(ctxRef.current!.getImageData(0, 0, cellCountX, cellCountY), 10);
     setData(canvasRef.current!.toDataURL());
     setSave(!save);
   };
@@ -169,6 +175,7 @@ const ReactCanvas = (): JSX.Element => {
           />
         )}
       </div>
+      <ReactCanvasTools action={changeColor} />
     </ReactCanvasStyled>
   );
 };
