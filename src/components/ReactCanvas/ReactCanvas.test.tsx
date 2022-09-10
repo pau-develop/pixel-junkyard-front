@@ -269,4 +269,92 @@ describe("Given a ReactCanvas component", () => {
       expect(mockSetState).toHaveBeenCalled();
     });
   });
+
+  describe("When '+' button is clicked", () => {
+    test("The multiplier state variable should increment", () => {
+      const mockState = 2;
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: boolean) => [
+        mockState,
+        mockSetState,
+      ];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(<ReactCanvas />, { wrapper: Wrapper });
+
+      const incrementButtonText = "+";
+      const incrementButtonElement = screen.getByRole("button", {
+        name: incrementButtonText,
+      });
+
+      fireEvent.click(incrementButtonElement);
+
+      expect(mockSetState).toHaveBeenCalled();
+    });
+
+    test("Unless multiplier variable is already 16", () => {
+      const mockState = 16;
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: boolean) => [
+        mockState,
+        mockSetState,
+      ];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(<ReactCanvas />, { wrapper: Wrapper });
+
+      const incrementButtonText = "+";
+      const incrementButtonElement = screen.getByRole("button", {
+        name: incrementButtonText,
+      });
+
+      fireEvent.click(incrementButtonElement);
+
+      expect(mockSetState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("When '-' button is clicked", () => {
+    test("The multiplier state variable should decrement", () => {
+      const mockState = 4;
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: boolean) => [
+        mockState,
+        mockSetState,
+      ];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(<ReactCanvas />, { wrapper: Wrapper });
+
+      const decrementButtonText = "-";
+      const decrementButtonElement = screen.getByRole("button", {
+        name: decrementButtonText,
+      });
+
+      fireEvent.click(decrementButtonElement);
+
+      expect(mockSetState).toHaveBeenCalled();
+    });
+
+    test("Unless multiplier variable is already 0", () => {
+      const mockState = 1;
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: boolean) => [
+        mockState,
+        mockSetState,
+      ];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(<ReactCanvas />, { wrapper: Wrapper });
+
+      const decrementButtonText = "-";
+      const decrementButtonElement = screen.getByRole("button", {
+        name: decrementButtonText,
+      });
+
+      fireEvent.click(decrementButtonElement);
+
+      expect(mockSetState).not.toHaveBeenCalled();
+    });
+  });
 });
