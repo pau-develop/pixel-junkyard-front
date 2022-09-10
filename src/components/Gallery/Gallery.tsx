@@ -18,13 +18,15 @@ const Gallery = (): JSX.Element => {
 
   return (
     <GalleryStyled className="gallery">
-      <ul>
-        {drawings.map((drawing) => (
-          <li key={drawing._id}>
-            <DrawingCard draw={drawing} />
-          </li>
-        ))}
-      </ul>
+      {drawings[0] !== undefined && typeof drawings[0].artist === "string" && (
+        <ul>
+          {drawings.map((drawing) => (
+            <li key={drawing._id}>
+              <DrawingCard draw={drawing} />
+            </li>
+          ))}
+        </ul>
+      )}
     </GalleryStyled>
   );
 };
