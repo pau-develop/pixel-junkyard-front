@@ -27,10 +27,9 @@ describe("Given a ReactCanvas component", () => {
     test("A Menu with the heading 'SAVE CANVAS' should appear", () => {
       render(<ReactCanvas />, { wrapper: Wrapper });
 
-      const buttonText = "SAVE";
-      const buttonElement = screen.getByRole("button", { name: buttonText });
+      const floppyElement = screen.getByTestId("floppy-icon");
 
-      fireEvent.click(buttonElement);
+      fireEvent.click(floppyElement);
 
       const headingText = "SAVE CANVAS";
       const headingElement = screen.getByRole("heading", { name: headingText });
@@ -336,7 +335,7 @@ describe("Given a ReactCanvas component", () => {
       expect(mockSetState).toHaveBeenCalled();
     });
 
-    test("Unless multiplier variable is already 0", () => {
+    test("Unless multiplier variable is already 1", () => {
       const mockState = 1;
       const mockSetState = jest.fn();
       const useStateMock: any = (useState: boolean) => [
@@ -355,6 +354,61 @@ describe("Given a ReactCanvas component", () => {
       fireEvent.click(decrementButtonElement);
 
       expect(mockSetState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("When using eye-dropper tool", () => {
+    test("The color state variable should change", () => {
+      window.innerWidth = 800;
+      const mockState = "eye-dropper";
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: any) => [mockState, mockSetState];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(<ReactCanvas />, { wrapper: Wrapper });
+      const canvasElement = screen.getByTestId("canvas-desktop");
+      const clickEvent = createEvent.mouseMove(canvasElement, {
+        clientX: 50,
+        offsetX: 20,
+        clientY: 50,
+        offsetY: 20,
+        buttons: 1,
+      });
+      fireEvent(canvasElement, clickEvent);
+
+      expect(mockSetState).toHaveBeenCalledWith("#000000");
+    });
+  });
+
+  describe("When clicking on eye-dropper tool in the toolbar", () => {
+    test("The currentTool state variable should change", () => {
+      window.innerWidth = 800;
+      const mockState = "pencil";
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: any) => [mockState, mockSetState];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(<ReactCanvas />, { wrapper: Wrapper });
+      const eyeDropperElement = screen.getByTestId("eye-dropper-icon");
+      fireEvent.click(eyeDropperElement);
+
+      expect(mockSetState).toHaveBeenCalledWith("eye-dropper");
+    });
+  });
+
+  describe("When clicking on pencil tool in the toolbar", () => {
+    test("The currentTool state variable should change", () => {
+      window.innerWidth = 800;
+      const mockState = "eye-dropper";
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: any) => [mockState, mockSetState];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+      render(<ReactCanvas />, { wrapper: Wrapper });
+      const pencilElement = screen.getByTestId("pencil-icon");
+      fireEvent.click(pencilElement);
+
+      expect(mockSetState).toHaveBeenCalledWith("pencil");
     });
   });
 });

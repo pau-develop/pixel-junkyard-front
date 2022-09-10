@@ -12,11 +12,12 @@ const ReactCanvasStyled = styled.section`
   .react-canvas {
     &__container {
       position: relative;
-      border: 2px solid ${(props) => props.theme.secondaryColor};
+      border: 2px solid ${(props) => props.theme.thirdColor};
       width: 90%;
       height: 80%;
     }
     &__canvas {
+      cursor: crosshair;
       touch-action: none;
       width: 100%;
       height: 100%;

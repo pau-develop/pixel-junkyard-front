@@ -4,7 +4,6 @@ import {
   fillOnMissingCells,
   getCanvasScaledValue,
 } from "../../utils/ReactCanvasFunctions";
-import Button from "../Button/Button";
 import ReactCanvasTools from "../ReactCanvasTools/ReactCanvasTools";
 import SaveMenu from "../SaveMenu/SaveMenu";
 
@@ -13,6 +12,7 @@ import ReactCanvasStyled from "./ReactCanvasStyled";
 const saveInitialState = false;
 
 const ReactCanvas = (): JSX.Element => {
+  const [currentTool, setCurrentTool] = useState<string>("pencil");
   const [multiplier, setMultiplier] = useState<number>(1);
   const [save, setSave] = useState<boolean>(saveInitialState);
   const [data, setData] = useState<string>("");
@@ -46,7 +46,34 @@ const ReactCanvas = (): JSX.Element => {
   const changeScale = (scale: number) => {
     setMultiplier(scale);
   };
-  console.log(multiplier);
+  const handleTool = (currentTool: string) => {
+    setCurrentTool(currentTool);
+  };
+
+  const rgbToHex = (red: number, green: number, blue: number) => {
+    return (
+      "#" +
+      ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1)
+    );
+  };
+
+  const getCellColor = (xPosition: number, yPosition: number) => {
+    const pixelData = ctxRef.current!.getImageData(
+      xPosition,
+      yPosition,
+      xPosition + 1,
+      yPosition + 1
+    );
+    const hexColor = rgbToHex(
+      pixelData.data[0],
+      pixelData.data[1],
+      pixelData.data[2]
+    );
+    console.log(hexColor);
+    setColor(hexColor);
+  };
+
+  console.log(currentTool);
 
   const fillPixel = (eventX: number, eventY: number) => {
     const cssScaleX = getCanvasScaledValue(
@@ -60,6 +87,10 @@ const ReactCanvas = (): JSX.Element => {
     const canvasRect = canvasRef.current!.getBoundingClientRect();
     let newX = Math.floor((eventX - canvasRect.left) * cssScaleX);
     let newY = Math.floor((eventY - canvasRect.top) * cssScaleY);
+    if (currentTool === "eye-dropper") {
+      getCellColor(newX, newY);
+      return;
+    }
     cellLength = canvasRef.current!.width / cellCountX;
     ctxRef.current!.fillStyle = color;
     ctxRef.current!.fillRect(
@@ -157,7 +188,6 @@ const ReactCanvas = (): JSX.Element => {
 
   return (
     <ReactCanvasStyled className="react-canvas">
-      <Button text={save ? "CANCEL" : "SAVE"} action={handleClick} />
       <div className="react-canvas__container">
         {save && <SaveMenu action={handleClick} canvasData={data} />}
         {window.innerWidth >= 600 ? (
@@ -185,7 +215,13 @@ const ReactCanvas = (): JSX.Element => {
           />
         )}
       </div>
-      <ReactCanvasTools actionColor={changeColor} actionScale={changeScale} />
+      <ReactCanvasTools
+        color={color}
+        actionColor={changeColor}
+        actionScale={changeScale}
+        actionSave={handleClick}
+        actionTool={handleTool}
+      />
     </ReactCanvasStyled>
   );
 };
