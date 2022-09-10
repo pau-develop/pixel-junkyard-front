@@ -22,6 +22,10 @@ const ReactCanvasStyled = styled.section`
       height: 100%;
       image-rendering: pixelated;
     }
+    &__scaled {
+      touch-action: none;
+      display: hidden;
+    }
   }
 `;
 

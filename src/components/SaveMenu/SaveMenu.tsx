@@ -41,7 +41,9 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
     <SaveMenuStyled className="save-menu">
       <div className="save-menu__box">
         <h2>SAVE CANVAS</h2>
-        <img src={canvasData} alt="drawing preview" />
+        <div className="save-menu__image">
+          <img src={canvasData} alt="drawing preview" />
+        </div>
         <form
           className="save-menu__form"
           onSubmit={(event) => handleInputObject(event)}
