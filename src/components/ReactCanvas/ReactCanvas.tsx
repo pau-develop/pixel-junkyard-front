@@ -12,6 +12,7 @@ import ReactCanvasStyled from "./ReactCanvasStyled";
 const saveInitialState = false;
 
 const ReactCanvas = (): JSX.Element => {
+  const [currentTool, setCurrentTool] = useState<string>("pencil");
   const [multiplier, setMultiplier] = useState<number>(1);
   const [save, setSave] = useState<boolean>(saveInitialState);
   const [data, setData] = useState<string>("");
@@ -45,7 +46,11 @@ const ReactCanvas = (): JSX.Element => {
   const changeScale = (scale: number) => {
     setMultiplier(scale);
   };
-  console.log(multiplier);
+  const handleTool = (currentTool: string) => {
+    setCurrentTool(currentTool);
+  };
+
+  console.log(currentTool);
 
   const fillPixel = (eventX: number, eventY: number) => {
     const cssScaleX = getCanvasScaledValue(
@@ -94,8 +99,10 @@ const ReactCanvas = (): JSX.Element => {
   const startDrawing = (
     event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
   ) => {
-    fillPixel(event.clientX, event.clientY);
-    setIsDrawing(true);
+    if (currentTool === "pencil") {
+      fillPixel(event.clientX, event.clientY);
+      setIsDrawing(true);
+    }
   };
 
   const draw = (event: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
@@ -106,8 +113,10 @@ const ReactCanvas = (): JSX.Element => {
   };
 
   const startDrawingPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
-    fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
-    setIsDrawing(true);
+    if (currentTool === "pencil") {
+      fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
+      setIsDrawing(true);
+    }
   };
 
   const drawPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
@@ -187,6 +196,7 @@ const ReactCanvas = (): JSX.Element => {
         actionColor={changeColor}
         actionScale={changeScale}
         actionSave={handleClick}
+        actionTool={handleTool}
       />
     </ReactCanvasStyled>
   );

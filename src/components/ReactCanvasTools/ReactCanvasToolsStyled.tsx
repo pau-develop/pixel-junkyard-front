@@ -24,7 +24,7 @@ const ReactCanvasToolsStyled = styled.section`
       }
       span {
         border-radius: 0;
-        margin: 5%;
+        margin: 4% 2%;
         width: 90%;
         text-align: center;
       }
@@ -32,9 +32,14 @@ const ReactCanvasToolsStyled = styled.section`
     &__color {
       flex: 1;
       input {
-        background-color: ${(props) => props.theme.thirdColor};
-        width: 100%;
-        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4% 2%;
+        width: 90%;
+        height: 90%;
+        border-color: transparent;
+        background-color: ${(props) => props.theme.primaryColor};
       }
     }
     &__floppy {
@@ -43,7 +48,37 @@ const ReactCanvasToolsStyled = styled.section`
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 5%;
+        margin: 4% 2%;
+        width: 90%;
+        height: 90%;
+        background-color: ${(props) => props.theme.primaryColor};
+        i {
+          color: ${(props) => props.theme.secondaryColor};
+        }
+      }
+    }
+    &__eye-dropper {
+      flex: 1;
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4% 2%;
+        width: 90%;
+        height: 90%;
+        background-color: ${(props) => props.theme.primaryColor};
+        i {
+          color: ${(props) => props.theme.secondaryColor};
+        }
+      }
+    }
+    &__pencil {
+      flex: 1;
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4% 2%;
         width: 90%;
         height: 90%;
         background-color: ${(props) => props.theme.primaryColor};
