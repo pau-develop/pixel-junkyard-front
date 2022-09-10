@@ -69,6 +69,7 @@ const ReactCanvas = (): JSX.Element => {
       pixelData.data[1],
       pixelData.data[2]
     );
+    console.log(hexColor);
     setColor(hexColor);
   };
 
@@ -127,7 +128,6 @@ const ReactCanvas = (): JSX.Element => {
   ) => {
     fillPixel(event.clientX, event.clientY);
     setIsDrawing(true);
-    return;
   };
 
   const draw = (event: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
@@ -140,7 +140,6 @@ const ReactCanvas = (): JSX.Element => {
   const startDrawingPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
     fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
     setIsDrawing(true);
-    return;
   };
 
   const drawPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {

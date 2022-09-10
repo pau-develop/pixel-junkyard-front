@@ -17,6 +17,7 @@ const ReactCanvasStyled = styled.section`
       height: 80%;
     }
     &__canvas {
+      cursor: crosshair;
       touch-action: none;
       width: 100%;
       height: 100%;

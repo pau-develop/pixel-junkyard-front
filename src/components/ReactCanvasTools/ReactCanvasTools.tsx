@@ -26,11 +26,10 @@ const ReactCanvasTools = ({
   const floppyIcon = <FontAwesomeIcon icon={faFloppyDisk} />;
   const eyeDropperIcon = <FontAwesomeIcon icon={faEyeDropper} />;
   const pencilIcon = <FontAwesomeIcon icon={faPencil} />;
-  const [inputColor, setInputColor] = useState<string>("#000000");
+
   const [scale, setScale] = useState<number>(1);
 
   const handleColorChange = (event: string) => {
-    setInputColor(event);
     actionColor(event);
   };
 
