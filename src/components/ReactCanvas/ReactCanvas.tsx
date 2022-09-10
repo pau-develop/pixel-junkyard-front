@@ -13,6 +13,7 @@ import ReactCanvasStyled from "./ReactCanvasStyled";
 const saveInitialState = false;
 
 const ReactCanvas = (): JSX.Element => {
+  const [multiplier, setMultiplier] = useState<number>(1);
   const [save, setSave] = useState<boolean>(saveInitialState);
   const [data, setData] = useState<string>("");
   const [color, setColor] = useState<string>("#000");
@@ -42,6 +43,10 @@ const ReactCanvas = (): JSX.Element => {
   const changeColor = (color: string) => {
     setColor(color);
   };
+  const changeScale = (scale: number) => {
+    setMultiplier(scale);
+  };
+  console.log(multiplier);
 
   const fillPixel = (eventX: number, eventY: number) => {
     const cssScaleX = getCanvasScaledValue(
@@ -57,7 +62,12 @@ const ReactCanvas = (): JSX.Element => {
     let newY = Math.floor((eventY - canvasRect.top) * cssScaleY);
     cellLength = canvasRef.current!.width / cellCountX;
     ctxRef.current!.fillStyle = color;
-    ctxRef.current!.fillRect(newX, newY, cellLength, cellLength);
+    ctxRef.current!.fillRect(
+      newX,
+      newY,
+      cellLength * multiplier,
+      cellLength * multiplier
+    );
     ctxRef.current!.stroke();
 
     let differenceX = Math.abs(lastX - newX);
@@ -74,7 +84,7 @@ const ReactCanvas = (): JSX.Element => {
       lastX,
       lastY,
       totalIterations,
-      cellLength
+      cellLength * multiplier
     );
 
     lastX = newX;
@@ -175,7 +185,7 @@ const ReactCanvas = (): JSX.Element => {
           />
         )}
       </div>
-      <ReactCanvasTools action={changeColor} />
+      <ReactCanvasTools actionColor={changeColor} actionScale={changeScale} />
     </ReactCanvasStyled>
   );
 };
