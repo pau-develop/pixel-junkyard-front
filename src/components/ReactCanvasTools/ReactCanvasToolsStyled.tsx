@@ -8,9 +8,29 @@ const ReactCanvasToolsStyled = styled.section`
   display: flex;
   background-color: ${(props) => props.theme.thirdColor};
   .toolbar {
+    &__scale-value {
+      color: ${(props) => props.theme.secondaryColor};
+      font-size: 2rem;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        background-color: ${(props) => props.theme.primaryColor};
+        border-radius: 0;
+        margin: 5%;
+        width: 90%;
+        height: 90%;
+      }
+      span {
+        border-radius: 0;
+        margin: 5%;
+        width: 90%;
+        text-align: center;
+      }
+    }
     &__color {
       flex: 1;
-      width: 100%;
       input {
         background-color: ${(props) => props.theme.thirdColor};
         width: 100%;
