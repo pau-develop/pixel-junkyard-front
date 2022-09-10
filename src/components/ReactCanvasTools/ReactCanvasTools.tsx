@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 interface ReactCanvasToolsProps {
+  color: string;
   actionColor: (color: string) => void;
   actionScale: (scale: number) => void;
   actionSave: () => void;
@@ -16,6 +17,7 @@ interface ReactCanvasToolsProps {
 }
 
 const ReactCanvasTools = ({
+  color,
   actionColor,
   actionScale,
   actionSave,
@@ -24,11 +26,11 @@ const ReactCanvasTools = ({
   const floppyIcon = <FontAwesomeIcon icon={faFloppyDisk} />;
   const eyeDropperIcon = <FontAwesomeIcon icon={faEyeDropper} />;
   const pencilIcon = <FontAwesomeIcon icon={faPencil} />;
-  const [color, setColor] = useState<string>("#000000");
+  const [inputColor, setInputColor] = useState<string>("#000000");
   const [scale, setScale] = useState<number>(1);
 
   const handleColorChange = (event: string) => {
-    setColor(event);
+    setInputColor(event);
     actionColor(event);
   };
 

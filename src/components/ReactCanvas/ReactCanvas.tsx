@@ -50,6 +50,28 @@ const ReactCanvas = (): JSX.Element => {
     setCurrentTool(currentTool);
   };
 
+  const rgbToHex = (red: number, green: number, blue: number) => {
+    return (
+      "#" +
+      ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1)
+    );
+  };
+
+  const getCellColor = (xPosition: number, yPosition: number) => {
+    const pixelData = ctxRef.current!.getImageData(
+      xPosition,
+      yPosition,
+      xPosition + 1,
+      yPosition + 1
+    );
+    const hexColor = rgbToHex(
+      pixelData.data[0],
+      pixelData.data[1],
+      pixelData.data[2]
+    );
+    setColor(hexColor);
+  };
+
   console.log(currentTool);
 
   const fillPixel = (eventX: number, eventY: number) => {
@@ -64,6 +86,10 @@ const ReactCanvas = (): JSX.Element => {
     const canvasRect = canvasRef.current!.getBoundingClientRect();
     let newX = Math.floor((eventX - canvasRect.left) * cssScaleX);
     let newY = Math.floor((eventY - canvasRect.top) * cssScaleY);
+    if (currentTool === "eye-dropper") {
+      getCellColor(newX, newY);
+      return;
+    }
     cellLength = canvasRef.current!.width / cellCountX;
     ctxRef.current!.fillStyle = color;
     ctxRef.current!.fillRect(
@@ -99,10 +125,9 @@ const ReactCanvas = (): JSX.Element => {
   const startDrawing = (
     event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
   ) => {
-    if (currentTool === "pencil") {
-      fillPixel(event.clientX, event.clientY);
-      setIsDrawing(true);
-    }
+    fillPixel(event.clientX, event.clientY);
+    setIsDrawing(true);
+    return;
   };
 
   const draw = (event: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
@@ -113,10 +138,9 @@ const ReactCanvas = (): JSX.Element => {
   };
 
   const startDrawingPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
-    if (currentTool === "pencil") {
-      fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
-      setIsDrawing(true);
-    }
+    fillPixel(event.targetTouches[0].pageX, event.targetTouches[0].pageY);
+    setIsDrawing(true);
+    return;
   };
 
   const drawPhone = (event: React.TouchEvent<HTMLCanvasElement>) => {
@@ -193,6 +217,7 @@ const ReactCanvas = (): JSX.Element => {
         )}
       </div>
       <ReactCanvasTools
+        color={color}
         actionColor={changeColor}
         actionScale={changeScale}
         actionSave={handleClick}
