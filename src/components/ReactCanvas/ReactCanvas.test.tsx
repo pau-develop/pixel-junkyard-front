@@ -27,10 +27,9 @@ describe("Given a ReactCanvas component", () => {
     test("A Menu with the heading 'SAVE CANVAS' should appear", () => {
       render(<ReactCanvas />, { wrapper: Wrapper });
 
-      const buttonText = "SAVE";
-      const buttonElement = screen.getByRole("button", { name: buttonText });
+      const floppyElement = screen.getByTestId("floppy-icon");
 
-      fireEvent.click(buttonElement);
+      fireEvent.click(floppyElement);
 
       const headingText = "SAVE CANVAS";
       const headingElement = screen.getByRole("heading", { name: headingText });
@@ -336,7 +335,7 @@ describe("Given a ReactCanvas component", () => {
       expect(mockSetState).toHaveBeenCalled();
     });
 
-    test("Unless multiplier variable is already 0", () => {
+    test("Unless multiplier variable is already 1", () => {
       const mockState = 1;
       const mockSetState = jest.fn();
       const useStateMock: any = (useState: boolean) => [

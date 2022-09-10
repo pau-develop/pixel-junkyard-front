@@ -4,7 +4,6 @@ import {
   fillOnMissingCells,
   getCanvasScaledValue,
 } from "../../utils/ReactCanvasFunctions";
-import Button from "../Button/Button";
 import ReactCanvasTools from "../ReactCanvasTools/ReactCanvasTools";
 import SaveMenu from "../SaveMenu/SaveMenu";
 
@@ -157,7 +156,6 @@ const ReactCanvas = (): JSX.Element => {
 
   return (
     <ReactCanvasStyled className="react-canvas">
-      <Button text={save ? "CANCEL" : "SAVE"} action={handleClick} />
       <div className="react-canvas__container">
         {save && <SaveMenu action={handleClick} canvasData={data} />}
         {window.innerWidth >= 600 ? (
@@ -185,7 +183,11 @@ const ReactCanvas = (): JSX.Element => {
           />
         )}
       </div>
-      <ReactCanvasTools actionColor={changeColor} actionScale={changeScale} />
+      <ReactCanvasTools
+        actionColor={changeColor}
+        actionScale={changeScale}
+        actionSave={handleClick}
+      />
     </ReactCanvasStyled>
   );
 };

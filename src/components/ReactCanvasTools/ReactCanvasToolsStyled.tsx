@@ -37,6 +37,21 @@ const ReactCanvasToolsStyled = styled.section`
         height: 100%;
       }
     }
+    &__floppy {
+      flex: 1;
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5%;
+        width: 90%;
+        height: 90%;
+        background-color: ${(props) => props.theme.primaryColor};
+        i {
+          color: ${(props) => props.theme.secondaryColor};
+        }
+      }
+    }
   }
 `;
 export default ReactCanvasToolsStyled;
