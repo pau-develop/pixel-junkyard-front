@@ -15,7 +15,6 @@ const ReactCanvas = (): JSX.Element => {
   const [save, setSave] = useState<boolean>(saveInitialState);
   const [data, setData] = useState<string>("");
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const canvasScaledRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
   const cellCountX = 60;
@@ -129,7 +128,6 @@ const ReactCanvas = (): JSX.Element => {
         }
       }
     }
-    console.log(scaled, imageData);
     canvasRef.current!.width = scaled.width;
     canvasRef.current!.height = scaled.height;
     ctxRef.current!.putImageData(scaled, 0, 0);
@@ -153,6 +151,7 @@ const ReactCanvas = (): JSX.Element => {
             onMouseDown={startDrawing}
             onMouseUp={endDrawing}
             onMouseMove={draw}
+            onMouseOut={endDrawing}
             ref={canvasRef}
             width={`${cellCountX}px`}
             height={`${cellCountY}px`}
