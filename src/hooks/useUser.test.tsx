@@ -216,7 +216,7 @@ describe("Given a useUsers hook", () => {
       });
 
       await waitFor(() => {
-        deleteAccount(mockUser._id);
+        deleteAccount(mockUser.id);
       });
 
       expect(window.localStorage.length).toBe(0);
@@ -237,7 +237,7 @@ describe("Given a useUsers hook", () => {
       });
 
       await waitFor(() => {
-        deleteAccount(mockUser._id);
+        deleteAccount(mockUser.id);
       });
 
       const expectedAction = {

@@ -13,7 +13,7 @@ const UserCard = ({ user }: UserCardProps): JSX.Element => {
   };
 
   return (
-    <UserCardStyled onClick={() => handleClick(user._id)}>
+    <UserCardStyled onClick={() => handleClick(user.id)}>
       <div className="image-container">
         <img src="/img/demo-avatar.png" alt={user.userName} />
       </div>

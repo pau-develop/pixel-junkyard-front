@@ -115,7 +115,7 @@ describe("Given a getUserById action", () => {
     test("It should return an object with the action 'getUserById' and a payload of type IUser", () => {
       const user: IUserVisible[] = [
         {
-          _id: "",
+          id: "",
           userName: "",
           password: "",
           email: "",
