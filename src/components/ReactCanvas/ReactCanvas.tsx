@@ -15,7 +15,7 @@ const saveInitialState = false;
 const ReactCanvas = (): JSX.Element => {
   const [save, setSave] = useState<boolean>(saveInitialState);
   const [data, setData] = useState<string>("");
-  const [color, setColor] = useState<string>("#080");
+  const [color, setColor] = useState<string>("#000");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const ReactCanvas = (): JSX.Element => {
   }, []);
 
   const changeColor = (color: string) => {
-    setColor(color as string);
+    setColor(color);
   };
 
   const fillPixel = (eventX: number, eventY: number) => {
@@ -56,7 +56,7 @@ const ReactCanvas = (): JSX.Element => {
     let newX = Math.floor((eventX - canvasRect.left) * cssScaleX);
     let newY = Math.floor((eventY - canvasRect.top) * cssScaleY);
     cellLength = canvasRef.current!.width / cellCountX;
-    ctxRef.current!.fillStyle = color as string;
+    ctxRef.current!.fillStyle = color;
     ctxRef.current!.fillRect(newX, newY, cellLength, cellLength);
     ctxRef.current!.stroke();
 

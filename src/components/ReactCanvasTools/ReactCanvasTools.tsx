@@ -10,13 +10,14 @@ const ReactCanvasTools = ({ action }: ReactCanvasToolsProps): JSX.Element => {
 
   const handleColorChange = (event: string) => {
     setColor(event);
-    action(event as string);
+    action(event);
   };
 
   return (
     <ReactCanvasToolsStyled className="toolbar">
       <div className="toolbar__color">
         <input
+          data-testid="color-input"
           type="color"
           value={color}
           onChange={(event) => handleColorChange(event.target.value)}
