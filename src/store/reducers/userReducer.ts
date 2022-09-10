@@ -4,7 +4,7 @@ import actionTypes from "../actionTypes/actionTypes";
 import { IUserAction } from "../types/actionTypes";
 
 const initialState = {
-  _id: "",
+  id: "",
   userName: "",
   token: "",
 };

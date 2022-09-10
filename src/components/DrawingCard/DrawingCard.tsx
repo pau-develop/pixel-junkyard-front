@@ -9,7 +9,7 @@ interface DrawingCardProps {
 const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/gallery/${draw._id}`);
+    navigate(`/gallery/${draw.id}`);
   };
 
   return (

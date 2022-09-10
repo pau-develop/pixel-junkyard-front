@@ -82,7 +82,7 @@ const useUser = () => {
     const user: IUser = {
       userName: "",
       token: "",
-      _id: "",
+      id: "",
     };
     dispatch(logoutUserActionNew(user));
     const ui = {
@@ -127,7 +127,7 @@ const useUser = () => {
     const user: IUser = {
       userName: "",
       token: "",
-      _id: "",
+      id: "",
     };
     dispatch(logoutUserActionNew(user));
     dispatch(openModalActionNew(ui));

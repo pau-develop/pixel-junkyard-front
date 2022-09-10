@@ -70,8 +70,8 @@ const Profile = (): JSX.Element => {
             <h3>{`${user.userName}'s Gallery`}</h3>
             <div className="profile__gallery-display">
               <ul>
-                {user.drawings.map((drawing) => (
-                  <li key={drawing._id}>
+                {user.drawings.map((drawing, index) => (
+                  <li key={index}>
                     <DrawingCard draw={drawing} />
                   </li>
                 ))}

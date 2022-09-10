@@ -27,7 +27,7 @@ const Menu = ({ action, menuClass, logAction }: MenuProps): JSX.Element => {
     <MenuStyled className={menuClass}>
       <Button
         text="PROFILE"
-        action={() => handleClick(`/profile/${currentUser._id}`)}
+        action={() => handleClick(`/profile/${currentUser.id}`)}
         buttonClass={"button-navigation"}
       />
       <Button

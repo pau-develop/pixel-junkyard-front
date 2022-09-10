@@ -5,13 +5,13 @@ export interface Input {
 }
 
 export interface IUser {
-  _id: string;
+  id: string;
   userName: string;
   token: string;
 }
 
 export interface IUserVisible {
-  _id: string;
+  id: string;
   userName: string;
   password: string;
   email: string;
@@ -19,7 +19,7 @@ export interface IUserVisible {
 }
 
 export interface IDrawing {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   image: string;
