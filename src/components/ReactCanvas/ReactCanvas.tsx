@@ -5,6 +5,7 @@ import {
   getCanvasScaledValue,
 } from "../../utils/ReactCanvasFunctions";
 import Button from "../Button/Button";
+import ReactCanvasTools from "../ReactCanvasTools/ReactCanvasTools";
 import SaveMenu from "../SaveMenu/SaveMenu";
 
 import ReactCanvasStyled from "./ReactCanvasStyled";
@@ -14,6 +15,7 @@ const saveInitialState = false;
 const ReactCanvas = (): JSX.Element => {
   const [save, setSave] = useState<boolean>(saveInitialState);
   const [data, setData] = useState<string>("");
+  const [color, setColor] = useState<string>("#080");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
@@ -37,6 +39,10 @@ const ReactCanvas = (): JSX.Element => {
     ctxRef.current!.stroke();
   }, []);
 
+  const changeColor = (color: string) => {
+    setColor(color as string);
+  };
+
   const fillPixel = (eventX: number, eventY: number) => {
     const cssScaleX = getCanvasScaledValue(
       canvasRef.current!.width,
@@ -50,7 +56,7 @@ const ReactCanvas = (): JSX.Element => {
     let newX = Math.floor((eventX - canvasRect.left) * cssScaleX);
     let newY = Math.floor((eventY - canvasRect.top) * cssScaleY);
     cellLength = canvasRef.current!.width / cellCountX;
-    ctxRef.current!.fillStyle = "black";
+    ctxRef.current!.fillStyle = color as string;
     ctxRef.current!.fillRect(newX, newY, cellLength, cellLength);
     ctxRef.current!.stroke();
 
@@ -169,6 +175,7 @@ const ReactCanvas = (): JSX.Element => {
           />
         )}
       </div>
+      <ReactCanvasTools action={changeColor} />
     </ReactCanvasStyled>
   );
 };
