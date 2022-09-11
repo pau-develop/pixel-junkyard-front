@@ -7,5 +7,6 @@ const actionTypes = {
   getUserById: "users@id",
   getAllDrawings: "drawings@all",
   getDrawingById: "drawings@id",
+  deleteDrawing: "drawings@delete",
 };
 export default actionTypes;
