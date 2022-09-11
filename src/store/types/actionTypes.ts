@@ -19,3 +19,7 @@ export interface IUserVisibleAction extends Action {
 export interface IDrawingAction extends Action {
   payload: IDrawing[];
 }
+
+export interface IDrawingActionSingle extends Action {
+  payload: IDrawing;
+}

@@ -4,6 +4,7 @@ const DrawingCardStyled = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   .draw-card {
     &__title {
       background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
@@ -24,6 +25,19 @@ const DrawingCardStyled = styled.section`
       text-align: center;
       display: flex;
       justify-content: space-between;
+    }
+    &__icon {
+      cursor: pointer;
+      width: 20%;
+      height: 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      top: 8%;
+      right: 5%;
+      position: absolute;
+      background-color: ${(props) => props.theme.primaryColor};
     }
   }
 `;

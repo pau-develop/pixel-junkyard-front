@@ -119,4 +119,52 @@ describe("Given a useDrawings hook", () => {
       expect(mockDispatch).toBeCalledWith(actionToDispatch);
     });
   });
+
+  describe("When its function deleteDrawing is called", () => {
+    test("It should delete the IDrawing passed as arguments from the DB", async () => {
+      const drawing: IDrawing = mockDrawings[0];
+      global.fetch = jest.fn().mockReturnValue({
+        json: jest.fn().mockReturnValue({
+          message: `Succesfully deleted the Drawing with ID ${drawing.id}`,
+        }),
+      });
+
+      const {
+        result: {
+          current: { deleteDrawing },
+        },
+      } = renderHook(useDrawings, { wrapper: Wrapper });
+      await waitFor(() => {
+        deleteDrawing(mockDrawings[0]);
+      });
+
+      expect(global.fetch).toHaveBeenCalled();
+    });
+
+    test("If there is an error, the state.ui should be updated", async () => {
+      const error = { error: "ERROR! Something went wrong" };
+      global.fetch = jest.fn().mockReturnValue({
+        json: jest.fn().mockReturnValue(error),
+      });
+      const {
+        result: {
+          current: { deleteDrawing },
+        },
+      } = renderHook(useDrawings, { wrapper: Wrapper });
+      await waitFor(() => {
+        deleteDrawing(mockDrawings[0]);
+      });
+      const actionToDispatch = {
+        payload: {
+          isOpen: true,
+          message: "ERROR! Something went wrong",
+          redirect: "",
+          type: "confirm",
+          id: "",
+        },
+        type: "ui@display",
+      };
+      expect(mockDispatch).toBeCalledWith(actionToDispatch);
+    });
+  });
 });

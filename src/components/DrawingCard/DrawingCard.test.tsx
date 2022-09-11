@@ -1,7 +1,19 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "../../app/store";
 import mockDrawings from "../../mocks/mockDrawings";
 import DrawingCard from "./DrawingCard";
+
+const mockDeleteDrawing = jest.fn();
+
+jest.mock("../../hooks/useDrawings", () => ({
+  __esModule: true,
+  ...jest.requireActual("../../hooks/useDrawings"),
+  default: () => ({
+    deleteDrawing: () => mockDeleteDrawing(),
+  }),
+}));
 
 const mockUseNavigate = jest.fn();
 
@@ -10,14 +22,26 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockUseNavigate,
 }));
 
+interface WrapperProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+let Wrapper: ({ children }: WrapperProps) => JSX.Element;
+
+beforeEach(() => {
+  Wrapper = ({ children }: WrapperProps): JSX.Element => {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </Provider>
+    );
+  };
+});
+
 describe("Given a DrawingCard component", () => {
   describe("When instantiated", () => {
     test("It should the title of the drawing received as props", () => {
-      render(
-        <BrowserRouter>
-          <DrawingCard draw={mockDrawings[0]} />
-        </BrowserRouter>
-      );
+      render(<DrawingCard draw={mockDrawings[0]} />, { wrapper: Wrapper });
 
       const drawTitle = "mockDraw";
       const spanElement = screen.getByText(drawTitle);
@@ -26,16 +50,21 @@ describe("Given a DrawingCard component", () => {
     });
 
     test("And when an image is clicked, useNavigate should be called", () => {
-      render(
-        <BrowserRouter>
-          <DrawingCard draw={mockDrawings[0]} />
-        </BrowserRouter>
-      );
+      render(<DrawingCard draw={mockDrawings[0]} />, { wrapper: Wrapper });
       const image = screen.getByAltText("mockDraw");
 
       fireEvent.click(image);
 
       expect(mockUseNavigate).toHaveBeenCalled();
+    });
+
+    test("When the trash icon is clicked, an action to delete the drawing should be dispatched", () => {
+      render(<DrawingCard draw={mockDrawings[0]} />, { wrapper: Wrapper });
+      const deleteIcon = screen.getByTestId("delete-icon");
+
+      fireEvent.click(deleteIcon);
+
+      expect(mockDeleteDrawing).toHaveBeenCalled();
     });
   });
 });

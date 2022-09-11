@@ -35,6 +35,7 @@ const Profile = (): JSX.Element => {
   const user = useSelector<RootState>(
     (state) => state.users[0]
   ) as IUserVisible;
+
   return (
     <ProfileStyled className="profile">
       {user !== undefined && (

@@ -69,11 +69,9 @@ const ReactCanvas = (): JSX.Element => {
       pixelData.data[1],
       pixelData.data[2]
     );
-    console.log(hexColor);
+
     setColor(hexColor);
   };
-
-  console.log(currentTool);
 
   const fillPixel = (eventX: number, eventY: number) => {
     const cssScaleX = getCanvasScaledValue(
