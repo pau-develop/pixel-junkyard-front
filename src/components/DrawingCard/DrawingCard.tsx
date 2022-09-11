@@ -1,12 +1,19 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { IDrawing } from "../../interfaces/interfaces";
+import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
 import DrawingCardStyled from "./DrawingCardStyled";
+
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 interface DrawingCardProps {
   draw: IDrawing;
 }
 
 const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
+  const user = useSelector<RootState>((state) => state.user) as IUserVisible;
+  const trashIcon = <FontAwesomeIcon icon={faTrashCan} />;
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/gallery/${draw.id}`);
@@ -14,6 +21,11 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
 
   return (
     <DrawingCardStyled className="draw-card">
+      {draw.artistName === user.userName && (
+        <div className="draw-card__icon">
+          <i className="fa-2xl">{trashIcon}</i>
+        </div>
+      )}
       <span className="draw-card__title">{draw.name}</span>
       <img
         className="draw-card__image"
