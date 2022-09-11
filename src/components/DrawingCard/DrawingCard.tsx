@@ -23,7 +23,7 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
       />
       <div className="draw-card__footer">
         <span>date</span>
-        <span>{draw.artist}</span>
+        <span>{`Made by: ${draw.artistName}`}</span>
       </div>
     </DrawingCardStyled>
   );
