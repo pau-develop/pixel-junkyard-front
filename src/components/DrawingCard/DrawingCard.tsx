@@ -28,7 +28,11 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
   return (
     <DrawingCardStyled className="draw-card">
       {draw.artistName === user.userName && (
-        <div className="draw-card__icon" onClick={handleDeleteDrawing}>
+        <div
+          className="draw-card__icon"
+          onClick={handleDeleteDrawing}
+          data-testid="delete-icon"
+        >
           <i className="fa-2xl">{trashIcon}</i>
         </div>
       )}

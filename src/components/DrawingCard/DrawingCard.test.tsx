@@ -5,6 +5,16 @@ import { store } from "../../app/store";
 import mockDrawings from "../../mocks/mockDrawings";
 import DrawingCard from "./DrawingCard";
 
+const mockDeleteDrawing = jest.fn();
+
+jest.mock("../../hooks/useDrawings", () => ({
+  __esModule: true,
+  ...jest.requireActual("../../hooks/useDrawings"),
+  default: () => ({
+    deleteDrawing: () => mockDeleteDrawing(),
+  }),
+}));
+
 const mockUseNavigate = jest.fn();
 
 jest.mock("react-router-dom", () => ({
@@ -46,6 +56,15 @@ describe("Given a DrawingCard component", () => {
       fireEvent.click(image);
 
       expect(mockUseNavigate).toHaveBeenCalled();
+    });
+
+    test("When the trash icon is clicked, an action to delete the drawing should be dispatched", () => {
+      render(<DrawingCard draw={mockDrawings[0]} />, { wrapper: Wrapper });
+      const deleteIcon = screen.getByTestId("delete-icon");
+
+      fireEvent.click(deleteIcon);
+
+      expect(mockDeleteDrawing).toHaveBeenCalled();
     });
   });
 });
