@@ -173,7 +173,7 @@ describe("Given a getDrawingById action", () => {
 describe("Given a deleteDrawing action", () => {
   describe("When called", () => {
     test("It should return an object with the action 'deleteDrawing' and a payload of type IDrawing[]", () => {
-      const drawing: IDrawing[] = mockDrawings;
+      const drawing: IDrawing = mockDrawings[0];
 
       const expectedResult = {
         type: "drawings@delete",
