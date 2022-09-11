@@ -35,9 +35,9 @@ const ReactCanvas = (): JSX.Element => {
     ctx.lineJoin = "miter";
     ctx.strokeStyle = "black";
     ctxRef.current = ctx;
-    ctxRef.current!.fillStyle = "white";
-    ctxRef.current!.fillRect(0, 0, cellCountX, cellCountY);
-    ctxRef.current!.stroke();
+    ctxRef.current.fillStyle = "white";
+    ctxRef.current.fillRect(0, 0, cellCountX, cellCountY);
+    ctxRef.current.stroke();
   }, []);
 
   const changeColor = (color: string) => {
@@ -154,21 +154,21 @@ const ReactCanvas = (): JSX.Element => {
   };
 
   function scaleImage(imageData: ImageData, scale: 10) {
-    var scaled = ctxRef.current!.createImageData(
+    const scaled = ctxRef.current!.createImageData(
       imageData.width * scale,
       imageData.height * scale
     );
     var subLine = ctxRef.current!.createImageData(scale, 1).data;
-    for (var row = 0; row < imageData.height; row++) {
-      for (var col = 0; col < imageData.width; col++) {
-        var sourcePixel = imageData.data.subarray(
+    for (let row = 0; row < imageData.height; row++) {
+      for (let col = 0; col < imageData.width; col++) {
+        const sourcePixel = imageData.data.subarray(
           (row * imageData.width + col) * 4,
           (row * imageData.width + col) * 4 + 4
         );
-        for (var x = 0; x < scale; x++) subLine.set(sourcePixel, x * 4);
-        for (var y = 0; y < scale; y++) {
-          var destRow = row * scale + y;
-          var destCol = col * scale;
+        for (let x = 0; x < scale; x++) subLine.set(sourcePixel, x * 4);
+        for (let y = 0; y < scale; y++) {
+          let destRow = row * scale + y;
+          let destCol = col * scale;
           scaled.data.set(subLine, (destRow * scaled.width + destCol) * 4);
         }
       }
