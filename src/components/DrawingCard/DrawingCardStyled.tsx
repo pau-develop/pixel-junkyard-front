@@ -27,6 +27,7 @@ const DrawingCardStyled = styled.section`
       justify-content: space-between;
     }
     &__icon {
+      cursor: pointer;
       width: 20%;
       height: 10%;
       display: flex;

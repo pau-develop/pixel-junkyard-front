@@ -6,12 +6,14 @@ import DrawingCardStyled from "./DrawingCardStyled";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import useDrawings from "../../hooks/useDrawings";
 
 interface DrawingCardProps {
   draw: IDrawing;
 }
 
 const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
+  const { deleteDrawing } = useDrawings();
   const user = useSelector<RootState>((state) => state.user) as IUserVisible;
   const trashIcon = <FontAwesomeIcon icon={faTrashCan} />;
   const navigate = useNavigate();
@@ -19,10 +21,14 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
     navigate(`/gallery/${draw.id}`);
   };
 
+  const handleDeleteDrawing = () => {
+    deleteDrawing(draw);
+  };
+
   return (
     <DrawingCardStyled className="draw-card">
       {draw.artistName === user.userName && (
-        <div className="draw-card__icon">
+        <div className="draw-card__icon" onClick={handleDeleteDrawing}>
           <i className="fa-2xl">{trashIcon}</i>
         </div>
       )}
