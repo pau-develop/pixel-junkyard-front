@@ -24,6 +24,7 @@ export interface IDrawing {
   description: string;
   image: string;
   artist: string;
+  artistName: string;
   resolution: string;
   creationDate: string;
 }

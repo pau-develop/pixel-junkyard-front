@@ -5,6 +5,7 @@ const mockDrawings = [
     description: "",
     image: "",
     artist: "",
+    artistName: "",
     resolution: "",
     userId: "12345",
     creationDate: "",

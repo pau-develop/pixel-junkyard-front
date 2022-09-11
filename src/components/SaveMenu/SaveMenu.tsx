@@ -31,9 +31,11 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
       name: input.name as string,
       description: input.description as string,
       artist: user.id,
+      artistName: user.userName,
       image: canvasData,
       resolution: "60x90",
     };
+    console.log(newDrawing);
     createDrawing(newDrawing);
   };
 
