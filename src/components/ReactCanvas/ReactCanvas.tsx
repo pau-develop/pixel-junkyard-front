@@ -158,7 +158,7 @@ const ReactCanvas = (): JSX.Element => {
       imageData.width * scale,
       imageData.height * scale
     );
-    var subLine = ctxRef.current!.createImageData(scale, 1).data;
+    const subLine = ctxRef.current!.createImageData(scale, 1).data;
     for (let row = 0; row < imageData.height; row++) {
       for (let col = 0; col < imageData.width; col++) {
         const sourcePixel = imageData.data.subarray(
