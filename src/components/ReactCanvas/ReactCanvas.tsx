@@ -35,9 +35,9 @@ const ReactCanvas = (): JSX.Element => {
     ctx.lineJoin = "miter";
     ctx.strokeStyle = "black";
     ctxRef.current = ctx;
-    ctxRef.current!.fillStyle = "white";
-    ctxRef.current!.fillRect(0, 0, cellCountX, cellCountY);
-    ctxRef.current!.stroke();
+    ctxRef.current.fillStyle = "white";
+    ctxRef.current.fillRect(0, 0, cellCountX, cellCountY);
+    ctxRef.current.stroke();
   }, []);
 
   const changeColor = (color: string) => {
