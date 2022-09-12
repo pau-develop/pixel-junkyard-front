@@ -19,6 +19,7 @@ const ReactCanvas = ({
   resolutionX,
   resolutionY,
 }: ReactCanvasProps): JSX.Element => {
+  console.log(resolutionX, resolutionY);
   const [currentTool, setCurrentTool] = useState<string>("pencil");
   const [multiplier, setMultiplier] = useState<number>(1);
   const [save, setSave] = useState<boolean>(saveInitialState);
@@ -194,12 +195,18 @@ const ReactCanvas = ({
 
   return (
     <ReactCanvasStyled className="react-canvas">
-      <div className="react-canvas__container">
+      <div
+        className={
+          resolutionX === resolutionY
+            ? "react-canvas__container--squared"
+            : "react-canvas__container"
+        }
+      >
         {save && <SaveMenu action={handleClick} canvasData={data} />}
         {window.innerWidth >= 600 ? (
           <canvas
             data-testid="canvas-desktop"
-            className="react-canvas__canvas"
+            className={"react-canvas__canvas"}
             onMouseDown={startDrawing}
             onMouseUp={endDrawing}
             onMouseMove={draw}
@@ -211,7 +218,7 @@ const ReactCanvas = ({
         ) : (
           <canvas
             data-testid="canvas-mobile"
-            className="react-canvas__canvas"
+            className={"react-canvas__canvas"}
             onTouchStart={startDrawingPhone}
             onTouchMove={drawPhone}
             onTouchEnd={endDrawing}
