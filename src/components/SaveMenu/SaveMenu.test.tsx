@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "../../app/store";
 import SaveMenu from "./SaveMenu";
+import userEvent from "@testing-library/user-event";
 
 const mockCreateDrawing = jest.fn();
 
@@ -55,16 +56,26 @@ describe("Given a SaveMenu component", () => {
   });
 
   describe("When accept button is clicked", () => {
-    test("If the current Form is the register form, the function registerUser from hook should be called", () => {
-      render(<SaveMenu action={() => null} canvasData="" />, {
-        wrapper: Wrapper,
+    test("The createDrawing function should be called", async () => {
+      global.fetch = jest.fn().mockReturnValue({
+        then: jest.fn().mockImplementationOnce(() => {
+          Promise.resolve(new Blob());
+        }),
       });
+      render(
+        <SaveMenu
+          action={() => null}
+          canvasData="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAZSURBVHgBAAQA+/8Afx09AAAA//8BAAD//wH4ANocB6ZLAAAAAElFTkSuQmCC
+"
+        />,
+        {
+          wrapper: Wrapper,
+        }
+      );
+
       const buttonText = "Accept";
-
       const buttonElement = screen.getByRole("button", { name: buttonText });
-
-      fireEvent.click(buttonElement);
-
+      await userEvent.click(buttonElement);
       expect(mockCreateDrawing).toHaveBeenCalled();
     });
   });
