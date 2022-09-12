@@ -28,18 +28,7 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
   const handleInputObject = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const blob = await fetch(canvasData).then((res) => res.blob());
-    console.log(blob);
     const file = new File([blob], "file", { type: "" });
-    console.log(file);
-    // const newDrawing: Partial<IDrawing> = {
-    //   name: input.name as string,
-    //   description: input.description as string,
-    //   artist: user.id,
-    //   artistName: user.userName,
-    //   image: canvasData,
-    //   resolution: "60x90",
-    // };
-
     const drawingForm = new FormData();
     drawingForm.append("file", file);
     drawingForm.append("name", input.name as string);
