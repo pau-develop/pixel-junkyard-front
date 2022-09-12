@@ -43,12 +43,12 @@ const useDrawings = () => {
     [dispatch, url]
   );
 
-  const createDrawing = async (userData: Partial<IDrawing>) => {
+  const createDrawing = async (userData: FormData) => {
     const data = await fetch(`${url}drawings/create`, {
       method: "POST",
-      body: JSON.stringify(userData),
+      body: userData,
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`,
       },
     });

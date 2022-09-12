@@ -25,18 +25,31 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
   const user = useSelector<RootState>((state) => state.user) as IUserVisible;
   const [input, setInput] = useState<Partial<IDrawing>>(formInput);
 
-  const handleInputObject = (event: FormEvent<HTMLFormElement>) => {
+  const handleInputObject = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const newDrawing: Partial<IDrawing> = {
-      name: input.name as string,
-      description: input.description as string,
-      artist: user.id,
-      artistName: user.userName,
-      image: canvasData,
-      resolution: "60x90",
-    };
+    const blob = await fetch(canvasData).then((res) => res.blob());
+    console.log(blob);
+    const file = new File([blob], "file", { type: "" });
+    console.log(file);
+    // const newDrawing: Partial<IDrawing> = {
+    //   name: input.name as string,
+    //   description: input.description as string,
+    //   artist: user.id,
+    //   artistName: user.userName,
+    //   image: canvasData,
+    //   resolution: "60x90",
+    // };
 
-    createDrawing(newDrawing);
+    const drawingForm = new FormData();
+    drawingForm.append("file", file);
+    drawingForm.append("name", input.name as string);
+    drawingForm.append("description", input.description as string);
+    drawingForm.append("artist", user.id);
+    drawingForm.append("artistName", user.userName);
+    drawingForm.append("resolution", "60x90");
+    drawingForm.append("image", "");
+    console.log(drawingForm);
+    createDrawing(drawingForm);
   };
 
   return (
