@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../../app/store";
 import useUsers from "../../hooks/useUsers";
 import { IUserVisible } from "../../interfaces/interfaces";
@@ -11,6 +11,7 @@ import DrawingCard from "../DrawingCard/DrawingCard";
 import ProfileStyled from "./ProfileStyled";
 
 const Profile = (): JSX.Element => {
+  const navigate = useNavigate();
   const isProfile = useLocation().pathname.includes("profile");
   const dispatch = useDispatch();
   const { getUserById } = useUsers();
@@ -20,6 +21,10 @@ const Profile = (): JSX.Element => {
   useEffect(() => {
     getUserById(id as string);
   }, [getUserById, id]);
+
+  const handleEditAvatar = () => {
+    navigate("/avatar");
+  };
 
   const handleDeleteAccount = () => {
     const ui = {
@@ -55,14 +60,14 @@ const Profile = (): JSX.Element => {
             </div>
             {isProfile && (
               <div className="profile__settings-desktop">
-                <Button text="Edit avatar" />
+                <Button text="Edit avatar" action={handleEditAvatar} />
                 <Button text="Delete account" action={handleDeleteAccount} />
               </div>
             )}
           </section>
           {isProfile && (
             <section className="profile__settings-mobile">
-              <Button text="Edit avatar" />
+              <Button text="Edit avatar" action={handleEditAvatar} />
               <Button text="Delete account" action={handleDeleteAccount} />
             </section>
           )}

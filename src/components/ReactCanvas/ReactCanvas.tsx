@@ -6,12 +6,20 @@ import {
 } from "../../utils/ReactCanvasFunctions";
 import ReactCanvasTools from "../ReactCanvasTools/ReactCanvasTools";
 import SaveMenu from "../SaveMenu/SaveMenu";
-
 import ReactCanvasStyled from "./ReactCanvasStyled";
+
+interface ReactCanvasProps {
+  resolutionX: number;
+  resolutionY: number;
+}
 
 const saveInitialState = false;
 
-const ReactCanvas = (): JSX.Element => {
+const ReactCanvas = ({
+  resolutionX,
+  resolutionY,
+}: ReactCanvasProps): JSX.Element => {
+  console.log(resolutionX, resolutionY);
   const [currentTool, setCurrentTool] = useState<string>("pencil");
   const [multiplier, setMultiplier] = useState<number>(1);
   const [save, setSave] = useState<boolean>(saveInitialState);
@@ -20,8 +28,6 @@ const ReactCanvas = (): JSX.Element => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
-  const cellCountX = 60;
-  const cellCountY = 90;
   let cellLength: number;
   let lastX: number;
   let lastY: number;
@@ -36,9 +42,9 @@ const ReactCanvas = (): JSX.Element => {
     ctx.strokeStyle = "black";
     ctxRef.current = ctx;
     ctxRef.current.fillStyle = "white";
-    ctxRef.current.fillRect(0, 0, cellCountX, cellCountY);
+    ctxRef.current.fillRect(0, 0, resolutionX, resolutionY);
     ctxRef.current.stroke();
-  }, []);
+  }, [resolutionX, resolutionY]);
 
   const changeColor = (color: string) => {
     setColor(color);
@@ -89,7 +95,7 @@ const ReactCanvas = (): JSX.Element => {
       getCellColor(newX, newY);
       return;
     }
-    cellLength = canvasRef.current!.width / cellCountX;
+    cellLength = canvasRef.current!.width / resolutionX;
     ctxRef.current!.fillStyle = color;
     ctxRef.current!.fillRect(
       newX,
@@ -179,37 +185,46 @@ const ReactCanvas = (): JSX.Element => {
   }
 
   const handleClick = () => {
-    scaleImage(ctxRef.current!.getImageData(0, 0, cellCountX, cellCountY), 10);
+    scaleImage(
+      ctxRef.current!.getImageData(0, 0, resolutionX, resolutionY),
+      10
+    );
     setData(canvasRef.current!.toDataURL());
     setSave(!save);
   };
 
   return (
     <ReactCanvasStyled className="react-canvas">
-      <div className="react-canvas__container">
+      <div
+        className={
+          resolutionX === resolutionY
+            ? "react-canvas__container--squared"
+            : "react-canvas__container"
+        }
+      >
         {save && <SaveMenu action={handleClick} canvasData={data} />}
         {window.innerWidth >= 600 ? (
           <canvas
             data-testid="canvas-desktop"
-            className="react-canvas__canvas"
+            className={"react-canvas__canvas"}
             onMouseDown={startDrawing}
             onMouseUp={endDrawing}
             onMouseMove={draw}
             onMouseOut={endDrawing}
             ref={canvasRef}
-            width={`${cellCountX}px`}
-            height={`${cellCountY}px`}
+            width={`${resolutionX}px`}
+            height={`${resolutionY}px`}
           />
         ) : (
           <canvas
             data-testid="canvas-mobile"
-            className="react-canvas__canvas"
+            className={"react-canvas__canvas"}
             onTouchStart={startDrawingPhone}
             onTouchMove={drawPhone}
             onTouchEnd={endDrawing}
             ref={canvasRef}
-            width={`${cellCountX}px`}
-            height={`${cellCountY}px`}
+            width={`${resolutionX}px`}
+            height={`${resolutionY}px`}
           />
         )}
       </div>

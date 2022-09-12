@@ -4,6 +4,8 @@ import Profile from "./Profile";
 import { BrowserRouter } from "react-router-dom";
 import mockStore from "../../mocks/mockStore";
 
+const mockUseNavigate = jest.fn();
+
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
 
@@ -11,6 +13,7 @@ jest.mock("react-router-dom", () => ({
     pathname: "/profile/6310861c990c709a6ceb945d",
   }),
   useParams: () => jest.fn().mockReturnValue("12345"),
+  useNavigate: () => mockUseNavigate,
 }));
 
 const mockDispatch = jest.fn();
@@ -61,6 +64,17 @@ describe("Given a Profile component", () => {
       const drawElement = screen.getByText("test1");
 
       expect(drawElement).toBeInTheDocument();
+    });
+
+    test("Upon clicking on Edit avatar, it should redirect the user to /avatar path", async () => {
+      await render(<Profile />, { wrapper: Wrapper });
+
+      const buttonText = "Edit avatar";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      fireEvent.click(buttonElement);
+
+      expect(mockUseNavigate).toHaveBeenCalled();
     });
   });
 });

@@ -6,6 +6,7 @@ import AppStyled from "./AppStyled";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 import { IUser } from "./interfaces/interfaces";
+import AvatarPage from "./pages/AvatarPage/AvatarPage";
 import CanvasPage from "./pages/CanvasPage/CanvasPage";
 import CommunityPage from "./pages/CommunityPage/CommunityPage";
 import DrawingDetailPage from "./pages/DrawingDetailPage/DrawingDetailPage";
@@ -60,6 +61,7 @@ const App = (): JSX.Element => {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/gallery/:id" element={<DrawingDetailPage />} />
           <Route path="/canvas" element={<CanvasPage />} />
+          <Route path="/avatar" element={<AvatarPage />} />
           <Route path="*" element={<UnknownPage />} />
         </Routes>
       </main>
