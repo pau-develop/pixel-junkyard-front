@@ -209,7 +209,13 @@ const ReactCanvas = ({
             : "react-canvas__container"
         }
       >
-        {save && <SaveMenu action={handleCancel} canvasData={data} />}
+        {save && (
+          <SaveMenu
+            action={handleCancel}
+            canvasData={data}
+            resolution={resolutionX}
+          />
+        )}
         {window.innerWidth >= 600 ? (
           <canvas
             data-testid="canvas-desktop"

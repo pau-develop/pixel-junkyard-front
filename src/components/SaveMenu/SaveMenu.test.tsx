@@ -14,6 +14,16 @@ jest.mock("../../hooks/useDrawings", () => ({
     createDrawing: () => mockCreateDrawing(),
   }),
 }));
+
+const mockUpdateUser = jest.fn();
+
+jest.mock("../../hooks/useUser", () => ({
+  __esModule: true,
+  ...jest.requireActual("../../hooks/useUser"),
+  default: () => ({
+    updateUser: () => mockUpdateUser(),
+  }),
+}));
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
 }
@@ -33,7 +43,7 @@ beforeEach(() => {
 describe("Given a SaveMenu component", () => {
   describe("When text is entered in the input field", () => {
     test("It should update the value property of input", () => {
-      render(<SaveMenu action={() => null} canvasData="" />, {
+      render(<SaveMenu action={() => null} canvasData="" resolution={60} />, {
         wrapper: Wrapper,
       });
       const inputName = screen.getByLabelText(
@@ -67,6 +77,7 @@ describe("Given a SaveMenu component", () => {
           action={() => null}
           canvasData="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAZSURBVHgBAAQA+/8Afx09AAAA//8BAAD//wH4ANocB6ZLAAAAAElFTkSuQmCC
 "
+          resolution={60}
         />,
         {
           wrapper: Wrapper,
@@ -77,6 +88,25 @@ describe("Given a SaveMenu component", () => {
       const buttonElement = screen.getByRole("button", { name: buttonText });
       await userEvent.click(buttonElement);
       expect(mockCreateDrawing).toHaveBeenCalled();
+    });
+
+    test("But if we are on avatar edit canvas the updateUser function should be called", async () => {
+      render(
+        <SaveMenu
+          action={() => null}
+          canvasData="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAZSURBVHgBAAQA+/8Afx09AAAA//8BAAD//wH4ANocB6ZLAAAAAElFTkSuQmCC
+"
+          resolution={32}
+        />,
+        {
+          wrapper: Wrapper,
+        }
+      );
+
+      const buttonText = "Accept";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+      await userEvent.click(buttonElement);
+      expect(mockUpdateUser).toHaveBeenCalled();
     });
   });
 });

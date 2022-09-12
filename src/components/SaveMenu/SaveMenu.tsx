@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useDrawings from "../../hooks/useDrawings";
+import useUser from "../../hooks/useUser";
 import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
 import Button from "../Button/Button";
 import SaveMenuStyled from "./SaveMenuStyled";
@@ -18,26 +19,36 @@ const formInput: Partial<IDrawing> = {
 interface SaveMenuProps {
   action: () => void;
   canvasData: string;
+  resolution: number;
 }
 
-const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
+const SaveMenu = ({
+  action,
+  canvasData,
+  resolution,
+}: SaveMenuProps): JSX.Element => {
   const { createDrawing } = useDrawings();
+  const { updateUser } = useUser();
   const user = useSelector<RootState>((state) => state.user) as IUserVisible;
   const [input, setInput] = useState<Partial<IDrawing>>(formInput);
 
   const handleInputObject = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const blob = await fetch(canvasData).then((res) => res.blob());
-    const file = new File([blob], "file", { type: "" });
-    const drawingForm = new FormData();
-    drawingForm.append("file", file);
-    drawingForm.append("name", input.name as string);
-    drawingForm.append("description", input.description as string);
-    drawingForm.append("artist", user.id);
-    drawingForm.append("artistName", user.userName);
-    drawingForm.append("resolution", "60x90");
-    drawingForm.append("image", "");
-    createDrawing(drawingForm);
+    if (resolution !== 32) {
+      const blob = await fetch(canvasData).then((res) => res.blob());
+      const file = new File([blob], "file", { type: "" });
+      const drawingForm = new FormData();
+      drawingForm.append("file", file);
+      drawingForm.append("name", input.name as string);
+      drawingForm.append("description", input.description as string);
+      drawingForm.append("artist", user.id);
+      drawingForm.append("artistName", user.userName);
+      drawingForm.append("resolution", "60x90");
+      drawingForm.append("image", "");
+      createDrawing(drawingForm);
+      return;
+    }
+    updateUser(canvasData);
   };
 
   return (
