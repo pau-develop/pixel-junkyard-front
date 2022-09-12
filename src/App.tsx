@@ -60,6 +60,7 @@ const App = (): JSX.Element => {
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/gallery/:id" element={<DrawingDetailPage />} />
           <Route path="/canvas" element={<CanvasPage />} />
+          <Route path="/avatar" element={<CanvasPage />} />
           <Route path="*" element={<UnknownPage />} />
         </Routes>
       </main>

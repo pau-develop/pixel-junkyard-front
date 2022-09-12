@@ -1,16 +1,15 @@
 import ReactCanvas from "../../components/ReactCanvas/ReactCanvas";
-
 import PageStyled from "../PageStyled";
 
-const CanvasPage = (): JSX.Element => {
+const AvatarPage = (): JSX.Element => {
   return (
     <PageStyled className="page">
       <div className="page__title-container">
-        <h1 className="page__title-heading">Canvas</h1>
+        <h1 className="page__title-heading">Create your avatar</h1>
       </div>
-      <ReactCanvas resolutionX={60} resolutionY={90} />
+      <ReactCanvas resolutionX={32} resolutionY={32} />
     </PageStyled>
   );
 };
 
-export default CanvasPage;
+export default AvatarPage;

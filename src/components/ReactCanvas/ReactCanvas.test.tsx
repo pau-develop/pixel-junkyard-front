@@ -25,7 +25,9 @@ afterEach(() => {
 describe("Given a ReactCanvas component", () => {
   describe("When button 'SAVE' is pressed", () => {
     test("A Menu with the heading 'SAVE CANVAS' should appear", () => {
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
 
       const floppyElement = screen.getByTestId("floppy-icon");
 
@@ -42,7 +44,7 @@ describe("Given a ReactCanvas component", () => {
     test("It should show a desktop canvas", () => {
       window.innerWidth = 800;
 
-      render(<ReactCanvas />);
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />);
 
       const canvasElement = screen.getByTestId("canvas-desktop");
 
@@ -57,7 +59,7 @@ describe("Given a ReactCanvas component", () => {
         "getCanvasScaledValue"
       );
 
-      render(<ReactCanvas />);
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />);
       const canvasElement = screen.getByTestId("canvas-desktop");
       const clickEvent = createEvent.mouseDown(canvasElement, {
         clientX: 50,
@@ -75,7 +77,9 @@ describe("Given a ReactCanvas component", () => {
         "getCanvasScaledValue"
       );
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
       const canvasElement = screen.getByTestId("canvas-desktop");
       const clickEventDown = createEvent.mouseDown(canvasElement, {
         clientX: 50,
@@ -104,7 +108,7 @@ describe("Given a ReactCanvas component", () => {
         "getCanvasScaledValue"
       );
 
-      render(<ReactCanvas />);
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />);
       const canvasElement = screen.getByTestId("canvas-desktop");
       const clickEvent = createEvent.mouseMove(canvasElement, {
         clientX: 50,
@@ -123,7 +127,7 @@ describe("Given a ReactCanvas component", () => {
       const useStateMock: any = (useState: any) => [useState, mockSetState];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />);
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />);
       const canvasElement = screen.getByTestId("canvas-desktop");
       const clickEvent = createEvent.mouseUp(canvasElement, {
         clientX: 50,
@@ -141,7 +145,7 @@ describe("Given a ReactCanvas component", () => {
     test("It should show a phone canvas", () => {
       window.innerWidth = 599;
 
-      render(<ReactCanvas />);
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />);
 
       const canvasElement = screen.getByTestId("canvas-mobile");
 
@@ -155,7 +159,7 @@ describe("Given a ReactCanvas component", () => {
         canvasFunctions,
         "getCanvasScaledValue"
       );
-      render(<ReactCanvas />);
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />);
       const canvasElement = screen.getByTestId("canvas-mobile");
       const touchEvent = createEvent.touchStart(canvasElement, {
         targetTouches: [
@@ -193,7 +197,9 @@ describe("Given a ReactCanvas component", () => {
         "getCanvasScaledValue"
       );
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
 
       const canvasElement = screen.getByTestId("canvas-mobile");
 
@@ -232,7 +238,7 @@ describe("Given a ReactCanvas component", () => {
         "getCanvasScaledValue"
       );
 
-      render(<ReactCanvas />);
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />);
       const canvasElement = screen.getByTestId("canvas-mobile");
       const touchEvent = createEvent.touchMove(canvasElement, {
         clientX: 50,
@@ -257,7 +263,9 @@ describe("Given a ReactCanvas component", () => {
       ];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
 
       const colorInputElement = screen.getByTestId("color-input");
 
@@ -279,7 +287,9 @@ describe("Given a ReactCanvas component", () => {
       ];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
 
       const incrementButtonText = "+";
       const incrementButtonElement = screen.getByRole("button", {
@@ -300,7 +310,9 @@ describe("Given a ReactCanvas component", () => {
       ];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
 
       const incrementButtonText = "+";
       const incrementButtonElement = screen.getByRole("button", {
@@ -323,7 +335,9 @@ describe("Given a ReactCanvas component", () => {
       ];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
 
       const decrementButtonText = "-";
       const decrementButtonElement = screen.getByRole("button", {
@@ -344,7 +358,9 @@ describe("Given a ReactCanvas component", () => {
       ];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
 
       const decrementButtonText = "-";
       const decrementButtonElement = screen.getByRole("button", {
@@ -365,7 +381,9 @@ describe("Given a ReactCanvas component", () => {
       const useStateMock: any = (useState: any) => [mockState, mockSetState];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
       const canvasElement = screen.getByTestId("canvas-desktop");
       const clickEvent = createEvent.mouseMove(canvasElement, {
         clientX: 50,
@@ -388,7 +406,9 @@ describe("Given a ReactCanvas component", () => {
       const useStateMock: any = (useState: any) => [mockState, mockSetState];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
       const eyeDropperElement = screen.getByTestId("eye-dropper-icon");
       fireEvent.click(eyeDropperElement);
 
@@ -404,7 +424,9 @@ describe("Given a ReactCanvas component", () => {
       const useStateMock: any = (useState: any) => [mockState, mockSetState];
       jest.spyOn(React, "useState").mockImplementation(useStateMock);
 
-      render(<ReactCanvas />, { wrapper: Wrapper });
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
       const pencilElement = screen.getByTestId("pencil-icon");
       fireEvent.click(pencilElement);
 
