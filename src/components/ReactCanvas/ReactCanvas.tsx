@@ -19,7 +19,6 @@ const ReactCanvas = ({
   resolutionX,
   resolutionY,
 }: ReactCanvasProps): JSX.Element => {
-  console.log(resolutionX, resolutionY);
   const [currentTool, setCurrentTool] = useState<string>("pencil");
   const [multiplier, setMultiplier] = useState<number>(1);
   const [save, setSave] = useState<boolean>(saveInitialState);

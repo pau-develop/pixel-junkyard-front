@@ -37,7 +37,6 @@ const SaveMenu = ({ action, canvasData }: SaveMenuProps): JSX.Element => {
     drawingForm.append("artistName", user.userName);
     drawingForm.append("resolution", "60x90");
     drawingForm.append("image", "");
-    console.log(drawingForm);
     createDrawing(drawingForm);
   };
 
