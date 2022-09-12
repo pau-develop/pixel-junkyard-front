@@ -125,7 +125,6 @@ const ReactCanvas = ({
     lastY = newY;
   };
 
-  // Function for starting the drawing
   const startDrawing = (
     event: React.MouseEvent<HTMLCanvasElement, MouseEvent>
   ) => {
@@ -183,6 +182,15 @@ const ReactCanvas = ({
     ctxRef.current!.putImageData(scaled, 0, 0);
   }
 
+  const handleCancel = () => {
+    canvasRef.current!.width = resolutionX;
+    canvasRef.current!.height = resolutionY;
+    ctxRef.current!.fillStyle = "white";
+    ctxRef.current!.fillRect(0, 0, resolutionX, resolutionY);
+    ctxRef.current!.stroke();
+    setSave(!save);
+  };
+
   const handleClick = () => {
     scaleImage(
       ctxRef.current!.getImageData(0, 0, resolutionX, resolutionY),
@@ -201,7 +209,7 @@ const ReactCanvas = ({
             : "react-canvas__container"
         }
       >
-        {save && <SaveMenu action={handleClick} canvasData={data} />}
+        {save && <SaveMenu action={handleCancel} canvasData={data} />}
         {window.innerWidth >= 600 ? (
           <canvas
             data-testid="canvas-desktop"

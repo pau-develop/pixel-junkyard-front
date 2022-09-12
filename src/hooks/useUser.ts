@@ -141,7 +141,6 @@ const useUser = () => {
         Authorization: `Bearer ${localStorage.token}`,
       },
     });
-    const response = await userData.json();
     if (userData.status !== 200) {
       const ui = {
         isOpen: true,
