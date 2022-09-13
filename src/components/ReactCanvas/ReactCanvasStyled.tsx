@@ -17,6 +17,8 @@ const ReactCanvasStyled = styled.section`
       height: 80%;
     }
     &__container--squared {
+      position: relative;
+      border: 2px solid ${(props) => props.theme.thirdColor};
       width: 90%;
       height: 60%;
     }

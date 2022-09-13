@@ -6,6 +6,7 @@ const mockUsers: IUserVisible[] = [
     userName: "user",
     password: "12345",
     email: "fake@fake.com",
+    avatar: "???",
     drawings: [
       {
         id: "",
@@ -24,6 +25,7 @@ const mockUsers: IUserVisible[] = [
     userName: "user2",
     password: "12345",
     email: "fake@fake.com",
+    avatar: "???",
     drawings: [
       {
         id: "",

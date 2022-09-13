@@ -37,5 +37,26 @@ describe("Given a UserCard component", () => {
 
       expect(mockUseNavigate).toHaveBeenCalled();
     });
+
+    test("If the user has drawn an avatar, it should be shown on the img tag instead of the default image", () => {
+      const mockUser = {
+        id: "12345",
+        userName: "fakeName",
+        password: "12345",
+        email: "fake@fake.com",
+        avatar: "user-avatar",
+        drawings: [],
+      };
+
+      render(
+        <BrowserRouter>
+          <UserCard user={mockUser} />
+        </BrowserRouter>
+      );
+
+      const image = screen.getByAltText(mockUser.userName) as HTMLImageElement;
+
+      expect(image.src).toContain(mockUser.avatar);
+    });
   });
 });

@@ -15,7 +15,6 @@ const Profile = (): JSX.Element => {
   const isProfile = useLocation().pathname.includes("profile");
   const dispatch = useDispatch();
   const { getUserById } = useUsers();
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -47,7 +46,12 @@ const Profile = (): JSX.Element => {
         <>
           <section className="profile__info">
             <div className="profile__info-avatar">
-              <img src="/img/demo-avatar.png" alt={user.userName} />
+              <img
+                src={
+                  user.avatar === "???" ? "/img/demo-avatar.png" : user.avatar
+                }
+                alt={user.userName}
+              />
             </div>
             <div className="profile__info-props">
               <h2>{user.userName}</h2>

@@ -28,6 +28,10 @@ beforeEach(() => {
   };
 });
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("Given a useUsers hook", () => {
   describe("When its function registerUser is called", () => {
     test("It should send the user info passed as arguments to the DB", async () => {
@@ -252,6 +256,78 @@ describe("Given a useUsers hook", () => {
       };
 
       expect(mockDispatch).toHaveBeenCalledWith(expectedAction);
+    });
+  });
+
+  describe("When its function updateUser is called", () => {
+    test("It should send the user info passed as arguments to the DB and update the user", async () => {
+      const returnedUser = {
+        id: "12345",
+        userName: "user",
+        password: "12345",
+        email: "fake@fake.com",
+        avatar: "12345",
+        drawings: [],
+      };
+      global.fetch = jest.fn().mockReturnValue({
+        status: 200,
+        json: jest.fn().mockReturnValue(returnedUser),
+      });
+
+      const {
+        result: {
+          current: { updateUser },
+        },
+      } = renderHook(useUser, {
+        wrapper: Wrapper,
+      });
+
+      await waitFor(() => {
+        updateUser("12345");
+      });
+
+      const actionToDispatch = {
+        payload: {
+          isOpen: true,
+          message: "Avatar updated!",
+          redirect: "/home",
+          type: "confirm",
+          id: "",
+        },
+        type: "ui@display",
+      };
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    test("If there is an error, the state.ui should be updated", async () => {
+      global.fetch = jest.fn().mockReturnValue({
+        json: jest.fn().mockReturnValue("Something went wrong"),
+      });
+
+      const {
+        result: {
+          current: { updateUser },
+        },
+      } = renderHook(useUser, {
+        wrapper: Wrapper,
+      });
+      await waitFor(() => {
+        updateUser("12345");
+      });
+
+      const actionToDispatch = {
+        payload: {
+          isOpen: true,
+          message: "Something went wrong!",
+          redirect: "",
+          type: "confirm",
+          id: "",
+        },
+        type: "ui@display",
+      };
+
+      expect(mockDispatch).toBeCalledWith(actionToDispatch);
     });
   });
 });

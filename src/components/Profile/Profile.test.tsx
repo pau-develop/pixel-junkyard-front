@@ -3,6 +3,8 @@ import { Provider } from "react-redux";
 import Profile from "./Profile";
 import { BrowserRouter } from "react-router-dom";
 import mockStore from "../../mocks/mockStore";
+import { configureStore, createReducer } from "@reduxjs/toolkit";
+import { IUserVisible } from "../../interfaces/interfaces";
 
 const mockUseNavigate = jest.fn();
 
@@ -75,6 +77,44 @@ describe("Given a Profile component", () => {
       fireEvent.click(buttonElement);
 
       expect(mockUseNavigate).toHaveBeenCalled();
+    });
+
+    test("If the user has drawn an avatar, it should be shown on the img tag instead of the default image", () => {
+      const initialState = [
+        {
+          id: "12345",
+          userName: "test",
+          password: "12345",
+          email: "fake@fake.com",
+          avatar: "new-avatar",
+          drawings: [],
+        },
+      ];
+
+      const mockUsersReducer = createReducer<IUserVisible[]>(
+        initialState,
+        (builder) => {
+          builder.addDefaultCase((state: IUserVisible[]) => state);
+        }
+      );
+
+      const mockStoreUser = configureStore({
+        reducer: {
+          users: mockUsersReducer,
+        },
+      });
+
+      Wrapper = ({ children }: WrapperProps): JSX.Element => {
+        return (
+          <BrowserRouter>
+            <Provider store={mockStoreUser}>{children}</Provider>
+          </BrowserRouter>
+        );
+      };
+
+      render(<Profile />, { wrapper: Wrapper });
+      const image = screen.getByAltText("test") as HTMLImageElement;
+      expect(image.src).toContain(initialState[0].avatar);
     });
   });
 });

@@ -133,7 +133,41 @@ const useUser = () => {
     dispatch(openModalActionNew(ui));
   };
 
-  return { registerUser, loginUser, logoutUser, deleteAccount };
+  const updateUser = async (newAvatar: string) => {
+    const objectToSend = {
+      newAvatar: newAvatar,
+    };
+
+    const userData = await fetch(`${url}user/modify`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+      body: JSON.stringify(objectToSend),
+    });
+    if (userData.status !== 200) {
+      const ui = {
+        isOpen: true,
+        message: "Something went wrong!",
+        type: "confirm",
+        redirect: "",
+        id: "",
+      };
+      dispatch(openModalActionNew(ui));
+      return;
+    }
+    const ui = {
+      isOpen: true,
+      message: "Avatar updated!",
+      type: "confirm",
+      redirect: "/home",
+      id: "",
+    };
+    dispatch(openModalActionNew(ui));
+  };
+
+  return { registerUser, loginUser, logoutUser, deleteAccount, updateUser };
 };
 
 export default useUser;

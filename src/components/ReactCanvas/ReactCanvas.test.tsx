@@ -433,4 +433,24 @@ describe("Given a ReactCanvas component", () => {
       expect(mockSetState).toHaveBeenCalledWith("pencil");
     });
   });
+
+  describe("When on SaveMenu component", () => {
+    test("if cancel is pressed the menu should close and show back the canvas", () => {
+      const mockState = true;
+      const mockSetState = jest.fn();
+      const useStateMock: any = (useState: any) => [mockState, mockSetState];
+      jest.spyOn(React, "useState").mockImplementation(useStateMock);
+      render(<ReactCanvas resolutionX={60} resolutionY={90} />, {
+        wrapper: Wrapper,
+      });
+
+      const floppyElement = screen.getByTestId("floppy-icon");
+
+      fireEvent.click(floppyElement);
+      const cancelButton = screen.getByRole("button", { name: "Cancel" });
+      fireEvent.click(cancelButton);
+
+      expect(mockSetState).toHaveBeenCalled();
+    });
+  });
 });
