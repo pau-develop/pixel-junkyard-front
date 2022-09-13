@@ -24,7 +24,9 @@ const Gallery = (): JSX.Element => {
 
   const handleIncrement = () => {
     const tempOffset = offset + 4;
-    setOffset(tempOffset);
+    if (tempOffset < total) {
+      setOffset(tempOffset);
+    }
   };
   const handleDecrement = () => {
     if (offset !== 0) {
