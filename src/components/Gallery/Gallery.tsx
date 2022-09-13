@@ -32,7 +32,6 @@ const Gallery = (): JSX.Element => {
       setOffset(tempOffset);
     }
   };
-  console.log(offset);
 
   const getItemNumber = () => {
     return offset + 4 > total ? total : offset + 4;
