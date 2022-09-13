@@ -157,7 +157,7 @@ const ReactCanvas = ({
     setIsDrawing(false);
   };
 
-  function scaleImage(imageData: ImageData, scale: 10) {
+  function scaleImage(imageData: ImageData, scale: number) {
     const scaled = ctxRef.current!.createImageData(
       imageData.width * scale,
       imageData.height * scale
@@ -194,7 +194,7 @@ const ReactCanvas = ({
   const handleClick = () => {
     scaleImage(
       ctxRef.current!.getImageData(0, 0, resolutionX, resolutionY),
-      10
+      600 / resolutionX
     );
     setData(canvasRef.current!.toDataURL());
     setSave(!save);

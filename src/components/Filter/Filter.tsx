@@ -1,6 +1,3 @@
-import { closeModalActionNew } from "../../store/actionCreators/actionCreators";
-import actionTypes from "../../store/actionTypes/actionTypes";
-import Button from "../Button/Button";
 import FilterStyled from "./FilterStyled";
 
 interface FilterProps {
@@ -20,9 +17,7 @@ const Filter = ({ action, closeAction }: FilterProps): JSX.Element => {
           <button onClick={() => handleClick("resolution=60x90")}>60x90</button>
         </li>
         <li>
-          <button onClick={() => handleClick("resolution=90x120")}>
-            90x120
-          </button>
+          <button onClick={() => handleClick("resolution=30x45")}>30x45</button>
         </li>
       </ul>
     </FilterStyled>

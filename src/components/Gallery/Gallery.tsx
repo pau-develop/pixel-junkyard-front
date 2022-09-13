@@ -47,12 +47,13 @@ const Gallery = (): JSX.Element => {
   };
 
   const handleFilter = (filter: string) => {
+    setOffset(0);
     setFilter(filter);
   };
 
   return (
     <GalleryStyled className="gallery">
-      {drawings[0] !== undefined && typeof drawings[0].artist === "string" && (
+      {drawings[0] !== undefined && typeof drawings[0].artist === "string" ? (
         <>
           <div className="gallery__list">
             <div className="gallery__filter">
@@ -85,6 +86,8 @@ const Gallery = (): JSX.Element => {
             </div>
           </div>
         </>
+      ) : (
+        <span>No items found</span>
       )}
     </GalleryStyled>
   );
