@@ -43,9 +43,11 @@ const useDrawings = () => {
         },
       });
       const response = await usersData.json();
+
       const { drawing } = response;
 
       dispatch(getDrawingByIdActionNew([drawing]));
+      return drawing.artist;
     },
     [dispatch, url]
   );
