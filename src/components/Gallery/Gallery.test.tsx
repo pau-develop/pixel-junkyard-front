@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import mockStore from "../../mocks/mockStore";
@@ -89,6 +89,48 @@ describe("Given a Gallery component", () => {
       await userEvent.click(decrementButton);
       const spanElementAfterDecrement = screen.getByText("1/5");
       expect(spanElementAfterDecrement).not.toBeNull();
+    });
+  });
+
+  describe("If resolution button is clicked", () => {
+    test("It should open a menu with filter options", () => {
+      render(<Gallery />, { wrapper: Wrapper });
+      const buttonText = "resolution";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+      fireEvent.click(buttonElement);
+      const menuButtonText = "60x90";
+      const menuButtonElement = screen.getByRole("button", {
+        name: menuButtonText,
+      });
+      expect(menuButtonElement).not.toBeNull();
+    });
+
+    test("And if the 60x90 filter button in filter menu is pressed it should apply that filter to the gallery", () => {
+      render(<Gallery />, { wrapper: Wrapper });
+      const buttonText = "resolution";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+      fireEvent.click(buttonElement);
+      const menuButtonText = "60x90";
+      const menuButtonElement = screen.getByRole("button", {
+        name: menuButtonText,
+      });
+      fireEvent.click(menuButtonElement);
+      const spanElement = screen.getByText("60x90");
+      expect(spanElement).not.toBeNull();
+    });
+
+    test("And if the 30x45 button in filter menu is pressed it should apply that filter to the gallery", () => {
+      render(<Gallery />, { wrapper: Wrapper });
+      const buttonText = "resolution";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+      fireEvent.click(buttonElement);
+      const menuButtonText = "30x45";
+      const menuButtonElement = screen.getByRole("button", {
+        name: menuButtonText,
+      });
+      fireEvent.click(menuButtonElement);
+      const spanElement = screen.getByText("30x45");
+      expect(spanElement).not.toBeNull();
     });
   });
 });

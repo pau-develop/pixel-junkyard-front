@@ -44,7 +44,7 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
         onClick={handleClick}
       />
       <div className="draw-card__footer">
-        <span>date</span>
+        <span>{draw.resolution}</span>
         <span>{`Made by: ${draw.artistName}`}</span>
       </div>
     </DrawingCardStyled>

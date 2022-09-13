@@ -22,7 +22,7 @@ const CanvasPage = (): JSX.Element => {
           <h3 className="page__inquiry">Choose a resolution</h3>
           <div className="page__buttons">
             <Button text="60x90" action={() => handleClick([60, 90])} />
-            <Button text="90x120" action={() => handleClick([90, 120])} />
+            <Button text="30x45" action={() => handleClick([30, 45])} />
           </div>
         </>
       )}

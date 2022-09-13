@@ -45,7 +45,7 @@ describe("Given a CanvasPage component", () => {
     test("When resolution 90x120 button is clicked it should render a 90x120 canvas", () => {
       render(<CanvasPage />, { wrapper: Wrapper });
 
-      const buttonText = "90x120";
+      const buttonText = "30x45";
       const buttonElement = screen.getByRole("button", { name: buttonText });
       fireEvent.click(buttonElement);
       const canvasElement = screen.getByTestId("canvas-desktop");

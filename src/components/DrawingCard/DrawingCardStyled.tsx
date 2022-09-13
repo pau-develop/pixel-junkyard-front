@@ -5,6 +5,7 @@ const DrawingCardStyled = styled.section`
   flex-direction: column;
   align-items: center;
   position: relative;
+
   .draw-card {
     &__title {
       background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
