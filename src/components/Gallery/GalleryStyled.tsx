@@ -31,14 +31,19 @@ const GalleryStyled = styled.section`
   @media (min-width: 600px) {
     .gallery {
       height: 100%;
+      &__filter {
+        height: 10%;
+      }
       &__list {
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
+
         ul {
-          height: 90%;
+          height: 80%;
           display: grid;
 
           grid-template-columns: 22% 22% 22% 22%;
@@ -46,6 +51,40 @@ const GalleryStyled = styled.section`
           li {
             align-self: center;
           }
+        }
+      }
+      &__filter {
+        height: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        background: linear-gradient(
+          90deg,
+          #17232e 0%,
+          #144573 50%,
+          #17232e 100%
+        );
+      }
+      &__filter-title {
+        flex: 1;
+        h3 {
+          display: block;
+          margin: 0;
+          padding: 0;
+        }
+      }
+      &__filter-categories {
+        height: 100%;
+        position: relative;
+        flex: 1;
+
+        button {
+          border: 2px solid ${(props) => props.theme.thirdColor};
+          height: 80%;
+          padding: 0;
+          margin: 0;
         }
       }
       &__footer {

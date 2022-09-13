@@ -40,7 +40,7 @@ describe("Given a useDrawings hook", () => {
       } = renderHook(useDrawings, { wrapper: Wrapper });
 
       await waitFor(() => {
-        getAllDrawings(0, 4);
+        getAllDrawings(0, 4, "");
       });
 
       const expectedAction = { payload: undefined, type: "drawings@all" };

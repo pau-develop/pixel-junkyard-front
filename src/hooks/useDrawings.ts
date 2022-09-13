@@ -13,9 +13,9 @@ const useDrawings = () => {
   const url = process.env.REACT_APP_API_URL;
 
   const getAllDrawings = useCallback(
-    async (offset: number, limit: number) => {
+    async (offset: number, limit: number, filter: string) => {
       const drawingsData = await fetch(
-        `${url}drawings/all?offset=${offset}&limit=${limit}`,
+        `${url}drawings/all?offset=${offset}&limit=${limit}&${filter}`,
         {
           method: "GET",
           headers: {
