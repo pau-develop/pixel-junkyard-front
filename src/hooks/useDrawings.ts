@@ -26,8 +26,9 @@ const useDrawings = () => {
       );
       const response = await drawingsData.json();
       const { drawings } = response;
-
       dispatch(getAllDrawingsActionNew(drawings));
+      const { totalDocs } = response;
+      return totalDocs;
     },
     [dispatch, url]
   );

@@ -9,13 +9,17 @@ import GalleryStyled from "./GalleryStyled";
 
 const Gallery = (): JSX.Element => {
   const [offset, setOffset] = useState<number>(0);
+  const [total, setTotal] = useState<number>(0);
   const drawings = useSelector<RootState>(
     (state) => state.drawings
   ) as IDrawing[];
   const { getAllDrawings } = useDrawings();
 
   useEffect(() => {
-    getAllDrawings(offset, 4);
+    (async () => {
+      const totalDocs = await getAllDrawings(offset, 4);
+      setTotal(totalDocs);
+    })();
   }, [getAllDrawings, offset]);
 
   const handleIncrement = () => {
@@ -29,6 +33,10 @@ const Gallery = (): JSX.Element => {
     }
   };
   console.log(offset);
+
+  const getItemNumber = () => {
+    return offset + 4 > total ? total : offset + 4;
+  };
 
   return (
     <GalleryStyled className="gallery">
@@ -44,7 +52,7 @@ const Gallery = (): JSX.Element => {
             </ul>
             <div className="gallery__footer">
               <Button text="<<" action={handleDecrement} />
-              <span>PAGE</span>
+              <span>{`${getItemNumber()}/${total}`}</span>
               <Button text=">>" action={handleIncrement} />
             </div>
           </div>
