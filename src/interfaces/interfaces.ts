@@ -29,3 +29,14 @@ export interface IDrawing {
   resolution: string;
   creationDate: string;
 }
+
+export interface IDrawingUser {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  artist: IUserVisible;
+  artistName: string;
+  resolution: string;
+  creationDate: string;
+}

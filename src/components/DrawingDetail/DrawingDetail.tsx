@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { RootState } from "../../app/store";
 import useDrawings from "../../hooks/useDrawings";
-import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
+import { IDrawingUser } from "../../interfaces/interfaces";
 import UserCard from "../UserCard/UserCard";
 import DrawingDetailStyled from "./DrawingDetailStyled";
 
@@ -12,10 +12,7 @@ const DrawingDetail = (): JSX.Element => {
   const { getDrawingById } = useDrawings();
   const drawing = useSelector<RootState>(
     (state) => state.drawings[0]
-  ) as IDrawing;
-  const user = useSelector<RootState>(
-    (state) => state.users[0]
-  ) as IUserVisible;
+  ) as IDrawingUser;
 
   useEffect(() => {
     getDrawingById(id as string);
@@ -51,13 +48,15 @@ const DrawingDetail = (): JSX.Element => {
             <span>Resolution: {drawing.resolution}</span>
             <section className="drawing-details__user-desktop">
               <span>Made by</span>
-              {user !== undefined && <UserCard user={user} />}
+              {drawing.artist !== undefined && (
+                <UserCard user={drawing.artist} />
+              )}
             </section>
           </section>
 
           <section className="drawing-details__user-mobile">
             <span>Made by</span>
-            {user !== undefined && <UserCard user={user} />}
+            {drawing.artist !== undefined && <UserCard user={drawing.artist} />}
           </section>
         </>
       )}
