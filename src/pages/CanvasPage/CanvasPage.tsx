@@ -1,15 +1,32 @@
+import { useState } from "react";
+import Button from "../../components/Button/Button";
 import ReactCanvas from "../../components/ReactCanvas/ReactCanvas";
-
-import PageStyled from "../PageStyled";
+import CanvasPageStyled from "./CanvasPageStyled";
 
 const CanvasPage = (): JSX.Element => {
+  const [resolution, setResolution] = useState<number[]>();
+
+  const handleClick = (resolution: number[]) => {
+    setResolution(resolution);
+  };
+
   return (
-    <PageStyled className="page">
+    <CanvasPageStyled className="page">
       <div className="page__title-container">
         <h1 className="page__title-heading">Canvas</h1>
       </div>
-      <ReactCanvas resolutionX={60} resolutionY={90} />
-    </PageStyled>
+      {resolution !== undefined ? (
+        <ReactCanvas resolutionX={resolution[0]} resolutionY={resolution[1]} />
+      ) : (
+        <>
+          <h3 className="page__inquiry">Choose a resolution</h3>
+          <div className="page__buttons">
+            <Button text="60x90" action={() => handleClick([60, 90])} />
+            <Button text="90x120" action={() => handleClick([90, 120])} />
+          </div>
+        </>
+      )}
+    </CanvasPageStyled>
   );
 };
 
