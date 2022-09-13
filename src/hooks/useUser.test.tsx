@@ -261,7 +261,6 @@ describe("Given a useUsers hook", () => {
 
   describe("When its function updateUser is called", () => {
     test("It should send the user info passed as arguments to the DB and update the user", async () => {
-      const avatar = "12345";
       const returnedUser = {
         id: "12345",
         userName: "user",
@@ -291,7 +290,7 @@ describe("Given a useUsers hook", () => {
         payload: {
           isOpen: true,
           message: "Avatar updated!",
-          redirect: "/profile",
+          redirect: "/home",
           type: "confirm",
           id: "",
         },

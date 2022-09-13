@@ -133,13 +133,18 @@ const useUser = () => {
     dispatch(openModalActionNew(ui));
   };
 
-  const updateUser = async (avatar: string) => {
+  const updateUser = async (newAvatar: string) => {
+    const objectToSend = {
+      newAvatar: newAvatar,
+    };
+
     const userData = await fetch(`${url}user/modify`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`,
       },
+      body: JSON.stringify(objectToSend),
     });
     if (userData.status !== 200) {
       const ui = {
@@ -156,7 +161,7 @@ const useUser = () => {
       isOpen: true,
       message: "Avatar updated!",
       type: "confirm",
-      redirect: "/profile",
+      redirect: "/home",
       id: "",
     };
     dispatch(openModalActionNew(ui));

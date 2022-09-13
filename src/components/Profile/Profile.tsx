@@ -15,7 +15,6 @@ const Profile = (): JSX.Element => {
   const isProfile = useLocation().pathname.includes("profile");
   const dispatch = useDispatch();
   const { getUserById } = useUsers();
-
   const { id } = useParams();
 
   useEffect(() => {
