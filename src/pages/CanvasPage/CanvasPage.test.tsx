@@ -1,5 +1,5 @@
 import "jest-canvas-mock";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import CanvasPage from "./CanvasPage";
 import { Provider } from "react-redux";
 import { store } from "../../app/store";
@@ -30,6 +30,26 @@ describe("Given a CanvasPage component", () => {
       const headingElement = screen.getByRole("heading", { name: headingText });
 
       expect(headingElement).not.toBeNull();
+    });
+
+    test("When resolution 60x90 button is clicked it should render a 60x90 canvas", () => {
+      render(<CanvasPage />, { wrapper: Wrapper });
+
+      const buttonText = "60x90";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+      fireEvent.click(buttonElement);
+      const canvasElement = screen.getByTestId("canvas-desktop");
+      expect(canvasElement).not.toBeNull();
+    });
+
+    test("When resolution 90x120 button is clicked it should render a 90x120 canvas", () => {
+      render(<CanvasPage />, { wrapper: Wrapper });
+
+      const buttonText = "90x120";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+      fireEvent.click(buttonElement);
+      const canvasElement = screen.getByTestId("canvas-desktop");
+      expect(canvasElement).not.toBeNull();
     });
   });
 });

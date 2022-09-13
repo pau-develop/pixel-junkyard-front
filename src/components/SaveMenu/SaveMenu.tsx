@@ -19,13 +19,15 @@ const formInput: Partial<IDrawing> = {
 interface SaveMenuProps {
   action: () => void;
   canvasData: string;
-  resolution: number;
+  resolutionX: number;
+  resolutionY: number;
 }
 
 const SaveMenu = ({
   action,
   canvasData,
-  resolution,
+  resolutionX,
+  resolutionY,
 }: SaveMenuProps): JSX.Element => {
   const { createDrawing } = useDrawings();
   const { updateUser } = useUser();
@@ -42,7 +44,7 @@ const SaveMenu = ({
     drawingForm.append("description", input.description as string);
     drawingForm.append("artist", user.id);
     drawingForm.append("artistName", user.userName);
-    drawingForm.append("resolution", "60x90");
+    drawingForm.append("resolution", `${resolutionX}x${resolutionY}`);
     drawingForm.append("image", "");
     createDrawing(drawingForm);
   };
@@ -58,7 +60,7 @@ const SaveMenu = ({
         <div className="save-menu__image">
           <img src={canvasData} alt="drawing preview" />
         </div>
-        {resolution !== 32 ? (
+        {resolutionX !== 32 ? (
           <form
             className="save-menu__form"
             onSubmit={(event) => handleInputObject(event)}

@@ -43,9 +43,17 @@ beforeEach(() => {
 describe("Given a SaveMenu component", () => {
   describe("When text is entered in the input field", () => {
     test("It should update the value property of input", () => {
-      render(<SaveMenu action={() => null} canvasData="" resolution={60} />, {
-        wrapper: Wrapper,
-      });
+      render(
+        <SaveMenu
+          action={() => null}
+          canvasData=""
+          resolutionX={60}
+          resolutionY={90}
+        />,
+        {
+          wrapper: Wrapper,
+        }
+      );
       const inputName = screen.getByLabelText(
         "Painting name"
       ) as HTMLInputElement;
@@ -77,7 +85,8 @@ describe("Given a SaveMenu component", () => {
           action={() => null}
           canvasData="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAZSURBVHgBAAQA+/8Afx09AAAA//8BAAD//wH4ANocB6ZLAAAAAElFTkSuQmCC
 "
-          resolution={60}
+          resolutionX={60}
+          resolutionY={90}
         />,
         {
           wrapper: Wrapper,
@@ -96,7 +105,8 @@ describe("Given a SaveMenu component", () => {
           action={() => null}
           canvasData="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAZSURBVHgBAAQA+/8Afx09AAAA//8BAAD//wH4ANocB6ZLAAAAAElFTkSuQmCC
 "
-          resolution={32}
+          resolutionX={32}
+          resolutionY={32}
         />,
         {
           wrapper: Wrapper,

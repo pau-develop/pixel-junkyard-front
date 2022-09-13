@@ -213,7 +213,8 @@ const ReactCanvas = ({
           <SaveMenu
             action={handleCancel}
             canvasData={data}
-            resolution={resolutionX}
+            resolutionX={resolutionX}
+            resolutionY={resolutionY}
           />
         )}
         {window.innerWidth >= 600 ? (
