@@ -15,7 +15,10 @@ const UserCard = ({ user }: UserCardProps): JSX.Element => {
   return (
     <UserCardStyled onClick={() => handleClick(user.id)}>
       <div className="image-container">
-        <img src="/img/demo-avatar.png" alt={user.userName} />
+        <img
+          src={user.avatar === "???" ? "/img/demo-avatar.png" : user.avatar}
+          alt={user.userName}
+        />
       </div>
       <div>
         <h2>{user.userName}</h2>
