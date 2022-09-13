@@ -51,7 +51,7 @@ describe("Given a Gallery component", () => {
       expect(spanElement).not.toBeNull();
       const incrementButton = screen.getByRole("button", { name: ">>" });
       await userEvent.click(incrementButton);
-      const spanElementAfterIncrement = screen.getByText("8/20");
+      const spanElementAfterIncrement = screen.getByText("2/5");
       expect(spanElementAfterIncrement).not.toBeNull();
     });
 
@@ -65,7 +65,7 @@ describe("Given a Gallery component", () => {
       await userEvent.click(incrementButton);
       await userEvent.click(incrementButton);
       await userEvent.click(incrementButton);
-      const spanElementAfterIncrement = screen.getByText("20/20");
+      const spanElementAfterIncrement = screen.getByText("5/5");
       expect(spanElementAfterIncrement).not.toBeNull();
     });
 
@@ -77,7 +77,7 @@ describe("Given a Gallery component", () => {
       const incrementButton = screen.getByRole("button", { name: ">>" });
       await userEvent.click(incrementButton);
       await userEvent.click(decrementButton);
-      const spanElementAfterDecrement = screen.getByText("4/20");
+      const spanElementAfterDecrement = screen.getByText("1/5");
       expect(spanElementAfterDecrement).not.toBeNull();
     });
 
@@ -87,7 +87,7 @@ describe("Given a Gallery component", () => {
       expect(spanElement).not.toBeNull();
       const decrementButton = screen.getByRole("button", { name: "<<" });
       await userEvent.click(decrementButton);
-      const spanElementAfterDecrement = screen.getByText("4/20");
+      const spanElementAfterDecrement = screen.getByText("1/5");
       expect(spanElementAfterDecrement).not.toBeNull();
     });
   });
