@@ -35,7 +35,7 @@ const useUser = () => {
     const ui = {
       isOpen: true,
       message: "User registered!",
-      type: "",
+      type: "autofade",
       redirect: "/login",
       id: "",
     };
@@ -70,7 +70,7 @@ const useUser = () => {
     const ui = {
       isOpen: true,
       message: "You are logged in!",
-      type: "",
+      type: "autofade",
       redirect: "/home",
       id: "",
     };
@@ -88,7 +88,7 @@ const useUser = () => {
     const ui = {
       isOpen: true,
       message: "You logged out",
-      type: "",
+      type: "autofade",
       redirect: "/home",
       id: "",
     };

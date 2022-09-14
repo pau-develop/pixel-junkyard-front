@@ -63,7 +63,7 @@ const Gallery = (): JSX.Element => {
                 <Filter action={handleFilter} closeAction={handleFilterMenu} />
               )}
             </div>
-          </div>{" "}
+          </div>
           <div className="gallery__list">
             <ul>
               {drawings.map((drawing) => (

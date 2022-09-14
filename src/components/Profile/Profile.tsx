@@ -76,7 +76,9 @@ const Profile = (): JSX.Element => {
           )}
 
           <section className="profile__gallery">
-            <h3>{`${user.userName}'s Gallery`}</h3>
+            <div className="profile__gallery-title">
+              <h3>{`${user.userName}'s Gallery`}</h3>
+            </div>
             <div className="profile__gallery-display">
               <ul>
                 {user.drawings.map((drawing, index) => (
