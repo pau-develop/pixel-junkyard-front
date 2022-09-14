@@ -32,6 +32,7 @@ const ReactCanvasToolsStyled = styled.section`
     &__color {
       flex: 1;
       input {
+        cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -43,6 +44,7 @@ const ReactCanvasToolsStyled = styled.section`
       }
     }
     &__floppy {
+      cursor: pointer;
       flex: 1;
       div {
         display: flex;
@@ -58,6 +60,7 @@ const ReactCanvasToolsStyled = styled.section`
       }
     }
     &__eye-dropper {
+      cursor: pointer;
       flex: 1;
       div {
         display: flex;
@@ -73,6 +76,7 @@ const ReactCanvasToolsStyled = styled.section`
       }
     }
     &__pencil {
+      cursor: pointer;
       flex: 1;
       div {
         display: flex;

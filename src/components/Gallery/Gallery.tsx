@@ -77,9 +77,11 @@ const Gallery = (): JSX.Element => {
           </div>
           <div className="gallery__footer">
             <Button text="<<" action={handleDecrement} />
+
             <span>{`${Math.ceil(getItemNumber() / 4)}/${Math.ceil(
               total / 4
             )}`}</span>
+
             <Button text=">>" action={handleIncrement} />
           </div>
         </>
