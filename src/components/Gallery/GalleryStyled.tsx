@@ -12,7 +12,16 @@ const GalleryStyled = styled.section`
   flex-direction: column;
   align-items: center;
   color: ${(props) => props.theme.secondaryColor};
-
+  .gallery {
+    &__filter {
+      height: 10%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+  }
   ul {
     list-style: none;
     padding: 0;
