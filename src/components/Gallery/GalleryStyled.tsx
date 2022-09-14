@@ -1,17 +1,13 @@
 import styled from "styled-components";
 
 const GalleryStyled = styled.section`
-  overflow: scroll;
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  height: 100%;
   width: 90%;
   margin: 0 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: ${(props) => props.theme.secondaryColor};
+  height: 100%;
   .gallery {
     position: relative;
     &__filter {
@@ -29,10 +25,48 @@ const GalleryStyled = styled.section`
         height: 80%;
       }
     }
+    &__list {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      ul {
+        align-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 15% 0;
+        color: ${(props) => props.theme.secondaryColor};
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 90%;
+        width: 100%;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 45% 45%;
+        grid-template-rows: 45% 45%;
+        grid-gap: 1%;
+        li {
+          width: 70%;
+          border-radius: 10px;
+          margin: 8% 0;
+          display: flex;
+          justify-content: center;
+          height: 80%;
+          width: 100%;
+          margin: 0;
+          align-self: flex-start;
+        }
+      }
+    }
     &__footer {
       position: absolute;
       bottom: 0;
-      height: 8%;
+      height: 5%;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -40,34 +74,17 @@ const GalleryStyled = styled.section`
       background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
 
       button {
+        font-size: 1rem;
         height: 90%;
         margin: 0 5%;
         border: 5px solid ${(props) => props.theme.thirdColor};
       }
     }
   }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin: 15% 0;
-    color: ${(props) => props.theme.secondaryColor};
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    li {
-      width: 70%;
-      border-radius: 10px;
-      margin-top: 5%;
-      display: flex;
-      justify-content: center;
-    }
-  }
 
   @media (min-width: 600px) {
+    height: 100%;
     .gallery {
-      height: 100%;
       &__filter {
         position: static;
         height: 10%;
@@ -86,18 +103,31 @@ const GalleryStyled = styled.section`
         width: 100%;
 
         ul {
+          list-style: none;
+          padding: 0;
+          margin: 15% 0;
+          color: ${(props) => props.theme.secondaryColor};
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           height: 90%;
           width: 100%;
           margin: 0;
           display: grid;
-
           grid-template-columns: 22% 22% 22% 22%;
-          grid-gap: 3%;
-
+          grid-template-rows: 100%;
+          grid-gap: 1%;
           li {
+            width: 70%;
+            border-radius: 10px;
+            margin: 8% 0;
+            display: flex;
+            justify-content: center;
             height: 80%;
+            width: 100%;
             margin: 0;
-            align-self: flex-start;
+            align-self: center;
           }
         }
       }

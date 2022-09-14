@@ -17,7 +17,6 @@ const Gallery = (): JSX.Element => {
     (state) => state.drawings
   ) as IDrawing[];
   const { getAllDrawings } = useDrawings();
-
   useEffect(() => {
     (async () => {
       const totalDocs = await getAllDrawings(offset, 4, filter);
@@ -50,7 +49,6 @@ const Gallery = (): JSX.Element => {
     setOffset(0);
     setFilter(filter);
   };
-
   return (
     <GalleryStyled className="gallery">
       {drawings[0] !== undefined && typeof drawings[0].artist === "string" ? (
@@ -65,7 +63,7 @@ const Gallery = (): JSX.Element => {
                 <Filter action={handleFilter} closeAction={handleFilterMenu} />
               )}
             </div>
-          </div>
+          </div>{" "}
           <div className="gallery__list">
             <ul>
               {drawings.map((drawing) => (
@@ -81,7 +79,6 @@ const Gallery = (): JSX.Element => {
             <span>{`${Math.ceil(getItemNumber() / 4)}/${Math.ceil(
               total / 4
             )}`}</span>
-
             <Button text=">>" action={handleIncrement} />
           </div>
         </>

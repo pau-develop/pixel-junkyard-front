@@ -10,11 +10,13 @@ const FilterStyled = styled.div`
   border: 2px solid ${(props) => props.theme.primaryColor};
   .filter {
     &__list {
+      padding: 0;
       margin: 0;
       height: 100% !important;
       display: flex !important;
       flex-direction: column !important;
       li {
+        list-style: none;
         width: 100%;
         height: 100%;
         margin: 0;

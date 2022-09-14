@@ -3,8 +3,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import mockStore from "../../mocks/mockStore";
 import Gallery from "./Gallery";
-import React from "react";
 import userEvent from "@testing-library/user-event";
+import React from "react";
 
 afterEach(() => {
   jest.resetAllMocks();
