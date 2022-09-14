@@ -9,7 +9,8 @@ const GalleryStyled = styled.section`
   width: 90%;
   margin: 0 5%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   color: ${(props) => props.theme.secondaryColor};
 
   ul {
@@ -33,9 +34,14 @@ const GalleryStyled = styled.section`
       height: 100%;
       &__filter {
         height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
       }
       &__list {
-        height: 100%;
+        height: 80%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -43,13 +49,18 @@ const GalleryStyled = styled.section`
         width: 100%;
 
         ul {
-          height: 80%;
+          height: 90%;
+          width: 100%;
+          margin: 0;
           display: grid;
 
           grid-template-columns: 22% 22% 22% 22%;
           grid-gap: 3%;
+
           li {
-            align-self: center;
+            height: 80%;
+            margin: 0;
+            align-self: flex-start;
           }
         }
       }
