@@ -25,17 +25,19 @@ const useUsers = () => {
 
   const getUserById = useCallback(
     async (id: string) => {
-      const usersData = await fetch(`${url}users/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`,
-        },
-      });
-      const response = await usersData.json();
-      const { user } = response;
+      if (id !== undefined) {
+        const usersData = await fetch(`${url}users/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.token}`,
+          },
+        });
+        const response = await usersData.json();
+        const { user } = response;
 
-      dispatch(getUserByIdActionNew([user]));
+        dispatch(getUserByIdActionNew([user]));
+      }
     },
     [dispatch, url]
   );

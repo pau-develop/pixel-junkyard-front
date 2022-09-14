@@ -25,7 +25,7 @@ const DrawingDetail = (): JSX.Element => {
           <section className="drawing-details__display-mobile">
             <img src={drawing.image} alt={drawing.name} />
             <div className="drawing-details__likes-mobile">
-              <span>hola</span>
+              <span></span>
             </div>
           </section>
           <section className="drawing-details__display-desktop">
@@ -33,18 +33,12 @@ const DrawingDetail = (): JSX.Element => {
               <img src={drawing.image} alt={drawing.name} />
             </div>
             <div className="drawing-details__likes-desktop">
-              <span>hola</span>
+              <span></span>
             </div>
           </section>
           <section className="drawing-details__info">
             <h2>{drawing.name}</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem
-              ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem
-              hic quod ad, inventore nostrum nobis porro quia sunt consectetur
-              praesentium eligendi nisi modi eveniet, obcaecati corrupti
-              repudiandae ullam? Placeat, ut.
-            </p>
+            <p>{drawing.description}</p>
             <span>Resolution: {drawing.resolution}</span>
             <section className="drawing-details__user-desktop">
               <span>Made by</span>

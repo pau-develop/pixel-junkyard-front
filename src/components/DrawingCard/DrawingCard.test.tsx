@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "../../app/store";
 import mockDrawings from "../../mocks/mockDrawings";
 import DrawingCard from "./DrawingCard";
+import userEvent from "@testing-library/user-event";
 
 const mockDeleteDrawing = jest.fn();
 
@@ -15,11 +16,24 @@ jest.mock("../../hooks/useDrawings", () => ({
   }),
 }));
 
+const mockGetUserById = jest.fn();
+
+jest.mock("../../hooks/useUsers", () => ({
+  __esModule: true,
+  ...jest.requireActual("../../hooks/useUsers"),
+  default: () => ({
+    getUserById: () => mockGetUserById(),
+  }),
+}));
+
 const mockUseNavigate = jest.fn();
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockUseNavigate,
+  useParams: () => ({
+    id: "123",
+  }),
 }));
 
 interface WrapperProps {
@@ -58,12 +72,23 @@ describe("Given a DrawingCard component", () => {
       expect(mockUseNavigate).toHaveBeenCalled();
     });
 
-    test("When the trash icon is clicked, an action to delete the drawing should be dispatched", () => {
+    test("When the trash icon is clicked, an action to delete the drawing should be dispatched", async () => {
       render(<DrawingCard draw={mockDrawings[0]} />, { wrapper: Wrapper });
       const deleteIcon = screen.getByTestId("delete-icon");
 
-      fireEvent.click(deleteIcon);
+      await userEvent.click(deleteIcon);
 
+      expect(mockGetUserById).toHaveBeenCalled();
+      expect(mockDeleteDrawing).toHaveBeenCalled();
+    });
+
+    test("And getUserById action shouldn't be dispatch if useParams id is undefined", async () => {
+      render(<DrawingCard draw={mockDrawings[0]} />, { wrapper: Wrapper });
+      const deleteIcon = screen.getByTestId("delete-icon");
+
+      await userEvent.click(deleteIcon);
+
+      expect(mockGetUserById).toHaveBeenCalled();
       expect(mockDeleteDrawing).toHaveBeenCalled();
     });
   });

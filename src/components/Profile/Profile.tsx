@@ -59,7 +59,6 @@ const Profile = (): JSX.Element => {
                 <li>{user.email}</li>
                 <li>XP points</li>
                 <li>3 likes</li>
-                <li>2 comments</li>
               </ul>
             </div>
             {isProfile && (
