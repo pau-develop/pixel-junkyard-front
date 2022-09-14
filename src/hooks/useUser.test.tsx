@@ -261,6 +261,9 @@ describe("Given a useUsers hook", () => {
 
   describe("When its function updateUser is called", () => {
     test("It should send the user info passed as arguments to the DB and update the user", async () => {
+      const mockToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzEwODYxYzk5MGM3MDlhNmNlYjk0NWQiLCJ1c2VyTmFtZSI6InRlc3RpbmciLCJpYXQiOjE2NjIxMzk1Mzd9.EKxxxoIKOLRRPDR4Uuh-_QmFM8khGF4_-mxbIxjrOpE";
+      window.localStorage.setItem("token", mockToken);
       const returnedUser = {
         id: "12345",
         userName: "user",
@@ -290,7 +293,7 @@ describe("Given a useUsers hook", () => {
         payload: {
           isOpen: true,
           message: "Avatar updated!",
-          redirect: "/home",
+          redirect: "/profile/undefined",
           type: "confirm",
           id: "",
         },

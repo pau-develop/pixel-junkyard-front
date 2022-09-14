@@ -157,11 +157,13 @@ const useUser = () => {
       dispatch(openModalActionNew(ui));
       return;
     }
+    const token = localStorage.getItem("token") as string;
+    const userInfo = fetchToken(token);
     const ui = {
       isOpen: true,
       message: "Avatar updated!",
       type: "confirm",
-      redirect: "/home",
+      redirect: `/profile/${userInfo.id}`,
       id: "",
     };
     dispatch(openModalActionNew(ui));
