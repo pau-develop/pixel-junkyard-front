@@ -13,24 +13,51 @@ const GalleryStyled = styled.section`
   align-items: center;
   color: ${(props) => props.theme.secondaryColor};
   .gallery {
+    position: relative;
     &__filter {
-      height: 10%;
+      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+      position: absolute;
+      z-index: 2;
+      height: 5%;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
       width: 100%;
+      button {
+        font-size: 1rem;
+        height: 80%;
+      }
+    }
+    &__footer {
+      position: absolute;
+      bottom: 0;
+      height: 8%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+
+      button {
+        height: 90%;
+        margin: 0 5%;
+        border: 5px solid ${(props) => props.theme.thirdColor};
+      }
     }
   }
   ul {
     list-style: none;
+    margin: 0;
     padding: 0;
+    margin: 15% 0;
     color: ${(props) => props.theme.secondaryColor};
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     li {
+      width: 70%;
       border-radius: 10px;
       margin-top: 5%;
       display: flex;
@@ -42,6 +69,7 @@ const GalleryStyled = styled.section`
     .gallery {
       height: 100%;
       &__filter {
+        position: static;
         height: 10%;
         display: flex;
         flex-direction: row;
@@ -108,6 +136,8 @@ const GalleryStyled = styled.section`
         }
       }
       &__footer {
+        position: static;
+
         height: 10%;
         display: flex;
         justify-content: center;
