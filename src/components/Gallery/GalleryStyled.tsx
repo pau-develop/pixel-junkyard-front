@@ -32,7 +32,7 @@ const GalleryStyled = styled.section`
     &__footer {
       position: absolute;
       bottom: 0;
-      height: 8%;
+      height: 5%;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -40,6 +40,7 @@ const GalleryStyled = styled.section`
       background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
 
       button {
+        font-size: 1rem;
         height: 90%;
         margin: 0 5%;
         border: 5px solid ${(props) => props.theme.thirdColor};
@@ -59,7 +60,7 @@ const GalleryStyled = styled.section`
     li {
       width: 70%;
       border-radius: 10px;
-      margin-top: 5%;
+      margin: 8% 0;
       display: flex;
       justify-content: center;
     }
