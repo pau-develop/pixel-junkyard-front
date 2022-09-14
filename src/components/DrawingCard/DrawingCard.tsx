@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
 import DrawingCardStyled from "./DrawingCardStyled";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useDrawings from "../../hooks/useDrawings";
+import useUsers from "../../hooks/useUsers";
 
 interface DrawingCardProps {
   draw: IDrawing;
@@ -14,15 +15,19 @@ interface DrawingCardProps {
 
 const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
   const { deleteDrawing } = useDrawings();
+  const { getUserById } = useUsers();
   const user = useSelector<RootState>((state) => state.user) as IUserVisible;
   const trashIcon = <FontAwesomeIcon icon={faTrashCan} />;
+  const { id } = useParams();
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/gallery/${draw.id}`);
   };
 
-  const handleDeleteDrawing = () => {
-    deleteDrawing(draw);
+  const handleDeleteDrawing = async () => {
+    await deleteDrawing(draw);
+
+    getUserById(id as string);
   };
 
   return (

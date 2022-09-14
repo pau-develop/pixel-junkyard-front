@@ -5,7 +5,7 @@ const ModalStyled = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;

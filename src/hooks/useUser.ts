@@ -162,7 +162,7 @@ const useUser = () => {
     const ui = {
       isOpen: true,
       message: "Avatar updated!",
-      type: "confirm",
+      type: "autofade",
       redirect: `/profile/${userInfo.id}`,
       id: "",
     };

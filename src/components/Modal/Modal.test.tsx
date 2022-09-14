@@ -17,6 +17,13 @@ jest.mock("../../hooks/useUser", () => () => {
   };
 });
 
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUseNavigate,
+}));
+
 interface WrapperProps {
   children: JSX.Element | JSX.Element[];
 }
@@ -27,6 +34,10 @@ beforeEach(() => {
   Wrapper = ({ children }: WrapperProps): JSX.Element => {
     return <Provider store={store}>{children}</Provider>;
   };
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
 });
 
 describe("Given a Modal component", () => {
@@ -72,17 +83,32 @@ describe("Given a Modal component", () => {
       expect(result.ui).toEqual(newState);
     });
 
-    test("if the Modal has a redirect, it should run a counter function", () => {
+    test("if the Modal has type autofade, and redirect string is not empty, it should run a counter function and redirect", () => {
       jest.useFakeTimers();
       jest.spyOn(global, "setInterval");
       render(
         <BrowserRouter>
-          <Modal message="test paragraph" type="confirm" redirect="/home" />
+          <Modal message="test paragraph" type="autofade" redirect="/home" />
         </BrowserRouter>,
         { wrapper: Wrapper }
       );
       jest.advanceTimersByTime(3000);
       expect(setInterval).toHaveBeenCalled();
+      expect(mockUseNavigate).toHaveBeenCalled();
+    });
+
+    test("if the Modal has type autofade, and redirect string is empty, it should run a counter function and close itself", () => {
+      jest.useFakeTimers();
+      jest.spyOn(global, "setInterval");
+      render(
+        <BrowserRouter>
+          <Modal message="test paragraph" type="autofade" redirect="" />
+        </BrowserRouter>,
+        { wrapper: Wrapper }
+      );
+      jest.advanceTimersByTime(3000);
+      expect(setInterval).toHaveBeenCalled();
+      expect(mockUseNavigate).not.toHaveBeenCalled();
     });
 
     test("if the Modal has the type 'delete', it should the buttons cancel & accep'", () => {
