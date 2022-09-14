@@ -77,7 +77,7 @@ const useDrawings = () => {
       isOpen: true,
       message: "Drawing Uploaded!",
       type: "",
-      redirect: "/home",
+      redirect: "/gallery",
       id: "",
     };
     dispatch(openModalActionNew(ui));
