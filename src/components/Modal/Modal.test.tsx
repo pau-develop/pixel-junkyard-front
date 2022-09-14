@@ -72,12 +72,12 @@ describe("Given a Modal component", () => {
       expect(result.ui).toEqual(newState);
     });
 
-    test("if the Modal has a redirect, it should run a counter function", () => {
+    test("if the Modal has type autofade, it should run a counter function", () => {
       jest.useFakeTimers();
       jest.spyOn(global, "setInterval");
       render(
         <BrowserRouter>
-          <Modal message="test paragraph" type="confirm" redirect="/home" />
+          <Modal message="test paragraph" type="autofade" redirect="/home" />
         </BrowserRouter>,
         { wrapper: Wrapper }
       );

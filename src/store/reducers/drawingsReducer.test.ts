@@ -48,12 +48,55 @@ describe("Given a drawingsReducer", () => {
 
   describe("When its called with a deleteDrawingActionNew", () => {
     test("It should update the store state with an array of drawings minus the drawing received as arguments", () => {
-      const drawingToDelete: IDrawing = mockDrawings[0];
+      const drawingToDelete: IDrawing[] = [
+        {
+          id: "1",
+          name: "mockDraw",
+          description: "",
+          image: "",
+          artist: "",
+          artistName: "",
+          resolution: "60x90",
+          creationDate: "",
+        },
+      ];
+      const drawingArray = [
+        {
+          id: "1",
+          name: "mockDraw",
+          description: "",
+          image: "",
+          artist: "",
+          artistName: "",
+          resolution: "60x90",
+          creationDate: "",
+        },
+        {
+          id: "2",
+          name: "mockDraw2",
+          description: "",
+          image: "",
+          artist: "",
+          artistName: "",
+          resolution: "60x90",
+          creationDate: "",
+        },
+        {
+          id: "3",
+          name: "mockDraw2",
+          description: "",
+          image: "",
+          artist: "",
+          artistName: "",
+          resolution: "60x90",
+          creationDate: "",
+        },
+      ];
 
       const action = deleteDrawingActionNew(drawingToDelete);
-      const result = drawingsReducer(mockDrawings, action);
+      const result = drawingsReducer(drawingArray, action);
 
-      expect(result.length).toBe(1);
+      expect(result).toHaveLength(2);
     });
   });
 });

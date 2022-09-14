@@ -29,6 +29,6 @@ export const getDrawingByIdActionNew = createAction<IDrawing[]>(
   actionTypes.getDrawingById
 );
 
-export const deleteDrawingActionNew = createAction<IDrawing>(
+export const deleteDrawingActionNew = createAction<IDrawing[]>(
   actionTypes.deleteDrawing
 );

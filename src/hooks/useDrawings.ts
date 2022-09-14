@@ -106,12 +106,12 @@ const useDrawings = () => {
     const ui = {
       isOpen: true,
       message: "Drawing Deleted!",
-      type: "",
-      redirect: "/home",
+      type: "autofade",
+      redirect: "",
       id: "",
     };
     dispatch(openModalActionNew(ui));
-    dispatch(deleteDrawingActionNew(drawing));
+    dispatch(deleteDrawingActionNew([drawing]));
   };
 
   return { getAllDrawings, getDrawingById, createDrawing, deleteDrawing };

@@ -16,7 +16,7 @@ const Modal = ({ message, type, redirect, id }: ModalProps): JSX.Element => {
   const navigate = useNavigate();
   const { deleteAccount } = useUser();
 
-  if (redirect !== "") {
+  if (type === "autofade") {
     let timer = 2;
     const counter = () => {
       const interval = setInterval(() => {
@@ -24,7 +24,9 @@ const Modal = ({ message, type, redirect, id }: ModalProps): JSX.Element => {
         if (timer <= 0) {
           clearInterval(interval);
           dispatch(closeModalActionNew(ui));
-          navigate(redirect);
+          if (redirect !== "") {
+            navigate(redirect);
+          }
         }
       }, 1000);
     };
