@@ -19,7 +19,7 @@ const DrawingCardStyled = styled.section`
       cursor: pointer;
 
       width: 100%;
-      height: 90%;
+      height: 100%;
     }
     &__footer {
       background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);

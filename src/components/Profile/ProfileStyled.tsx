@@ -126,7 +126,7 @@ const ProfileStyled = styled.article`
         align-items: center;
         li {
           margin-top: 5%;
-          width: 60%;
+          width: 50%;
           display: flex;
           justify-content: center;
         }
@@ -204,10 +204,6 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery {
-        overflow: visible;
-        ::-webkit-scrollbar {
-          display: none;
-        }
         margin-top: 40px;
         margin-bottom: 40px;
         margin-right: 5%;
@@ -247,7 +243,7 @@ const ProfileStyled = styled.article`
           grid-template-rows: 50%;
           grid-gap: 1%;
           li {
-            height: 75%;
+            width: 50%;
 
             align-self: center;
             justify-self: center;
@@ -277,7 +273,7 @@ const ProfileStyled = styled.article`
             grid-template-rows: 50%;
             grid-gap: 2%;
             li {
-              width: 70%;
+              width: 60%;
               align-self: center;
               justify-self: center;
             }

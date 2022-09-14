@@ -57,6 +57,9 @@ const SaveMenuStyled = styled.div`
     }
     &__button-wrap {
       margin-top: 5%;
+      button {
+        width: 50%;
+      }
     }
   }
 `;
