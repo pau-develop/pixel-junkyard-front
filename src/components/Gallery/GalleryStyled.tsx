@@ -9,18 +9,55 @@ const GalleryStyled = styled.section`
   width: 90%;
   margin: 0 5%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   color: ${(props) => props.theme.secondaryColor};
+  .gallery {
+    position: relative;
+    &__filter {
+      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+      position: absolute;
+      z-index: 2;
+      height: 5%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      button {
+        font-size: 1rem;
+        height: 80%;
+      }
+    }
+    &__footer {
+      position: absolute;
+      bottom: 0;
+      height: 8%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
 
+      button {
+        height: 90%;
+        margin: 0 5%;
+        border: 5px solid ${(props) => props.theme.thirdColor};
+      }
+    }
+  }
   ul {
     list-style: none;
+    margin: 0;
     padding: 0;
+    margin: 15% 0;
     color: ${(props) => props.theme.secondaryColor};
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     li {
+      width: 70%;
       border-radius: 10px;
       margin-top: 5%;
       display: flex;
@@ -32,10 +69,16 @@ const GalleryStyled = styled.section`
     .gallery {
       height: 100%;
       &__filter {
+        position: static;
         height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
       }
       &__list {
-        height: 100%;
+        height: 80%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -43,13 +86,18 @@ const GalleryStyled = styled.section`
         width: 100%;
 
         ul {
-          height: 80%;
+          height: 90%;
+          width: 100%;
+          margin: 0;
           display: grid;
 
           grid-template-columns: 22% 22% 22% 22%;
           grid-gap: 3%;
+
           li {
-            align-self: center;
+            height: 80%;
+            margin: 0;
+            align-self: flex-start;
           }
         }
       }
@@ -88,6 +136,8 @@ const GalleryStyled = styled.section`
         }
       }
       &__footer {
+        position: static;
+
         height: 10%;
         display: flex;
         justify-content: center;

@@ -194,7 +194,7 @@ const ReactCanvas = ({
   const handleClick = () => {
     scaleImage(
       ctxRef.current!.getImageData(0, 0, resolutionX, resolutionY),
-      600 / resolutionX
+      Math.floor(600 / resolutionX)
     );
     setData(canvasRef.current!.toDataURL());
     setSave(!save);

@@ -5,6 +5,7 @@ const DrawingCardStyled = styled.section`
   flex-direction: column;
   align-items: center;
   position: relative;
+  height: 100%;
 
   .draw-card {
     &__title {
@@ -16,8 +17,9 @@ const DrawingCardStyled = styled.section`
     }
     &__image {
       cursor: pointer;
+
       width: 100%;
-      height: 100%;
+      height: 90%;
     }
     &__footer {
       background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);

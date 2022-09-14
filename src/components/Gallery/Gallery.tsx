@@ -55,21 +55,18 @@ const Gallery = (): JSX.Element => {
     <GalleryStyled className="gallery">
       {drawings[0] !== undefined && typeof drawings[0].artist === "string" ? (
         <>
-          <div className="gallery__list">
-            <div className="gallery__filter">
-              <div className="gallery__filter-title">
-                <h3>Filter by:</h3>
-              </div>
-              <div className="gallery__filter-categories">
-                <Button text="resolution" action={handleFilterMenu} />
-                {filterMenu && (
-                  <Filter
-                    action={handleFilter}
-                    closeAction={handleFilterMenu}
-                  />
-                )}
-              </div>
+          <div className="gallery__filter">
+            <div className="gallery__filter-title">
+              <h3>Filter by:</h3>
             </div>
+            <div className="gallery__filter-categories">
+              <Button text="resolution" action={handleFilterMenu} />
+              {filterMenu && (
+                <Filter action={handleFilter} closeAction={handleFilterMenu} />
+              )}
+            </div>
+          </div>
+          <div className="gallery__list">
             <ul>
               {drawings.map((drawing) => (
                 <li key={drawing.id}>
@@ -77,13 +74,15 @@ const Gallery = (): JSX.Element => {
                 </li>
               ))}
             </ul>
-            <div className="gallery__footer">
-              <Button text="<<" action={handleDecrement} />
-              <span>{`${Math.ceil(getItemNumber() / 4)}/${Math.ceil(
-                total / 4
-              )}`}</span>
-              <Button text=">>" action={handleIncrement} />
-            </div>
+          </div>
+          <div className="gallery__footer">
+            <Button text="<<" action={handleDecrement} />
+
+            <span>{`${Math.ceil(getItemNumber() / 4)}/${Math.ceil(
+              total / 4
+            )}`}</span>
+
+            <Button text=">>" action={handleIncrement} />
           </div>
         </>
       ) : (
