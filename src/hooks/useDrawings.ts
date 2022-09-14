@@ -76,7 +76,7 @@ const useDrawings = () => {
     const ui = {
       isOpen: true,
       message: "Drawing Uploaded!",
-      type: "",
+      type: "autofade",
       redirect: "/gallery",
       id: "",
     };

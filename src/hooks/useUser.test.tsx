@@ -294,7 +294,7 @@ describe("Given a useUsers hook", () => {
           isOpen: true,
           message: "Avatar updated!",
           redirect: "/profile/undefined",
-          type: "confirm",
+          type: "autofade",
           id: "",
         },
         type: "ui@display",

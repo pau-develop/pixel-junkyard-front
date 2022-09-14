@@ -23,10 +23,10 @@ const Modal = ({ message, type, redirect, id }: ModalProps): JSX.Element => {
         timer -= 1;
         if (timer <= 0) {
           clearInterval(interval);
-          dispatch(closeModalActionNew(ui));
           if (redirect !== "") {
             navigate(redirect);
           }
+          dispatch(closeModalActionNew(ui));
         }
       }, 1000);
     };
