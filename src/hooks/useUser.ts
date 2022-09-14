@@ -88,7 +88,7 @@ const useUser = () => {
     const ui = {
       isOpen: true,
       message: "You logged out",
-      type: "",
+      type: "autofade",
       redirect: "/home",
       id: "",
     };
