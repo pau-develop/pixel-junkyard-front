@@ -126,7 +126,7 @@ const ProfileStyled = styled.article`
         align-items: center;
         li {
           margin-top: 5%;
-          width: 80%;
+          width: 60%;
           display: flex;
           justify-content: center;
         }
@@ -134,9 +134,9 @@ const ProfileStyled = styled.article`
     }
   }
 
-  @media (min-width: 1100px) {
+  @media (min-width: 800px) {
     background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
-    max-width: 100%;
+    max-width: 1400px;
     flex-direction: row;
     .profile {
       &__info {
@@ -204,11 +204,14 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery {
+        overflow: visible;
+        ::-webkit-scrollbar {
+          display: none;
+        }
         margin-top: 40px;
         margin-bottom: 40px;
         margin-right: 5%;
         margin-left: 0;
-        padding: 3%;
         background-color: ${(props) => props.theme.thirdColor};
         height: 90%;
         display: flex;
@@ -218,14 +221,66 @@ const ProfileStyled = styled.article`
           margin: 0;
         }
       }
+      &__gallery-title {
+        height: 6%;
+        border-top: 2px solid ${(props) => props.theme.thirdColor};
+        background: linear-gradient(
+          90deg,
+          #17232e 0%,
+          #144573 50%,
+          #17232e 100%
+        );
+        width: 100%;
+        text-align: center;
+      }
       &__gallery-display {
+        overflow: scroll;
+        ::-webkit-scrollbar {
+          display: none;
+        }
+        height: 94%;
         ul {
+          max-width: 100%;
           height: 100%;
           display: grid;
-          grid-template-columns: 30% 30% 30%;
-          grid-gap: 5%;
+          grid-template-columns: 48% 48%;
+          grid-template-rows: 50%;
+          grid-gap: 1%;
           li {
-            width: 100%;
+            height: 75%;
+
+            align-self: center;
+            justify-self: center;
+          }
+        }
+        @media (min-width: 1000px) {
+          ul {
+            max-width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 32% 32% 32%;
+            grid-template-rows: 50%;
+            grid-gap: 1%;
+            li {
+              width: 60%;
+              align-self: center;
+              justify-self: center;
+            }
+          }
+        }
+        @media (min-width: 1200px) {
+          ul {
+            max-width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 23% 23% 23% 23%;
+            grid-template-rows: 50%;
+            grid-gap: 2%;
+            li {
+              width: 70%;
+              align-self: center;
+              justify-self: center;
+            }
           }
         }
       }
