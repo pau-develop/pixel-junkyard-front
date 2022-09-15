@@ -8,8 +8,11 @@ const GalleryStyled = styled.section`
   align-items: center;
   color: ${(props) => props.theme.secondaryColor};
   height: 90%;
+  position: relative;
   .gallery {
     &__filter {
+      position: absolute;
+      z-index: 1;
       background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
       height: 5%;
       display: flex;
@@ -44,10 +47,10 @@ const GalleryStyled = styled.section`
 
         display: grid;
         grid-template-columns: 45% 45%;
-        grid-template-rows: 45% 45%;
+        grid-template-rows: 50% 50%;
         grid-gap: 1%;
         li {
-          width: 70%;
+          width: 80%;
           border-radius: 10px;
 
           display: flex;
@@ -55,7 +58,7 @@ const GalleryStyled = styled.section`
           height: 75%;
           width: 100%;
           margin: 0;
-          align-self: flex-start;
+          align-self: center;
         }
       }
     }
@@ -80,6 +83,7 @@ const GalleryStyled = styled.section`
 
   @media (min-width: 600px) {
     height: 100%;
+    position: relative;
     .gallery {
       &__filter {
         position: static;
@@ -91,7 +95,7 @@ const GalleryStyled = styled.section`
         width: 100%;
       }
       &__list {
-        height: 80%;
+        height: 90%;
         display: flex;
         flex-direction: column;
         justify-content: center;
