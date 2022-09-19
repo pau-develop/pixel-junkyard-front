@@ -35,6 +35,7 @@ const ProfileStyled = styled.article`
         height: 100%;
         border-radius: 20px;
         object-fit: contain;
+        image-rendering: pixelated;
       }
     }
     &__info-props {
@@ -135,7 +136,7 @@ const ProfileStyled = styled.article`
   }
 
   @media (min-width: 800px) {
-    background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+    background: ${(props) => props.theme.linearGradient};
     max-width: 1400px;
     flex-direction: row;
     .profile {
@@ -220,12 +221,7 @@ const ProfileStyled = styled.article`
       &__gallery-title {
         height: 6%;
         border-top: 2px solid ${(props) => props.theme.thirdColor};
-        background: linear-gradient(
-          90deg,
-          #17232e 0%,
-          #144573 50%,
-          #17232e 100%
-        );
+        background: ${(props) => props.theme.linearGradient};
         width: 100%;
         text-align: center;
       }

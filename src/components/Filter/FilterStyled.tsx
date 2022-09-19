@@ -7,6 +7,7 @@ const FilterStyled = styled.div`
   z-index: 2;
   top: 100%;
   left: 0%;
+
   border: 2px solid ${(props) => props.theme.primaryColor};
   .filter {
     &__list {
@@ -26,12 +27,7 @@ const FilterStyled = styled.div`
           height: 100%;
           flex: 1;
           width: 100%;
-          background: linear-gradient(
-            90deg,
-            #17232e 0%,
-            #144573 50%,
-            #17232e 100%
-          );
+          background: ${(props) => props.theme.linearGradient};
         }
       }
     }

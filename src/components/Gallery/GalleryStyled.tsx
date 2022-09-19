@@ -13,7 +13,7 @@ const GalleryStyled = styled.section`
     &__filter {
       position: absolute;
       z-index: 1;
-      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+      background: ${(props) => props.theme.linearGradient};
       height: 5%;
       display: flex;
       flex-direction: row;
@@ -70,7 +70,7 @@ const GalleryStyled = styled.section`
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+      background: ${(props) => props.theme.linearGradient};
 
       button {
         font-size: 1rem;
@@ -138,12 +138,7 @@ const GalleryStyled = styled.section`
         justify-content: center;
         align-items: center;
         width: 50%;
-        background: linear-gradient(
-          90deg,
-          #17232e 0%,
-          #144573 50%,
-          #17232e 100%
-        );
+        background: ${(props) => props.theme.linearGradient};
       }
       &__filter-title {
         flex: 1;
@@ -173,12 +168,7 @@ const GalleryStyled = styled.section`
         justify-content: center;
         align-items: center;
         width: 50%;
-        background: linear-gradient(
-          90deg,
-          #17232e 0%,
-          #144573 50%,
-          #17232e 100%
-        );
+        background: ${(props) => props.theme.linearGradient};
 
         button {
           height: 90%;
