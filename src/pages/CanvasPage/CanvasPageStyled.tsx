@@ -10,7 +10,7 @@ const CanvasPageStyled = styled.div`
     &__title-container {
       border-top: 2px solid ${(props) => props.theme.thirdColor};
       border-bottom: 2px solid ${(props) => props.theme.thirdColor};
-      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+      background: ${(props) => props.theme.linearGradient};
       width: 50%;
       display: flex;
       justify-content: center;

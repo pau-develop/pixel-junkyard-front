@@ -9,7 +9,7 @@ const DrawingCardStyled = styled.section`
 
   .draw-card {
     &__title {
-      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+      background: ${(props) => props.theme.linearGradient};
       padding: 2% 0;
       width: 90%;
       text-align: center;
@@ -22,7 +22,7 @@ const DrawingCardStyled = styled.section`
       height: 100%;
     }
     &__footer {
-      background: linear-gradient(90deg, #17232e 0%, #144573 50%, #17232e 100%);
+      background: ${(props) => props.theme.linearGradient};
       width: 100%;
       padding: 2% 0;
       text-align: center;
