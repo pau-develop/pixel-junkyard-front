@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 const FormStyled = styled.div`
   padding: 0 5%;
-
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 500px;
   .register {
