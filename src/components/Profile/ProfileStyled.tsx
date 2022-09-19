@@ -8,34 +8,34 @@ const ProfileStyled = styled.article`
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.secondaryColor};
-  background: ${(props) => props.theme.primaryColor};
-  /* border-bottom:2px solid  ${(props) => props.theme.thirdColor}; */
-
   .profile {
     &__info {
+      display: flex;
+      border-radius: 10px;
+      background: linear-gradient(
+        0deg,
+        ${(props) => props.theme.thirdColor} 0%,
+        ${(props) => props.theme.primaryColor} 100%
+      );
       height: 20%;
       margin: 0 5%;
       padding: 2%;
-      background-color: ${(props) => props.theme.thirdColor};
-      width: 90%;
-      display: flex;
-      flex-direction: row;
+
       align-items: center;
       justify-content: center;
       margin-top: 20px;
     }
     &__info-avatar {
-      height: 80%;
-      width: 40%;
-      display: flex;
-      justify-content: space-around;
-
+      width: 35%;
+      padding: 5%;
+      object-fit: contain;
       img {
+        object-fit: contain;
         width: 100%;
         height: 100%;
-        border-radius: 20px;
-        object-fit: contain;
-        image-rendering: pixelated;
+
+        border: 2px solid ${(props) => props.theme.secondaryColor};
+        border-radius: 10px;
       }
     }
     &__info-props {
@@ -55,29 +55,25 @@ const ProfileStyled = styled.article`
     }
 
     &__settings-mobile {
-      margin: 0 5%;
-      margin-top: 20px;
+      margin-bottom: 10px;
       background-color: ${(props) => props.theme.thirdColor};
-      width: 90%;
+      width: 100%;
       height: 10%;
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
-
       justify-content: space-around;
       button {
         font-size: 1rem;
         margin: 6% 0;
         width: 100%;
         height: 70%;
+        border-radius: 10px;
       }
       button:first-child {
-        margin-left: 6%;
         margin-right: 3%;
       }
       button:last-child {
-        margin-right: 6%;
         margin-left: 3%;
       }
     }
@@ -86,35 +82,32 @@ const ProfileStyled = styled.article`
     }
 
     &__gallery {
-      overflow: scroll;
-      ::-webkit-scrollbar {
-        display: none;
-      }
       margin: 0 5%;
-      margin-top: 20px;
+      margin-top: 10px;
       margin-bottom: 20px;
-      padding-bottom: 20px;
+
       background-color: ${(props) => props.theme.thirdColor};
       width: 90%;
-      height: 70%;
+      height: 80%;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
 
+    &__gallery-title {
+      width: 90%;
       h3 {
+        background: ${(props) => props.theme.linearGradient};
+        height: 100%;
+        font-size: 1.5rem;
+        text-align: center;
         margin: 0;
-        margin-top: 1%;
       }
     }
     &__gallery-display {
       height: 100%;
-      max-height: 100%;
-      width: 100%;
-      margin: 0 5%;
-
       display: flex;
       flex-direction: column;
-      color: ${(props) => props.theme.secondaryColor};
       ul {
         height: 100%;
         max-height: 100%;
@@ -125,8 +118,8 @@ const ProfileStyled = styled.article`
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         li {
-          margin-top: 5%;
           width: 50%;
           display: flex;
           justify-content: center;

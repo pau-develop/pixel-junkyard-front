@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../../app/store";
@@ -11,6 +11,7 @@ import DrawingCard from "../DrawingCard/DrawingCard";
 import ProfileStyled from "./ProfileStyled";
 
 const Profile = (): JSX.Element => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const navigate = useNavigate();
   const isProfile = useLocation().pathname.includes("profile");
   const dispatch = useDispatch();
@@ -68,24 +69,26 @@ const Profile = (): JSX.Element => {
               </div>
             )}
           </section>
-          {isProfile && (
-            <section className="profile__settings-mobile">
-              <Button text="Edit avatar" action={handleEditAvatar} />
-              <Button text="Delete account" action={handleDeleteAccount} />
-            </section>
-          )}
 
           <section className="profile__gallery">
+            {isProfile && (
+              <section className="profile__settings-mobile">
+                <Button text="Edit avatar" action={handleEditAvatar} />
+                <Button text="Delete account" action={handleDeleteAccount} />
+              </section>
+            )}
             <div className="profile__gallery-title">
               <h3>{`${user.userName}'s Gallery`}</h3>
             </div>
             <div className="profile__gallery-display">
               <ul>
-                {user.drawings.map((drawing, index) => (
-                  <li key={index}>
-                    <DrawingCard draw={drawing} />
-                  </li>
-                ))}
+                {user.drawings.map((drawing, index) =>
+                  index === currentIndex ? (
+                    <li key={index}>
+                      <DrawingCard draw={drawing} />
+                    </li>
+                  ) : null
+                )}
               </ul>
             </div>
           </section>
