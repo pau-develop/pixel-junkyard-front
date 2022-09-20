@@ -10,8 +10,10 @@ import Button from "../Button/Button";
 import DrawingCard from "../DrawingCard/DrawingCard";
 import ProfileStyled from "./ProfileStyled";
 
+const indexInitial = 0;
+
 const Profile = (): JSX.Element => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(indexInitial);
   const navigate = useNavigate();
   const isProfile = useLocation().pathname.includes("profile");
   const dispatch = useDispatch();
@@ -95,10 +97,14 @@ const Profile = (): JSX.Element => {
             <div className="profile__gallery-display">
               {user.drawings.length > 0 ? (
                 <>
-                  <div className="profile__nav-button">
-                    {currentIndex > 0 && (
-                      <Button text="<<" action={handleDecrement} />
-                    )}
+                  <div
+                    className={
+                      currentIndex !== 0
+                        ? "profile__nav-button"
+                        : "profile__nav-button--hidden"
+                    }
+                  >
+                    <Button text="<<" action={handleDecrement} />
                   </div>
                   <ul>
                     {user.drawings.map((drawing, index) =>
@@ -109,10 +115,14 @@ const Profile = (): JSX.Element => {
                       ) : null
                     )}
                   </ul>
-                  <div className="profile__nav-button">
-                    {currentIndex < user.drawings.length - 1 && (
-                      <Button text=">>" action={handleIncrement} />
-                    )}
+                  <div
+                    className={
+                      currentIndex < user.drawings.length - 1
+                        ? "profile__nav-button"
+                        : "profile__nav-button--hidden"
+                    }
+                  >
+                    <Button text=">>" action={handleIncrement} />
                   </div>
                 </>
               ) : (

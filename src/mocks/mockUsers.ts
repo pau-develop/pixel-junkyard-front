@@ -18,6 +18,16 @@ const mockUsers: IUserVisible[] = [
         resolution: "",
         creationDate: "",
       },
+      {
+        id: "",
+        name: "test2",
+        description: "",
+        image: "",
+        artist: "",
+        artistName: "",
+        resolution: "",
+        creationDate: "",
+      },
     ],
   },
   {

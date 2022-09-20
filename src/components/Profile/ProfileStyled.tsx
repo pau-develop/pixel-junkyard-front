@@ -104,17 +104,27 @@ const ProfileStyled = styled.article`
         margin: 0;
       }
     }
+    &__nav-button--hidden {
+      visibility: hidden;
+      width: 10%;
+      align-self: center;
+      button {
+        width: 100%;
+      }
+    }
+    &__nav-button {
+      visibility: visible;
+      width: 10%;
+      align-self: center;
+      button {
+        width: 100%;
+      }
+    }
     &__gallery-display {
       height: 100%;
+      width: 100%;
       display: flex;
       flex-direction: row;
-      div {
-        width: 10%;
-        align-self: center;
-        button {
-          width: 100%;
-        }
-      }
       span {
         align-self: center;
       }

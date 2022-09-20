@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import mockStore from "../../mocks/mockStore";
 import { configureStore, createReducer } from "@reduxjs/toolkit";
 import { IUserVisible } from "../../interfaces/interfaces";
+import React from "react";
 
 const mockUseNavigate = jest.fn();
 
@@ -77,6 +78,45 @@ describe("Given a Profile component", () => {
       fireEvent.click(buttonElement);
 
       expect(mockUseNavigate).toHaveBeenCalled();
+    });
+
+    test("If user clicks on '>>' button, a new drawing should be displayed unless the last drawing in array is displayed", async () => {
+      await render(<Profile />, { wrapper: Wrapper });
+
+      const buttonText = ">>";
+      const buttonElement = screen.getByRole("button", { name: buttonText });
+
+      const firstDrawing = screen.getByText("test1");
+      expect(firstDrawing).toBeInTheDocument();
+      fireEvent.click(buttonElement);
+      const secondDrawing = screen.getByText("test2");
+      expect(firstDrawing).not.toBeInTheDocument();
+      expect(secondDrawing).toBeInTheDocument();
+      fireEvent.click(buttonElement);
+      expect(secondDrawing).toBeInTheDocument();
+    });
+
+    test("If user clicks on '<<' button, a new drawing should be displayed unless the first drawing in array is displayed", async () => {
+      await render(<Profile />, { wrapper: Wrapper });
+      const forwardButtonText = ">>";
+      const forwardButtonElement = screen.getByRole("button", {
+        name: forwardButtonText,
+      });
+
+      const firstDrawing = screen.getByText("test1");
+      expect(firstDrawing).toBeInTheDocument();
+      fireEvent.click(forwardButtonElement);
+      const backButtonText = "<<";
+      const backButtonElement = screen.getByRole("button", {
+        name: backButtonText,
+      });
+      const secondDrawing = screen.getByText("test2");
+      expect(firstDrawing).not.toBeInTheDocument();
+      expect(secondDrawing).toBeInTheDocument();
+      fireEvent.click(backButtonElement);
+      expect(secondDrawing).not.toBeInTheDocument();
+      fireEvent.click(backButtonElement);
+      expect(firstDrawing).not.toBeNull();
     });
 
     test("If the user has drawn an avatar, it should be shown on the img tag instead of the default image", () => {
