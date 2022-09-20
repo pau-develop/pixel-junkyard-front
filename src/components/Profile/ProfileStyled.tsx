@@ -107,8 +107,19 @@ const ProfileStyled = styled.article`
     &__gallery-display {
       height: 100%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      div {
+        width: 10%;
+        align-self: center;
+        button {
+          width: 100%;
+        }
+      }
+      span {
+        align-self: center;
+      }
       ul {
+        width: 80%;
         height: 100%;
         max-height: 100%;
         list-style: none;
@@ -120,7 +131,7 @@ const ProfileStyled = styled.article`
         align-items: center;
         justify-content: center;
         li {
-          width: 50%;
+          width: 60%;
           display: flex;
           justify-content: center;
         }

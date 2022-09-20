@@ -26,6 +26,18 @@ const Profile = (): JSX.Element => {
     navigate("/avatar");
   };
 
+  const handleIncrement = () => {
+    if (currentIndex < user.drawings.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handleDecrement = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
   const handleDeleteAccount = () => {
     const ui = {
       isOpen: true,
@@ -81,15 +93,31 @@ const Profile = (): JSX.Element => {
               <h3>{`${user.userName}'s Gallery`}</h3>
             </div>
             <div className="profile__gallery-display">
-              <ul>
-                {user.drawings.map((drawing, index) =>
-                  index === currentIndex ? (
-                    <li key={index}>
-                      <DrawingCard draw={drawing} />
-                    </li>
-                  ) : null
-                )}
-              </ul>
+              {user.drawings.length > 0 ? (
+                <>
+                  <div className="profile__nav-button">
+                    {currentIndex > 0 && (
+                      <Button text="<<" action={handleDecrement} />
+                    )}
+                  </div>
+                  <ul>
+                    {user.drawings.map((drawing, index) =>
+                      index === currentIndex ? (
+                        <li key={index}>
+                          <DrawingCard draw={drawing} />
+                        </li>
+                      ) : null
+                    )}
+                  </ul>
+                  <div className="profile__nav-button">
+                    {currentIndex < user.drawings.length - 1 && (
+                      <Button text=">>" action={handleIncrement} />
+                    )}
+                  </div>
+                </>
+              ) : (
+                <span>{user.userName} hasn't uploaded any drawings yet</span>
+              )}
             </div>
           </section>
         </>
