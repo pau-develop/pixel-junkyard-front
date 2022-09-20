@@ -62,13 +62,14 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
         {navMenu && (
           <Menu action={handleCloseNavMenuClick} menuClass="phone-menu" />
         )}
+
+        {logoutMenu && (
+          <LogoutMenu
+            menuClass="phone-logout-menu"
+            action={handleOpenLogoutMenuClick}
+          />
+        )}
       </AnimatePresence>
-      {logoutMenu && (
-        <LogoutMenu
-          menuClass="phone-logout-menu"
-          action={handleOpenLogoutMenuClick}
-        />
-      )}
     </HeaderStyled>
   );
 };

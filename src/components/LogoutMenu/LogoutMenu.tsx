@@ -16,7 +16,13 @@ const LogoutMenu = ({ menuClass, action }: LogoutMenuProps): JSX.Element => {
   };
 
   return (
-    <LogoutMenuStyled className={menuClass}>
+    <LogoutMenuStyled
+      className={menuClass}
+      initial={{ x: "+100%" }}
+      animate={{ x: 0 }}
+      transition={{ bounce: 0 }}
+      exit={{ x: "+100%" }}
+    >
       <span>Do you want to log out?</span>
       <Button text="OK" action={handleLogout} />
     </LogoutMenuStyled>
