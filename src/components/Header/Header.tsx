@@ -6,6 +6,7 @@ import Menu from "../Menu/Menu";
 import HeaderStyled from "./HeaderStyled";
 import LogoutMenu from "../LogoutMenu/LogoutMenu";
 import { useNavigate } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 interface HeaderProps {
   currentUser: IUser;
@@ -57,9 +58,11 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
           </div>
         </>
       )}
-      {navMenu && (
-        <Menu action={handleCloseNavMenuClick} menuClass="phone-menu" />
-      )}
+      <AnimatePresence>
+        {navMenu && (
+          <Menu action={handleCloseNavMenuClick} menuClass="phone-menu" />
+        )}
+      </AnimatePresence>
       {logoutMenu && (
         <LogoutMenu
           menuClass="phone-logout-menu"

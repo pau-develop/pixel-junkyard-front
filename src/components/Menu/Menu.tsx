@@ -24,7 +24,13 @@ const Menu = ({ action, menuClass, logAction }: MenuProps): JSX.Element => {
   };
 
   return (
-    <MenuStyled className={menuClass}>
+    <MenuStyled
+      className={menuClass}
+      initial={{ x: "-100%" }}
+      animate={{ x: 0 }}
+      transition={{ bounce: 0 }}
+      exit={{ x: "+100%" }}
+    >
       <Button
         text="PROFILE"
         action={() => handleClick(`/profile/${currentUser.id}`)}
