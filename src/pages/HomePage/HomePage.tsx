@@ -8,7 +8,13 @@ interface HomePageProps {
 
 const HomePage = ({ userLogged }: HomePageProps): JSX.Element => {
   return (
-    <HomePageStyled className="guest-page">
+    <HomePageStyled
+      className="guest-page"
+      initial={{ scaleX: 0, scaleY: 0 }}
+      animate={{ scaleX: 1, scaleY: 1 }}
+      transition={{ bounce: 0 }}
+      exit={{ scaleX: 0, scaleY: 0 }}
+    >
       {!userLogged ? (
         <div className="guest-page__menu-container">
           <NavLink to="/login">

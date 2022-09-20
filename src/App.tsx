@@ -1,6 +1,7 @@
+import { AnimatePresence } from "framer-motion";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { RootState } from "./app/store";
 import AppStyled from "./AppStyled";
 import Header from "./components/Header/Header";
@@ -21,6 +22,7 @@ import { IUIModal } from "./store/types/interfaces";
 import { fetchToken } from "./utils/auth";
 
 const App = (): JSX.Element => {
+  const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -44,26 +46,29 @@ const App = (): JSX.Element => {
         />
       ) : null}
       <Header currentUser={user} />
+
       <main className="app-container__main">
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route
-            path="/home"
-            element={
-              <HomePage userLogged={user.userName === "" ? false : true} />
-            }
-          />
-          <Route path="/register" element={<RegisterFormPage />} />
-          <Route path="/login" element={<LoginFormPage />} />
-          <Route path="/community" element={<CommunityPage />} />
-          <Route path="/community/:id" element={<ProfilePage />} />
-          <Route path="/profile/:id" element={<ProfilePage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/gallery/:id" element={<DrawingDetailPage />} />
-          <Route path="/canvas" element={<CanvasPage />} />
-          <Route path="/avatar" element={<AvatarPage />} />
-          <Route path="*" element={<UnknownPage />} />
-        </Routes>
+        <AnimatePresence exitBeforeEnter>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route
+              path="/home"
+              element={
+                <HomePage userLogged={user.userName === "" ? false : true} />
+              }
+            />
+            <Route path="/register" element={<RegisterFormPage />} />
+            <Route path="/login" element={<LoginFormPage />} />
+            <Route path="/community" element={<CommunityPage />} />
+            <Route path="/community/:id" element={<ProfilePage />} />
+            <Route path="/profile/:id" element={<ProfilePage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/gallery/:id" element={<DrawingDetailPage />} />
+            <Route path="/canvas" element={<CanvasPage />} />
+            <Route path="/avatar" element={<AvatarPage />} />
+            <Route path="*" element={<UnknownPage />} />
+          </Routes>
+        </AnimatePresence>
       </main>
     </AppStyled>
   );
