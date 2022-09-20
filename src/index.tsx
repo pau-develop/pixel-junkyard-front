@@ -8,6 +8,7 @@ import "./index.css";
 import { ThemeProvider } from "styled-components";
 import styledTheme from "./styledTheme";
 import { BrowserRouter } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -15,11 +16,13 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
-        <ThemeProvider theme={styledTheme}>
-          <App />
-        </ThemeProvider>
-      </Provider>
+      <AnimatePresence>
+        <Provider store={store}>
+          <ThemeProvider theme={styledTheme}>
+            <App />
+          </ThemeProvider>
+        </Provider>
+      </AnimatePresence>
     </BrowserRouter>
   </React.StrictMode>
 );
