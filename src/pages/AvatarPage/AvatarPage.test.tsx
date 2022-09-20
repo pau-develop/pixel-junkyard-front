@@ -23,10 +23,10 @@ beforeEach(() => {
 
 describe("Given a AvatarPage component", () => {
   describe("When instantiated", () => {
-    test("It should show a heading with the text 'Create your avatar'", () => {
+    test("It should show a heading with the text 'Avatar'", () => {
       render(<AvatarPage />, { wrapper: Wrapper });
 
-      const headingText = "Create your avatar";
+      const headingText = "Avatar";
       const headingElement = screen.getByRole("heading", { name: headingText });
 
       expect(headingElement).not.toBeNull();
