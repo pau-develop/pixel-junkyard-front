@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const MenuStyled = styled.div`
+const MenuStyled = styled(motion.div)`
   &.phone-menu {
     padding: 0 5%;
     background-color: ${(props) => props.theme.primaryColor};

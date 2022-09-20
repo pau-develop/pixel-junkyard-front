@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const GuestPageStyled = styled.div`
+const GuestPageStyled = styled(motion.div)`
   width: 100%;
   height: 100%;
   .guest-page {

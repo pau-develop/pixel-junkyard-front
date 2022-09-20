@@ -5,6 +5,27 @@ import { store } from "../../app/store";
 import mockUser from "../../mocks/mockUser";
 import Header from "./Header";
 
+interface AnimateProps {
+  children: JSX.Element | JSX.Element[];
+}
+
+jest.mock("framer-motion", () => {
+  const actual = jest.requireActual("framer-motion");
+  return {
+    __esModule: true,
+    ...actual,
+    AnimatePresence: ({ children }: AnimateProps) => (
+      <div className="mocked-framer-motion-AnimatePresence">{children}</div>
+    ),
+    motion: {
+      ...actual.motion,
+      div: ({ children }: AnimateProps) => (
+        <div className="mocked-framer-motion-div">{children}</div>
+      ),
+    },
+  };
+});
+
 const mockUseNavigate = jest.fn();
 
 jest.mock("react-router-dom", () => ({

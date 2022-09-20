@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const CanvasPageStyled = styled.div`
+const CanvasPageStyled = styled(motion.div)`
   align-items: center;
   display: flex;
   flex-direction: column;
