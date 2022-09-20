@@ -38,7 +38,7 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
           onClick={handleDeleteDrawing}
           data-testid="delete-icon"
         >
-          <i className="fa-2xl">{trashIcon}</i>
+          <i className="fa-lg">{trashIcon}</i>
         </div>
       )}
       <span className="draw-card__title">{draw.name}</span>
