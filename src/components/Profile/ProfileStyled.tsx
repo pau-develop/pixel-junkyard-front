@@ -117,6 +117,8 @@ const ProfileStyled = styled.article`
       width: 10%;
       align-self: center;
       button {
+        padding: 0;
+        background: transparent;
         width: 100%;
       }
     }
@@ -125,6 +127,7 @@ const ProfileStyled = styled.article`
       width: 100%;
       display: flex;
       flex-direction: row;
+      justify-content: center;
       span {
         align-self: center;
       }
