@@ -4,26 +4,29 @@ const ProfileStyled = styled.article`
   box-sizing: content-box;
   height: 92.5%;
   width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
   max-width: 450px;
+  max-height: 900px;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.secondaryColor};
   .profile {
     &__info {
-      display: flex;
+      align-items: center;
       border-radius: 10px;
       background: linear-gradient(
         0deg,
         ${(props) => props.theme.thirdColor} 0%,
         ${(props) => props.theme.primaryColor} 100%
       );
+      display: flex;
       height: 20%;
-      margin: 0 5%;
-      padding: 2%;
-
-      align-items: center;
       justify-content: center;
+      margin: 0 5%;
       margin-top: 20px;
+      padding: 2%;
     }
     &__info-avatar {
       width: 35%;
@@ -69,6 +72,11 @@ const ProfileStyled = styled.article`
         width: 100%;
         height: 70%;
         border-radius: 10px;
+        background: linear-gradient(
+          0deg,
+          ${(props) => props.theme.thirdColor} -10%,
+          ${(props) => props.theme.primaryColor} 100%
+        );
       }
       button:first-child {
         margin-right: 3%;
@@ -95,7 +103,7 @@ const ProfileStyled = styled.article`
     }
 
     &__gallery-title {
-      width: 90%;
+      width: 100%;
       h3 {
         background: ${(props) => props.theme.linearGradient};
         height: 100%;
@@ -128,6 +136,7 @@ const ProfileStyled = styled.article`
       display: flex;
       flex-direction: row;
       justify-content: center;
+
       span {
         align-self: center;
       }
