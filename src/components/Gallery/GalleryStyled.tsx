@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 const GalleryStyled = styled.section`
-  width: 90%;
-  margin: 0 5%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 375px;
+
   max-height: 900px;
   color: ${(props) => props.theme.secondaryColor};
   height: 92.5%;
@@ -15,20 +14,23 @@ const GalleryStyled = styled.section`
     &__filter {
       position: relative;
       background: ${(props) => props.theme.linearGradient};
-      height: 5%;
+      height: 7.5%;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      width: 80%;
+      width: 100%;
       button {
         font-size: 1rem;
         height: 80%;
       }
     }
     &__list {
-      margin: 2% 0;
-      height: 88%;
+      background-color: ${(props) => props.theme.primaryColor};
+      border-top: 2px solid ${(props) => props.theme.thirdColor};
+      border-bottom: 2px solid ${(props) => props.theme.thirdColor};
+      box-shadow: inset 0px 8px 10px -6px #000, inset 0px -8px 10px -6px #000;
+      height: 85%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -36,6 +38,9 @@ const GalleryStyled = styled.section`
       width: 100%;
 
       ul {
+        max-width: 350px;
+        background-color: ${(props) => props.theme.primaryColor};
+        border-radius: 10px;
         margin: 0;
         padding: 0;
         align-content: center;
@@ -45,13 +50,13 @@ const GalleryStyled = styled.section`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100%;
+        height: 95%;
         width: 100%;
         display: grid;
-        grid-template-columns: 47% 47%;
-        column-gap: 5%;
+        grid-template-columns: 49% 49%;
+        column-gap: 2%;
         grid-template-rows: 47% 47%;
-        row-gap: 3%;
+        row-gap: 2%;
 
         li {
           width: 100%;
@@ -66,12 +71,12 @@ const GalleryStyled = styled.section`
     &__footer {
       position: absolute;
       bottom: 0;
-      height: 5%;
+      height: 7.5%;
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: ${(props) => props.theme.linearGradient};
+      background: ${(props) => props.theme.primaryColor};
 
       button {
         font-size: 1rem;
@@ -83,63 +88,17 @@ const GalleryStyled = styled.section`
   }
 
   @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
-    max-width: 1200px;
-    max-height: 900px;
     height: 100%;
     position: relative;
     .gallery {
       &__filter {
+        max-width: 100%;
         position: static;
-        height: 10%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-      }
-      &__list {
-        height: 90%;
+        height: 7.5%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        margin: 0;
-        ul {
-          list-style: none;
-
-          color: ${(props) => props.theme.secondaryColor};
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100%;
-          width: 100%;
-          margin: 0;
-          display: grid;
-          grid-template-columns: 22% 22% 22% 22%;
-          grid-template-rows: 100%;
-          grid-gap: 1%;
-          li {
-            width: 70%;
-            border-radius: 10px;
-            margin: 8% 0;
-            display: flex;
-            justify-content: center;
-            height: 80%;
-            width: 100%;
-            margin: 0;
-            align-self: center;
-          }
-        }
-      }
-      &__filter {
-        height: 10%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
         background: ${(props) => props.theme.linearGradient};
       }
       &__filter-title {
@@ -162,14 +121,53 @@ const GalleryStyled = styled.section`
           margin: 0;
         }
       }
+      &__list {
+        background-color: ${(props) => props.theme.primaryColor};
+        border-top: 2px solid ${(props) => props.theme.thirdColor};
+        border-bottom: 2px solid ${(props) => props.theme.thirdColor};
+        height: 85%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        ul {
+          list-style: none;
+          color: ${(props) => props.theme.secondaryColor};
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 90%;
+          max-width: 1200px;
+          margin: 0;
+          display: grid;
+          grid-template-columns: 23% 23% 23% 23%;
+          grid-template-rows: 100%;
+          grid-gap: 1%;
+          li {
+            width: 70%;
+            border-radius: 10px;
+            margin: 8% 0;
+            display: flex;
+            justify-content: center;
+            height: 90%;
+            width: 100%;
+            margin: 0;
+            align-self: center;
+          }
+        }
+      }
+
       &__footer {
         position: static;
 
-        height: 10%;
+        height: 7.5%;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 50%;
+        width: 100%;
         background: ${(props) => props.theme.linearGradient};
 
         button {
