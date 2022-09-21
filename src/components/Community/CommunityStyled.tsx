@@ -6,6 +6,8 @@ const CommunityStyled = styled.div`
   max-height: 100%;
   padding: 0 5%;
   overflow: scroll;
+  display: flex;
+  justify-content: center;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -17,57 +19,31 @@ const CommunityStyled = styled.div`
     flex-direction: column;
     li {
       background-color: ${(props) => props.theme.primaryColor};
-
+      max-width: 350px;
+      max-height: 350px;
       border-radius: 10px;
       margin-top: 5%;
     }
   }
-  @media (min-width: 600px) {
-    width: 100%;
-    padding: 0 5%;
-    overflow: scroll;
-    ::-webkit-scrollbar {
-      display: none;
-    }
+  @media (min-width: 800px) {
     ul {
-      list-style: none;
-      padding: 0;
-      color: ${(props) => props.theme.secondaryColor};
       display: grid;
-      grid-template-columns: 48% 48%;
-      grid-gap: 4%;
-
-      li {
-        width: 100%;
-        background-color: ${(props) => props.theme.primaryColor};
-
-        border-radius: 10px;
-        margin-top: 5%;
-      }
+      grid-template-columns: 49% 49%;
+      grid-gap: 2%;
     }
-    @media (min-width: 1000px) {
-      width: 100%;
-      padding: 0 5%;
-      overflow: scroll;
-      ::-webkit-scrollbar {
-        display: none;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        color: ${(props) => props.theme.secondaryColor};
-        display: grid;
-        grid-template-columns: 30% 30% 30%;
-        grid-gap: 5%;
-
-        li {
-          width: 100%;
-          background-color: ${(props) => props.theme.primaryColor};
-
-          border-radius: 10px;
-          margin-top: 5%;
-        }
-      }
+  }
+  @media (min-width: 1200px) {
+    ul {
+      display: grid;
+      grid-template-columns: 32% 32% 32%;
+      grid-gap: 2%;
+    }
+  }
+  @media (min-width: 1400px) {
+    ul {
+      display: grid;
+      grid-template-columns: 24% 24% 24% 24%;
+      grid-gap: 1.5%;
     }
   }
 `;

@@ -6,7 +6,7 @@ const ProfileStyled = styled.article`
   width: 100%;
   margin-top: auto;
   margin-bottom: auto;
-  max-width: 450px;
+  max-width: 375px;
   max-height: 900px;
   justify-self: center;
   display: flex;
@@ -168,13 +168,16 @@ const ProfileStyled = styled.article`
     flex-direction: row;
     .profile {
       &__info {
-        border: 5px solid ${(props) => props.theme.thirdColor};
+        border: 2px solid ${(props) => props.theme.thirdColor};
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         width: 40%;
         height: 90%;
         max-width: 300px;
+        @media (max-height: 750px) {
+          max-width: 250px;
+        }
         margin: 40px;
         margin-left: 5%;
       }
@@ -254,20 +257,18 @@ const ProfileStyled = styled.article`
         text-align: center;
       }
       &__gallery-display {
-        overflow: scroll;
-        ::-webkit-scrollbar {
-          display: none;
-        }
         height: 94%;
         ul {
-          height: 100%;
+          margin-top: auto;
+          margin-bottom: auto;
+          height: 75%;
           width: 100%;
           display: grid;
           grid-template-columns: 32.5% 32.5% 32.5%;
           column-gap: 1.25%;
           li {
             width: 100%;
-
+            height: 100%;
             align-self: center;
             justify-self: center;
           }
@@ -280,8 +281,9 @@ const ProfileStyled = styled.article`
     max-height: 1100px;
     .profile {
       &__info {
-        max-width:400px;
+        max-width: 400px;
       }
+    }
   }
 `;
 

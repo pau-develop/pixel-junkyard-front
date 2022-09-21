@@ -41,7 +41,9 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
           <i className="fa-lg">{trashIcon}</i>
         </div>
       )}
-      <span className="draw-card__title">{draw.name}</span>
+      <div className="draw-card__title">
+        <span>{draw.name}</span>
+      </div>
       <img
         className="draw-card__image"
         src={draw.image}
