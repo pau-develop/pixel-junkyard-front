@@ -16,6 +16,7 @@ const PageStyled = styled(motion.div)`
       display: flex;
       justify-content: center;
       align-items: center;
+      justify-self: flex-start;
       height: 7.5%;
       color: ${(props) => props.theme.secondaryColor};
       text-transform: uppercase;

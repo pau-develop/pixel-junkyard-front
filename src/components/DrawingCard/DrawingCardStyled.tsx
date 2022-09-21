@@ -30,6 +30,14 @@ const DrawingCardStyled = styled.section`
       justify-content: center;
     }
     &__icon {
+      font-size: 1rem;
+      @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+        font-size: 1.5rem;
+      }
+      @media (min-width: ${(props) => props.theme.bigBreakPoint}) {
+        font-size: 2rem;
+      }
+      border: 1px solid ${(props) => props.theme.secondaryColor};
       cursor: pointer;
       width: 20%;
       height: 10%;
@@ -37,8 +45,8 @@ const DrawingCardStyled = styled.section`
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      top: 8%;
-      right: 5%;
+      top: 12%;
+      right: 4%;
       position: absolute;
       background-color: ${(props) => props.theme.primaryColor};
     }

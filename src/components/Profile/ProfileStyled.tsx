@@ -4,26 +4,29 @@ const ProfileStyled = styled.article`
   box-sizing: content-box;
   height: 92.5%;
   width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
   max-width: 450px;
+  max-height: 900px;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.secondaryColor};
   .profile {
     &__info {
-      display: flex;
+      align-items: center;
       border-radius: 10px;
       background: linear-gradient(
         0deg,
         ${(props) => props.theme.thirdColor} 0%,
         ${(props) => props.theme.primaryColor} 100%
       );
+      display: flex;
       height: 20%;
-      margin: 0 5%;
-      padding: 2%;
-
-      align-items: center;
       justify-content: center;
+      margin: 0 5%;
       margin-top: 20px;
+      padding: 2%;
     }
     &__info-avatar {
       width: 35%;
@@ -69,6 +72,11 @@ const ProfileStyled = styled.article`
         width: 100%;
         height: 70%;
         border-radius: 10px;
+        background: linear-gradient(
+          0deg,
+          ${(props) => props.theme.thirdColor} -10%,
+          ${(props) => props.theme.primaryColor} 100%
+        );
       }
       button:first-child {
         margin-right: 3%;
@@ -95,7 +103,7 @@ const ProfileStyled = styled.article`
     }
 
     &__gallery-title {
-      width: 90%;
+      width: 100%;
       h3 {
         background: ${(props) => props.theme.linearGradient};
         height: 100%;
@@ -128,6 +136,7 @@ const ProfileStyled = styled.article`
       display: flex;
       flex-direction: row;
       justify-content: center;
+
       span {
         align-self: center;
       }
@@ -152,12 +161,14 @@ const ProfileStyled = styled.article`
     }
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
     background: ${(props) => props.theme.linearGradient};
     max-width: 1400px;
+    max-height: 900px;
     flex-direction: row;
     .profile {
       &__info {
+        border: 5px solid ${(props) => props.theme.thirdColor};
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -249,51 +260,28 @@ const ProfileStyled = styled.article`
         }
         height: 94%;
         ul {
-          max-width: 100%;
           height: 100%;
+          width: 100%;
           display: grid;
-          grid-template-columns: 48% 48%;
-          grid-template-rows: 50%;
-          grid-gap: 1%;
+          grid-template-columns: 32.5% 32.5% 32.5%;
+          column-gap: 1.25%;
           li {
-            width: 50%;
+            width: 100%;
 
             align-self: center;
             justify-self: center;
           }
         }
-        @media (min-width: 1000px) {
-          ul {
-            max-width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: 32% 32% 32%;
-            grid-template-rows: 50%;
-            grid-gap: 1%;
-            li {
-              width: 60%;
-              align-self: center;
-              justify-self: center;
-            }
-          }
-        }
-        @media (min-width: 1200px) {
-          ul {
-            max-width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: 23% 23% 23% 23%;
-            grid-template-rows: 50%;
-            grid-gap: 2%;
-            li {
-              width: 60%;
-              align-self: center;
-              justify-self: center;
-            }
-          }
-        }
       }
     }
+  }
+  @media (min-width: ${(props) => props.theme.bigBreakPoint}) {
+    max-width: 1900px;
+    max-height: 1100px;
+    .profile {
+      &__info {
+        max-width:400px;
+      }
   }
 `;
 

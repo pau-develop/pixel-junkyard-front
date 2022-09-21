@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const LogoutMenuStyled = styled.div`
+const LogoutMenuStyled = styled(motion.div)`
   &.phone-logout-menu {
     flex-wrap: nowrap;
     padding: 0 5%;

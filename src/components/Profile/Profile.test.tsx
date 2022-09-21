@@ -119,6 +119,14 @@ describe("Given a Profile component", () => {
       expect(firstDrawing).not.toBeNull();
     });
 
+    test("If window is resized to some width bigger than 1400, a different set of elements should be shown in array", async () => {
+      global.innerWidth = 1400;
+      global.dispatchEvent(new Event("resize"));
+      await render(<Profile />, { wrapper: Wrapper });
+      const drawElement = screen.getByText("test2");
+      expect(drawElement).toBeInTheDocument();
+    });
+
     test("If the user has drawn an avatar, it should be shown on the img tag instead of the default image", () => {
       const initialState = [
         {
