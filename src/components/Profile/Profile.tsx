@@ -14,6 +14,7 @@ const indexInitial = 0;
 
 const Profile = (): JSX.Element => {
   const [currentIndex, setCurrentIndex] = useState<number>(indexInitial);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const navigate = useNavigate();
   const isProfile = useLocation().pathname.includes("profile");
   const dispatch = useDispatch();
@@ -23,6 +24,16 @@ const Profile = (): JSX.Element => {
   useEffect(() => {
     getUserById(id as string);
   }, [getUserById, id]);
+
+  const changeWidth = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", changeWidth);
+  }, []);
+
+  console.log(windowWidth);
 
   const handleEditAvatar = () => {
     navigate("/avatar");
@@ -107,13 +118,25 @@ const Profile = (): JSX.Element => {
                     <Button text="<<" action={handleDecrement} />
                   </div>
                   <ul>
-                    {user.drawings.map((drawing, index) =>
-                      index === currentIndex ? (
-                        <li key={index}>
-                          <DrawingCard draw={drawing} />
-                        </li>
-                      ) : null
-                    )}
+                    {windowWidth < 1400 &&
+                      user.drawings.map(
+                        (drawing, index) =>
+                          index === currentIndex && (
+                            <li key={index}>
+                              <DrawingCard draw={drawing} />
+                            </li>
+                          )
+                      )}
+                    {windowWidth >= 1400 &&
+                      user.drawings.map(
+                        (drawing, index) =>
+                          index >= currentIndex &&
+                          index <= currentIndex + 2 && (
+                            <li key={index}>
+                              <DrawingCard draw={drawing} />
+                            </li>
+                          )
+                      )}
                   </ul>
                   <div
                     className={

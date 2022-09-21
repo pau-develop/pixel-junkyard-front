@@ -161,12 +161,14 @@ const ProfileStyled = styled.article`
     }
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
     background: ${(props) => props.theme.linearGradient};
     max-width: 1400px;
+    max-height: 900px;
     flex-direction: row;
     .profile {
       &__info {
+        border: 5px solid ${(props) => props.theme.thirdColor};
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -258,51 +260,28 @@ const ProfileStyled = styled.article`
         }
         height: 94%;
         ul {
-          max-width: 100%;
           height: 100%;
+          width: 100%;
           display: grid;
-          grid-template-columns: 48% 48%;
-          grid-template-rows: 50%;
-          grid-gap: 1%;
+          grid-template-columns: 32.5% 32.5% 32.5%;
+          column-gap: 1.25%;
           li {
-            width: 50%;
+            width: 100%;
 
             align-self: center;
             justify-self: center;
           }
         }
-        @media (min-width: 1000px) {
-          ul {
-            max-width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: 32% 32% 32%;
-            grid-template-rows: 50%;
-            grid-gap: 1%;
-            li {
-              width: 60%;
-              align-self: center;
-              justify-self: center;
-            }
-          }
-        }
-        @media (min-width: 1200px) {
-          ul {
-            max-width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: 23% 23% 23% 23%;
-            grid-template-rows: 50%;
-            grid-gap: 2%;
-            li {
-              width: 60%;
-              align-self: center;
-              justify-self: center;
-            }
-          }
-        }
       }
     }
+  }
+  @media (min-width: ${(props) => props.theme.bigBreakPoint}) {
+    max-width: 1900px;
+    max-height: 1100px;
+    .profile {
+      &__info {
+        max-width:400px;
+      }
   }
 `;
 
