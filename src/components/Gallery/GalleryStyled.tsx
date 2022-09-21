@@ -6,6 +6,8 @@ const GalleryStyled = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 375px;
+  max-height: 900px;
   color: ${(props) => props.theme.secondaryColor};
   height: 92.5%;
   position: relative;
@@ -80,7 +82,9 @@ const GalleryStyled = styled.section`
     }
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+    max-width: 1200px;
+    max-height: 900px;
     height: 100%;
     position: relative;
     .gallery {
@@ -100,17 +104,16 @@ const GalleryStyled = styled.section`
         justify-content: center;
         align-items: center;
         width: 100%;
-
+        margin: 0;
         ul {
           list-style: none;
-          padding: 0;
-          margin: 15% 0;
+
           color: ${(props) => props.theme.secondaryColor};
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          height: 90%;
+          height: 100%;
           width: 100%;
           margin: 0;
           display: grid;
