@@ -7,12 +7,11 @@ const GalleryStyled = styled.section`
   flex-direction: column;
   align-items: center;
   color: ${(props) => props.theme.secondaryColor};
-  height: 90%;
+  height: 92.5%;
   position: relative;
   .gallery {
     &__filter {
-      position: absolute;
-      z-index: 1;
+      position: relative;
       background: ${(props) => props.theme.linearGradient};
       height: 5%;
       display: flex;
@@ -26,7 +25,8 @@ const GalleryStyled = styled.section`
       }
     }
     &__list {
-      height: 90%;
+      margin: 2% 0;
+      height: 88%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -34,6 +34,7 @@ const GalleryStyled = styled.section`
       width: 100%;
 
       ul {
+        margin: 0;
         padding: 0;
         align-content: center;
         list-style: none;
@@ -42,21 +43,19 @@ const GalleryStyled = styled.section`
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 90%;
-        width: 90%;
-
+        height: 100%;
+        width: 100%;
         display: grid;
-        grid-template-columns: 45% 45%;
-        grid-template-rows: 50% 50%;
-        grid-gap: 1%;
-        li {
-          width: 80%;
-          border-radius: 10px;
+        grid-template-columns: 47% 47%;
+        column-gap: 5%;
+        grid-template-rows: 47% 47%;
+        row-gap: 3%;
 
+        li {
+          width: 100%;
+          height: 100%;
           display: flex;
           justify-content: center;
-          height: 75%;
-          width: 100%;
           margin: 0;
           align-self: center;
         }
