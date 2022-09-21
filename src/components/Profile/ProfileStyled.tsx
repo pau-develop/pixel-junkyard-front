@@ -175,6 +175,9 @@ const ProfileStyled = styled.article`
         width: 40%;
         height: 90%;
         max-width: 300px;
+        @media (max-height: 750px) {
+          max-width: 250px;
+        }
         margin: 40px;
         margin-left: 5%;
       }
