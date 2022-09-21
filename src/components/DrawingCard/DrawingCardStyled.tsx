@@ -31,7 +31,10 @@ const DrawingCardStyled = styled.section`
     }
     &__icon {
       font-size: 1rem;
-      @media (min-width: 600px) {
+      @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+        font-size: 1.5rem;
+      }
+      @media (min-width: ${(props) => props.theme.bigBreakPoint}) {
         font-size: 2rem;
       }
       border: 1px solid ${(props) => props.theme.secondaryColor};
