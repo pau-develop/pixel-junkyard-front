@@ -6,14 +6,27 @@ const ProfileStyled = styled.article`
   width: 100%;
   margin-top: auto;
   margin-bottom: auto;
-  max-width: 375px;
+
   max-height: 900px;
-  justify-self: center;
+  justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.secondaryColor};
   .profile {
-    &__info {
+    &__gallery-wrap {
+      background-color: ${(props) => props.theme.primaryColor};
+      box-shadow: inset 0px 8px 10px -6px #000, inset 0px -8px 10px -6px #000;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+    }
+    &__info-wrap {
+      max-width: 375px;
+      width: 90%;
+      margin: auto;
+      border: 2px solid ${(props) => props.theme.thirdColor};
       align-items: center;
       border-radius: 10px;
       background: linear-gradient(
@@ -24,9 +37,14 @@ const ProfileStyled = styled.article`
       display: flex;
       height: 20%;
       justify-content: center;
-      margin: 0 5%;
-      margin-top: 20px;
-      padding: 2%;
+      align-items: center;
+    }
+    &__info {
+      height: 94%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
     &__info-avatar {
       width: 35%;
@@ -58,8 +76,8 @@ const ProfileStyled = styled.article`
     }
 
     &__settings-mobile {
-      margin-bottom: 10px;
-      background-color: ${(props) => props.theme.thirdColor};
+      margin-bottom: 20px;
+
       width: 100%;
       height: 10%;
       display: flex;
@@ -67,10 +85,11 @@ const ProfileStyled = styled.article`
       align-items: center;
       justify-content: space-around;
       button {
+        border: 2px solid ${(props) => props.theme.thirdColor};
         font-size: 1rem;
         margin: 6% 0;
         width: 100%;
-        height: 70%;
+        height: 100%;
         border-radius: 10px;
         background: linear-gradient(
           0deg,
@@ -90,23 +109,26 @@ const ProfileStyled = styled.article`
     }
 
     &__gallery {
-      margin: 0 5%;
-      margin-top: 10px;
-      margin-bottom: 20px;
+      max-width: 375px;
+      margin: 0 auto;
 
-      background-color: ${(props) => props.theme.thirdColor};
       width: 90%;
-      height: 80%;
+      height: 75%;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     &__gallery-title {
+      border-top: 2px solid ${(props) => props.theme.thirdColor};
+      border-bottom: 2px solid ${(props) => props.theme.thirdColor};
       width: 100%;
+      border-radius: 10px 10px 0 0;
       h3 {
+        border-radius: 10px 10px 0 0;
         background: ${(props) => props.theme.linearGradient};
         height: 100%;
+        width: 100%;
         font-size: 1.5rem;
         text-align: center;
         margin: 0;
@@ -131,6 +153,13 @@ const ProfileStyled = styled.article`
       }
     }
     &__gallery-display {
+      background: linear-gradient(
+        0deg,
+        ${(props) => props.theme.thirdColor} 0%,
+        ${(props) => props.theme.primaryColor} 100%
+      );
+      border-left: 2px solid ${(props) => props.theme.thirdColor};
+      border-right: 2px solid ${(props) => props.theme.thirdColor};
       height: 100%;
       width: 100%;
       display: flex;
@@ -141,12 +170,15 @@ const ProfileStyled = styled.article`
         align-self: center;
       }
       ul {
+        border-radius: 10px;
         width: 80%;
-        height: 100%;
+        height: 90%;
+        margin-top: auto;
+        margin-bottom: auto;
         max-height: 100%;
         list-style: none;
         padding: 0;
-        margin: 0;
+
         color: ${(props) => props.theme.secondaryColor};
         display: flex;
         flex-direction: column;
@@ -159,33 +191,82 @@ const ProfileStyled = styled.article`
         }
       }
     }
+    &__footer {
+      bottom: 0;
+      height: 7.5%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: ${(props) => props.theme.linearGradient};
+    }
   }
 
   @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
-    background: ${(props) => props.theme.linearGradient};
-    max-width: 1400px;
+    max-width: 100%;
     max-height: 900px;
-    flex-direction: row;
+    flex-direction: column;
     .profile {
-      &__info {
+      &__gallery-wrap {
+        max-width: 100%;
+        box-shadow: inset 0px 8px 10px -6px #000, inset 0px -8px 10px -6px #000;
+        background: ${(props) => props.theme.primaryColor};
+        display: flex;
+        width: 100%;
+        height: 92.5%;
+        flex-direction: row;
+      }
+
+      &__info-wrap {
         border: 2px solid ${(props) => props.theme.thirdColor};
+        background: linear-gradient(
+          0deg,
+          ${(props) => props.theme.thirdColor} -10%,
+          ${(props) => props.theme.primaryColor} 100%
+        );
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        padding: 0;
         width: 40%;
         height: 90%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: 2%;
         max-width: 300px;
+
         @media (max-height: 750px) {
           max-width: 250px;
         }
-        margin: 40px;
+
         margin-left: 5%;
+      }
+      &__info {
+        width: 100%;
+        height: 94%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      &__info-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+        height: 6%;
+        background: ${(props) => props.theme.linearGradient};
+        width: 101%;
+        text-align: center;
+        margin: 0;
+        border-bottom: 2px solid ${(props) => props.theme.thirdColor};
       }
       &__info-avatar {
         height: 30%;
         width: 90%;
         display: flex;
         justify-content: space-around;
+        width: 90%;
+        padding: 20px;
         img {
           width: 100%;
           height: 100%;
@@ -196,26 +277,28 @@ const ProfileStyled = styled.article`
       &__info-props {
         display: flex;
         flex-direction: column;
-
         height: 40%;
         width: 100%;
-        padding: 0;
+        width: 90%;
+        padding: 0 20px;
         font-size: 1.3rem;
         @media (max-width: 450px) {
           font-size: 1rem;
         }
         h2 {
-          margin-top: 10%;
           text-align: center;
+          background-color: ${(props) => props.theme.thirdColor};
+          border-radius: 10px;
         }
         ul {
+          background-color: ${(props) => props.theme.thirdColor};
+          border-radius: 10px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           list-style: none;
           padding: 0;
-          margin: 0;
-          margin-top: 5%;
+          margin: 20px 0;
           text-align: center;
           li {
             margin-top: 2%;
@@ -226,18 +309,21 @@ const ProfileStyled = styled.article`
         display: none;
       }
       &__settings-desktop {
-        width: 100%;
-        height: 20%;
+        width: 90%;
+        height: 30%;
+        padding: 0 20px;
         display: flex;
         flex-direction: column;
         button {
-          width: 90%;
-          margin: 5%;
+          width: 100%;
+          margin: 10px 0;
         }
       }
       &__gallery {
-        margin-top: 40px;
-        margin-bottom: 40px;
+        max-width: 100%;
+        border-radius: 10px;
+        margin-top: auto;
+        margin-bottom: auto;
         margin-right: 5%;
         margin-left: 0;
         background-color: ${(props) => props.theme.thirdColor};
@@ -250,18 +336,34 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
         height: 6%;
         border-top: 2px solid ${(props) => props.theme.thirdColor};
-        background: ${(props) => props.theme.linearGradient};
-        width: 100%;
+
+        width: 90%;
         text-align: center;
+        h3 {
+          width: 100%;
+          background: ${(props) => props.theme.linearGradient};
+        }
       }
       &__gallery-display {
+        border-radius: 0 0 10px 10px;
+        background: linear-gradient(
+          0deg,
+          ${(props) => props.theme.thirdColor} 0%,
+          ${(props) => props.theme.primaryColor} 100%
+        );
+        border: 2px solid ${(props) => props.theme.thirdColor};
         height: 94%;
         ul {
+          background-color: transparent;
           margin-top: auto;
           margin-bottom: auto;
-          height: 75%;
+          height: 90%;
           width: 100%;
           display: grid;
           grid-template-columns: 32.5% 32.5% 32.5%;
@@ -274,13 +376,22 @@ const ProfileStyled = styled.article`
           }
         }
       }
+      &__footer {
+        bottom: 0;
+        height: 7.5%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: ${(props) => props.theme.linearGradient};
+      }
     }
   }
   @media (min-width: ${(props) => props.theme.bigBreakPoint}) {
     max-width: 1900px;
     max-height: 1100px;
     .profile {
-      &__info {
+      &__info-wrap {
         max-width: 400px;
       }
     }

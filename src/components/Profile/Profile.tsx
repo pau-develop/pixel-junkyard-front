@@ -68,89 +68,102 @@ const Profile = (): JSX.Element => {
     <ProfileStyled className="profile">
       {user !== undefined && (
         <>
-          <section className="profile__info">
-            <div className="profile__info-avatar">
-              <img
-                src={
-                  user.avatar === "???" ? "/img/demo-avatar.png" : user.avatar
-                }
-                alt={user.userName}
-              />
-            </div>
-            <div className="profile__info-props">
-              <h2>{user.userName}</h2>
-              <ul>
-                <li>{user.email}</li>
-                <li>XP points</li>
-                <li>3 likes</li>
-              </ul>
-            </div>
-            {isProfile && (
-              <div className="profile__settings-desktop">
-                <Button text="Edit avatar" action={handleEditAvatar} />
-                <Button text="Delete account" action={handleDeleteAccount} />
-              </div>
-            )}
-          </section>
-
-          <section className="profile__gallery">
-            {isProfile && (
-              <section className="profile__settings-mobile">
-                <Button text="Edit avatar" action={handleEditAvatar} />
-                <Button text="Delete account" action={handleDeleteAccount} />
-              </section>
-            )}
-            <div className="profile__gallery-title">
-              <h3>{`${user.userName}'s Gallery`}</h3>
-            </div>
-            <div className="profile__gallery-display">
-              {user.drawings.length > 0 ? (
-                <>
-                  <div
-                    className={
-                      currentIndex !== 0
-                        ? "profile__nav-button"
-                        : "profile__nav-button--hidden"
-                    }
-                  >
-                    <Button text="<<" action={handleDecrement} />
-                  </div>
-                  <ul>
-                    {windowWidth < 1400 &&
-                      user.drawings.map(
-                        (drawing, index) =>
-                          index === currentIndex && (
-                            <li key={index}>
-                              <DrawingCard draw={drawing} />
-                            </li>
-                          )
-                      )}
-                    {windowWidth >= 1400 &&
-                      user.drawings.map(
-                        (drawing, index) =>
-                          index >= currentIndex &&
-                          index <= currentIndex + 2 && (
-                            <li key={index}>
-                              <DrawingCard draw={drawing} />
-                            </li>
-                          )
-                      )}
-                  </ul>
-                  <div
-                    className={
-                      currentIndex < user.drawings.length - 1
-                        ? "profile__nav-button"
-                        : "profile__nav-button--hidden"
-                    }
-                  >
-                    <Button text=">>" action={handleIncrement} />
-                  </div>
-                </>
-              ) : (
-                <span>{user.userName} hasn't uploaded any drawings yet</span>
+          <div className="profile__gallery-wrap">
+            <section className="profile__info-wrap">
+              {windowWidth >= 1400 && (
+                <h3 className="profile__info-title">Info</h3>
               )}
-            </div>
-          </section>
+              <div className="profile__info">
+                <div className="profile__info-avatar">
+                  <img
+                    src={
+                      user.avatar === "???"
+                        ? "/img/demo-avatar.png"
+                        : user.avatar
+                    }
+                    alt={user.userName}
+                  />
+                </div>
+                <div className="profile__info-props">
+                  <h2>{user.userName}</h2>
+                  <ul>
+                    <li>{user.email}</li>
+                    <li>XP points</li>
+                    <li>3 likes</li>
+                  </ul>
+                </div>
+                {isProfile && (
+                  <div className="profile__settings-desktop">
+                    <Button text="Edit avatar" action={handleEditAvatar} />
+                    <Button
+                      text="Delete account"
+                      action={handleDeleteAccount}
+                    />
+                  </div>
+                )}
+              </div>
+            </section>
+
+            <section className="profile__gallery">
+              {isProfile && (
+                <section className="profile__settings-mobile">
+                  <Button text="Edit avatar" action={handleEditAvatar} />
+                  <Button text="Delete account" action={handleDeleteAccount} />
+                </section>
+              )}
+              <div className="profile__gallery-title">
+                <h3>{`${user.userName}'s Gallery`}</h3>
+              </div>
+              <div className="profile__gallery-display">
+                {user.drawings.length > 0 ? (
+                  <>
+                    <div
+                      className={
+                        currentIndex !== 0
+                          ? "profile__nav-button"
+                          : "profile__nav-button--hidden"
+                      }
+                    >
+                      <Button text="<<" action={handleDecrement} />
+                    </div>
+                    <ul>
+                      {windowWidth < 1400 &&
+                        user.drawings.map(
+                          (drawing, index) =>
+                            index === currentIndex && (
+                              <li key={index}>
+                                <DrawingCard draw={drawing} />
+                              </li>
+                            )
+                        )}
+                      {windowWidth >= 1400 &&
+                        user.drawings.map(
+                          (drawing, index) =>
+                            index >= currentIndex &&
+                            index <= currentIndex + 2 && (
+                              <li key={index}>
+                                <DrawingCard draw={drawing} />
+                              </li>
+                            )
+                        )}
+                    </ul>
+                    <div
+                      className={
+                        currentIndex < user.drawings.length - 1
+                          ? "profile__nav-button"
+                          : "profile__nav-button--hidden"
+                      }
+                    >
+                      <Button text=">>" action={handleIncrement} />
+                    </div>
+                  </>
+                ) : (
+                  <span>{user.userName} hasn't uploaded any drawings yet</span>
+                )}
+              </div>
+            </section>
+          </div>
+          <div className="profile__footer"></div>
         </>
       )}
     </ProfileStyled>
