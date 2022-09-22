@@ -7,9 +7,12 @@ const DrawingCardStyled = styled.section`
   position: relative;
   height: 100%;
   width: 100%;
+  background-color: ${(props) => props.theme.thirdColor};
+  border-radius: 10px;
   .draw-card {
     &__title {
-      background: ${(props) => props.theme.linearGradient};
+      border-radius: 10px 10px 0 0;
+      background: ${(props) => props.theme.thirdColor};
       margin-top: auto;
       margin-bottom: auto;
       width: 100%;
@@ -24,12 +27,14 @@ const DrawingCardStyled = styled.section`
       }
     }
     &__image {
+      background: ${(props) => props.theme.thirdColor};
       cursor: pointer;
       height: 85%;
-      width: 100%;
+      width: 95%;
     }
     &__footer {
-      background: ${(props) => props.theme.linearGradient};
+      border-radius: 0 0 10px 10px;
+      background: ${(props) => props.theme.thirdColor};
       width: 100%;
       height: 7.5%;
 

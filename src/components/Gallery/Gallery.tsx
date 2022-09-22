@@ -7,8 +7,13 @@ import Button from "../Button/Button";
 import DrawingCard from "../DrawingCard/DrawingCard";
 import Filter from "../Filter/Filter";
 import GalleryStyled from "./GalleryStyled";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Gallery = (): JSX.Element => {
+  const [animationDirection, setAnimationDirection] = useState({
+    enter: "-10000px",
+    exit: "+1000px",
+  });
   const [filterMenu, setFilterMenu] = useState<boolean>(false);
   const [filter, setFilter] = useState<string>("");
   const [offset, setOffset] = useState<number>(0);
@@ -27,11 +32,19 @@ const Gallery = (): JSX.Element => {
   const handleIncrement = () => {
     const tempOffset = offset + 4;
     if (tempOffset < total) {
+      setAnimationDirection({
+        enter: "+2000px",
+        exit: "-2000px",
+      });
       setOffset(tempOffset);
     }
   };
   const handleDecrement = () => {
     if (offset !== 0) {
+      setAnimationDirection({
+        enter: "-2000px",
+        exit: "+2000px",
+      });
       const tempOffset = offset - 4;
       setOffset(tempOffset);
     }
@@ -49,6 +62,7 @@ const Gallery = (): JSX.Element => {
     setOffset(0);
     setFilter(filter);
   };
+
   return (
     <GalleryStyled className="gallery">
       {drawings[0] !== undefined && typeof drawings[0].artist === "string" ? (
@@ -67,9 +81,17 @@ const Gallery = (): JSX.Element => {
           <div className="gallery__list">
             <ul>
               {drawings.map((drawing) => (
-                <li key={drawing.id}>
-                  <DrawingCard draw={drawing} />
-                </li>
+                <AnimatePresence exitBeforeEnter>
+                  <motion.li
+                    key={drawing.id}
+                    initial={{ x: animationDirection.enter }}
+                    animate={{ x: 0 }}
+                    transition={{ bounce: 0, duration: 0.2 }}
+                    exit={{ x: animationDirection.exit }}
+                  >
+                    <DrawingCard draw={drawing} />
+                  </motion.li>
+                </AnimatePresence>
               ))}
             </ul>
           </div>

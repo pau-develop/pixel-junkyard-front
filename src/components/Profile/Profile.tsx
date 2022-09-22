@@ -33,8 +33,6 @@ const Profile = (): JSX.Element => {
     window.addEventListener("resize", changeWidth);
   }, []);
 
-  console.log(windowWidth);
-
   const handleEditAvatar = () => {
     navigate("/avatar");
   };
