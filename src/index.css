@@ -8,9 +8,14 @@
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 body {
+  overflow: hidden;
   margin: 0;
   background-color: #17232e;
 }

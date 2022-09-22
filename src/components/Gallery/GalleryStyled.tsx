@@ -122,6 +122,7 @@ const GalleryStyled = styled.section`
         }
       }
       &__list {
+        overflow: hidden;
         background-color: ${(props) => props.theme.primaryColor};
         border-top: 2px solid ${(props) => props.theme.thirdColor};
         border-bottom: 2px solid ${(props) => props.theme.thirdColor};
