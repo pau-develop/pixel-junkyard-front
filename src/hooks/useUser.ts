@@ -13,6 +13,14 @@ const useUser = () => {
   const url = process.env.REACT_APP_API_URL;
 
   const registerUser = async (userData: IUserRegisterData) => {
+    let ui = {
+      isOpen: true,
+      message: "Please wait...",
+      type: "delay",
+      redirect: "",
+      id: "",
+    };
+    dispatch(openModalActionNew(ui));
     const data = await fetch(`${url}user/register`, {
       method: "POST",
       body: JSON.stringify(userData),
@@ -22,7 +30,7 @@ const useUser = () => {
     });
     const response = await data.json();
     if (response.error) {
-      const ui = {
+      ui = {
         isOpen: true,
         message: response.error,
         type: "confirm",
@@ -32,7 +40,7 @@ const useUser = () => {
       dispatch(openModalActionNew(ui));
       return;
     }
-    const ui = {
+    ui = {
       isOpen: true,
       message: "User registered!",
       type: "autofade",
@@ -43,6 +51,14 @@ const useUser = () => {
   };
 
   const loginUser = async (userData: IUserLoginData) => {
+    let ui = {
+      isOpen: true,
+      message: "Please wait...",
+      type: "delay",
+      redirect: "",
+      id: "",
+    };
+    dispatch(openModalActionNew(ui));
     const data = await fetch(`${url}user/login`, {
       method: "POST",
       body: JSON.stringify(userData),
@@ -52,7 +68,7 @@ const useUser = () => {
     });
 
     if (data.status !== 200) {
-      const ui = {
+      ui = {
         isOpen: true,
         message: "Incorrect user name or password",
         type: "confirm",
@@ -67,7 +83,7 @@ const useUser = () => {
     } = await data.json();
     const user = fetchToken(token);
     dispatch(loginUserActionNew(user));
-    const ui = {
+    ui = {
       isOpen: true,
       message: "You are logged in!",
       type: "autofade",
@@ -97,6 +113,14 @@ const useUser = () => {
   };
 
   const deleteAccount = async (id: string) => {
+    let ui = {
+      isOpen: true,
+      message: "Please wait...",
+      type: "delay",
+      redirect: "",
+      id: "",
+    };
+    dispatch(openModalActionNew(ui));
     const data = await fetch(`${url}users/delete/${id}`, {
       method: "DELETE",
       headers: {
@@ -106,7 +130,7 @@ const useUser = () => {
     });
 
     if (data.status !== 200) {
-      const ui = {
+      ui = {
         isOpen: true,
         message: "Something went wrong, please try again",
         type: "confirm",
@@ -116,10 +140,10 @@ const useUser = () => {
       dispatch(openModalActionNew(ui));
       return;
     }
-    const ui = {
+    ui = {
       isOpen: true,
       message: "Your account has been deleted",
-      type: "",
+      type: "autofade",
       redirect: "/home",
       id: "",
     };
@@ -134,10 +158,17 @@ const useUser = () => {
   };
 
   const updateUser = async (newAvatar: string) => {
+    let ui = {
+      isOpen: true,
+      message: "Please wait...",
+      type: "delay",
+      redirect: "",
+      id: "",
+    };
     const objectToSend = {
       newAvatar: newAvatar,
     };
-
+    dispatch(openModalActionNew(ui));
     const userData = await fetch(`${url}user/modify`, {
       method: "PUT",
       headers: {
@@ -147,7 +178,7 @@ const useUser = () => {
       body: JSON.stringify(objectToSend),
     });
     if (userData.status !== 200) {
-      const ui = {
+      ui = {
         isOpen: true,
         message: "Something went wrong!",
         type: "confirm",
@@ -159,7 +190,7 @@ const useUser = () => {
     }
     const token = localStorage.getItem("token") as string;
     const userInfo = fetchToken(token);
-    const ui = {
+    ui = {
       isOpen: true,
       message: "Avatar updated!",
       type: "autofade",

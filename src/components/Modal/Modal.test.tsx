@@ -161,5 +161,18 @@ describe("Given a Modal component", () => {
 
       expect(mockDeleteAccount).toHaveBeenCalled();
     });
+
+    test("if the Modal has type delay, it should wait for 0.75 seconds before rendering the modal", () => {
+      jest.useFakeTimers();
+      jest.spyOn(global, "setInterval");
+      render(
+        <BrowserRouter>
+          <Modal message="Please wait..." type="delay" redirect="" />
+        </BrowserRouter>,
+        { wrapper: Wrapper }
+      );
+      jest.advanceTimersByTime(750);
+      expect(setInterval).toHaveBeenCalled();
+    });
   });
 });
