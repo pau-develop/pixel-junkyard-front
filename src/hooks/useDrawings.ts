@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { IDrawing } from "../interfaces/interfaces";
 import {
+  closeModalActionNew,
   deleteDrawingActionNew,
   getAllDrawingsActionNew,
   getDrawingByIdActionNew,
@@ -11,9 +12,16 @@ import {
 const useDrawings = () => {
   const dispatch = useDispatch();
   const url = process.env.REACT_APP_API_URL;
-
   const getAllDrawings = useCallback(
     async (offset: number, limit: number, filter: string) => {
+      let ui = {
+        isOpen: true,
+        message: "Please wait...",
+        type: "delay",
+        redirect: "",
+        id: "",
+      };
+      dispatch(openModalActionNew(ui));
       const drawingsData = await fetch(
         `${url}drawings/all?offset=${offset}&limit=${limit}&${filter}`,
         {
@@ -26,6 +34,14 @@ const useDrawings = () => {
       );
       const response = await drawingsData.json();
       const { drawings } = response;
+      ui = {
+        isOpen: false,
+        message: "Please wait...",
+        type: "",
+        redirect: "",
+        id: "",
+      };
+      dispatch(closeModalActionNew(ui));
       dispatch(getAllDrawingsActionNew(drawings));
       const { totalDocs } = response;
       return totalDocs;
@@ -35,6 +51,14 @@ const useDrawings = () => {
 
   const getDrawingById = useCallback(
     async (id: string) => {
+      let ui = {
+        isOpen: true,
+        message: "Please wait...",
+        type: "delay",
+        redirect: "",
+        id: "",
+      };
+      dispatch(openModalActionNew(ui));
       const usersData = await fetch(`${url}drawings/${id}`, {
         method: "GET",
         headers: {
@@ -45,7 +69,14 @@ const useDrawings = () => {
       const response = await usersData.json();
 
       const { drawing } = response;
-
+      ui = {
+        isOpen: false,
+        message: "Please wait...",
+        type: "",
+        redirect: "",
+        id: "",
+      };
+      dispatch(closeModalActionNew(ui));
       dispatch(getDrawingByIdActionNew([drawing]));
       return drawing.artist;
     },
@@ -53,6 +84,14 @@ const useDrawings = () => {
   );
 
   const createDrawing = async (userData: FormData) => {
+    let ui = {
+      isOpen: true,
+      message: "Please wait...",
+      type: "delay",
+      redirect: "",
+      id: "",
+    };
+    dispatch(openModalActionNew(ui));
     const data = await fetch(`${url}drawings/create`, {
       method: "POST",
       body: userData,
@@ -63,7 +102,7 @@ const useDrawings = () => {
     });
     const response = await data.json();
     if (response.error) {
-      const ui = {
+      ui = {
         isOpen: true,
         message: response.error,
         type: "confirm",
@@ -73,7 +112,7 @@ const useDrawings = () => {
       dispatch(openModalActionNew(ui));
       return;
     }
-    const ui = {
+    ui = {
       isOpen: true,
       message: "Drawing Uploaded!",
       type: "autofade",
@@ -84,6 +123,14 @@ const useDrawings = () => {
   };
 
   const deleteDrawing = async (drawing: IDrawing) => {
+    let ui = {
+      isOpen: true,
+      message: "Please wait...",
+      type: "delay",
+      redirect: "",
+      id: "",
+    };
+    dispatch(openModalActionNew(ui));
     const data = await fetch(`${url}drawings/delete/${drawing.id}`, {
       method: "DELETE",
       headers: {
@@ -93,7 +140,7 @@ const useDrawings = () => {
     });
     const response = await data.json();
     if (response.error) {
-      const ui = {
+      ui = {
         isOpen: true,
         message: "Something went wrong",
         type: "confirm",
@@ -103,7 +150,7 @@ const useDrawings = () => {
       dispatch(openModalActionNew(ui));
       return;
     }
-    const ui = {
+    ui = {
       isOpen: true,
       message: "Drawing Deleted!",
       type: "autofade",

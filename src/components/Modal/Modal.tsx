@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useUser from "../../hooks/useUser";
@@ -13,8 +14,22 @@ interface ModalProps {
 }
 
 const Modal = ({ message, type, redirect, id }: ModalProps): JSX.Element => {
+  const [visible, setVisible] = useState(type);
   const navigate = useNavigate();
   const { deleteAccount } = useUser();
+  if (type === "delay") {
+    let timer = 0.75;
+    const counter = () => {
+      setInterval(() => {
+        timer -= 0.25;
+        if (timer <= 0) {
+          setVisible("");
+        }
+      }, 250);
+    };
+
+    counter();
+  }
 
   if (type === "autofade") {
     let timer = 2;
@@ -52,18 +67,22 @@ const Modal = ({ message, type, redirect, id }: ModalProps): JSX.Element => {
   };
 
   return (
-    <ModalStyled className="modal" data-testid="modal-element">
-      <div className="modal__box">
-        <p>{message}</p>
-        {type === "confirm" && <Button text="OK" action={handleClick} />}
-        {type === "delete" && (
-          <>
-            <Button text="Cancel" action={handleClick} />
-            <Button text="Accept" action={handleDeleteAccount} />
-          </>
-        )}
-      </div>
-    </ModalStyled>
+    <>
+      {visible !== "delay" && (
+        <ModalStyled className="modal" data-testid="modal-element">
+          <div className="modal__box">
+            <p>{message}</p>
+            {type === "confirm" && <Button text="OK" action={handleClick} />}
+            {type === "delete" && (
+              <>
+                <Button text="Cancel" action={handleClick} />
+                <Button text="Accept" action={handleDeleteAccount} />
+              </>
+            )}
+          </div>
+        </ModalStyled>
+      )}
+    </>
   );
 };
 
