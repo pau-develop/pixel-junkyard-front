@@ -212,6 +212,7 @@ const ProfileStyled = styled.article`
         box-shadow: inset 0px 8px 10px -6px #000, inset 0px -8px 10px -6px #000;
         background: ${(props) => props.theme.primaryColor};
         display: flex;
+        justify-content: center;
         width: 100%;
         height: 92.5%;
         flex-direction: row;
@@ -233,10 +234,10 @@ const ProfileStyled = styled.article`
         margin-top: auto;
         margin-bottom: auto;
         margin-right: 2%;
-        max-width: 300px;
+        max-width: 250px;
 
         @media (max-height: 750px) {
-          max-width: 250px;
+          max-width: 200px;
         }
 
         margin-left: 5%;
@@ -320,7 +321,7 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery {
-        max-width: 100%;
+        max-width: 1000px;
         border-radius: 10px;
         margin-top: auto;
         margin-bottom: auto;
