@@ -16,7 +16,7 @@ const HeaderStyled = styled.header`
       padding: 0;
       color: ${(props) => props.theme.secondaryColor};
       text-transform: uppercase;
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
     &__icon-wrap {
       display: flex;

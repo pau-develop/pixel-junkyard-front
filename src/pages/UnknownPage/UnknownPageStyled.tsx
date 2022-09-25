@@ -16,7 +16,7 @@ const UnknownPageStyled = styled.section`
       border: 2px solid ${(props) => props.theme.secondaryColor};
       border-radius: 25px;
       color: ${(props) => props.theme.secondaryColor};
-      font-size: 1.5rem;
+      font-size: 1rem;
       text-align: center;
       p {
         text-align: center;

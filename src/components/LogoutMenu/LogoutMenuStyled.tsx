@@ -19,7 +19,7 @@ const LogoutMenuStyled = styled(motion.div)`
     justify-content: space-between;
     color: ${(props) => props.theme.secondaryColor};
     span {
-      font-size: 1.3rem;
+      font-size: 0.6rem;
     }
     button {
       background-color: ${(props) => props.theme.thirdColor};

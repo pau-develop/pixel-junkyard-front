@@ -4,7 +4,7 @@ const UserCardStyled = styled.article`
   width: 100%;
   cursor: pointer;
   display: flex;
-
+  font-size: 0.5rem;
   border-radius: 10px;
   background: linear-gradient(
     0deg,
@@ -25,11 +25,13 @@ const UserCardStyled = styled.article`
     }
   }
   div {
+    padding: 5% 0;
     display: flex;
     flex-wrap: wrap;
     width: 70%;
 
     h2 {
+      margin: 0;
       width: 100%;
     }
     span {

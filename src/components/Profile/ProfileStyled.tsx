@@ -63,7 +63,7 @@ const ProfileStyled = styled.article`
       height: 90%;
       width: 60%;
       padding-left: 10%;
-      font-size: 1rem;
+      font-size: 0.75rem;
       h2 {
         margin: 0;
       }
@@ -86,7 +86,7 @@ const ProfileStyled = styled.article`
       justify-content: space-around;
       button {
         border: 2px solid ${(props) => props.theme.thirdColor};
-        font-size: 1rem;
+        font-size: 0.6rem;
         margin: 6% 0;
         width: 100%;
         height: 100%;
@@ -129,7 +129,7 @@ const ProfileStyled = styled.article`
         background: ${(props) => props.theme.linearGradient};
         height: 100%;
         width: 100%;
-        font-size: 1.5rem;
+        font-size: 1rem;
         text-align: center;
         margin: 0;
       }
@@ -212,6 +212,7 @@ const ProfileStyled = styled.article`
         box-shadow: inset 0px 8px 10px -6px #000, inset 0px -8px 10px -6px #000;
         background: ${(props) => props.theme.primaryColor};
         display: flex;
+        justify-content: center;
         width: 100%;
         height: 92.5%;
         flex-direction: row;
@@ -233,10 +234,10 @@ const ProfileStyled = styled.article`
         margin-top: auto;
         margin-bottom: auto;
         margin-right: 2%;
-        max-width: 300px;
+        max-width: 250px;
 
         @media (max-height: 750px) {
-          max-width: 250px;
+          max-width: 200px;
         }
 
         margin-left: 5%;
@@ -281,9 +282,9 @@ const ProfileStyled = styled.article`
         width: 100%;
         width: 90%;
         padding: 0 20px;
-        font-size: 1.3rem;
+        font-size: 0.75rem;
         @media (max-width: 450px) {
-          font-size: 1rem;
+          font-size: 0.75rem;
         }
         h2 {
           text-align: center;
@@ -320,7 +321,7 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery {
-        max-width: 100%;
+        max-width: 1000px;
         border-radius: 10px;
         margin-top: auto;
         margin-bottom: auto;
@@ -357,7 +358,7 @@ const ProfileStyled = styled.article`
           ${(props) => props.theme.thirdColor} 0%,
           ${(props) => props.theme.primaryColor} 100%
         );
-        border: 2px solid ${(props) => props.theme.thirdColor};
+
         height: 94%;
         ul {
           background-color: transparent;

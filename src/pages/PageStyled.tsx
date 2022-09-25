@@ -20,12 +20,12 @@ const PageStyled = styled(motion.div)`
       height: 7.5%;
       color: ${(props) => props.theme.secondaryColor};
       text-transform: uppercase;
-      font-size: 1.5rem;
+      font-size: 1rem;
       padding: 0;
     }
     &__title-heading {
       margin: 0;
-      font-size: 2rem;
+      font-size: 1rem;
     }
   }
 `;
