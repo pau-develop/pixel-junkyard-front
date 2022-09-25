@@ -12,6 +12,7 @@ const GalleryStyled = styled.section`
   position: relative;
   .gallery {
     &__filter {
+      font-size: 0.5rem;
       position: relative;
       background: ${(props) => props.theme.linearGradient};
       height: 7.5%;
@@ -21,7 +22,7 @@ const GalleryStyled = styled.section`
       justify-content: center;
       width: 100%;
       button {
-        font-size: 1rem;
+        font-size: 0.5rem;
         height: 80%;
       }
     }

@@ -52,7 +52,7 @@ const MenuStyled = styled(motion.div)`
 
     button {
       flex: 1;
-      font-size: 1rem;
+      font-size: 0.75rem;
     }
     @media (max-width: 599px) {
       display: none;

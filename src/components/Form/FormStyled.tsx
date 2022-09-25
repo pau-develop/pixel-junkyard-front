@@ -23,7 +23,7 @@ const FormStyled = styled.div`
       align-items: center;
       label {
         color: ${(props) => props.theme.secondaryColor};
-        font-size: 1.5rem;
+        font-size: 1rem;
         padding: 4%;
       }
       input {
@@ -32,7 +32,7 @@ const FormStyled = styled.div`
         border: none;
         border-radius: 15px;
         color: ${(props) => props.theme.primaryColor};
-        font-size: 1.5rem;
+        font-size: 1rem;
         -webkit-box-shadow: inset 0 10px 10px #0000009e;
         -moz-box-shadow: inset 0 10px 10px #0000009e;
         box-shadow: inset 0 10px 10px #0000009e;

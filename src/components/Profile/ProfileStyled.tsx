@@ -63,7 +63,7 @@ const ProfileStyled = styled.article`
       height: 90%;
       width: 60%;
       padding-left: 10%;
-      font-size: 1rem;
+      font-size: 0.75rem;
       h2 {
         margin: 0;
       }
@@ -86,7 +86,7 @@ const ProfileStyled = styled.article`
       justify-content: space-around;
       button {
         border: 2px solid ${(props) => props.theme.thirdColor};
-        font-size: 1rem;
+        font-size: 0.6rem;
         margin: 6% 0;
         width: 100%;
         height: 100%;
@@ -129,7 +129,7 @@ const ProfileStyled = styled.article`
         background: ${(props) => props.theme.linearGradient};
         height: 100%;
         width: 100%;
-        font-size: 1.5rem;
+        font-size: 1rem;
         text-align: center;
         margin: 0;
       }
@@ -282,9 +282,9 @@ const ProfileStyled = styled.article`
         width: 100%;
         width: 90%;
         padding: 0 20px;
-        font-size: 1.3rem;
+        font-size: 0.75rem;
         @media (max-width: 450px) {
-          font-size: 1rem;
+          font-size: 0.75rem;
         }
         h2 {
           text-align: center;
@@ -358,7 +358,7 @@ const ProfileStyled = styled.article`
           ${(props) => props.theme.thirdColor} 0%,
           ${(props) => props.theme.primaryColor} 100%
         );
-        border: 2px solid ${(props) => props.theme.thirdColor};
+
         height: 94%;
         ul {
           background-color: transparent;

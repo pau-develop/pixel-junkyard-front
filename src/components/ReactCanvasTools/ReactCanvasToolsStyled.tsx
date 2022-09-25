@@ -10,7 +10,7 @@ const ReactCanvasToolsStyled = styled.section`
   .toolbar {
     &__scale-value {
       color: ${(props) => props.theme.secondaryColor};
-      font-size: 2rem;
+      font-size: 1rem;
       flex: 1;
       display: flex;
       justify-content: center;

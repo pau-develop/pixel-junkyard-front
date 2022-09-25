@@ -6,7 +6,7 @@ const ButtonStyled = styled.button`
     border: none;
     border-radius: 50px;
     color: ${(props) => props.theme.secondaryColor};
-    font-size: 1.5rem;
+    font-size: 0.75rem;
     height: 60px;
     width: 120px;
     cursor: pointer;
@@ -21,10 +21,10 @@ const ButtonStyled = styled.button`
     padding: 0;
     color: ${(props) => props.theme.secondaryColor};
     width: 100%;
-    font-size: 1rem;
+    font-size: 0.5rem;
     cursor: pointer;
     @media (min-width: 600px) {
-      font-size: 1.5rem;
+      font-size: 0.5rem;
     }
   }
 `;
