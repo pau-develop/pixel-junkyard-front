@@ -39,4 +39,6 @@ export interface IDrawingUser {
   artistName: string;
   resolution: string;
   creationDate: string;
+  likes: [];
+  dislikes: [];
 }
