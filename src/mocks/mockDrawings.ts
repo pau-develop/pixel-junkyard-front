@@ -8,7 +8,9 @@ const mockDrawings = [
     artistName: "",
     resolution: "60x90",
     userId: "12345",
-    creationDate: "",
+    creationDate: "0000-00-00",
+    likes: [],
+    dislikes: [],
   },
   {
     id: "2",
@@ -19,7 +21,9 @@ const mockDrawings = [
     artistName: "",
     resolution: "30x45",
     userId: "12345",
-    creationDate: "",
+    creationDate: "0000-00-01",
+    likes: [],
+    dislikes: [],
   },
 ];
 

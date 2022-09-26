@@ -37,13 +37,43 @@ const DrawingCardStyled = styled.section`
       background: ${(props) => props.theme.thirdColor};
       width: 100%;
       height: 7.5%;
-
-      text-align: center;
       display: flex;
-      justify-content: center;
       align-items: center;
       span {
-        font-size: 0.75rem;
+        margin-left: auto;
+        margin-right: 2%;
+        font-size: 0.5rem;
+        @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+          font-size: 0.75rem;
+        }
+      }
+    }
+    &__likes {
+      margin-right: auto;
+      margin-left: 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 40%;
+      div {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        span {
+          margin-left: 10%;
+        }
+      }
+      div:first-child {
+        color: green;
+      }
+      div:last-child {
+        color: red;
+      }
+      i {
+        font-size: 0.5rem;
+        @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+          font-size: 1rem;
+        }
       }
     }
     &__icon {

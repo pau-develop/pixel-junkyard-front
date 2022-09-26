@@ -115,7 +115,7 @@ describe("Given a Gallery component", () => {
         name: menuButtonText,
       });
       fireEvent.click(menuButtonElement);
-      const spanElement = screen.getByText("60x90");
+      const spanElement = screen.getByText("0000-00-00");
       expect(spanElement).not.toBeNull();
     });
 
@@ -129,7 +129,7 @@ describe("Given a Gallery component", () => {
         name: menuButtonText,
       });
       fireEvent.click(menuButtonElement);
-      const spanElement = screen.getByText("30x45");
+      const spanElement = screen.getByText("0000-00-01");
       expect(spanElement).not.toBeNull();
     });
   });

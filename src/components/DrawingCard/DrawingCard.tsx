@@ -1,5 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashCan,
+  faThumbsUp,
+  faThumbsDown,
+} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useParams } from "react-router-dom";
 import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
 import DrawingCardStyled from "./DrawingCardStyled";
@@ -18,6 +22,8 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
   const { getUserById } = useUsers();
   const user = useSelector<RootState>((state) => state.user) as IUserVisible;
   const trashIcon = <FontAwesomeIcon icon={faTrashCan} />;
+  const likeIcon = <FontAwesomeIcon icon={faThumbsUp} />;
+  const dislikeIcon = <FontAwesomeIcon icon={faThumbsDown} />;
   const { id } = useParams();
   const navigate = useNavigate();
   const handleClick = () => {
@@ -51,7 +57,17 @@ const DrawingCard = ({ draw }: DrawingCardProps): JSX.Element => {
         onClick={handleClick}
       />
       <div className="draw-card__footer">
-        <span>{draw.resolution}</span>
+        <div className="draw-card__likes">
+          <div>
+            <i>{likeIcon}</i>
+            <span>{draw.likes.length}</span>
+          </div>
+          <div>
+            <i>{dislikeIcon}</i>
+            <span>{draw.dislikes.length}</span>
+          </div>
+        </div>
+        <span>{draw.creationDate}</span>
       </div>
     </DrawingCardStyled>
   );

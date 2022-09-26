@@ -12,13 +12,13 @@ const CommunityStyled = styled.div`
     display: none;
   }
   ul {
+    width: 100%;
     list-style: none;
     padding: 0;
     color: ${(props) => props.theme.secondaryColor};
     display: flex;
     flex-direction: column;
     li {
-      background-color: ${(props) => props.theme.primaryColor};
       max-width: 350px;
       max-height: 350px;
       border-radius: 10px;
