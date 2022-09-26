@@ -5,8 +5,7 @@ const GalleryStyled = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  max-height: 900px;
+  height: 100%;
   color: ${(props) => props.theme.secondaryColor};
   height: 92.5%;
   position: relative;
