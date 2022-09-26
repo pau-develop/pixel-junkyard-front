@@ -5,6 +5,7 @@ interface ButtonProps {
   action?: () => void;
   type?: "button" | "submit";
   buttonClass?: string;
+  children?: JSX.Element;
 }
 
 const Button = ({

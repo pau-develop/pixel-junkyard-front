@@ -6,8 +6,12 @@ import useDrawings from "../../hooks/useDrawings";
 import { IDrawingUser } from "../../interfaces/interfaces";
 import UserCard from "../UserCard/UserCard";
 import DrawingDetailStyled from "./DrawingDetailStyled";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const DrawingDetail = (): JSX.Element => {
+  const likeIcon = <FontAwesomeIcon icon={faThumbsUp} />;
+  const dislikeIcon = <FontAwesomeIcon icon={faThumbsDown} />;
   const { id } = useParams();
   const { getDrawingById } = useDrawings();
   const drawing = useSelector<RootState>(
@@ -22,38 +26,66 @@ const DrawingDetail = (): JSX.Element => {
     <DrawingDetailStyled className="drawing-details">
       {drawing !== undefined && (
         <>
-          <section className="drawing-details__display-mobile">
-            <img src={drawing.image} alt={drawing.name} />
-            <div className="drawing-details__likes-mobile">
-              <span></span>
-            </div>
-          </section>
-          <section className="drawing-details__display-desktop">
-            <div className="drawing-details__display-desktop-container">
+          <section className="drawing-details__wrap">
+            <section className="drawing-details__display-mobile">
               <img src={drawing.image} alt={drawing.name} />
-            </div>
-            <div className="drawing-details__likes-desktop">
-              <span></span>
-            </div>
-          </section>
-          <section className="drawing-details__info">
-            <h2>{drawing.name}</h2>
-            <p>{drawing.description}</p>
-            <span>Resolution: {drawing.resolution}</span>
-            <section className="drawing-details__user-desktop">
+              <div className="drawing-details__likes-mobile">
+                <div>
+                  <i>{likeIcon}</i>
+                  <span>{drawing.likes.length}</span>
+                </div>
+                <div>
+                  <i>{dislikeIcon}</i>
+                  <span>{drawing.dislikes.length}</span>
+                </div>
+              </div>
+            </section>
+            <section className="drawing-details__display-desktop">
+              <div className="drawing-details__display-desktop-container">
+                <img src={drawing.image} alt={drawing.name} />
+              </div>
+              <div className="drawing-details__likes-desktop">
+                <div>
+                  <i>{likeIcon}</i>
+                  <span>{drawing.likes.length}</span>
+                </div>
+                <div>
+                  <i>{dislikeIcon}</i>
+                  <span>{drawing.dislikes.length}</span>
+                </div>
+              </div>
+            </section>
+            <section className="drawing-details__info">
+              <div className="drawing-details__info-section">
+                <h2>Name</h2>
+                <span>{drawing.name}</span>
+              </div>
+              <div className="drawing-details__info-section">
+                <h2>Description</h2>
+                <p>{drawing.description}</p>
+              </div>
+              <div className="drawing-details__info-section">
+                <h2>Resolution</h2>
+                <span>{drawing.resolution}</span>
+              </div>
+              <section className="drawing-details__user-desktop">
+                <span>Made by</span>
+                {drawing.artist !== undefined && (
+                  <UserCard user={drawing.artist} />
+                )}
+              </section>
+            </section>
+
+            <section className="drawing-details__user-mobile">
               <span>Made by</span>
               {drawing.artist !== undefined && (
                 <UserCard user={drawing.artist} />
               )}
             </section>
           </section>
-
-          <section className="drawing-details__user-mobile">
-            <span>Made by</span>
-            {drawing.artist !== undefined && <UserCard user={drawing.artist} />}
-          </section>
         </>
       )}
+      <section className="drawing-details__footer"></section>
     </DrawingDetailStyled>
   );
 };

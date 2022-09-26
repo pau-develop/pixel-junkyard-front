@@ -58,6 +58,8 @@ describe("Given a drawingsReducer", () => {
           artistName: "",
           resolution: "60x90",
           creationDate: "",
+          likes: [],
+          dislikes: [],
         },
       ];
       const drawingArray = [
@@ -70,6 +72,8 @@ describe("Given a drawingsReducer", () => {
           artistName: "",
           resolution: "60x90",
           creationDate: "",
+          likes: [],
+          dislikes: [],
         },
         {
           id: "2",
@@ -80,6 +84,8 @@ describe("Given a drawingsReducer", () => {
           artistName: "",
           resolution: "60x90",
           creationDate: "",
+          likes: [],
+          dislikes: [],
         },
         {
           id: "3",
@@ -90,6 +96,8 @@ describe("Given a drawingsReducer", () => {
           artistName: "",
           resolution: "60x90",
           creationDate: "",
+          likes: [],
+          dislikes: [],
         },
       ];
 

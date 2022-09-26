@@ -7,7 +7,6 @@ const ProfileStyled = styled.article`
   margin-top: auto;
   margin-bottom: auto;
 
-  max-height: 900px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -23,7 +22,7 @@ const ProfileStyled = styled.article`
       flex-direction: column;
     }
     &__info-wrap {
-      max-width: 375px;
+      max-width: 350px;
       width: 90%;
       margin: auto;
       border: 2px solid ${(props) => props.theme.thirdColor};
@@ -109,7 +108,7 @@ const ProfileStyled = styled.article`
     }
 
     &__gallery {
-      max-width: 375px;
+      max-width: 350px;
       margin: 0 auto;
 
       width: 90%;
@@ -206,7 +205,7 @@ const ProfileStyled = styled.article`
 
   @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
     max-width: 100%;
-    max-height: 900px;
+    height: 92.5%;
     flex-direction: column;
     .profile {
       &__gallery-wrap {
@@ -236,7 +235,7 @@ const ProfileStyled = styled.article`
         margin-top: auto;
         margin-bottom: auto;
         margin-right: 2%;
-        max-width: 250px;
+        max-width: 300px;
 
         @media (max-height: 750px) {
           max-width: 200px;
@@ -323,7 +322,7 @@ const ProfileStyled = styled.article`
         }
       }
       &__gallery {
-        max-width: 1000px;
+        max-width: 1100px;
         border-radius: 10px;
         margin-top: auto;
         margin-bottom: auto;
@@ -387,15 +386,6 @@ const ProfileStyled = styled.article`
         justify-content: center;
         align-items: center;
         background: ${(props) => props.theme.linearGradient};
-      }
-    }
-  }
-  @media (min-width: ${(props) => props.theme.bigBreakPoint}) {
-    max-width: 1900px;
-    max-height: 1100px;
-    .profile {
-      &__info-wrap {
-        max-width: 400px;
       }
     }
   }
