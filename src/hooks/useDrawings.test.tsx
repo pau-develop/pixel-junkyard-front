@@ -2,7 +2,6 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
 import { IDrawing } from "../interfaces/interfaces";
-import mockDrawingFormData from "../mocks/mockDrawingFormData";
 import mockDrawings from "../mocks/mockDrawings";
 import useDrawings from "./useDrawings";
 
@@ -81,7 +80,7 @@ describe("Given a useDrawings hook", () => {
 
   describe("When its function createDrawing is called", () => {
     test("It should send FormData passed as arguments to the DB", async () => {
-      const drawing = mockDrawingFormData;
+      const drawing = mockDrawings[0];
       global.fetch = jest.fn().mockReturnValue({
         json: jest.fn().mockReturnValue(drawing),
       });
@@ -91,7 +90,7 @@ describe("Given a useDrawings hook", () => {
         },
       } = renderHook(useDrawings, { wrapper: Wrapper });
       await waitFor(() => {
-        createDrawing(mockDrawingFormData);
+        createDrawing(mockDrawings[0]);
       });
       expect(global.fetch).toHaveBeenCalled();
     });
@@ -107,7 +106,7 @@ describe("Given a useDrawings hook", () => {
         },
       } = renderHook(useDrawings, { wrapper: Wrapper });
       await waitFor(() => {
-        createDrawing(mockDrawingFormData);
+        createDrawing(mockDrawings[0]);
       });
       const actionToDispatch = {
         payload: {

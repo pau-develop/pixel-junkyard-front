@@ -122,11 +122,13 @@ const ProfileStyled = styled.article`
     &__gallery-title {
       border-top: 2px solid ${(props) => props.theme.thirdColor};
       border-bottom: 2px solid ${(props) => props.theme.thirdColor};
+      background: ${(props) => props.theme.linearGradient};
       width: 100%;
       border-radius: 10px 10px 0 0;
       h3 {
+        padding: 1% 0;
         border-radius: 10px 10px 0 0;
-        background: ${(props) => props.theme.linearGradient};
+        background: transparent;
         height: 100%;
         width: 100%;
         font-size: 1rem;
@@ -210,7 +212,7 @@ const ProfileStyled = styled.article`
       &__gallery-wrap {
         max-width: 100%;
         box-shadow: inset 0px 8px 10px -6px #000, inset 0px -8px 10px -6px #000;
-        background: ${(props) => props.theme.primaryColor};
+        background-color: ${(props) => props.theme.primaryColor};
         display: flex;
         justify-content: center;
         width: 100%;

@@ -83,7 +83,7 @@ const useDrawings = () => {
     [dispatch, url]
   );
 
-  const createDrawing = async (userData: FormData) => {
+  const createDrawing = async (userData: Partial<IDrawing>) => {
     let ui = {
       isOpen: true,
       message: "Please wait...",
@@ -92,11 +92,12 @@ const useDrawings = () => {
       id: "",
     };
     dispatch(openModalActionNew(ui));
+
     const data = await fetch(`${url}drawings/create`, {
       method: "POST",
-      body: userData,
+      body: JSON.stringify(userData),
       headers: {
-        // "Content-Type": "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`,
       },
     });

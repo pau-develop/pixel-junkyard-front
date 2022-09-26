@@ -36,17 +36,17 @@ const SaveMenu = ({
 
   const handleInputObject = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const blob = await fetch(canvasData).then((res) => res.blob());
-    const file = new File([blob], "file", { type: "" });
-    const drawingForm = new FormData();
-    drawingForm.append("file", file);
-    drawingForm.append("name", input.name as string);
-    drawingForm.append("description", input.description as string);
-    drawingForm.append("artist", user.id);
-    drawingForm.append("artistName", user.userName);
-    drawingForm.append("resolution", `${resolutionX}x${resolutionY}`);
-    drawingForm.append("image", "");
-    createDrawing(drawingForm);
+    const newDrawing = {
+      name: input.name as string,
+      description: input.description as string,
+      artist: user.id,
+      artistName: user.userName,
+      resolution: `${resolutionX}x${resolutionY}`,
+      image: canvasData,
+      creationDate: new Date().toISOString().slice(0, 10),
+    };
+
+    createDrawing(newDrawing);
   };
 
   const handleUpdateUser = () => {
