@@ -162,7 +162,58 @@ const useDrawings = () => {
     dispatch(deleteDrawingActionNew([drawing]));
   };
 
-  return { getAllDrawings, getDrawingById, createDrawing, deleteDrawing };
+  const updateDrawing = async (drawingId: string, isLike: string) => {
+    let ui = {
+      isOpen: true,
+      message: "Please wait...",
+      type: "delay",
+      redirect: "",
+      id: "",
+    };
+    dispatch(openModalActionNew(ui));
+    const payload = {
+      isLike: isLike,
+    };
+
+    const data = await fetch(`${url}drawings/update/${drawingId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+      body: JSON.stringify(payload),
+    });
+    const response = await data.json();
+
+    if (response.error) {
+      ui = {
+        isOpen: true,
+        message: "Something went wrong",
+        type: "confirm",
+        redirect: "",
+        id: "",
+      };
+      dispatch(openModalActionNew(ui));
+      return false;
+    }
+    ui = {
+      isOpen: false,
+      message: "Please wait...",
+      type: "delay",
+      redirect: "",
+      id: "",
+    };
+    dispatch(closeModalActionNew(ui));
+    return true;
+  };
+
+  return {
+    getAllDrawings,
+    getDrawingById,
+    createDrawing,
+    deleteDrawing,
+    updateDrawing,
+  };
 };
 
 export default useDrawings;
