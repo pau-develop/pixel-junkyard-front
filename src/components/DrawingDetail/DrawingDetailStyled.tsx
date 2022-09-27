@@ -54,6 +54,7 @@ const DrawingDetailStyled = styled.section`
       display: flex;
       justify-content: space-evenly;
       div {
+        cursor: pointer;
         border: 2px solid ${(props) => props.theme.primaryColor};
         width: 47%;
         height: 80%;
@@ -198,6 +199,24 @@ const DrawingDetailStyled = styled.section`
         height: 10%;
         background-color: ${(props) => props.theme.thirdColor};
         width: 100%;
+        div {
+          cursor: pointer;
+          border: 2px solid ${(props) => props.theme.primaryColor};
+          width: 47%;
+          height: 80%;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          background: ${(props) => props.theme.thirdColor};
+        }
+        div:first-child {
+          color: green;
+          border-radius: 0 0 0 20px;
+        }
+        div:last-child {
+          color: red;
+          border-radius: 0 0 20px 0;
+        }
       }
       &__likes-mobile {
         display: none;
