@@ -21,6 +21,20 @@ const Profile = (): JSX.Element => {
   const { getUserById } = useUsers();
   const { id } = useParams();
 
+  const getTotalLikes = (isLikes: boolean) => {
+    let total = 0;
+    if (isLikes) {
+      for (let i = 0; i < user.drawings.length; i++) {
+        total += user.drawings[i].likes.length;
+      }
+      return total;
+    }
+    for (let i = 0; i < user.drawings.length; i++) {
+      total += user.drawings[i].dislikes.length;
+    }
+    return total;
+  };
+
   useEffect(() => {
     getUserById(id as string);
   }, [getUserById, id]);
@@ -86,11 +100,19 @@ const Profile = (): JSX.Element => {
                 </div>
                 <div className="profile__info-props">
                   <h2>{user.userName}</h2>
-                  <ul>
-                    <li>{user.email}</li>
-                    <li>XP points</li>
-                    <li>3 likes</li>
-                  </ul>
+                  <div className="profile__list-container">
+                    <ul>
+                      <li>Drawings:</li>
+                      <li>Likes:</li>
+                      <li>Dislikes:</li>
+                    </ul>
+
+                    <ul>
+                      <li>{user.drawings.length}</li>
+                      <li>{getTotalLikes(true)}</li>
+                      <li>{getTotalLikes(false)}</li>
+                    </ul>
+                  </div>
                 </div>
                 {isProfile && (
                   <div className="profile__settings-desktop">
