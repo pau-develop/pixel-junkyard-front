@@ -62,7 +62,7 @@ describe("Given a Header component", () => {
       expect(headingElement).not.toBeNull();
     });
 
-    test("If a user is logged in and we are on mobile, a hamburguer and an 'off 'icon should appear", () => {
+    test("If a user is logged in and we are on mobile, a hamburguer icon, an 'off 'icon and a palette icon should appear", () => {
       window.innerWidth = 300;
       const user = mockUser;
 
@@ -70,9 +70,24 @@ describe("Given a Header component", () => {
 
       const hamburguerIconElement = screen.getByTestId("hamburger-icon");
       const offIconElement = screen.getByTestId("off-icon");
+      const paletteIconElement = screen.getByTestId("palette-icon");
 
       expect(hamburguerIconElement).not.toBeNull();
       expect(offIconElement).not.toBeNull();
+      expect(paletteIconElement).not.toBeNull();
+    });
+
+    test("If user clicks on the palette button, a menu should appear with different themes to choose from", () => {
+      window.innerWidth = 300;
+      const user = mockUser;
+      render(<Header currentUser={user} />, { wrapper: Wrapper });
+      const iconElement = screen.getByTestId("palette-icon");
+
+      fireEvent.click(iconElement);
+
+      const listItems = screen.getAllByRole("listitem");
+
+      expect(listItems[0]).not.toBeNull();
     });
 
     test("If user clicks on the hamburguer button, a menu should appear with four naviation buttons", () => {
