@@ -1,8 +1,9 @@
-import { IDrawing, IUserVisible } from "../../interfaces/interfaces";
+import { IDrawing, ITheme, IUserVisible } from "../../interfaces/interfaces";
 import mockDrawings from "../../mocks/mockDrawings";
 import mockUser from "../../mocks/mockUser";
 import mockUsers from "../../mocks/mockUsers";
 import {
+  changeThemeActionNew,
   closeModalActionNew,
   deleteDrawingActionNew,
   getAllDrawingsActionNew,
@@ -182,6 +183,30 @@ describe("Given a deleteDrawing action", () => {
       };
 
       const result = deleteDrawingActionNew(drawing);
+
+      expect(result).toEqual(expectedResult);
+    });
+  });
+});
+
+describe("Given a changeTheme action", () => {
+  describe("When called", () => {
+    test("It should return an object with the action 'deleteDrawing' and a payload of type IDrawing[]", () => {
+      const theme: ITheme = {
+        primaryColor: "#993d00",
+        secondaryColor: "#fff0e6",
+        thirdColor: "#000",
+        linearGradient: `linear-gradient(90deg, #000 0%, #993d00 50%, #000 100%)`,
+        smallBreakPoint: "1400px",
+        bigBreakPoint: "2000px",
+      };
+
+      const expectedResult = {
+        type: "theme@change",
+        payload: theme,
+      };
+
+      const result = changeThemeActionNew(theme);
 
       expect(result).toEqual(expectedResult);
     });

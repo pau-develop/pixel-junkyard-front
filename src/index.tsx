@@ -5,8 +5,6 @@ import { store } from "./app/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
-import { ThemeProvider } from "styled-components";
-import styledTheme from "./styledTheme";
 import { BrowserRouter } from "react-router-dom";
 
 const container = document.getElementById("root")!;
@@ -16,9 +14,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <ThemeProvider theme={styledTheme}>
-          <App />
-        </ThemeProvider>
+        <App />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

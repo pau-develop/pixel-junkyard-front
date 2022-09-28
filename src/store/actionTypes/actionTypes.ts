@@ -8,5 +8,6 @@ const actionTypes = {
   getAllDrawings: "drawings@all",
   getDrawingById: "drawings@id",
   deleteDrawing: "drawings@delete",
+  changeTheme: "theme@change",
 };
 export default actionTypes;

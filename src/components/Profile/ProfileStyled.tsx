@@ -65,6 +65,7 @@ const ProfileStyled = styled.article`
       padding-left: 10px;
       font-size: 0.75rem;
       h2 {
+        font-size: 0.8rem;
         margin: 0;
         height: 20%;
       }
