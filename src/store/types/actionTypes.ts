@@ -1,4 +1,9 @@
-import { IDrawing, IUser, IUserVisible } from "../../interfaces/interfaces";
+import {
+  IDrawing,
+  ITheme,
+  IUser,
+  IUserVisible,
+} from "../../interfaces/interfaces";
 import { IUIModal } from "./interfaces";
 
 export interface Action {
@@ -18,4 +23,8 @@ export interface IUserVisibleAction extends Action {
 
 export interface IDrawingAction extends Action {
   payload: IDrawing[];
+}
+
+export interface IThemeAction extends Action {
+  payload: ITheme;
 }

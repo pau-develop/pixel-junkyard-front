@@ -44,3 +44,12 @@ export interface IDrawingUser {
   likes: [];
   dislikes: [];
 }
+
+export interface ITheme {
+  primaryColor: string;
+  secondaryColor: string;
+  thirdColor: string;
+  linearGradient: string;
+  smallBreakPoint: string;
+  bigBreakPoint: string;
+}

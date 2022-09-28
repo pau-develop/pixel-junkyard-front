@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import drawingsReducer from "../store/reducers/drawingsReducer";
+import themeReducer from "../store/reducers/themeReducer";
 import uiReducer from "../store/reducers/uiReducer";
 import userReducer from "../store/reducers/userReducer";
 import usersReducer from "../store/reducers/usersReducer";
@@ -10,6 +11,7 @@ export const store = configureStore({
     user: userReducer,
     users: usersReducer,
     drawings: drawingsReducer,
+    theme: themeReducer,
   },
 });
 

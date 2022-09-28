@@ -1,5 +1,10 @@
 import { createAction } from "@reduxjs/toolkit";
-import { IDrawing, IUser, IUserVisible } from "../../interfaces/interfaces";
+import {
+  IDrawing,
+  ITheme,
+  IUser,
+  IUserVisible,
+} from "../../interfaces/interfaces";
 
 import actionTypes from "../actionTypes/actionTypes";
 
@@ -31,4 +36,8 @@ export const getDrawingByIdActionNew = createAction<IDrawing[]>(
 
 export const deleteDrawingActionNew = createAction<IDrawing[]>(
   actionTypes.deleteDrawing
+);
+
+export const changeThemeActionNew = createAction<ITheme>(
+  actionTypes.changeTheme
 );
