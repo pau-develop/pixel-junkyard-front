@@ -169,4 +169,51 @@ describe("Given a useDrawings hook", () => {
       expect(mockDispatch).toBeCalledWith(actionToDispatch);
     });
   });
+
+  describe("When its function updateDrawing is called", () => {
+    test("It should updated a drawing on the DB", async () => {
+      global.fetch = jest.fn().mockReturnValue({
+        json: jest.fn().mockReturnValue("Succesfully liked drawing"),
+      });
+      const {
+        result: {
+          current: { updateDrawing },
+        },
+      } = renderHook(useDrawings, { wrapper: Wrapper });
+
+      const id = "12345";
+      await waitFor(() => {
+        updateDrawing(id, "true");
+      });
+
+      expect(global.fetch).toHaveBeenCalled();
+    });
+
+    test("If there is an error, the state.ui should be updated", async () => {
+      const error = { error: "ERROR! Something went wrong" };
+      global.fetch = jest.fn().mockReturnValue({
+        json: jest.fn().mockReturnValue(error),
+      });
+      const {
+        result: {
+          current: { updateDrawing },
+        },
+      } = renderHook(useDrawings, { wrapper: Wrapper });
+
+      await waitFor(() => {
+        updateDrawing("12345", "false");
+      });
+      const actionToDispatch = {
+        payload: {
+          isOpen: true,
+          message: "ERROR! Something went wrong",
+          redirect: "",
+          type: "confirm",
+          id: "",
+        },
+        type: "ui@display",
+      };
+      expect(mockDispatch).toBeCalledWith(actionToDispatch);
+    });
+  });
 });

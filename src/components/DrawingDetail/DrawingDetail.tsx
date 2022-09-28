@@ -13,7 +13,8 @@ const DrawingDetail = (): JSX.Element => {
   const likeIcon = <FontAwesomeIcon icon={faThumbsUp} />;
   const dislikeIcon = <FontAwesomeIcon icon={faThumbsDown} />;
   const { id } = useParams();
-  const { getDrawingById } = useDrawings();
+  const { getDrawingById, updateDrawing } = useDrawings();
+
   const drawing = useSelector<RootState>(
     (state) => state.drawings[0]
   ) as IDrawingUser;
@@ -21,6 +22,11 @@ const DrawingDetail = (): JSX.Element => {
   useEffect(() => {
     getDrawingById(id as string);
   }, [getDrawingById, id]);
+
+  const handleLike = async (like: string) => {
+    await updateDrawing(id as string, like);
+    getDrawingById(id as string);
+  };
 
   return (
     <DrawingDetailStyled className="drawing-details">
@@ -30,11 +36,17 @@ const DrawingDetail = (): JSX.Element => {
             <section className="drawing-details__display-mobile">
               <img src={drawing.image} alt={drawing.name} />
               <div className="drawing-details__likes-mobile">
-                <div>
+                <div
+                  data-testid="like-mobile"
+                  onClick={() => handleLike("true")}
+                >
                   <i>{likeIcon}</i>
                   <span>{drawing.likes.length}</span>
                 </div>
-                <div>
+                <div
+                  data-testid="dislike-mobile"
+                  onClick={() => handleLike("false")}
+                >
                   <i>{dislikeIcon}</i>
                   <span>{drawing.dislikes.length}</span>
                 </div>
@@ -45,11 +57,17 @@ const DrawingDetail = (): JSX.Element => {
                 <img src={drawing.image} alt={drawing.name} />
               </div>
               <div className="drawing-details__likes-desktop">
-                <div>
+                <div
+                  data-testid="like-desktop"
+                  onClick={() => handleLike("true")}
+                >
                   <i>{likeIcon}</i>
                   <span>{drawing.likes.length}</span>
                 </div>
-                <div>
+                <div
+                  data-testid="dislike-desktop"
+                  onClick={() => handleLike("false")}
+                >
                   <i>{dislikeIcon}</i>
                   <span>{drawing.dislikes.length}</span>
                 </div>

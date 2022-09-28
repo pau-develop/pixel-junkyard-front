@@ -235,7 +235,7 @@ const ProfileStyled = styled.article`
         margin-top: auto;
         margin-bottom: auto;
         margin-right: 2%;
-        max-width: 300px;
+        max-width: 250px;
 
         @media (max-height: 750px) {
           max-width: 200px;
