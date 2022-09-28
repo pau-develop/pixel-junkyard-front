@@ -76,7 +76,11 @@ const DrawingDetailStyled = styled.section`
       border: 2px solid ${(props) => props.theme.thirdColor};
       padding: 0 10px 20px 10px;
       margin: 0 5%;
-      background: linear-gradient(0deg, #17232e 0%, #144573 100%);
+      background: linear-gradient(
+        0deg,
+        ${(props) => props.theme.thirdColor} 0%,
+        ${(props) => props.theme.primaryColor} 100%
+      );
       border-radius: 25px;
       width: 90%;
       max-width: 350px;
@@ -120,7 +124,11 @@ const DrawingDetailStyled = styled.section`
       display: flex;
       flex-direction: column;
 
-      background: linear-gradient(0deg, #17232e 0%, #144573 100%);
+      background: linear-gradient(
+        0deg,
+        ${(props) => props.theme.thirdColor} 0%,
+        ${(props) => props.theme.primaryColor} 100%
+      );
       border: 2px solid ${(props) => props.theme.thirdColor};
       border-radius: 25px;
       width: 90%;
