@@ -1,3 +1,5 @@
+import useTheme from "../../hooks/useTheme";
+import { ITheme } from "../../interfaces/interfaces";
 import ThemeMenuStyled from "./ThemeMenuStyled";
 
 interface ThemeMenuProps {
@@ -6,10 +8,10 @@ interface ThemeMenuProps {
 }
 
 const ThemeMenu = ({ menuClass, action }: ThemeMenuProps): JSX.Element => {
-  const changeTheme = () => {};
+  const { changeTheme } = useTheme();
 
-  const handleChangeTheme = () => {
-    changeTheme();
+  const handleChangeTheme = (theme: ITheme) => {
+    changeTheme(theme);
     action();
   };
 
@@ -23,9 +25,42 @@ const ThemeMenu = ({ menuClass, action }: ThemeMenuProps): JSX.Element => {
     >
       <span>Pick color theme</span>
       <ul>
-        <li onClick={handleChangeTheme}></li>
-        <li onClick={handleChangeTheme}></li>
-        <li onClick={handleChangeTheme}></li>
+        <li
+          onClick={() =>
+            handleChangeTheme({
+              primaryColor: "#144573",
+              secondaryColor: "#A1CEF6",
+              thirdColor: "#000",
+              linearGradient: `linear-gradient(90deg, #000 0%, #144573 50%, #000 100%)`,
+              smallBreakPoint: "1400px",
+              bigBreakPoint: "2000px",
+            })
+          }
+        ></li>
+        <li
+          onClick={() =>
+            handleChangeTheme({
+              primaryColor: "#993d00",
+              secondaryColor: "#fff0e6",
+              thirdColor: "#000",
+              linearGradient: `linear-gradient(90deg, #000 0%, #993d00 50%, #000 100%)`,
+              smallBreakPoint: "1400px",
+              bigBreakPoint: "2000px",
+            })
+          }
+        ></li>
+        <li
+          onClick={() =>
+            handleChangeTheme({
+              primaryColor: "#999900",
+              secondaryColor: "#ffffe6",
+              thirdColor: "#000",
+              linearGradient: `linear-gradient(90deg, #000 0%, #999900 50%, #000 100%)`,
+              smallBreakPoint: "1400px",
+              bigBreakPoint: "2000px",
+            })
+          }
+        ></li>
       </ul>
     </ThemeMenuStyled>
   );

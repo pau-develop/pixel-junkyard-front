@@ -7,7 +7,7 @@ import { RootState } from "./app/store";
 import AppStyled from "./AppStyled";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
-import { IUser } from "./interfaces/interfaces";
+import { ITheme, IUser } from "./interfaces/interfaces";
 import AvatarPage from "./pages/AvatarPage/AvatarPage";
 import CanvasPage from "./pages/CanvasPage/CanvasPage";
 import CommunityPage from "./pages/CommunityPage/CommunityPage";
@@ -20,7 +20,6 @@ import RegisterFormPage from "./pages/RegisterFormPage/RegisterFormPage";
 import UnknownPage from "./pages/UnknownPage/UnknownPage";
 import { loginUserActionNew } from "./store/actionCreators/actionCreators";
 import { IUIModal } from "./store/types/interfaces";
-import { blueTheme, orangeTheme, yellowTheme } from "./styledTheme";
 import { fetchToken } from "./utils/auth";
 
 const App = (): JSX.Element => {
@@ -36,9 +35,10 @@ const App = (): JSX.Element => {
 
   const ui = useSelector<RootState>((state) => state.ui) as IUIModal;
   const user = useSelector<RootState>((state) => state.user) as IUser;
+  const theme = useSelector<RootState>((state) => state.theme) as ITheme;
 
   return (
-    <ThemeProvider theme={blueTheme}>
+    <ThemeProvider theme={theme}>
       <AppStyled className="app-container">
         {ui.isOpen ? (
           <Modal
