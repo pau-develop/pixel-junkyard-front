@@ -46,11 +46,11 @@ const ProfileStyled = styled.article`
       align-items: center;
     }
     &__info-avatar {
-      width: 35%;
-      padding: 5%;
-      object-fit: contain;
+      width: 40%;
+      height: 100%;
+      padding: 15px;
       img {
-        object-fit: contain;
+        object-fit: stretch;
         width: 100%;
         height: 100%;
 
@@ -59,21 +59,41 @@ const ProfileStyled = styled.article`
       }
     }
     &__info-props {
-      height: 90%;
-      width: 60%;
-      padding-left: 10%;
+      height: 100%;
+      padding: 15px;
+      width: 55%;
+      padding-left: 10px;
       font-size: 0.75rem;
       h2 {
         margin: 0;
+        height: 20%;
       }
       ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 50%;
         margin: 0;
-        height: 100%;
+        height: 80%;
         list-style: none;
         padding: 0;
+        margin-top: auto;
+      }
+      ul:last-child {
+        text-align: right;
+      }
+      li:nth-child(2) {
+        color: green;
+      }
+      li:nth-child(3) {
+        color: red;
       }
     }
-
+    &__list-container {
+      width: 100%;
+      height: 80%;
+      display: flex;
+    }
     &__settings-mobile {
       margin-bottom: 20px;
 
@@ -276,6 +296,15 @@ const ProfileStyled = styled.article`
           object-fit: fill;
         }
       }
+      &__list-container {
+        background: ${(props) => props.theme.thirdColor};
+        border-radius: 10px;
+        display: flex;
+        padding: 10px;
+        height: auto;
+        margin-top: 20px;
+        align-items: center;
+      }
       &__info-props {
         display: flex;
         flex-direction: column;
@@ -288,22 +317,36 @@ const ProfileStyled = styled.article`
           font-size: 0.75rem;
         }
         h2 {
+          padding: 10px;
+          height: auto;
           text-align: center;
           background-color: ${(props) => props.theme.thirdColor};
           border-radius: 10px;
         }
         ul {
-          background-color: ${(props) => props.theme.thirdColor};
-          border-radius: 10px;
+          margin: 0;
           display: flex;
           flex-direction: column;
           justify-content: center;
           list-style: none;
           padding: 0;
-          margin: 20px 0;
+
           text-align: center;
           li {
-            margin-top: 2%;
+            margin: 10px auto;
+            text-align: left;
+          }
+        }
+        ul:first-child {
+          li {
+            width: 100%;
+            text-align: left;
+          }
+        }
+        ul:last-child {
+          li {
+            width: 100%;
+            text-align: right;
           }
         }
       }
