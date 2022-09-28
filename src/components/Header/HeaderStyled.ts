@@ -22,8 +22,11 @@ const HeaderStyled = styled.header`
       display: flex;
       width: 20%;
       justify-content: flex-end;
-      i:first-child {
+      i {
         margin-right: 20%;
+      }
+      i:last-child {
+        margin-right: 0;
       }
     }
   }
