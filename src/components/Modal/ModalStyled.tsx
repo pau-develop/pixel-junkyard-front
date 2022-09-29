@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ModalStyled = styled.div`
-  background: rgba(24, 27, 109, 0.649);
+  background: ${(props) => props.theme.fadeColor};
   width: 100%;
   height: 100%;
   position: absolute;
