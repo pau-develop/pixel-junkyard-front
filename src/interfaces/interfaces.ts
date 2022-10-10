@@ -49,6 +49,7 @@ export interface ITheme {
   primaryColor: string;
   secondaryColor: string;
   thirdColor: string;
+  fadeColor: string;
   linearGradient: string;
   smallBreakPoint: string;
   bigBreakPoint: string;

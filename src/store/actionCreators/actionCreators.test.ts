@@ -196,6 +196,7 @@ describe("Given a changeTheme action", () => {
         primaryColor: "#993d00",
         secondaryColor: "#fff0e6",
         thirdColor: "#000",
+        fadeColor: "#000",
         linearGradient: `linear-gradient(90deg, #000 0%, #993d00 50%, #000 100%)`,
         smallBreakPoint: "1400px",
         bigBreakPoint: "2000px",

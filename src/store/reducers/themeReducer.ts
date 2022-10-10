@@ -7,6 +7,7 @@ const initialState: ITheme = {
   primaryColor: "#144573",
   secondaryColor: "#A1CEF6",
   thirdColor: "#000",
+  fadeColor: "#14457350",
   linearGradient: `linear-gradient(90deg, #000 0%, #144573 50%, #000 100%)`,
   smallBreakPoint: "1400px",
   bigBreakPoint: "2000px",

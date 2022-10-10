@@ -70,6 +70,7 @@ const useUsers = () => {
         };
         dispatch(closeModalActionNew(ui));
         dispatch(getUserByIdActionNew([user]));
+        return user;
       }
     },
     [dispatch, url]

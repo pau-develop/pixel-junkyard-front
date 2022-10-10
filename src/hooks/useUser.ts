@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { IUser } from "../interfaces/interfaces";
 import {
@@ -94,7 +95,7 @@ const useUser = () => {
     dispatch(openModalActionNew(ui));
   };
 
-  const logoutUser = () => {
+  const logoutUser = useCallback(() => {
     const user: IUser = {
       userName: "",
       token: "",
@@ -110,7 +111,7 @@ const useUser = () => {
     };
     localStorage.removeItem("token");
     dispatch(openModalActionNew(ui));
-  };
+  }, [dispatch]);
 
   const deleteAccount = async (id: string) => {
     let ui = {

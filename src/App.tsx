@@ -7,6 +7,8 @@ import { RootState } from "./app/store";
 import AppStyled from "./AppStyled";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
+import useUser from "./hooks/useUser";
+import useUsers from "./hooks/useUsers";
 import { ITheme, IUser } from "./interfaces/interfaces";
 import AvatarPage from "./pages/AvatarPage/AvatarPage";
 import CanvasPage from "./pages/CanvasPage/CanvasPage";
@@ -23,15 +25,25 @@ import { IUIModal } from "./store/types/interfaces";
 import { fetchToken } from "./utils/auth";
 
 const App = (): JSX.Element => {
+  const { logoutUser } = useUser();
   const location = useLocation();
   const dispatch = useDispatch();
+  const { getUserById } = useUsers();
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      const localUser = fetchToken(token);
-      dispatch(loginUserActionNew(localUser));
+      (async () => {
+        const localUser = fetchToken(token);
+        const result = await getUserById(localUser.id);
+        if (result === null) {
+          logoutUser();
+          return;
+        }
+        dispatch(loginUserActionNew(localUser));
+      })();
     }
-  }, [dispatch]);
+  }, [dispatch, getUserById, logoutUser]);
 
   const ui = useSelector<RootState>((state) => state.ui) as IUIModal;
   const user = useSelector<RootState>((state) => state.user) as IUser;
