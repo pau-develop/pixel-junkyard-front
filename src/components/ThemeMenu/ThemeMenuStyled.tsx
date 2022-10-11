@@ -37,6 +37,9 @@ const ThemeMenuStyled = styled(motion.div)`
     li:hover {
       border: 2px solid white;
     }
+    li:active {
+      border: 2px solid white;
+    }
 
     li:nth-child(1) {
       background-color: #144573;

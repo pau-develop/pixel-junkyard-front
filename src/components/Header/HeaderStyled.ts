@@ -19,7 +19,13 @@ const HeaderStyled = styled.header`
       font-size: 1rem;
     }
     &__title:hover {
+      @media (min-width: ${(props) => props.theme.breakPoint}) {
+        color: white;
+      }
+    }
+    &__title:active {
       color: white;
+      -webkit-tap-highlight-color: transparent;
     }
     &__icon-wrap {
       display: flex;
@@ -28,9 +34,11 @@ const HeaderStyled = styled.header`
       i {
         margin-right: 20%;
       }
-      i:hover {
+      i:active {
         color: white;
+        -webkit-tap-highlight-color: transparent;
       }
+
       i:last-child {
         margin-right: 0;
       }

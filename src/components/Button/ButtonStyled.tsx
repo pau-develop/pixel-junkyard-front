@@ -16,7 +16,13 @@ const ButtonStyled = styled.button`
     }
   }
   &.button:hover {
+    @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+      color: white;
+    }
+  }
+  &.button:active {
     color: white;
+    -webkit-tap-highlight-color: transparent;
   }
   &.button-navigation {
     border: none;
@@ -31,7 +37,13 @@ const ButtonStyled = styled.button`
     }
   }
   &.button-navigation:hover {
+    @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+      color: white;
+    }
+  }
+  &.button-navigation:active {
     color: white;
+    -webkit-tap-highlight-color: transparent;
   }
 `;
 

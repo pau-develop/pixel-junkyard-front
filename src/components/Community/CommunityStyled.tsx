@@ -23,6 +23,10 @@ const CommunityStyled = styled.div`
       border-radius: 10px;
       margin-top: 5%;
     }
+    li:active {
+      color: white;
+      -webkit-tap-highlight-color: transparent;
+    }
   }
   @media (min-width: 800px) {
     ul {
@@ -30,6 +34,9 @@ const CommunityStyled = styled.div`
       display: grid;
       grid-template-columns: 49% 49%;
       grid-gap: 2%;
+    }
+    li:hover {
+      color: white;
     }
   }
   @media (min-width: 1200px) {
