@@ -23,7 +23,7 @@ const DrawingCardStyled = styled.section`
       align-items: center;
       justify-content: center;
       span {
-        font-size: 0.75rem;
+        font-size: 0.5rem;
       }
     }
     &__image {
