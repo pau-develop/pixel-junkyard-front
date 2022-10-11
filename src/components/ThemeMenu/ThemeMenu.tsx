@@ -42,7 +42,7 @@ const ThemeMenu = ({ menuClass, action }: ThemeMenuProps): JSX.Element => {
           onClick={() =>
             handleChangeTheme({
               primaryColor: "#993d00",
-              secondaryColor: "#fff0e6",
+              secondaryColor: "#f9dbc6",
               thirdColor: "#000",
               fadeColor: "#993d0050",
               linearGradient: `linear-gradient(90deg, #000 0%, #993d00 50%, #000 100%)`,
@@ -54,10 +54,10 @@ const ThemeMenu = ({ menuClass, action }: ThemeMenuProps): JSX.Element => {
         <li
           onClick={() =>
             handleChangeTheme({
-              primaryColor: "#999900",
-              secondaryColor: "#ffffe6",
+              primaryColor: "#717101",
+              secondaryColor: "#f1fcc5",
               thirdColor: "#000",
-              fadeColor: "#99990050",
+              fadeColor: "#62620850",
               linearGradient: `linear-gradient(90deg, #000 0%, #999900 50%, #000 100%)`,
               smallBreakPoint: "1400px",
               bigBreakPoint: "2000px",

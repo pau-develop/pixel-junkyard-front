@@ -12,7 +12,6 @@ const CommunityStyled = styled.div`
     display: none;
   }
   ul {
-    width: 100%;
     list-style: none;
     padding: 0;
     color: ${(props) => props.theme.secondaryColor};
@@ -27,6 +26,7 @@ const CommunityStyled = styled.div`
   }
   @media (min-width: 800px) {
     ul {
+      height: 0%;
       display: grid;
       grid-template-columns: 49% 49%;
       grid-gap: 2%;
