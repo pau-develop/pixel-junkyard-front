@@ -41,7 +41,8 @@ const MenuStyled = styled(motion.div)`
   &.desk-menu {
     display: inline;
     background-color: ${(props) => props.theme.primaryColor};
-    width: 50%;
+    width: 300px;
+
     height: 100%;
     position: static;
     display: flex;
@@ -51,15 +52,23 @@ const MenuStyled = styled(motion.div)`
     }
 
     button {
+      flex: 3;
+      font-size: 0.5rem;
+    }
+    i {
       flex: 1;
-      font-size: 0.75rem;
+      text-align: center;
     }
     @media (max-width: 599px) {
       display: none;
       width: 50%;
     }
     @media (min-width: 1000px) {
-      width: 30%;
+      width: 500px;
+      button {
+        flex: 3;
+        font-size: 0.75rem;
+      }
     }
   }
 `;
