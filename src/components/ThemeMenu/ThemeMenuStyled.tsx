@@ -26,13 +26,15 @@ const ThemeMenuStyled = styled(motion.div)`
       display: flex;
       width: 100%;
       height: 100%;
+      justify-content: space-evenly;
     }
     li {
       border: 2px solid ${(props) => props.theme.secondaryColor};
       border-radius: 5px;
       cursor: pointer;
       margin: 10px;
-      flex: 1;
+      width: 50px;
+      height: 40px;
     }
     li:hover {
       border: 2px solid white;
