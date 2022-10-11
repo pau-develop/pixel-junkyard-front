@@ -1,6 +1,7 @@
 import useTheme from "../../hooks/useTheme";
 import { ITheme } from "../../interfaces/interfaces";
 import ThemeMenuStyled from "./ThemeMenuStyled";
+import themeMenuColors from "./ThemeMenuColors";
 
 interface ThemeMenuProps {
   menuClass: string;
@@ -25,45 +26,11 @@ const ThemeMenu = ({ menuClass, action }: ThemeMenuProps): JSX.Element => {
     >
       <span>Pick color theme</span>
       <ul>
-        <li
-          onClick={() =>
-            handleChangeTheme({
-              primaryColor: "#144573",
-              secondaryColor: "#A1CEF6",
-              thirdColor: "#000",
-              fadeColor: "#14457350",
-              linearGradient: `linear-gradient(90deg, #000 0%, #144573 50%, #000 100%)`,
-              smallBreakPoint: "1400px",
-              bigBreakPoint: "2000px",
-            })
-          }
-        ></li>
-        <li
-          onClick={() =>
-            handleChangeTheme({
-              primaryColor: "#993d00",
-              secondaryColor: "#f9dbc6",
-              thirdColor: "#000",
-              fadeColor: "#993d0050",
-              linearGradient: `linear-gradient(90deg, #000 0%, #993d00 50%, #000 100%)`,
-              smallBreakPoint: "1400px",
-              bigBreakPoint: "2000px",
-            })
-          }
-        ></li>
-        <li
-          onClick={() =>
-            handleChangeTheme({
-              primaryColor: "#717101",
-              secondaryColor: "#f1fcc5",
-              thirdColor: "#000",
-              fadeColor: "#62620850",
-              linearGradient: `linear-gradient(90deg, #000 0%, #999900 50%, #000 100%)`,
-              smallBreakPoint: "1400px",
-              bigBreakPoint: "2000px",
-            })
-          }
-        ></li>
+        <li onClick={() => handleChangeTheme(themeMenuColors[0])}></li>
+        <li onClick={() => handleChangeTheme(themeMenuColors[1])}></li>
+        <li onClick={() => handleChangeTheme(themeMenuColors[2])}></li>
+        <li onClick={() => handleChangeTheme(themeMenuColors[3])}></li>
+        <li onClick={() => handleChangeTheme(themeMenuColors[4])}></li>
       </ul>
     </ThemeMenuStyled>
   );
