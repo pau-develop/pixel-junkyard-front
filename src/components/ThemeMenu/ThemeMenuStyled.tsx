@@ -52,6 +52,12 @@ const ThemeMenuStyled = styled(motion.div)`
     li:nth-child(3) {
       background-color: #999900;
     }
+    li:nth-child(4) {
+      background-color: #01711d;
+    }
+    li:nth-child(5) {
+      background-color: #35077b;
+    }
 
     @media (min-width: 600px) {
       flex-wrap: nowrap;

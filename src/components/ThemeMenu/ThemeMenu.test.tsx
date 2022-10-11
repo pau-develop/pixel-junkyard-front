@@ -41,6 +41,8 @@ describe("Given a ThemeMenu component", () => {
       fireEvent.click(buttonElements[0]);
       fireEvent.click(buttonElements[1]);
       fireEvent.click(buttonElements[2]);
+      fireEvent.click(buttonElements[3]);
+      fireEvent.click(buttonElements[4]);
 
       expect(mockChangeTheme).toHaveBeenCalled();
     });
