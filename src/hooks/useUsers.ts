@@ -37,7 +37,6 @@ const useUsers = () => {
     };
     dispatch(closeModalActionNew(ui));
     const { users } = response;
-
     dispatch(getAllUsersActionNew(users));
   }, [dispatch, url]);
 
