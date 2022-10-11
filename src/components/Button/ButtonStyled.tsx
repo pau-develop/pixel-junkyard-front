@@ -15,6 +15,9 @@ const ButtonStyled = styled.button`
       width: 110px;
     }
   }
+  &.button:hover {
+    color: white;
+  }
   &.button-navigation {
     border: none;
     background-color: ${(props) => props.theme.primaryColor};
@@ -26,6 +29,9 @@ const ButtonStyled = styled.button`
     @media (min-width: 600px) {
       font-size: 0.5rem;
     }
+  }
+  &.button-navigation:hover {
+    color: white;
   }
 `;
 

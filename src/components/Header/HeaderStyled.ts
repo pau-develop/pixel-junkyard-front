@@ -18,12 +18,18 @@ const HeaderStyled = styled.header`
       text-transform: uppercase;
       font-size: 1rem;
     }
+    &__title:hover {
+      color: white;
+    }
     &__icon-wrap {
       display: flex;
       width: 20%;
       justify-content: flex-end;
       i {
         margin-right: 20%;
+      }
+      i:hover {
+        color: white;
       }
       i:last-child {
         margin-right: 0;

@@ -35,6 +35,7 @@ const MenuStyled = styled(motion.div)`
     i {
       display: none;
     }
+
     @media (min-width: 599px) {
     }
   }
@@ -58,6 +59,9 @@ const MenuStyled = styled(motion.div)`
     i {
       flex: 1;
       text-align: center;
+    }
+    i:hover {
+      color: white;
     }
     @media (max-width: 599px) {
       display: none;
