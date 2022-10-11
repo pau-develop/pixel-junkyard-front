@@ -19,7 +19,7 @@ const HeaderStyled = styled.header`
       font-size: 1rem;
     }
     &__title:hover {
-      @media (min-width: ${(props) => props.theme.breakPoint}) {
+      @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
         color: white;
       }
     }
