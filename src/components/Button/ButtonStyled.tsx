@@ -15,6 +15,15 @@ const ButtonStyled = styled.button`
       width: 110px;
     }
   }
+  &.button:hover {
+    @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+      color: white;
+    }
+  }
+  &.button:active {
+    color: white;
+    -webkit-tap-highlight-color: transparent;
+  }
   &.button-navigation {
     border: none;
     background-color: ${(props) => props.theme.primaryColor};
@@ -26,6 +35,15 @@ const ButtonStyled = styled.button`
     @media (min-width: 600px) {
       font-size: 0.5rem;
     }
+  }
+  &.button-navigation:hover {
+    @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+      color: white;
+    }
+  }
+  &.button-navigation:active {
+    color: white;
+    -webkit-tap-highlight-color: transparent;
   }
 `;
 

@@ -86,6 +86,10 @@ const DrawingDetail = (): JSX.Element => {
                 <h2>Resolution</h2>
                 <span>{drawing.resolution}</span>
               </div>
+              <div className="drawing-details__info-section">
+                <h2>Creation Date</h2>
+                <span>{drawing.creationDate}</span>
+              </div>
               <section className="drawing-details__user-desktop">
                 <span>Made by</span>
                 {drawing.artist !== undefined && (

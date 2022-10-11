@@ -66,6 +66,10 @@ const GalleryStyled = styled.section`
           margin: 0;
           align-self: center;
         }
+        li:active {
+          color: white;
+          -webkit-tap-highlight-color: transparent;
+        }
       }
     }
 
@@ -161,6 +165,14 @@ const GalleryStyled = styled.section`
             width: 100%;
             margin: 0;
             align-self: center;
+          }
+          li:hover {
+            color: white;
+            -webkit-tap-highlight-color: transparent;
+          }
+          li:active {
+            color: white;
+            -webkit-tap-highlight-color: transparent;
           }
         }
       }

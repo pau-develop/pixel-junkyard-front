@@ -190,6 +190,8 @@ const ProfileStyled = styled.article`
 
       span {
         align-self: center;
+        font-size: 0.75rem;
+        text-align: center;
       }
       ul {
         border-radius: 10px;
@@ -210,6 +212,11 @@ const ProfileStyled = styled.article`
           width: 60%;
           display: flex;
           justify-content: center;
+        }
+
+        li:active {
+          color: white;
+          -webkit-tap-highlight-color: transparent;
         }
       }
     }
@@ -419,6 +426,10 @@ const ProfileStyled = styled.article`
             height: 100%;
             align-self: center;
             justify-self: center;
+          }
+          li:hover {
+            color: white;
+            -webkit-tap-highlight-color: transparent;
           }
         }
       }

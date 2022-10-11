@@ -1,7 +1,7 @@
 import { IUser } from "../interfaces/interfaces";
 
 const mockUser: IUser = {
-  id: "12345",
+  id: "123456",
   userName: "fakeName",
   token: "fake@fake.com",
 };

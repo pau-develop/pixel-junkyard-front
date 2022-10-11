@@ -2,19 +2,22 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useUsers from "../../hooks/useUsers";
-import { IUserVisible } from "../../interfaces/interfaces";
+import { IUser, IUserVisible } from "../../interfaces/interfaces";
 import UserCard from "../UserCard/UserCard";
 import CommunityStyled from "./CommunityStyled";
 
 const Community = (): JSX.Element => {
-  const users = useSelector<RootState>(
-    (state) => state.users
-  ) as IUserVisible[];
   const { getAllUsers } = useUsers();
 
   useEffect(() => {
     getAllUsers();
   }, [getAllUsers]);
+
+  let users = useSelector<RootState>((state) => state.users) as IUserVisible[];
+
+  const currentUser = useSelector<RootState>((state) => state.user) as IUser;
+
+  users = users.filter((user) => user.id !== currentUser.id);
 
   return (
     <CommunityStyled>

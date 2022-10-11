@@ -18,6 +18,15 @@ const HeaderStyled = styled.header`
       text-transform: uppercase;
       font-size: 1rem;
     }
+    &__title:hover {
+      @media (min-width: ${(props) => props.theme.smallBreakPoint}) {
+        color: white;
+      }
+    }
+    &__title:active {
+      color: white;
+      -webkit-tap-highlight-color: transparent;
+    }
     &__icon-wrap {
       display: flex;
       width: 20%;
@@ -25,6 +34,11 @@ const HeaderStyled = styled.header`
       i {
         margin-right: 20%;
       }
+      i:active {
+        color: white;
+        -webkit-tap-highlight-color: transparent;
+      }
+
       i:last-child {
         margin-right: 0;
       }
