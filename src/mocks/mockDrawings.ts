@@ -25,6 +25,32 @@ const mockDrawings = [
     likes: [],
     dislikes: [],
   },
+  {
+    id: "3",
+    name: "mockDraw4",
+    description: "",
+    image: "",
+    artist: "",
+    artistName: "",
+    resolution: "30x45",
+    userId: "12345",
+    creationDate: "0000-00-02",
+    likes: [],
+    dislikes: [],
+  },
+  {
+    id: "4",
+    name: "mockDraw4",
+    description: "",
+    image: "",
+    artist: "",
+    artistName: "",
+    resolution: "30x45",
+    userId: "12345",
+    creationDate: "0000-00-03",
+    likes: [],
+    dislikes: [],
+  },
 ];
 
 export default mockDrawings;

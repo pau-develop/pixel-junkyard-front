@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 const LogoutMenuStyled = styled(motion.div)`
   &.phone-logout-menu {
+    border-bottom: 2px solid ${(props) => props.theme.thirdColor};
     flex-wrap: nowrap;
     padding: 0 5%;
     background-color: ${(props) => props.theme.primaryColor};

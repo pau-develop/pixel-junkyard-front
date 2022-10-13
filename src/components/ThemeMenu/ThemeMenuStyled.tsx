@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 const ThemeMenuStyled = styled(motion.div)`
   &.phone-theme-menu {
     flex-wrap: nowrap;
+    border-bottom: 2px solid ${(props) => props.theme.thirdColor};
+    margin: 0;
     padding: 0 5%;
     background-color: ${(props) => props.theme.primaryColor};
     border-top: 2px solid ${(props) => props.theme.thirdColor};
@@ -27,14 +29,16 @@ const ThemeMenuStyled = styled(motion.div)`
       width: 100%;
       height: 100%;
       justify-content: space-evenly;
+      align-items: center;
+      margin: 0;
     }
     li {
       border: 2px solid ${(props) => props.theme.secondaryColor};
       border-radius: 5px;
       cursor: pointer;
       margin: 10px;
-      width: 50px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
     }
     li:hover {
       border: 2px solid white;

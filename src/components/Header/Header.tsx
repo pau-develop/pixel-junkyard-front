@@ -31,6 +31,7 @@ const Header = ({ currentUser }: HeaderProps): JSX.Element => {
   const handleOpenNavMenuClick = () => {
     setNavMenu(!navMenu);
     setLogoutMenu(false);
+    setThemeMenu(false);
   };
 
   const handleCloseNavMenuClick = () => {
