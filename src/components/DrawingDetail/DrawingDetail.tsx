@@ -91,10 +91,12 @@ const DrawingDetail = (): JSX.Element => {
                 <span>{drawing.creationDate}</span>
               </div>
               <section className="drawing-details__user-desktop">
-                <span>Made by</span>
-                {drawing.artist !== undefined && (
-                  <UserCard user={drawing.artist} />
-                )}
+                <div className="drawing-details__info-section">
+                  <h2>Made by</h2>
+                  {drawing.artist !== undefined && (
+                    <UserCard user={drawing.artist} />
+                  )}
+                </div>
               </section>
             </section>
 
