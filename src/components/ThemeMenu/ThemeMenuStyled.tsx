@@ -64,6 +64,7 @@ const ThemeMenuStyled = styled(motion.div)`
     }
 
     @media (min-width: 600px) {
+      border-bottom: none;
       flex-wrap: nowrap;
       width: 40%;
       justify-content: flex-end;
