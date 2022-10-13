@@ -53,13 +53,11 @@ const Profile = (): JSX.Element => {
 
   const handleIncrement = () => {
     if (windowWidth >= 1400) {
-      if (currentIndex + 2 < user.drawings.length - 1) {
+      currentIndex + 2 < user.drawings.length &&
         setCurrentIndex(currentIndex + 1);
-      }
     } else {
-      if (currentIndex < user.drawings.length - 1) {
+      currentIndex < user.drawings.length - 1 &&
         setCurrentIndex(currentIndex + 1);
-      }
     }
   };
 
@@ -176,8 +174,12 @@ const Profile = (): JSX.Element => {
                         )}
                     </ul>
                     <div
+                      data-testid="custom-div"
                       className={
-                        currentIndex < user.drawings.length - 1
+                        (windowWidth < 1400 &&
+                          currentIndex < user.drawings.length - 1) ||
+                        (windowWidth >= 1400 &&
+                          currentIndex < user.drawings.length - 3)
                           ? "profile__nav-button"
                           : "profile__nav-button--hidden"
                       }

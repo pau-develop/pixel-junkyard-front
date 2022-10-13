@@ -81,11 +81,13 @@ describe("Given a Profile component", () => {
     });
 
     test("If user clicks on '>>' button, a new drawing should be displayed unless the last drawing in array is displayed", async () => {
+      window.innerWidth = 1400;
       await render(<Profile />, { wrapper: Wrapper });
 
       const buttonText = ">>";
       const buttonElement = screen.getByRole("button", { name: buttonText });
-
+      const divElement = screen.getByTestId("custom-div");
+      expect(divElement).toHaveClass("profile__nav-button");
       const firstDrawing = screen.getByText("test1");
       expect(firstDrawing).toBeInTheDocument();
       fireEvent.click(buttonElement);
@@ -94,9 +96,12 @@ describe("Given a Profile component", () => {
       expect(secondDrawing).toBeInTheDocument();
       fireEvent.click(buttonElement);
       expect(secondDrawing).toBeInTheDocument();
+      expect(buttonElement).not.toBeInTheDocument();
+      expect(divElement).toHaveClass("profile__nav-button--hidden");
     });
 
     test("If user clicks on '<<' button, a new drawing should be displayed unless the first drawing in array is displayed", async () => {
+      window.innerWidth = 500;
       await render(<Profile />, { wrapper: Wrapper });
       const forwardButtonText = ">>";
       const forwardButtonElement = screen.getByRole("button", {
