@@ -233,6 +233,9 @@ const DrawingDetailStyled = styled.section`
         display: none;
       }
       &__user-desktop {
+        margin-top: auto;
+        justify-self: flex-end;
+
         height: 25%;
         width: 90%;
         flex-direction: column;
