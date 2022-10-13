@@ -52,8 +52,14 @@ const Profile = (): JSX.Element => {
   };
 
   const handleIncrement = () => {
-    if (currentIndex < user.drawings.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+    if (windowWidth >= 1400) {
+      if (currentIndex + 2 < user.drawings.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      }
+    } else {
+      if (currentIndex < user.drawings.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      }
     }
   };
 
@@ -176,7 +182,11 @@ const Profile = (): JSX.Element => {
                           : "profile__nav-button--hidden"
                       }
                     >
-                      <Button text=">>" action={handleIncrement} />
+                      {(windowWidth >= 1400 &&
+                        currentIndex < user.drawings.length - 3) ||
+                      windowWidth < 1400 ? (
+                        <Button text=">>" action={handleIncrement} />
+                      ) : null}
                     </div>
                   </>
                 ) : (

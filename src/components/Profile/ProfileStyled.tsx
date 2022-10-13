@@ -190,7 +190,7 @@ const ProfileStyled = styled.article`
 
       span {
         align-self: center;
-        font-size: 0.75rem;
+        font-size: 0.5rem;
         text-align: center;
       }
       ul {
