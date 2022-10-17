@@ -11,8 +11,7 @@ const ModalStyled = styled.div`
   align-items: center;
   .modal {
     &__box {
-      padding: 5%;
-      width: 300px;
+      width: 400px;
       background-color: ${(props) => props.theme.thirdColor};
       border: 2px solid ${(props) => props.theme.secondaryColor};
       border-radius: 25px;
@@ -20,6 +19,9 @@ const ModalStyled = styled.div`
       font-size: 1.5rem;
       text-align: center;
       p {
+        padding: 5%;
+        height: 100%;
+        width: 100%;
         text-align: center;
       }
     }
